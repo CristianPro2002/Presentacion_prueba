@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.crud {
+  padding: 20px;
+  font-family: "Arial";
+}
+.titulos {
+  text-align: center;
+}
+.Background {
+  background: linear-gradient(to right top, #00eeffde, blue);
+  height: 100vh;
+}
+
+.salirB {
+  padding-left: 20px;
+}
+
+.TITULO {
+  font-family: "Roboto";
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.tabla {
+  background-color: white;
+  border-color: black;
+}
+
+.reporte {
+  color: rgb(5, 5, 5);
+  font-size: 25px;
+}
+
+.reporte:hover {
+  color: rgb(27, 61, 255);
+}

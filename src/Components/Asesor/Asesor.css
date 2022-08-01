@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.principal{
+
+  background-image: linear-gradient(
+    to right top,
+    #03a1e5,
+    #008ae1,
+    #1471d9,
+    #4355c9,
+    #6231b1
+  );
+font-family: 'Roboto', sans-serif;
+display: flex;
+}
+
+.padresito{
+}
+
+.contenedort{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulu {
+    text-align: center;
+    font-size: 400%;
+    font-family:'Roboto';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.titulu2 {
+    text-align: center;
+    font-size: 400%;
+    font-family:'Roboto';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.titulu3 {
+    text-align: center;
+    font-size: 400%;
+    font-family:'Roboto';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.titulu4 {
+    text-align: center;
+    font-size: 400%;
+    font-family:'Roboto';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.titulu5 {
+    text-align: center;
+    font-size: 400%;
+    font-family:'Roboto';
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.inicio {
+    width: 100%;
+    float: left;
+    padding-left: 10px;
+    
+}
+#cir{
+    cursor: pointer;
+    font-size: 50px;
+    color: #ffffff;
+    
+}
+#cir:hover{
+    color: #a8acb9;
+}
+
+.regresar {
+    width: 50%;
+    float: right;
+}
+
+.ini {
+    float: left;
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    text-align: center;
+   
+}
+
+.regre {
+    float: right;
+    width: 100px;
+}
+
+.carousel {
+    width: 100%;
+    box-shadow: 20px black;
+    
+}
+
+.concaro {
+    margin: 0;
+    
+    
+    
+}
+
+.contb{
+    padding: 5px;
+    width: 100%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pj{
+    margin: 10px;
+    border-radius: 15px;
+    width: 200px;
+    height: 45px;
+    background: #FFFFFF;
+	color: #00CED1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-style: none;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
+    animation: pulse 1.5s infinite;
+}
+
+.pn{
+    margin: 10px;
+    border-radius: 15px;
+    width: 200px;
+    height: 45px;
+    background: #FFFFFF;
+	color: #00CED1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-style: none;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, .1);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 25px rgba(256, 256, 256, 0);
+    }
+    100% {
+        transform: scale(.99);
+        box-shadow: 0 0 0 0 rgba(256, 256, 256, 0);
+    }
+}
+
+.titu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    
+}
+
+
+.conn{
+width: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-left: 5%;
+padding-right: 10%;
+
+}
+
+.contj{
+width: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-left: 10%;
+padding-right: 5%;
+
+}
+#con{
+    padding-top: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tp {
+    font-weight: bold;
+    color: aliceblue;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titulo{
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: aliceblue;
+}
+
+.PJ{
+    border-radius: 15px;
+    width: 100%;
+    
+}
+
+.PN {
+    border-radius: 15px;
+    width:100%;
+}
+
+.bj{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.row{
+    margin: 0;
+}
+
+
+.consultar1 {
+    text-decoration: none;
+    border: none;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    background-color: #00CED1;
+    color: #FFFFFF;
+    font-weight: bold;
+   
+}
+
+.consultar2 {
+    text-decoration: none;
+    border: none;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    background-color: #00CED1;
+    color: #ffffff;
+    font-weight: bold;
+    
+    
+}
+.consultar1:hover {
+    background-color: #05abad;
+    transition: all 0.4s;
+}
+
+.consultar2:hover {
+    background-color: #05abad;
+    transition: all 0.4s;
+}
+
+.campo1 {
+    
+    border: none;
+    outline-color: #00CED1;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+
+}
+.campo2{
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+    border: none;
+    outline-color: #00CED1;
+    
+}
+
+.desplegable1 {
+    padding-top: 10px;
+    height: 40px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.desplegable1:hover{
+    
+}
+
+.cdesplegable1 {
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+
+.desplegable2 {
+    padding-top: 10px;
+    height: 40px;
+    width: 50%;
+    border-radius: 10px;
+    
+}
+
+.cdesplegable2 {
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+form {
+    padding-top: 8px;
+}
+
+
+@media screen and (min-width: 800px){
+    #con{padding-bottom: 350px ;}
+}
+
+@media screen and (max-width: 800px){
+    .conn{
+        padding-left: 10%;
+    }
+    .contj{
+        padding-right: 10%;
+    }
+    .padresito{
+        height: auto;
+    }
+    .conn{
+        width: 100%;
+    }
+
+    .contj{
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+   
+    
+    .campo1 {
+        
+       width: 120px;
+    
+    }
+    .campo2{
+        
+        width: 120px; 
+}}
+

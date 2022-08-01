@@ -1,0 +1,560 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.titulo {
+  text-align: center;
+  font-size: 400%;
+  font-family: "Roboto";
+  color: black;
+}
+
+.padre {
+  background-color: #ebf5fb;
+  padding: 30px;
+  width: 100%;
+  columns: 1;
+}
+
+@media screen and (max-width: 700px) {
+  .padre {
+    width: 100%;
+    columns: 1;
+    background-color: #ebf5fb;
+    font-size: 9px;
+  }
+}
+
+.input {
+  width: 100%;
+  background: white;
+  border: 3px solid rbg(255, 208, 1);
+  border-radius: 10px;
+  height: 45px;
+  padding: 0 40px 0 10px;
+  transition: 0.3s ease all;
+  box-sizing: border-box;
+  outline: none;
+  border-color: black;
+}
+
+.inpuut {
+  width: 50%;
+  background: white;
+  border: 3px solid rbg(255, 208, 1);
+  border-radius: 10px;
+  height: 45px;
+  padding: 0 40px 0 10px;
+  transition: 0.3s ease all;
+  box-sizing: border-box;
+  outline: none;
+  border-color: black;
+}
+
+.labelo {
+  width: 50%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  text-align: left;
+}
+
+.labelu {
+  width: 50%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  text-align: center;
+}
+
+.labelos {
+  width: 50%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 130%;
+  text-align: center;
+  background-color: 157ee0;
+  margin-top: 15px;
+  border-color: black;
+}
+
+.button {
+  width: 10%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  font-family: "Roboto";
+  font-size: 130%;
+  text-align: center;
+  background-color: 157ee0;
+  margin-top: 15px;
+  border-color: black;
+}
+
+.titulazo {
+  width: 50%;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Roboto";
+  font-size: 110%;
+  color: white;
+  background-color: gray;
+  font-weight: 700;
+  text-align: center;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+}
+
+.lalbelo {
+  width: 60%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.otro {
+  width: 50%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.cajonl {
+  width: 40%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.cajon {
+  width: 25%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+.cajoneto {
+  width: 33%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+.cajons {
+  width: 30%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.cajoncitos {
+  width: 20%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.largos {
+  width: 100%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+}
+
+.civil {
+  width: 33%;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  margin-top: 0.1%;
+}
+
+.civi {
+  width: 11%;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  margin-top: 0.1%;
+}
+
+.civilo {
+  width: 3%;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  margin-top: 0.1%;
+}
+
+.jumm {
+  width: 12.5%;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.div {
+  width: 100%;
+}
+
+.col-md-4 {
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+}
+
+.titulitos {
+  color: white;
+  background-color: #157ee0;
+  font-weight: 700;
+  text-align: center;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  font-family: "Roboto";
+  font-size: 120%;
+}
+
+.tituloos {
+  color: white;
+  background-color: gray;
+  font-weight: 700;
+  text-align: center;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  font-family: "Roboto";
+  font-size: 120%;
+}
+
+.texto {
+  text-align: justify;
+  font-size: 120%;
+  font-family: "Roboto";
+  color: black;
+  padding: 10px;
+}
+
+.contenedor4 {
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  width: 100%;
+  margin-top: -0%;
+}
+
+.padre {
+  background-color: #ebf5fb;
+  padding: 30px;
+  width: 100%;
+  columns: 1;
+}
+
+.inputoculto{
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .padre {
+    width: 110%;
+    background-color: #ebf5fb;
+    font-size: 8px;
+    columns: 1;
+    padding: 30px;
+  }
+
+  .input {
+    height: 35px;
+  }
+
+  .button {
+    width: 130px;
+  }
+}
+
+.select {
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  width: 100%;
+  font-family: "Roboto";
+  font-size: 110%;
+}
+
+.bordes {
+  border-color: black;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  width: 100%;
+}
+
+.red-red {
+  --bs-gutter-x: 0rem !important;
+}
+
+.estado {
+  width: 100%;
+  height: 89px;
+}
+
+.coso {
+  width: 30%;
+  height: 90px;
+  float: left;
+  text-align: center;
+}
+
+.cosito {
+  width: 70%;
+  height: 90px;
+  float: right;
+  text-align: center;
+}
+
+.conte {
+  float: right;
+  width: 50%;
+  height: 90px;
+}
+
+.check1 {
+  margin-top: 11%;
+}
+
+.seleccion {
+  width: 50%;
+  font-family: "Roboto";
+  text-align: center;
+  font-size: 110%;
+}
+
+.selec {
+  width: 100%;
+  font-family: "Roboto";
+  text-align: center;
+  font-size: 110%;
+}
+
+.h5 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 110%;
+  font-family: "Roboto";
+  margin-top: 13px;
+}
+
+.letras {
+  width: 142px;
+  padding-top: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  font-family: "Roboto";
+  font-size: 110%;
+  text-align: center;
+}
+
+.bootoon {
+  text-align: center;
+}
+
+.Subtitulito {
+  font-weight: 700;
+  color: rgb(7, 5, 5);
+}
+
+.textico {
+  display: grid;
+  padding: 6px;
+  text-align: left;
+  width: 100%;
+}
+
+.flechis {
+  height: 50px;
+  width: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  font-weight: 900;
+  padding: 1px;
+  cursor: pointer;
+  color: white;
+  font-size: 120%;
+  background-color: 157ee0;
+  border-color: black;
+}
+
+.letris {
+  color: #157ee0;
+  font-weight: 800;
+}
+
+.final {
+  padding: 10px;
+  word-spacing: 5pt;
+  margin-left: 30px;
+}
+
+.firmita {
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 14px;
+  border-bottom-style: outset;
+  border-bottom-width: 1px;
+}
+
+.labeli {
+  margin-top: 30px;
+  font-weight: 700;
+  padding: 7px;
+  color: rgb(7, 5, 5);
+}
+
+.label21 {
+  display: flex;
+  font-weight: 700;
+  padding: 10px;
+  color: rgb(7, 5, 5);
+}
+
+.RA {
+  padding-left: 30px;
+  color: black;
+}
+
+.label22 {
+  width: 50%;
+  padding: 10px;
+}
+
+.label19 {
+  padding: 7px;
+  padding-left: 77px;
+}
+
+.label20 {
+}
+
+.Bordecito {
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+#contain {
+  float: left;
+  border-color: #000000;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+}
+
+#contain-1 {
+  border-color: #000000;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  float: left;
+}
+
+#RectangulO {
+  border: solid 1px #000;
+  border-radius: 5px;
+}
+
+#container-5 {
+  float: left;
+}
+
+#container-2 {
+  margin: 30px;
+  border-color: #000000;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  float: left;
+}
+
+#contenedor4 {
+  margin-top: 150px;
+  float: left;
+}
+.Observation1 {
+  float: left;
+  padding: 20px;
+}
+
+.Observations {
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 18px;
+  width: 1000px;
+  border-bottom-style: outset;
+  border-bottom-width: 1px;
+}
+
+.NI {
+  padding: 30px;
+  width: 100%;
+}
+
+.Row {
+  margin-top: 140px;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 14px;
+  border-bottom-style: outset;
+  border-bottom-width: 1px;
+}
+
+#Container-7 {
+  display: flex;
+}

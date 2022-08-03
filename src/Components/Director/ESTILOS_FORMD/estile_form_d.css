@@ -487,80 +487,25 @@ justify-content: end;
   width: 100%;
   height: 300px;
 }
-
-@media (max-width:770px){
-  .icon_eye{
-    right: 5px ;
-    padding-bottom: 10px;
-    
-  }
+.cont-modals01{
+  width: 100%;
+  display: flex;
+}
+.cont1-modal01{
+  width: 50%;
 }
 
-@media (max-width:2000px){
-  .icon_eye{
-  top:70%;
-  right: 30px ;
-
-    
-  }
+.cont-data01{
+  width: 25%;
 }
 
-
-@media (max-width:832px){
-  .icon_eye{
-  top:80%;
-  right: 40px ;
-
-    
-  }
-}
-
-@media (max-width:550px){
-  .btn__open-modal{
-   left: 55.%;
-  }
-}
-@media (max-width:500px){
-  .btn__open-modal{
-   left: 41.8%;
-  }
-}
-@media (max-width:400px){
-  .btn__open-modal{
-   left: 38.4%;
-  }
+#cont-data01{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
-@media (max-width:528px){
-  .icon_eye{
-  top:80%;
-  right: 30px ;
-
-    
-  }
-}
-
-@media (max-width:480px){
-  .btn__open-modal{
-    margin-top: 20 px;
-  }
-  
-}
-
-@media (max-width:445px){
-  .third{
-    width: 130px;
-  }
-  
-}
-
-@media (max-width:445px){
-  .third{
-    width: 150px;
-  }
-  
-}
 
 /* barra buscadora */
 .containerInput{
@@ -588,8 +533,79 @@ justify-content: end;
 #icono_buscar{
   border-top: none;
 }
+  
+    /*mediaqueri del input de busqueda*/
+
+/*Conteneodor del input de busqueda*/
+.containerInput{
+  padding-bottom: 15px;
+}
+/*ocultar la id de los roles*/
+.ocultarid{
+  display: none;
+}
 
 
+.background__blur{
+  width: 100vw;
+  height: 100vh;
+}
+
+
+@media (max-width:2000px){
+  .icon_eye{
+  top:70%;
+  right: 30px ;
+
+    
+  }
+}
+
+@media (max-width:1200px){
+  .cont-data01{
+    width: 50%;
+  }
+}
+
+
+@media (max-width:832px){
+  .icon_eye{
+  top:80%;
+  right: 40px ; 
+  }
+
+  .cont-modals01{
+    flex-direction: column;
+  }
+  .cont1-modal01{
+    width: 100%;
+  }
+}
+
+@media (max-width:770px){
+  .icon_eye{
+    right: 5px ;
+    padding-bottom: 10px;
+    
+  }
+  .cont-data01{
+    width: 50%;
+  }
+}
+
+@media (max-width:445px){
+  .third{
+    width: 130px;
+  }
+  
+}
+
+@media (max-width:445px){
+  .third{
+    width: 150px;
+  }
+  
+}
 /*mediaqueri de el contenedor del formulario, ubicado en Formulario_Director*/
 @media (max-width:296px){
   .container_formulario_director{
@@ -600,14 +616,3 @@ justify-content: end;
   }
 }
 
-  
-    /*mediaqueri del input de busqueda*/
-
-/*Conteneodor del input de busqueda*/
-    .containerInput{
-      padding-bottom: 15px;
-    }
-/*ocultar la id de los roles*/
-    .ocultarid{
-      display: none;
-    }

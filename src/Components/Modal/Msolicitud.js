@@ -101,25 +101,8 @@ const Msolicitud = ({
 
   return (
     <div>
-      <div className="contbtns">
-        <div className="congoback">
-          <i
-            class="bi bi-arrow-left-circle-fill"
-            id="cir"
-            onClick={() => Navigate(-1)}
-          ></i>
-        </div>
-        <div className="contabrir">
-          <button
-            className="btn btn-danger"
-            onClick={abrirp}
-            style={{ height: "60%", margin: "5px" }}
-          >
-            Solicitudes
-          </button>
-        </div>
-      </div>
-      <div className="background__blur"></div>
+      
+      <div className="background__blur" id="background__blur">
       <div className="contemodal">
         <div className="container__modal" id="ventana_modalp">
           <div className="header__modal">
@@ -137,8 +120,8 @@ const Msolicitud = ({
                 <b>SOLICITUDES</b>
               </h1>
             </center>
-            <div className="row">
-              <div className="col-md-6">
+            <div className="cont-modals01">
+              <div className="cont1-modal01" id="cont1-modal01">
                 <div className="body__modal">
                   <h2 className="title__modal">Persona Juridica</h2>
 
@@ -148,19 +131,19 @@ const Msolicitud = ({
                         <div className="card" id="cardsoli">
                           <div className="card-body">
                             <div className="row">
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>No de solicitud</label>
                                 <p>{Data.Id_ent}</p>
                               </div>
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>Nombre</label>
                                 <p>{Data.Nom_ra}</p>
                               </div>
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>Identificacion</label>
                                 <p>{Data.Nit}</p>
                               </div>
-                              <div className="col-md-3" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                              <div className="cont-data01" id="cont-data01">
                              
                                   <button
                                     onClick={() => Detalleid2(Data.Nit)}
@@ -179,7 +162,7 @@ const Msolicitud = ({
                 </div>
               </div>
 
-              <div className="col-md-6">
+              <div className="cont1-modal01" id="cont1-modal01">
                 <div className="body__modal">
                   <h2 className="title__modal">Persona Natural</h2>
                   <div>
@@ -190,19 +173,19 @@ const Msolicitud = ({
                         <div className="card" id="cardsoli">
                           <div className="card-body">
                             <div className="row">
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>No de solicitud</label>
                                 <p>{Data.Id_reg}</p>
                               </div>
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>Nombre</label>
                                 <p>{Data.Pri_nom}</p>
                               </div>
-                              <div className="col-md-3">
+                              <div className="cont-data01">
                                 <label>Identificacion</label>
                                 <p>{Data.No_ide}</p>
                               </div>
-                              <div className="col-md-3" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                              <div className="cont-data01" id="cont-data01">
                                 <button
                                   onClick={() => Detalleid(Data.No_ide)}
                                   className="btn btn-danger"
@@ -384,6 +367,7 @@ const Msolicitud = ({
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

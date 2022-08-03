@@ -20,7 +20,6 @@ import Rolasesor from "./Components/Roles/Rasesor/Rolasesor";
 import Rolgerente from "./Components/Roles/Rgerente/Rolgerente";
 import Rolcajero from "./Components/Roles/Rcajero/Rolcajero";
 import Rolcajerop from "./Components/Roles/Rcajerop/Rolcajerop";
-import Factura from "./Components/Cajero/Factura";
 import MyProvider from "../src/stateManagement/provider";
 
 function App() {
@@ -29,12 +28,11 @@ function App() {
     <MyProvider>
       <Router>
         <Routes>
-          <Route path="/AsesorD5" element={<AsesorD5 />}/ >
+          <Route path="/AsesorD5" element={<AsesorD5 />}/>
           <Route path="/AsesorD4" element={<AsesorD4 />}/>
           <Route path="/AsesorD3" element={<AsesorD3 />}/>
           <Route path="/AsesorD2" element={<AsesorD2 />}/>
           <Route path="/AsesorD1" element={<AsesorD1 />}/>
-          <Route path="/Factura" element={<Factura />}/>
           <Route path="/Rasesor" element={<Rolasesor />}/>
           <Route path="/Rgerente" element={<Rolgerente />}/>
           <Route path="/Rcajero" element={<Rolcajero />}/>

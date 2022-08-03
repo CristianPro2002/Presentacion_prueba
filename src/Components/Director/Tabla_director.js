@@ -199,12 +199,24 @@ export const Tabla_director = () => {
     document
       .getElementById("ventana_modalp")
       .setAttribute("style", "visibility:visible; top:50%;");
+      document
+      .getElementById("background__blur")
+      .setAttribute("style", "visibility:visible");
+      document
+      .getElementById("father01")
+      .setAttribute("style", "visibility: hidden;");
   };
   const cerrarp = (e) => {
     e.preventDefault();
     document
       .getElementById("ventana_modalp")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
+      document
+      .getElementById("background__blur")
+      .setAttribute("style", "visibility: hidden;");
+      document
+      .getElementById("father01")
+      .setAttribute("style", "visibility:visible");
   };
 
   const abrir = (e) => {
@@ -223,14 +235,14 @@ export const Tabla_director = () => {
     e.preventDefault();
     document
       .getElementById("ventana_modal")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
   };
 
   const cerrarpj = (e) => {
     e.preventDefault();
     document
       .getElementById("ventana_modal3")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
   };
 
 
@@ -244,17 +256,17 @@ export const Tabla_director = () => {
   const cerrar2 = (e) => {
     document
       .getElementById("ventana_modal2")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
   };
 
   const cerrarT = (e) => {
     e.preventDefault();
     document
       .getElementById("ventana_modal")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
     document
       .getElementById("ventana_modal2")
-      .setAttribute("style", "display:none;");
+      .setAttribute("style", "visibility: hidden;");
   };
 
 
@@ -266,29 +278,30 @@ export const Tabla_director = () => {
   }, [])
 
   return (
-    <div>
-      <div className="contatras">
-        <ModalSolicitud
-          abrir={abrir}
-          cerrar={cerrar}
-          abrir2={abrir2}
-          cerrar2={cerrar2}
-          cerrarT={cerrarT}
-          abrirp={abrirp}
-          cerrarp={cerrarp}
-          solicitud={solicitud}
-          setSolicitud={setSolicitud}
-          peticionGet3={peticionGet3}
-          solicitud2={solicitud2}
-          setSolicitud2={setSolicitud2}
-          abrirpj={abrirpj}
-          cerrarpj={cerrarpj}
-        />
+    <>
+    <div className="father01" id="father01">
+    <div className="contbtns">
+        <div className="congoback">
+          <i
+            class="bi bi-arrow-left-circle-fill"
+            id="cir"
+            onClick={() => Navigate(-1)}
+          ></i>
+        </div>
+        <div className="contabrir">
+          <button
+            className="btn btn-danger"
+            onClick={abrirp}
+            style={{ height: "60%", margin: "5px" }}
+          >
+            Solicitudes
+          </button>
+        </div>
       </div>
       <h1 className="titureg">Registros de cuentas de usuario</h1>
       <div className="containerInput">
         <div className="div_report">
-          <a className="report" href="http://localhost:8080/imprimir_roles">
+          <a className="report" href="http://localhost:8080/imprimir_roles" target="_blank">
             <AiFillPrinter />
           </a>
         </div>
@@ -357,8 +370,24 @@ export const Tabla_director = () => {
           </tbody>
         </Table>
       </div>
-
-      <ModalInsertar
+    </div>
+    <ModalSolicitud
+          abrir={abrir}
+          cerrar={cerrar}
+          abrir2={abrir2}
+          cerrar2={cerrar2}
+          cerrarT={cerrarT}
+          abrirp={abrirp}
+          cerrarp={cerrarp}
+          solicitud={solicitud}
+          setSolicitud={setSolicitud}
+          peticionGet3={peticionGet3}
+          solicitud2={solicitud2}
+          setSolicitud2={setSolicitud2}
+          abrirpj={abrirpj}
+          cerrarpj={cerrarpj}
+        />
+    <ModalInsertar
         handleChange={handleChange}
         handleToggle={handleToggle}
         icon={icon}
@@ -383,6 +412,6 @@ export const Tabla_director = () => {
         peticionDelete={peticionDelete}
         abrirCerrarModalEliminar={abrirCerrarModalEliminar}
       />
-    </div>
+    </>
   );
 };

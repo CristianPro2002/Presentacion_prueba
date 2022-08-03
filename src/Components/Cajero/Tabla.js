@@ -119,7 +119,7 @@ const Tabla = () => {
                 />
               </div>
               <div className="col-md-3">
-                <a className="reporte" href="http://localhost:8080/documen">
+                <a className="reporte" href="http://localhost:8080/documen" target="_blank">
                   <AiFillPrinter />
                 </a>
               </div>

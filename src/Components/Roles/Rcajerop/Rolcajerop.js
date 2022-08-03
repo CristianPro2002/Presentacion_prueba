@@ -47,9 +47,6 @@ const Rolcajerop = ({setisLoggedIn}) => {
               id="cir"
               onClick={() => setisLoggedIn(false)}
             ></i>
-            <div className="contmodoo">
-              <input type="checkbox" id="input-dark-mode"></input>
-            </div>
           </div>
           <div className="Croles">
             <div className="row" id="rows">

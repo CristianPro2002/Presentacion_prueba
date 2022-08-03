@@ -16,7 +16,7 @@ const AppRouter = () => {
                 } />
                 <Route path="/*" element={
                     <PrivateRoute isAuthenticated={isLoggedIn}>
-                        <DashboardRoutes setisLoggedIn={setisLoggedIn} />
+                        <DashboardRoutes setisLoggedIn={setisLoggedIn} />                   
                     </PrivateRoute>
                 } />
             </Routes>

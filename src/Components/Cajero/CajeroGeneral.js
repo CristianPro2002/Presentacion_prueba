@@ -152,6 +152,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                 <Form
                   action="http://localhost:8080/Recibo/Recibo.php"
                   method="post"
+                  target="_blank"
                 >
                   <div className="Contenedores2">
                     <div className="Contenedor-logo-second">
@@ -262,6 +263,9 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                           {" "}
                           Guardar{" "}
                         </Button>
+                      </div>
+                      <div>
+                        <Link to="/Tabla">Ver tabla de registro</Link>
                       </div>
                     </div>
                   ) : (

@@ -20,7 +20,6 @@ import Rolasesor from "../Components/Roles/Rasesor/Rolasesor";
 import Rolgerente from "../Components/Roles/Rgerente/Rolgerente";
 import Rolcajero from "../Components/Roles/Rcajero/Rolcajero";
 import Rolcajerop from "../Components/Roles/Rcajerop/Rolcajerop";
-import Factura from "../Components/Cajero/Factura";
 import { AppContext } from "../stateManagement/provider";
 const DashboardRoutes = ({ setisLoggedIn }) => {
     const [data2, setData2] = useContext(AppContext);
@@ -59,12 +58,13 @@ const DashboardRoutes = ({ setisLoggedIn }) => {
                 <Route path="/Rcajero" element={<Rolcajero setisLoggedIn={setisLoggedIn}/>}/>
                 <Route path="/Rgerente" element={<Rolgerente setisLoggedIn={setisLoggedIn}/>}/>
                 <Route path="/Rasesor" element={<Rolasesor setisLoggedIn={setisLoggedIn}/>}/>
-                <Route path="/Factura" element={<Factura />}/>
                 <Route path="/AsesorD1" element={<AsesorD1 />}/>
                 <Route path="/AsesorD2" element={<AsesorD2 />}/>
                 <Route path="/AsesorD3" element={<AsesorD3 />}/>
                 <Route path="/AsesorD4" element={<AsesorD4 />}/>
                 <Route path="/AsesorD5" element={<AsesorD5 />}/>
+                <Route path="http://localhost:8080/documen/"/>
+                <Route path="http://localhost:8080/Recibo/Recibo.php"/>
                 <Route path='*' element={<Navigate to={data2} />} />
             </Routes>
         </>

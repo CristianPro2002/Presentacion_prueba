@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { Container, Form } from "react-bootstrap";
 import "./Cajero.css";
 import { useState, useEffect } from "react";
-import imagen from "../Cajero/imagen/User-Login.png";
+import imagen from "../../assets/Imagenes/User-Login.png";
 import axios from "axios";
 
 export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {

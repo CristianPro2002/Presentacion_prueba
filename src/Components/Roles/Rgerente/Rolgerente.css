@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 .modoO{
     float: right;
     border-style: none;
@@ -43,7 +45,7 @@
 
 .TituloR {
     padding: 3%;
-    font-family: 'roboto';
+    font-family: 'Quicksand', sans-serif;
     text-align: center;
     color: rgb(255, 255, 255);
     font-weight: bold;
@@ -95,7 +97,7 @@ transition: all 1s;
     border: none;
 }
 .fondo2{
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Quicksand', sans-serif;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -195,7 +197,7 @@ transition: all 1s;
 }
 
 .regis{
-    font-family: 'roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }

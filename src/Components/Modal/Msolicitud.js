@@ -16,7 +16,7 @@ const Msolicitud = ({
   solicitud2,
   setSolicitud2,
   abrirpj,
-  cerrarpj
+  cerrarpj,
 }) => {
   let Navigate = useNavigate();
 
@@ -123,115 +123,115 @@ const Msolicitud = ({
       <div className="contemodal">
         <div className="container__modal" id="ventana_modalp">
           <div className="header__modal">
-            <label for="evento-click" onClick={cerrarp}>
+            <label
+              for="evento-click"
+              onClick={cerrarp}
+              style={{ backgroundColor: "#DC3545", color: "white" }}
+            >
               X
             </label>
           </div>
-          <div>
+          <div style={{ width: "85vw" }}>
             <center>
-              <h1 style={{ width: "100%" }}>Solicitudes</h1>
+              <h1>
+                <b>SOLICITUDES</b>
+              </h1>
             </center>
-            <div style={{ display: "flex" }}>
-              <div style={{ width: "50%" }}>
+            <div className="row">
+              <div className="col-md-6">
                 <div className="body__modal">
-                  <h1 className="title__modal">Solicitudes Persona Juridica</h1>
+                  <h2 className="title__modal">Persona Juridica</h2>
 
                   <div>
-                    <Table
-                      striped
-                      bordered
-                      hover
-                      variant="dark"
-                      responsive="sm"
-                    >
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>No identificacion</th>
-                          <th>Fecha de diligenciamiento</th>
-                          <th>Nombre de la entidad</th>
-                          <th>Tipo de documento</th>
-                          <th>Detalle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {solicitud2.map((Data) => (
-                          <tr key={Data.Nit}>
-                            <td>{Data.Id_ent}</td>
-                            <td>{Data.Nit}</td>
-                            <td>{Data.Fe_dil}</td>
-                            <td>{Data.Nom_ra}</td>
-                            <td>{Data.tidoc_ent}</td>
-                            <td>
-                              <button
-                                onClick={() => Detalleid2(Data.Nit)}
-                                className="btn btn-danger"
-                              >
-                                Detalle
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
+                    {solicitud2.map((Data) => (
+                      <>
+                        <div className="card" id="cardsoli">
+                          <div className="card-body">
+                            <div className="row">
+                              <div className="col-md-3">
+                                <label>No de solicitud</label>
+                                <p>{Data.Id_ent}</p>
+                              </div>
+                              <div className="col-md-3">
+                                <label>Nombre</label>
+                                <p>{Data.Nom_ra}</p>
+                              </div>
+                              <div className="col-md-3">
+                                <label>Identificacion</label>
+                                <p>{Data.Nit}</p>
+                              </div>
+                              <div className="col-md-3" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                             
+                                  <button
+                                    onClick={() => Detalleid2(Data.Nit)}
+                                    className="btn btn-danger"
+                                  >
+                                    Detalle
+                                  </button>
+                         
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div style={{ width: "50%" }}>
+              <div className="col-md-6">
                 <div className="body__modal">
-                  <h1 className="title__modal">Solicitudes Persona Natural</h1>
+                  <h2 className="title__modal">Persona Natural</h2>
                   <div>
-                    <Table
-                      striped
-                      bordered
-                      hover
-                      variant="dark"
-                      responsive="sm"
-                    >
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>No identificacion</th>
-                          <th>Nombre del cliente</th>
-                          <th>Apellido del cliente</th>
-                          <th>Telefono</th>
-                          <th>Detalle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {solicitud.map((Data) => (
-                          <tr key={Data.No_ide}>
-                            <td>{Data.Id_reg}</td>
-                            <td>{Data.No_ide}</td>
-                            <td>{Data.Pri_nom}</td>
-                            <td>{Data.Pri_ape}</td>
-                            <td>{Data.Telef}</td>
-                            <td>
-                              <button
-                                onClick={() => Detalleid(Data.No_ide)}
-                                className="btn btn-danger"
-                              >
-                                Detalle
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
+                    <div></div>
+
+                    {solicitud.map((Data) => (
+                      <>
+                        <div className="card" id="cardsoli">
+                          <div className="card-body">
+                            <div className="row">
+                              <div className="col-md-3">
+                                <label>No de solicitud</label>
+                                <p>{Data.Id_reg}</p>
+                              </div>
+                              <div className="col-md-3">
+                                <label>Nombre</label>
+                                <p>{Data.Pri_nom}</p>
+                              </div>
+                              <div className="col-md-3">
+                                <label>Identificacion</label>
+                                <p>{Data.No_ide}</p>
+                              </div>
+                              <div className="col-md-3" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                                <button
+                                  onClick={() => Detalleid(Data.No_ide)}
+                                  className="btn btn-danger"
+                                >
+                                  Detalle
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-{/* Modal para detalle de solicitud persona natural */}
+
+        {/* Modal para detalle de solicitud persona natural */}
 
         <div class="container__modal2" id="ventana_modal">
           <input type="checkbox" id="evento-click2" />
           <div class="header__modal2">
-            <label for="evento-click2" onClick={cerrar}>
+            <label
+              for="evento-click2"
+              onClick={cerrar}
+              style={{ backgroundColor: "#DC3545", color: "white" }}
+            >
               X
             </label>
           </div>
@@ -240,7 +240,7 @@ const Msolicitud = ({
               Solicitud de{" "}
               <b style={{ textTransform: "capitalize" }}>{detalle.Pri_nom}</b>{" "}
             </h1>
-            
+
             <Table striped bordered hover>
               <thead>
                 <tr>
@@ -267,7 +267,7 @@ const Msolicitud = ({
                 </tr>
               </tbody>
             </Table>
-        
+
             <button
               id="boton_modal_verde"
               className="btn btn-success"
@@ -285,12 +285,16 @@ const Msolicitud = ({
           </div>
         </div>
 
-{/* Modal para detalle de solicitud persona juridica */}
+        {/* Modal para detalle de solicitud persona juridica */}
 
         <div class="container__modal2" id="ventana_modal3">
           <input type="checkbox" id="evento-click2" />
           <div class="header__modal2">
-            <label for="evento-click2" onClick={cerrarpj}>
+            <label
+              for="evento-click2"
+              onClick={cerrarpj}
+              style={{ backgroundColor: "#DC3545", color: "white" }}
+            >
               X
             </label>
           </div>
@@ -299,7 +303,7 @@ const Msolicitud = ({
               Solicitud de{" "}
               <b style={{ textTransform: "capitalize" }}>{detalle2.Nom_ra}</b>{" "}
             </h1>
-            
+
             <Table striped bordered hover>
               <thead>
                 <tr>
@@ -326,7 +330,7 @@ const Msolicitud = ({
                 </tr>
               </tbody>
             </Table>
-        
+
             <button
               id="boton_modal_verde"
               className="btn btn-success"
@@ -344,13 +348,14 @@ const Msolicitud = ({
           </div>
         </div>
 
-
-
-
         <div class="container__modal3" id="ventana_modal2">
           <input type="checkbox" id="evento-click3" />
           <div class="header__modal3">
-            <label for="evento-click3" onClick={cerrar2}>
+            <label
+              for="evento-click3"
+              onClick={cerrar2}
+              style={{ backgroundColor: "#DC3545", color: "white" }}
+            >
               X
             </label>
           </div>

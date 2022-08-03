@@ -5,12 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
 import "./Roles.css";
-import Cajeroimg from "./Imagenes_R/cajero.webp";
-import Directorimg from "./Imagenes_R/director.webp";
-import Gerenteimg from "./Imagenes_R/gerente.webp";
-import Asesorimg from "./Imagenes_R/asesor.webp";
-import Cajeropimg from "./Imagenes_R/CajeroP.webp";
-import Usuariecito from "./Imagenes_R/usuario.webp";
+import Cajeroimg from "../../assets/Imagenes_R/cajero.webp";
+import Directorimg from "../../assets/Imagenes_R/director.webp";
+import Gerenteimg from "../../assets/Imagenes_R/gerente.webp";
+import Asesorimg from "../../assets/Imagenes_R/asesor.webp";
+import Cajeropimg from "../../assets/Imagenes_R/CajeroP.webp";
+import Usuariecito from "../../assets/Imagenes_R/usuario.webp";
 
 
 const Roles = ({setisLoggedIn, userName}) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import imagen from "../Director/Imagenes/Manager-icon.png";
+import imagen from "../../assets/Imagenes/Manager-icon.png";
 
 const Minsertar = ({
   modalInsertar,

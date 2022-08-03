@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 *{
     padding: 0;
@@ -16,7 +16,7 @@
     #4355c9,
     #6231b1
   );
-font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 display: flex;
 }
 
@@ -33,7 +33,7 @@ display: flex;
 .titulu {
     text-align: center;
     font-size: 400%;
-    font-family:'Roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
@@ -41,28 +41,28 @@ display: flex;
 .titulu2 {
     text-align: center;
     font-size: 400%;
-    font-family:'Roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
 .titulu3 {
     text-align: center;
     font-size: 400%;
-    font-family:'Roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
 .titulu4 {
     text-align: center;
     font-size: 400%;
-    font-family:'Roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
 .titulu5 {
     text-align: center;
     font-size: 400%;
-    font-family:'Roboto';
+    font-family: 'Quicksand', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
@@ -132,7 +132,7 @@ display: flex;
     height: 45px;
     background: #FFFFFF;
 	color: #00CED1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     border-style: none;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
@@ -146,7 +146,7 @@ display: flex;
     height: 45px;
     background: #FFFFFF;
 	color: #00CED1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     border-style: none;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
@@ -173,7 +173,7 @@ display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: bold;
     
 }
@@ -208,12 +208,12 @@ padding-right: 5%;
 .tp {
     font-weight: bold;
     color: aliceblue;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .titulo{
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     color: aliceblue;
 }
 

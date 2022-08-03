@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CajeroGeneral from "./CajeroGeneral";
+import CajeroGeneral from "../Components/Cajero/CajeroGeneral";
 
 export const Cajero1 = (props) => {
     let Navigate = useNavigate();

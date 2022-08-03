@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import "./Factura.css";
 import axios from "axios";
-import logo from "../Cajero/imagen/logo.webp";
+import logo from "../../assets/Imagenes/logo.webp";
 import {useNavigate } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 

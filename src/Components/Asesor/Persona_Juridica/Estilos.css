@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 .Titulo-principal {
   text-align: center;
-  font-family: "Roboto";
+  font-family: 'Quicksand', sans-serif;
+
   font-size: 400%;
   color: black;
 }
@@ -569,7 +571,7 @@
   padding: 1px;
   cursor: pointer;
   color: white;
-  font-family: "Roboto";
+  font-family: 'Quicksand', sans-serif;
   font-size: 130%;
   text-align: center;
   background-color: 157ee0;

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import './CajeroP.css'
-import img111 from './imgs/pngwing.com.webp'
+import img111 from '../../assets/Imagenes/pngwing.com.webp'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import cajeroimgp from './imgs/cajero-4.webp'
+import cajeroimgp from '../../assets/Imagenes/cajero-4.webp'
 const CajeroP = () => {
 
 

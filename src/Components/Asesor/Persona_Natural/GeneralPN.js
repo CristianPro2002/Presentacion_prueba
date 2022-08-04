@@ -192,7 +192,7 @@ const PersonaNatural = () => {
   //     CiudAd: Yup.string().required("Este campo es obligatorio"),
   //     PAIIS: Yup.string().required("Este campo es obligatorio"),
   //   }),
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/index.php";
+  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   var min=100000; 
   var max=999999;  

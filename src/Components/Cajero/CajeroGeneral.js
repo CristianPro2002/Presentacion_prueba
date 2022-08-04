@@ -12,7 +12,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   let Navigate = useNavigate();
 
   const baseUrl = "http://localhost:8080/Banca/bd_crud/cajero.php";
-  const baseUrl2 = "http://localhost:8080/Banca/bd_crud/index.php";
+  const baseUrl2 = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useState([]);
   const [consulta, setConsulta] = useState([]);

@@ -20,7 +20,9 @@ import { useNavigate } from "react-router-dom";
 
 export const Tabla_director = () => {
 
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/index.php";
+  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
+  const solicitudReg = "http://localhost:8080/Banca/bd_crud/solicitud1.php";
+  const solicitudReg2 = "http://localhost:8080/Banca/bd_crud/solicitud2.php";
   const [data2, setData2] = useState([]);
   const [dato, setDato] = useState([]);
   const [solicitud, setSolicitud] = useState([]);
@@ -49,6 +51,18 @@ export const Tabla_director = () => {
     });
   }
 
+  const peticionGet3 = async () => {
+    await axios.get(solicitudReg).then((response) => {
+      setSolicitud(response.data);
+    });
+  };
+
+  const peticionGet4 = async () => {
+    await axios.get(solicitudReg2).then((response) => {
+      setSolicitud2(response.data);
+    });
+  };
+
   const peticionPost = async () => {
     var f = new FormData();
     f.append("Id_usu", dataUsuario.Id_usu);
@@ -71,24 +85,6 @@ export const Tabla_director = () => {
       setDato(response.data);
     });
   }
-
-  const peticionGet3 = async () => {
-    var f = new FormData();
-    f.append("METHOD", "SOLICITUD");
-    await axios.post(baseUrl, f).then((response) => {
-      setSolicitud(response.data);
-    });
-  };
-
-  const peticionGet4 = async () => {
-    var f = new FormData();
-    f.append("METHOD", "SOLICITUDPJ");
-    await axios.post(baseUrl, f).then((response) => {
-      setSolicitud2(response.data);
-    });
-  };
-
-
 
 
   const abrirCerrarModalInsertar = () => {
@@ -268,12 +264,18 @@ export const Tabla_director = () => {
       .getElementById("ventana_modal2")
       .setAttribute("style", "visibility: hidden;");
   };
+  console.log(solicitud)
+  
+  useEffect(() => {
+    peticionGet3();
+  }, [solicitud]);
 
+  useEffect(() => {
+    peticionGet4();
+  }, [solicitud2]);
 
   useEffect(() => {
     peticionGetData();
-    peticionGet3();
-    peticionGet4();
     peticionGetRoles();
   }, [])
 

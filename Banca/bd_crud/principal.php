@@ -27,6 +27,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
      exit();
 }
 
+
 // consulta cajero
 
 if($_POST['METHOD']=='CONSULTACAJERO'){

@@ -36,7 +36,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
     validacion.focus();
   };
 
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/index.php";
+  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useContext(AppContext);
   const [dataUsuario, setDataUsuario] = useState({

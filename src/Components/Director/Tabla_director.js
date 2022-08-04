@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 export const Tabla_director = () => {
 
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
+  const baseUrlUser = "http://localhost:8080/Banca/bd_crud/user.php";
   const solicitudReg = "http://localhost:8080/Banca/bd_crud/solicitud1.php";
   const solicitudReg2 = "http://localhost:8080/Banca/bd_crud/solicitud2.php";
   const [data2, setData2] = useState([]);
@@ -42,7 +43,8 @@ export const Tabla_director = () => {
   let Navigate = useNavigate();
 
   const peticionGetData = async() => {
-    await axios.get(baseUrl).then(response => {
+
+    await axios.get(baseUrlUser).then(response => {
       setData2(response.data);
       setTablaUsuarios(response.data);
     })
@@ -264,7 +266,7 @@ export const Tabla_director = () => {
       .getElementById("ventana_modal2")
       .setAttribute("style", "visibility: hidden;");
   };
-  console.log(solicitud)
+  
   
   useEffect(() => {
     peticionGet3();
@@ -274,8 +276,11 @@ export const Tabla_director = () => {
     peticionGet4();
   }, [solicitud2]);
 
-  useEffect(() => {
+  useEffect(()=>{
     peticionGetData();
+  }, [])
+
+  useEffect(() => {
     peticionGetRoles();
   }, [])
 

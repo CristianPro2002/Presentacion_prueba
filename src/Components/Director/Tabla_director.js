@@ -19,7 +19,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 export const Tabla_director = () => {
-
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const baseUrlUser = "http://localhost:8080/Banca/bd_crud/user.php";
   const solicitudReg = "http://localhost:8080/Banca/bd_crud/solicitud1.php";
@@ -42,16 +41,17 @@ export const Tabla_director = () => {
 
   let Navigate = useNavigate();
 
-  const peticionGetData = async() => {
-
-    await axios.get(baseUrlUser).then(response => {
-      setData2(response.data);
-      setTablaUsuarios(response.data);
-    })
-    .catch((error) => {
-      return alert(error);
-    });
-  }
+  const peticionGetData = async () => {
+    await axios
+      .get(baseUrlUser)
+      .then((response) => {
+        setData2(response.data);
+        setTablaUsuarios(response.data);
+      })
+      .catch((error) => {
+        return alert(error);
+      });
+  };
 
   const peticionGet3 = async () => {
     await axios.get(solicitudReg).then((response) => {
@@ -72,12 +72,15 @@ export const Tabla_director = () => {
     f.append("Contra", dataUsuario.Contra);
     f.append("Idti_rol", dataUsuario.Idti_rol);
     f.append("METHOD", "POST");
-    await axios.post(baseUrl, f).then(response => {
-      setData2(data2.concat(response.data));
-      abrirCerrarModalInsertar();
-    }).catch((error) => {
-      return alert(error)
-    });
+    await axios
+      .post(baseUrl, f)
+      .then((response) => {
+        setData2(data2.concat(response.data));
+        abrirCerrarModalInsertar();
+      })
+      .catch((error) => {
+        return alert(error);
+      });
   };
 
   const peticionGetRoles = async () => {
@@ -86,8 +89,7 @@ export const Tabla_director = () => {
     await axios.post(baseUrl, f).then((response) => {
       setDato(response.data);
     });
-  }
-
+  };
 
   const abrirCerrarModalInsertar = () => {
     setModalInsetar(!modalInsertar);
@@ -99,12 +101,13 @@ export const Tabla_director = () => {
       ...prevState,
       [name]: value,
     }));
- 
   };
+
   const handleChange2 = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
   };
+
   const filtrar = (terminoBusqueda) => {
     var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
       if (
@@ -123,6 +126,7 @@ export const Tabla_director = () => {
     });
     setData2(resultadosBusqueda);
   };
+
   const seleccionarUsuario = (usuario, caso) => {
     setDataUsuario(usuario);
 
@@ -159,6 +163,7 @@ export const Tabla_director = () => {
   const abrirCerrarModalEditar = () => {
     setModalEditar(!modalEditar);
   };
+
   const abrirCerrarModalEliminar = () => {
     setModalEliminar(!modalEliminar);
   };
@@ -179,7 +184,6 @@ export const Tabla_director = () => {
       });
   };
 
-
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(faEyeSlash);
   const handleToggle = () => {
@@ -193,26 +197,24 @@ export const Tabla_director = () => {
   };
 
   const abrirp = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modalp")
       .setAttribute("style", "visibility:visible; top:50%;");
-      document
+    document
       .getElementById("background__blur")
       .setAttribute("style", "visibility:visible");
-      document
+    document
       .getElementById("father01")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
   };
   const cerrarp = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modalp")
       .setAttribute("style", "visibility: hidden;");
-      document
+    document
       .getElementById("background__blur")
-      .setAttribute("style", "visibility: hidden;");
-      document
+      .setAttribute("style", "display: none;");
+    document
       .getElementById("father01")
       .setAttribute("style", "visibility:visible");
   };
@@ -221,31 +223,39 @@ export const Tabla_director = () => {
     document
       .getElementById("ventana_modal")
       .setAttribute("style", "visibility:visible; top:50%;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "display:none;");
   };
 
   const abrirpj = (e) => {
     document
       .getElementById("ventana_modal3")
       .setAttribute("style", "visibility:visible; top:50%;");
+      document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "display:none;");  
   };
 
   const cerrar = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modal")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility:visible; top:50%;");
   };
 
   const cerrarpj = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modal3")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility:visible; top:50%;");  
   };
 
-
   const abrir2 = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modal2")
       .setAttribute("style", "visibility:visible; top:50%;");
@@ -254,20 +264,18 @@ export const Tabla_director = () => {
   const cerrar2 = (e) => {
     document
       .getElementById("ventana_modal2")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
   };
 
   const cerrarT = (e) => {
-    e.preventDefault();
     document
       .getElementById("ventana_modal")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
     document
       .getElementById("ventana_modal2")
-      .setAttribute("style", "visibility: hidden;");
+      .setAttribute("style", "display:none;");
   };
-  
-  
+
   useEffect(() => {
     peticionGet3();
   }, [solicitud]);
@@ -276,125 +284,131 @@ export const Tabla_director = () => {
     peticionGet4();
   }, [solicitud2]);
 
-  useEffect(()=>{
+  useEffect(() => {
     peticionGetData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     peticionGetRoles();
-  }, [])
+  }, []);
 
   return (
     <>
-    <div className="father01" id="father01">
-    <div className="contbtns">
-        <div className="congoback">
-          <i
-            class="bi bi-arrow-left-circle-fill"
-            id="cir"
-            onClick={() => Navigate(-1)}
-          ></i>
+      <div className="father01" id="father01">
+        <div className="contbtns">
+          <div className="congoback">
+            <i
+              class="bi bi-arrow-left-circle-fill"
+              id="cir"
+              onClick={() => Navigate(-1)}
+            ></i>
+          </div>
+          <div className="contabrir">
+            <button
+              className="btn btn-danger"
+              onClick={abrirp}
+              style={{ height: "60%", margin: "5px" }}
+            >
+              Solicitudes
+            </button>
+          </div>
         </div>
-        <div className="contabrir">
+        <h1 className="titureg">Registros de cuentas de usuario</h1>
+        <div className="containerInput">
+          <div className="div_report">
+            <a
+              className="report"
+              href="http://localhost:8080/imprimir_roles"
+              target="_blank"
+            >
+              <AiFillPrinter />
+            </a>
+          </div>
+          <div className="input_buscadorsito">
+            <input
+              id="input_buscador"
+              className="form-control inputBuscar"
+              value={busqueda}
+              placeholder="Búsqueda por Nombre  de usuario o nombre de rol"
+              onChange={handleChange2}
+            />
+          </div>
+          <div className="boton_buscar">
+            <button id="icono_buscar" className="btn btn-dark">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </div>
+        </div>
+        <div className="  cont-btn01">
           <button
-            className="btn btn-danger"
-            onClick={abrirp}
-            style={{ height: "60%", margin: "5px" }}
+            id="btnagre"
+            className="btn btn-primary"
+            onClick={() => abrirCerrarModalInsertar()}
           >
-            Solicitudes
+            Agregar contacto
           </button>
         </div>
-      </div>
-      <h1 className="titureg">Registros de cuentas de usuario</h1>
-      <div className="containerInput">
-        <div className="div_report">
-          <a className="report" href="http://localhost:8080/imprimir_roles" target="_blank">
-            <AiFillPrinter />
-          </a>
-        </div>
-        <div className="input_buscadorsito">
-          <input
-            id="input_buscador"
-            className="form-control inputBuscar"
-            value={busqueda}
-            placeholder="Búsqueda por Nombre  de usuario o nombre de rol"
-            onChange={handleChange2}
-          />
-        </div>
-        <div className="boton_buscar">
-          <button id="icono_buscar" className="btn btn-dark">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </div>
-      </div>
-      <div className="d-grid gap-2">
-        <button
-          id="btnagre"
-          className="btn btn-primary"
-          onClick={() => abrirCerrarModalInsertar()}
-        >
-          Agregar contacto
-        </button>
-      </div>
 
-      <div className="conttable">
-        <Table striped bordered hover responsive="sm">
-          <thead>
-            <tr>
-              <th className="ocultarid">Id</th>
-              <th>Nombre del usuario</th>
-              <th>Contraseña </th>
-              <th>Tipo de rol </th>
-              <th>Funcionalidades</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.entries(data2).map(([key, value]) => (
-              <tr key={value.Id_usu}>
-                <td className="ocultarid">{value.Id_usu}</td>
-                <td>{value.Usuario}</td>
-                <td>{value.Contra}</td>
-                <td>{value.Nom_rol}</td>
-                <td>
-                  <button
-                    id="boton_verde_tabla"
-                    className="btn btn-primary"
-                    onClick={() => seleccionarUsuario(value, "Editar")}
-                  >
-                    <FontAwesomeIcon icon={faPen} />
-                  </button>
-                  &nbsp;
-                  <button
-                    id="boton_danger_rojo"
-                    className="btn btn-danger"
-                    onClick={() => seleccionarUsuario(value, "Eliminar")}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
+        <div className="conttable">
+          <div className="cont-desc01">
+          <Table striped borderless hover responsive="sm" className="Table-user01">
+            <thead>
+              <tr>
+                <th className="ocultarid">Id</th>
+                <th>Nombre del usuario</th>
+                <th>Contraseña </th>
+                <th>Tipo de rol </th>
+                <th>Funcionalidades</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {Object.entries(data2).map(([key, value]) => (
+                <tr key={value.Id_usu}>
+                  <td className="ocultarid">{value.Id_usu}</td>
+                  <td>{value.Usuario}</td>
+                  <td>{value.Contra}</td>
+                  <td>{value.Nom_rol}</td>
+                  <td>
+                    <button
+                      id="boton_verde_tabla"
+                      className="btn btn-primary"
+                      onClick={() => seleccionarUsuario(value, "Editar")}
+                    >
+                      <FontAwesomeIcon icon={faPen} />
+                    </button>
+                    &nbsp;
+                    <button
+                      id="boton_danger_rojo"
+                      className="btn btn-danger"
+                      onClick={() => seleccionarUsuario(value, "Eliminar")}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+        </div>
       </div>
-    </div>
-    <ModalSolicitud
-          abrir={abrir}
-          cerrar={cerrar}
-          abrir2={abrir2}
-          cerrar2={cerrar2}
-          cerrarT={cerrarT}
-          abrirp={abrirp}
-          cerrarp={cerrarp}
-          solicitud={solicitud}
-          setSolicitud={setSolicitud}
-          peticionGet3={peticionGet3}
-          solicitud2={solicitud2}
-          setSolicitud2={setSolicitud2}
-          abrirpj={abrirpj}
-          cerrarpj={cerrarpj}
-        />
-    <ModalInsertar
+      <ModalSolicitud
+        abrir={abrir}
+        cerrar={cerrar}
+        abrir2={abrir2}
+        cerrar2={cerrar2}
+        cerrarT={cerrarT}
+        abrirp={abrirp}
+        cerrarp={cerrarp}
+        solicitud={solicitud}
+        setSolicitud={setSolicitud}
+        peticionGet3={peticionGet3}
+        solicitud2={solicitud2}
+        setSolicitud2={setSolicitud2}
+        abrirpj={abrirpj}
+        cerrarpj={cerrarpj}
+      />
+      <ModalInsertar
         handleChange={handleChange}
         handleToggle={handleToggle}
         icon={icon}

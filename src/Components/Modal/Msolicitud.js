@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const Msolicitud = ({
   abrir,
   cerrar,
@@ -83,7 +84,10 @@ const Msolicitud = ({
         );
         document
           .getElementById("ventana_modal")
-          .setAttribute("style", "display:none;");
+          .setAttribute("style", "visibility: hidden;");
+        document
+          .getElementById("ventana_modalp")
+          .setAttribute("style", "visibility:visible; top:50%;");
       })
       .catch((error) => {
         console.log(error);
@@ -224,7 +228,7 @@ const Msolicitud = ({
               <b style={{ textTransform: "capitalize" }}>{detalle.Pri_nom}</b>{" "}
             </h1>
 
-            <Table striped bordered hover>
+            <Table striped borderless hover>
               <thead>
                 <tr>
                   <th>Numero de documento</th>
@@ -287,7 +291,7 @@ const Msolicitud = ({
               <b style={{ textTransform: "capitalize" }}>{detalle2.Nom_ra}</b>{" "}
             </h1>
 
-            <Table striped bordered hover>
+            <Table striped borderless hover>
               <thead>
                 <tr>
                   <th>Numero de documento</th>
@@ -350,6 +354,7 @@ const Msolicitud = ({
               className="contenedortext"
               name="Des_soli"
               onChange={handleChange}
+              placeholder="Escribir respuesta de cancelacion"
             ></textarea>
             <button
               id="boton_Modal_2_0"

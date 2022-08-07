@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-08-2022 a las 07:04:55
+-- Tiempo de generación: 07-08-2022 a las 02:34:29
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -365,14 +365,18 @@ CREATE TABLE `est_soli` (
   `Des_soli` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de la solicitud';
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `est_soli`
+-- Estructura de tabla para la tabla `est_solij`
 --
 
-INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
-(3, 123, 'Denegada', 'Cancelada porque no tiene suficientes ingresos'),
-(4, 123, 'Denegada', 'dfdgdfdg'),
-(5, 435436, 'Denegada', 'por ineficiencia');
+CREATE TABLE `est_solij` (
+  `Idest_solij` int NOT NULL COMMENT 'Identificacion de estado de la solicitud de persona juridica',
+  `idclientj` double DEFAULT NULL COMMENT 'Identificacion de cliente entidad',
+  `Esta_soj` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud de la entidad',
+  `Des_solij` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de solicitud de persona juridica';
 
 -- --------------------------------------------------------
 
@@ -433,7 +437,8 @@ CREATE TABLE `prueba` (
 --
 
 INSERT INTO `prueba` (`id`, `Id_act`, `Fecha_act`, `Tip_pro`, `Valor_act`, `Cajero`) VALUES
-(34, 11111111, '2022-07-15 21:49:00', 'Consignación', '435345', 'Cajero3');
+(34, 11111111, '2022-07-15 21:49:00', 'Consignación', '435345', 'Cajero3'),
+(35, 11111111, '2022-08-20 12:56:00', 'Consignación', '500000', 'Cajero3');
 
 -- --------------------------------------------------------
 
@@ -446,13 +451,6 @@ CREATE TABLE `reg_soli` (
   `No_ide` double NOT NULL COMMENT 'Numero de identificacion del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Registros de solicitudes';
 
---
--- Volcado de datos para la tabla `reg_soli`
---
-
-INSERT INTO `reg_soli` (`Id_reg`, `No_ide`) VALUES
-(20, 123);
-
 -- --------------------------------------------------------
 
 --
@@ -463,13 +461,6 @@ CREATE TABLE `reg_solij` (
   `Id_regj` int NOT NULL COMMENT 'Identificacion de los registros de las solicitudes',
   `Nit` double NOT NULL COMMENT 'Numero de identificacion de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Registro de solicitudes de la entidad';
-
---
--- Volcado de datos para la tabla `reg_solij`
---
-
-INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
-(1, 11111111);
 
 -- --------------------------------------------------------
 
@@ -1145,6 +1136,13 @@ ALTER TABLE `est_soli`
   ADD KEY `Idclient` (`Idclient`);
 
 --
+-- Indices de la tabla `est_solij`
+--
+ALTER TABLE `est_solij`
+  ADD PRIMARY KEY (`Idest_solij`),
+  ADD KEY `idclientj` (`idclientj`);
+
+--
 -- Indices de la tabla `fue_recu`
 --
 ALTER TABLE `fue_recu`
@@ -1377,31 +1375,37 @@ ALTER TABLE `ent_ti`
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=6;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT de la tabla `est_solij`
+--
+ALTER TABLE `est_solij`
+  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `prueba`
 --
 ALTER TABLE `prueba`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=22;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=2;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
 --
 ALTER TABLE `reg_usu`
-  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=42;
+  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `repr_le`
@@ -1509,6 +1513,12 @@ ALTER TABLE `ent_ti`
 --
 ALTER TABLE `est_soli`
   ADD CONSTRAINT `est_soli_ibfk_1` FOREIGN KEY (`Idclient`) REFERENCES `client_co` (`No_ide`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `est_solij`
+--
+ALTER TABLE `est_solij`
+  ADD CONSTRAINT `est_solij_ibfk_1` FOREIGN KEY (`idclientj`) REFERENCES `entidad` (`Nit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reg_soli`

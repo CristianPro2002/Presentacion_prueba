@@ -261,10 +261,19 @@ export const Tabla_director = () => {
       .setAttribute("style", "visibility:visible; top:50%;");
   };
 
+  const abrir3 = (e) =>{
+    document
+      .getElementById("ventana_modal4")
+      .setAttribute("style", "visibility:visible; top:50%;");
+  }
+
   const cerrar2 = (e) => {
     document
       .getElementById("ventana_modal2")
       .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modal4")
+      .setAttribute("style", "display:none;") 
   };
 
   const cerrarT = (e) => {
@@ -407,6 +416,7 @@ export const Tabla_director = () => {
         setSolicitud2={setSolicitud2}
         abrirpj={abrirpj}
         cerrarpj={cerrarpj}
+        abrir3={abrir3}
       />
       <ModalInsertar
         handleChange={handleChange}

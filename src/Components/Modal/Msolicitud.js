@@ -18,12 +18,14 @@ const Msolicitud = ({
   setSolicitud2,
   abrirpj,
   cerrarpj,
+  abrir3
 }) => {
   let Navigate = useNavigate();
 
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const [detalle, setDetalle] = useState([]);
   const [detalle2, setDetalle2] = useState([]);
+  const [Identi, setIdenti] = useState([]);
   const [estado, setEstado] = useState({
     Des_soli: "",
   });
@@ -32,58 +34,114 @@ const Msolicitud = ({
     peticionGet3();
   }, []);
 
-  const peticionPostsolicitud = async (No_ide) => {
+  const peticionPostsolicitud = async (value) => {
     var f = new FormData();
+    let No_ide = value;
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLI");
     await axios
-      .post(baseUrl, f, { params: { No_ide: No_ide } })
+      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi } })
       .then((response) => {
         setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
         cerrar2();
         document
           .getElementById("ventana_modal")
           .setAttribute("style", "display:none;");
+        document
+          .getElementById("ventana_modalp")
+          .setAttribute("style", "visibility:visible; top:50%;");
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const Detalleid = async (value) => {
+  const peticionPostsolicitudJ = async (value) => {
+    var f = new FormData();
+    let Nit = value;
+    f.append("Des_soli", estado.Des_soli);
+    f.append("METHOD", "CANCELSOLIJ");
+    await axios
+      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi } })
+      .then((response) => {
+        setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
+        cerrar2();
+        document
+          .getElementById("ventana_modal3")
+          .setAttribute("style", "display:none;");
+        document
+          .getElementById("ventana_modalp")
+          .setAttribute("style", "visibility:visible; top:50%;");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+
+  const Detalleid = async (value, value2) => {
     const No_ide = value;
+    let Id_reg = value2;
     var f = new FormData();
     f.append("No_ide", No_ide);
     f.append("METHOD", "CONSULTAID3");
     await axios.post(baseUrl, f).then((response) => {
       setDetalle(response.data);
+      setIdenti(Id_reg);
       abrir();
     });
   };
 
-  const Detalleid2 = async (value) => {
+  const Detalleid2 = async (value, value2) => {
     const Nit = value;
+    let Id_regj = value2;
     var f = new FormData();
     f.append("Nit", Nit);
     f.append("METHOD", "CONSULTAIPJ");
     await axios.post(baseUrl, f).then((response) => {
       setDetalle2(response.data);
+      setIdenti(Id_regj);
       abrirpj();
     });
   };
 
+
+
   const peticionDeleteSoli = async (value) => {
-    const eliminarSoli = value;
+    
+    let No_ide = value;
     var f = new FormData();
-    f.append("METHOD", "DELETESOLI");
+     f.append("METHOD", "DELETESOLI");
+     await axios
+       .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi } })
+       .then((response) => {
+         setSolicitud(
+           solicitud.filter((Usuario) => Usuario.No_ide !== No_ide)
+         );
+         document
+           .getElementById("ventana_modal")
+           .setAttribute("style", "visibility: hidden;");
+         document
+           .getElementById("ventana_modalp")
+           .setAttribute("style", "visibility:visible; top:50%;");
+       })
+       .catch((error) => {
+         console.log(error);
+       });
+  };
+
+  const peticionDeleteSoliJ = async (value) => {
+    let Nit = value;
+    var f = new FormData();
+    f.append("METHOD", "DELETESOLIJ");
     await axios
-      .post(baseUrl, f, { params: { No_ide: eliminarSoli } })
+      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi } })
       .then((response) => {
-        setSolicitud(
-          solicitud.filter((Usuario) => Usuario.No_ide !== eliminarSoli)
+        setSolicitud2(
+          solicitud2.filter((Usuario) => Usuario.Nit !== Nit)
         );
         document
-          .getElementById("ventana_modal")
+          .getElementById("ventana_modal3")
           .setAttribute("style", "visibility: hidden;");
         document
           .getElementById("ventana_modalp")
@@ -137,7 +195,7 @@ const Msolicitud = ({
                             <div className="row">
                               <div className="cont-data01">
                                 <label>No de solicitud</label>
-                                <p>{Data.Id_ent}</p>
+                                <p>{Data.Id_regj}</p>
                               </div>
                               <div className="cont-data01">
                                 <label>Nombre</label>
@@ -150,7 +208,7 @@ const Msolicitud = ({
                               <div className="cont-data01" id="cont-data01">
                              
                                   <button
-                                    onClick={() => Detalleid2(Data.Nit)}
+                                    onClick={() => Detalleid2(Data.Nit, Data.Id_regj)}
                                     className="btn btn-danger"
                                   >
                                     Detalle
@@ -191,7 +249,7 @@ const Msolicitud = ({
                               </div>
                               <div className="cont-data01" id="cont-data01">
                                 <button
-                                  onClick={() => Detalleid(Data.No_ide)}
+                                  onClick={() => Detalleid(Data.No_ide, Data.Id_reg)}
                                   className="btn btn-danger"
                                 >
                                   Detalle
@@ -321,14 +379,14 @@ const Msolicitud = ({
             <button
               id="boton_modal_verde"
               className="btn btn-success"
-              onClick={() => peticionDeleteSoli(detalle.No_ide)}
+              onClick={() => peticionDeleteSoliJ(detalle2.Nit)}
             >
               Aceptar
             </button>
             <button
               id="boton_modal_rojo"
               className="btn btn-danger"
-              onClick={abrir2}
+              onClick={abrir3}
             >
               Cancelar
             </button>
@@ -372,9 +430,51 @@ const Msolicitud = ({
             </button>
           </div>
         </div>
+
+
+        
+        <div class="container__modal3" id="ventana_modal4">
+          <input type="checkbox" id="evento-click3" />
+          <div class="header__modal3">
+            <label
+              for="evento-click3"
+              onClick={cerrar2}
+              style={{ backgroundColor: "#DC3545", color: "white" }}
+            >
+              X
+            </label>
+          </div>
+
+          <div class="body__modal3">
+            <h1 class="title__modal3">Solicitud #-Asesor#</h1>
+            <textarea
+              type="text"
+              className="contenedortext"
+              name="Des_soli"
+              onChange={handleChange}
+              placeholder="Escribir respuesta de cancelacion"
+            ></textarea>
+            <button
+              id="boton_Modal_2_0"
+              className="btn btn-success"
+              onClick={() => peticionPostsolicitudJ(detalle2.Nit)}
+            >
+              Aceptar
+            </button>
+            <button
+              id="boton_Modal_2_1"
+              className="btn btn-danger"
+              onClick={cerrar2}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
       </div>
       </div>
     </div>
+
+    
   );
 };
 

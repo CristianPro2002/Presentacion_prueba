@@ -14,6 +14,7 @@ const Msolicitud = ({
   solicitud,
   setSolicitud,
   peticionGet3,
+  peticionGet4,
   solicitud2,
   setSolicitud2,
   abrirpj,

@@ -4,6 +4,8 @@ include './BD.php';
 
 header('Access-Control-Allow-Origin: *');
 
+$conexion = mysqli_connect('localhost', 'root', '', 'banca4.0');
+
 if($_SERVER['REQUEST_METHOD']=='GET'){
     if(isset($_GET['Id_act'])){
         $query="select * from prueba where Id_act=".$_GET['Id_act'];
@@ -16,6 +18,54 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     }
     header("HTTP/1.1 200 OK");
     exit();
+}
+
+
+if($_POST['METHOD']=='GETCUENTAC'){
+    unset($_POST['METHOD']);
+    $query= "select No_cuenta from cuenta_c";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());   
+    header("HTTP/1.1 200 OK");
+    exit();       
+}
+
+if($_POST['METHOD']=='GETCUENTAJ'){
+    unset($_POST['METHOD']);
+    $query= "select No_cuenta from cuenta_j";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());  
+    header("HTTP/1.1 200 OK");
+    exit();   
+}
+
+if($_POST['METHOD']=='POSTGET'){
+    unset($_POST['METHOD']);
+    $Id_act=$_POST['Id_act'];
+    $Fecha_act=$_POST['Fecha_act'];
+    $Tip_pro=$_POST['Tip_pro'];
+    $Valor_act=$_POST['Valor_act'];
+    $Cajero=$_POST['Cajero'];
+    $No_cuenta=$_POST['No_cuenta'];
+    $Estado = $_POST['Estado'];
+    
+    if($Estado){
+        $query = "insert into act_cli(Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values ('$Fecha_act', '$Tip_pro', '$Valor_act', '$Cajero', '$No_cuenta', NULL)";
+        $queryAutoIncrement="select MAX(Idact_cli) as Idact_cli from frameworks";
+        $resultado=metodoPost($query, $queryAutoIncrement);
+        echo json_encode($resultado);
+        header("HTTP/1.1 200 OK");
+        exit();
+    }else{
+        $query = "insert into act_cli(Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values ('$Fecha_act', '$Tip_pro', '$Valor_act', '$Cajero', NULL , '$No_cuenta')";
+        $queryAutoIncrement="select MAX(Idact_cli) as Idact_cli from frameworks";
+        $resultado=metodoPost($query, $queryAutoIncrement);
+        echo json_encode($resultado);
+        header("HTTP/1.1 200 OK");
+        exit();   
+    }
+    header("HTTP/1.1 200 OK");
+    exit();  
 }
 
 if($_POST['METHOD']=='POST'){

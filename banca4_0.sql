@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-08-2022 a las 02:34:29
+-- Tiempo de generación: 08-08-2022 a las 03:49:53
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -29,12 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `act_cli` (
   `Idact_cli` int NOT NULL COMMENT 'Identificacion de actividad de cliente',
-  `Fe_act` datetime NOT NULL COMMENT 'Fecha de actividad',
-  `Idti_pro` int NOT NULL COMMENT 'Identificacion de tipo de producto',
-  `Valor` decimal(10,0) NOT NULL COMMENT 'Valor de actividad',
-  `No_cajero` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Numero de cajero',
-  `No_cue` int NOT NULL COMMENT 'Numero de cuenta'
+  `Fe_act` datetime DEFAULT NULL COMMENT 'Fecha de actividad',
+  `ti_pro` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Identificacion de tipo de producto',
+  `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor de actividad',
+  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Numero de cajero',
+  `No_cuec` int DEFAULT NULL COMMENT 'Numero de cuenta de cliente comun',
+  `No_cuej` int DEFAULT NULL COMMENT 'Numero de cuenta de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Actividad de cliente';
+
+--
+-- Volcado de datos para la tabla `act_cli`
+--
+
+INSERT INTO `act_cli` (`Idact_cli`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
+(1, '2022-08-16 22:41:52', 'Consignacion', '43534', 'Cajero1', NULL, 551389);
 
 -- --------------------------------------------------------
 
@@ -44,7 +52,7 @@ CREATE TABLE `act_cli` (
 
 CREATE TABLE `cla_contr` (
   `Idcla_contr` int NOT NULL COMMENT 'Identificacion de clase de contribuyente',
-  `Nom_cla` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de clase de contribuyente'
+  `Nom_cla` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de clase de contribuyente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Clase de contribuyente';
 
 --
@@ -66,75 +74,75 @@ CREATE TABLE `client_co` (
   `No_ide` double NOT NULL COMMENT 'Nunero de identificacion del cliente',
   `Idti_solicit` int DEFAULT NULL COMMENT 'Identificacion de Tipo de solicitante',
   `Fec_dil` date DEFAULT NULL COMMENT 'Fecha de diligenciamiento',
-  `Pri_nom` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del cliente',
-  `Seg_nom` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del cliente',
-  `Pri_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del cliente',
-  `Seg_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del cliente',
+  `Pri_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del cliente',
+  `Seg_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del cliente',
+  `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del cliente',
+  `Seg_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del cliente',
   `Idti_doc` int DEFAULT NULL COMMENT 'Identificacion de tipo de documento',
-  `Lug_exp` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Lugar de expedicion de documento',
+  `Lug_exp` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Lugar de expedicion de documento',
   `Fec_exp` date DEFAULT NULL COMMENT 'Fecha de expedicion de documento',
   `Fec_nac` date DEFAULT NULL COMMENT 'Fecha de nacimiento del cliente',
-  `Ciu_nac` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de nacimiento del cliente',
+  `Ciu_nac` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de nacimiento del cliente',
   `Id_gen` int DEFAULT NULL COMMENT 'Identificacion de genero',
   `Idest_ci` int DEFAULT NULL COMMENT 'Identificacion de estado civil',
   `Id_nac` int DEFAULT NULL COMMENT 'Identificacion de nacionalidad',
-  `Otr_nac` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otra nacionalidad',
-  `Dir_re` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion de residencia del cliente',
+  `Otr_nac` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otra nacionalidad',
+  `Dir_re` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion de residencia del cliente',
   `Blo_to` int DEFAULT NULL COMMENT 'Bloque o torre del cliente',
   `Ap_ca` int DEFAULT NULL COMMENT 'Apartamento o casa del cliente',
-  `Barrio` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio donde vive el cliente',
-  `Ciu_mu` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio donde vive el cliente',
-  `Depart` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento donde vive el cliente',
-  `Pais` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde vive el cliente',
+  `Barrio` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio donde vive el cliente',
+  `Ciu_mu` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio donde vive el cliente',
+  `Depart` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento donde vive el cliente',
+  `Pais` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde vive el cliente',
   `Telef` double DEFAULT NULL COMMENT 'Telefono del cliente',
   `Celular` double DEFAULT NULL COMMENT 'Numero de celular del cliente',
-  `Corr_ele` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo electronico del cliente',
-  `Profe` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Profesion que ejerce el cliente',
+  `Corr_ele` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo electronico del cliente',
+  `Profe` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Profesion que ejerce el cliente',
   `Idocu_ofii` int DEFAULT NULL COMMENT 'Identificacion de ocupacion o oficio del cliente',
-  `Det_act` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de actividad economica del cliente',
+  `Det_act` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de actividad economica del cliente',
   `Cod_ciuu` int DEFAULT NULL COMMENT 'Codigo CIUU',
   `No_emp` int DEFAULT NULL COMMENT 'Numero de empleados',
-  `Nom_emp` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la empresa',
-  `Dir_emp` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Dirección de la empresa o lugar donde desarrolla su actividad	',
-  `Barr_lab` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio donde labora',
-  `Ciu_lab` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio donde labora',
-  `Dep_lab` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento donde labora	',
-  `Pais_lab` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde labora	',
+  `Nom_emp` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la empresa',
+  `Dir_emp` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Dirección de la empresa o lugar donde desarrolla su actividad	',
+  `Barr_lab` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio donde labora',
+  `Ciu_lab` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio donde labora',
+  `Dep_lab` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento donde labora	',
+  `Pais_lab` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde labora	',
   `Tel_lab` double DEFAULT NULL COMMENT 'Telefono laboral	',
   `Ext` int DEFAULT NULL COMMENT 'Extension de telefono	',
   `Cel_lab` double DEFAULT NULL COMMENT 'Celular laboral	',
-  `Corr_lab` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral	',
+  `Corr_lab` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral	',
   `Ing_men` double DEFAULT NULL COMMENT 'Ingresos mensuales del cliente	',
   `Otr_ing` double DEFAULT NULL COMMENT 'Otros ingresos mensuales del cliente	',
-  `Det_otr` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle otros ingresos mensuales	',
+  `Det_otr` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle otros ingresos mensuales	',
   `To_act` double DEFAULT NULL COMMENT 'Total activos del cliente	',
   `To_pa` double DEFAULT NULL COMMENT 'Total pasivos del cliente	',
   `To_egr` double DEFAULT NULL COMMENT 'Total egresos mensuales del cliente	',
   `Vent_a` double DEFAULT NULL COMMENT 'Ventas anuales del cliente	',
   `Fe_ci` date DEFAULT NULL COMMENT 'Fecha de cierre de ventas del cliente	',
-  `Dec_rent` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Es declarante de renta?	',
-  `Age_ret` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Agente retenedor	',
+  `Dec_rent` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Es declarante de renta?	',
+  `Age_ret` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Agente retenedor	',
   `Idtireg_iva` int DEFAULT NULL COMMENT 'Identificacion de tipos de regimen de iva	',
-  `Ob_tri` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Obligado a tributar en Estados Unidos	',
+  `Ob_tri` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Obligado a tributar en Estados Unidos	',
   `Notri_est` double DEFAULT NULL COMMENT 'número de ID tributario (TIN) de estados unidos	',
-  `Pais_1` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro pais diferente a colombia por el cual tributa numero 1	',
-  `Pais_2` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro pais diferente a colombia por el cual tributa numero 2	',
+  `Pais_1` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro pais diferente a colombia por el cual tributa numero 1	',
+  `Pais_2` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro pais diferente a colombia por el cual tributa numero 2	',
   `No_tri1` double DEFAULT NULL COMMENT 'Numero de id tributario del pais seleccionado numero 1	',
   `No_tri2` double DEFAULT NULL COMMENT 'Numero de id tributario del pais seleccionado numero 2	',
-  `Prov_bie` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Proveniencia de los bienes	',
-  `Pais_bi` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'país origen de bienes y/o fondos	',
-  `Ciu_bie` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'ciudad origen de bienes y/o fondos	',
-  `Op_ext` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'operaciones en moneda extranjera?	',
+  `Prov_bie` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Proveniencia de los bienes	',
+  `Pais_bi` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'país origen de bienes y/o fondos	',
+  `Ciu_bie` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'ciudad origen de bienes y/o fondos	',
+  `Op_ext` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'operaciones en moneda extranjera?	',
   `Idtiop_m` int DEFAULT NULL COMMENT 'Identificacion de Tipos de operaciones en moneda extranjera	',
-  `Otro_mo` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de operaciones en moneda extranjera	',
-  `Nom_ent` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la entidad	',
+  `Otro_mo` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de operaciones en moneda extranjera	',
+  `Nom_ent` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la entidad	',
   `Idtipro_m` int DEFAULT NULL COMMENT 'Identificacion de Tipo de producto en moneda extranjera	',
-  `Otro_mo2` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de producto en moneda extranjera	',
+  `Otro_mo2` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de producto en moneda extranjera	',
   `No_pro` double DEFAULT NULL COMMENT 'Numero de producto	',
   `Mo_pro` double DEFAULT NULL COMMENT 'Monto mensual promedio	',
-  `Moneda` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Moneda utilizada	',
-  `Ciu_ent` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad	',
-  `Pa_ent` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad	',
+  `Moneda` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Moneda utilizada	',
+  `Ciu_ent` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad	',
+  `Pa_ent` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad	',
   `Idtien_re` int DEFAULT NULL COMMENT 'Identificacion de Tipo de entrega de Reporte Anual de Costos Totales',
   `No_solicit` double DEFAULT NULL COMMENT 'Numero de identificacion del solicitante',
   `Cod_vend` int DEFAULT NULL COMMENT 'Código vendedor'
@@ -177,20 +185,20 @@ CREATE TABLE `cont_ent` (
   `idcont_ent` int NOT NULL,
   `No_docu` double NOT NULL COMMENT 'Nunero de documento del contacto de la entidad',
   `Idti_doc` int DEFAULT NULL COMMENT 'Identificacion del tipo de documento',
-  `Pri_nom` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del contacto de la entidad',
-  `Seg_nom` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del contacto de la entidad',
-  `Pri_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del contacto de la entidad',
-  `Seg_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del contacto de la entidad',
-  `Cargo` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del contacto de la entidad',
-  `Dir_lab` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del contacto de la entidad',
-  `Barrio` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del contacto de la entidad',
-  `Ciu_mu` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del contacto de la entidad',
-  `Depart` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del contacto de la entidad',
-  `Pais` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del contacto de la entidad',
+  `Pri_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del contacto de la entidad',
+  `Seg_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del contacto de la entidad',
+  `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del contacto de la entidad',
+  `Seg_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del contacto de la entidad',
+  `Cargo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del contacto de la entidad',
+  `Dir_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del contacto de la entidad',
+  `Barrio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del contacto de la entidad',
+  `Ciu_mu` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del contacto de la entidad',
+  `Depart` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del contacto de la entidad',
+  `Pais` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del contacto de la entidad',
   `Tel_lab` double DEFAULT NULL COMMENT 'Telefono laboral del contacto de la entidad',
   `Ext` int DEFAULT NULL COMMENT 'Extension de numero',
   `Celular` double DEFAULT NULL COMMENT 'Celular del contacto de la entidad',
-  `Corr_lab` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del contacto de la entidad'
+  `Corr_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del contacto de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Informacion de un contacto de la entidad';
 
 --
@@ -249,41 +257,41 @@ INSERT INTO `cuenta_j` (`No_cuenta`, `Nit`, `Idti_cue`) VALUES
 CREATE TABLE `entidad` (
   `Id_ent` int NOT NULL,
   `Fe_dil` date DEFAULT NULL COMMENT 'Fecha de diligenciamiento',
-  `tidoc_ent` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de documento de la entidad',
+  `tidoc_ent` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de documento de la entidad',
   `Nit` double DEFAULT NULL COMMENT 'Nit de la entidad',
-  `Fidei` varchar(15) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'fideicomiso',
+  `Fidei` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'fideicomiso',
   `No_fide` double DEFAULT NULL COMMENT 'Numero de fideicomiso',
-  `Nom_ra` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre o razon social de la entidad',
-  `Nom_cor` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre corto o sigla',
+  `Nom_ra` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre o razon social de la entidad',
+  `Nom_cor` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre corto o sigla',
   `Fe_cons` date DEFAULT NULL COMMENT 'Fecha de constitucion de la entidad',
-  `Ciu_cons` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de constitucion de la entidad',
-  `Pai_cons` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de constitucion de la entidad',
-  `Dir_se` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion de sede principal de la entidad',
-  `Barrio` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio de la entidad',
-  `Ciu_mu` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad',
-  `Depart` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento de la entidad',
-  `Pais` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad',
+  `Ciu_cons` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de constitucion de la entidad',
+  `Pai_cons` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de constitucion de la entidad',
+  `Dir_se` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion de sede principal de la entidad',
+  `Barrio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio de la entidad',
+  `Ciu_mu` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad',
+  `Depart` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento de la entidad',
+  `Pais` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad',
   `Telefono` double DEFAULT NULL COMMENT 'Telefono de la entidad',
   `Ext` int DEFAULT NULL COMMENT 'Extension de numero ',
-  `Corr_se` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo de la sede principal',
+  `Corr_se` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo de la sede principal',
   `No_doc` double DEFAULT NULL COMMENT 'Numero de documento del representante legal',
-  `Pre_1` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Tiene socios o accionistas con participación directa o indirecta superior al 5%?	',
-  `Pre_2` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Tiene socios o accionistas con participación directa o indirecta igual o inferior al 5% y que tengan control sobre la entidad?	',
+  `Pre_1` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Tiene socios o accionistas con participación directa o indirecta superior al 5%?	',
+  `Pre_2` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '¿Tiene socios o accionistas con participación directa o indirecta igual o inferior al 5% y que tengan control sobre la entidad?	',
   `No_docu` double DEFAULT NULL COMMENT 'Nunero de documento del contacto de la entidad',
   `Idti_na` int DEFAULT NULL COMMENT 'Identificacion de tipo de naturaleza	',
   `Co_ciuu` double DEFAULT NULL COMMENT 'Codigo CIUU	',
-  `Det_act` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de la actividad economica principal	',
+  `Det_act` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de la actividad economica principal	',
   `No_emp` int DEFAULT NULL COMMENT 'Numero de empleados	',
   `Idti_soci` int DEFAULT NULL COMMENT 'Identificacion del tipo de sociedad comercial o civil	',
-  `Otro_com` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de sociedad comercial o civil	',
+  `Otro_com` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de sociedad comercial o civil	',
   `Idti_en` int DEFAULT NULL COMMENT 'Identificacion de tipo de entidad o asociacion	',
-  `Otro_ent` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de entidad o asociacion	',
+  `Otro_ent` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de entidad o asociacion	',
   `Idti_es` int DEFAULT NULL COMMENT 'Identificacion de tipos de entidades estatales	',
-  `Otro_est` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'otro tipo de entidad estatal	',
+  `Otro_est` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'otro tipo de entidad estatal	',
   `Idti_des` int DEFAULT NULL COMMENT 'identificacion de tipos de entidades estatales descentralizadas de orden	',
   `Ing_op` double DEFAULT NULL COMMENT 'Ingresos operacionales mensuales	',
   `Ino_op` double DEFAULT NULL COMMENT 'ngresos no operacionales mensuales	',
-  `Detno` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de ingresos no operacionales u originados en actividades diferentes a la principal	',
+  `Detno` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Detalle de ingresos no operacionales u originados en actividades diferentes a la principal	',
   `vent_an` double DEFAULT NULL COMMENT 'Ventas anuales	',
   `Fe_ci` date DEFAULT NULL COMMENT 'Fecha de cierre de ventas	',
   `Egre_me` double DEFAULT NULL COMMENT 'Egresos mensuales	',
@@ -293,34 +301,34 @@ CREATE TABLE `entidad` (
   `Tot_pat` double DEFAULT NULL COMMENT 'Total patrimonio	',
   `Idti_cont` int DEFAULT NULL COMMENT 'Identificacion de tipo de contribuyente	',
   `Idcla_cont` int DEFAULT NULL COMMENT 'Identificacion de clase de contribuyente	',
-  `Res_iva` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Responsable de iva	',
-  `Aut_ing` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Autorretenedor otros ingresos	',
-  `Int_merc` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Intermediario del mercado cambiario	',
-  `Vig_sup` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Es vigilado por la superintendencia financiera	',
-  `Obli_est` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Obligado a tributar en Estados Unidos	',
+  `Res_iva` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Responsable de iva	',
+  `Aut_ing` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Autorretenedor otros ingresos	',
+  `Int_merc` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Intermediario del mercado cambiario	',
+  `Vig_sup` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Es vigilado por la superintendencia financiera	',
+  `Obli_est` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Obligado a tributar en Estados Unidos	',
   `No_id_tr` double DEFAULT NULL COMMENT 'Si su respuesta es afirmativa indique el número de ID tributario (TIN)	',
-  `Patri_1` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde se tributa numero 1	',
-  `Patri_2` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde se tributa numero 2	',
+  `Patri_1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde se tributa numero 1	',
+  `Patri_2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais donde se tributa numero 2	',
   `NoidTrib_1` double DEFAULT NULL COMMENT 'Numero de identificacion tributario numero 1	',
   `NoidTrib_2` double DEFAULT NULL COMMENT 'Numero de identificacion tributario numero 2	',
   `Idtripro_bi` int DEFAULT NULL COMMENT 'Identificacion de tipos de proveniencia de bienes	',
-  `Otro_fue` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de proveniencia de bienes	',
+  `Otro_fue` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro tipo de proveniencia de bienes	',
   `Idfue_rec` int DEFAULT NULL COMMENT 'Identificacion de los Tipos de proveniencia de los recursos entregados	',
-  `Otro_pro` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de proveniencia de los recursos entregados	',
-  `Pais_or` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'El pais de origen de bienes y/o fondos	',
-  `Ciu_or` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'La ciudad de origen de bienes y/o fondos	',
-  `Nat_recu` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Declaración naturaleza de los recursos	',
-  `Op_ext` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'operaciones en moneda extranjera?	',
+  `Otro_pro` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de proveniencia de los recursos entregados	',
+  `Pais_or` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'El pais de origen de bienes y/o fondos	',
+  `Ciu_or` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'La ciudad de origen de bienes y/o fondos	',
+  `Nat_recu` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Declaración naturaleza de los recursos	',
+  `Op_ext` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'operaciones en moneda extranjera?	',
   `Idtiop_m` int DEFAULT NULL COMMENT 'Identificacion de Tipos de operaciones en moneda extranjera	',
-  `Otro_mo` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de operaciones en moneda extranjera	',
-  `Nom_ent` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la entidad	',
+  `Otro_mo` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de operaciones en moneda extranjera	',
+  `Nom_ent` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre de la entidad	',
   `Idtipro_m` int DEFAULT NULL COMMENT 'Identificacion de Tipo de producto en moneda extranjera	',
-  `Otro_mo2` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de producto en moneda extranjera	',
+  `Otro_mo2` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Otro Tipo de producto en moneda extranjera	',
   `No_pro` double DEFAULT NULL COMMENT 'Numero de producto	',
   `Mo_pro` double DEFAULT NULL COMMENT 'Monto mensual promedio	',
-  `Moneda` varchar(60) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Moneda utilizada	',
-  `Ciu_ent` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad	',
-  `Pa_ent` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad	',
+  `Moneda` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Moneda utilizada	',
+  `Ciu_ent` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de la entidad	',
+  `Pa_ent` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais de la entidad	',
   `Idtien_re` int DEFAULT NULL COMMENT 'Identificacion de Tipo de entrega de Reporte Anual de Costos Totales',
   `No_solicit` double DEFAULT NULL COMMENT 'Numero de identificacion del solicitante',
   `Cod_vend` int DEFAULT NULL COMMENT 'Código vendedor'
@@ -365,6 +373,13 @@ CREATE TABLE `est_soli` (
   `Des_soli` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de la solicitud';
 
+--
+-- Volcado de datos para la tabla `est_soli`
+--
+
+INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
+(16, 435436, 'Aprobada', 'La solicitud fue aprobada');
+
 -- --------------------------------------------------------
 
 --
@@ -374,8 +389,8 @@ CREATE TABLE `est_soli` (
 CREATE TABLE `est_solij` (
   `Idest_solij` int NOT NULL COMMENT 'Identificacion de estado de la solicitud de persona juridica',
   `idclientj` double DEFAULT NULL COMMENT 'Identificacion de cliente entidad',
-  `Esta_soj` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud de la entidad',
-  `Des_solij` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
+  `Esta_soj` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud de la entidad',
+  `Des_solij` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de solicitud de persona juridica';
 
 -- --------------------------------------------------------
@@ -386,7 +401,7 @@ CREATE TABLE `est_solij` (
 
 CREATE TABLE `fue_recu` (
   `Idfue_recu` int NOT NULL COMMENT 'Identificacion de los Tipos de proveniencia de los recursos entregados ',
-  `Nom_rec` varchar(100) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de los tipos de proveniencia de los recursos entregados'
+  `Nom_rec` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de los tipos de proveniencia de los recursos entregados'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipos de proveniencia de los recursos entregados';
 
 --
@@ -406,7 +421,7 @@ INSERT INTO `fue_recu` (`Idfue_recu`, `Nom_rec`) VALUES
 
 CREATE TABLE `genero` (
   `Id_gen` int NOT NULL COMMENT 'Identificacion de genero',
-  `Nom_gen` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de genero'
+  `Nom_gen` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de genero'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Genero';
 
 --
@@ -427,9 +442,9 @@ CREATE TABLE `prueba` (
   `id` int NOT NULL,
   `Id_act` int NOT NULL,
   `Fecha_act` datetime NOT NULL,
-  `Tip_pro` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
+  `Tip_pro` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Valor_act` decimal(10,0) NOT NULL,
-  `Cajero` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
+  `Cajero` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -438,7 +453,9 @@ CREATE TABLE `prueba` (
 
 INSERT INTO `prueba` (`id`, `Id_act`, `Fecha_act`, `Tip_pro`, `Valor_act`, `Cajero`) VALUES
 (34, 11111111, '2022-07-15 21:49:00', 'Consignación', '435345', 'Cajero3'),
-(35, 11111111, '2022-08-20 12:56:00', 'Consignación', '500000', 'Cajero3');
+(35, 11111111, '2022-08-20 12:56:00', 'Consignación', '500000', 'Cajero3'),
+(36, 435436, '2022-08-18 22:07:00', 'Apertura de Cuenta', '454443', 'Cajero2'),
+(37, 435436, '2022-08-18 22:07:00', 'Retiro', '4544435', 'Cajero2');
 
 -- --------------------------------------------------------
 
@@ -462,6 +479,13 @@ CREATE TABLE `reg_solij` (
   `Nit` double NOT NULL COMMENT 'Numero de identificacion de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Registro de solicitudes de la entidad';
 
+--
+-- Volcado de datos para la tabla `reg_solij`
+--
+
+INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
+(9, 11111111);
+
 -- --------------------------------------------------------
 
 --
@@ -470,8 +494,8 @@ CREATE TABLE `reg_solij` (
 
 CREATE TABLE `reg_usu` (
   `Id_usu` int NOT NULL COMMENT 'Identificacion de usuario',
-  `Usuario` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Usuario',
-  `Contra` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Contraseña',
+  `Usuario` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Usuario',
+  `Contra` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Contraseña',
   `Idti_rol` int DEFAULT NULL COMMENT 'Identificacion de tipo de rol'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -496,20 +520,20 @@ CREATE TABLE `repr_le` (
   `idrepre` int NOT NULL,
   `No_doc` double NOT NULL COMMENT 'Numero de documento del representante legal',
   `Idti_doc` int DEFAULT NULL COMMENT 'Identificacion de tipo de documento',
-  `Pri_no` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del representante legal',
-  `Seg_no` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del representante legal',
-  `Pri_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del representante legal',
-  `Seg_ape` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'SEgundo apellido del representante legal',
-  `Cargo` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del representante legal',
-  `Dir_lab` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del representante legal',
-  `Barrio` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del representante legal',
-  `Ciu_mu` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del representante legal',
-  `Depart` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del representante legal',
-  `Pais` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del representante legal',
+  `Pri_no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del representante legal',
+  `Seg_no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del representante legal',
+  `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del representante legal',
+  `Seg_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'SEgundo apellido del representante legal',
+  `Cargo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del representante legal',
+  `Dir_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del representante legal',
+  `Barrio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del representante legal',
+  `Ciu_mu` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del representante legal',
+  `Depart` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del representante legal',
+  `Pais` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del representante legal',
   `Tel_lab` double DEFAULT NULL COMMENT 'Telefono laboral del representante legal',
   `Ext` int DEFAULT NULL COMMENT 'Extension de telefono',
   `Celular` double DEFAULT NULL COMMENT 'Celular del representante legal',
-  `Corr_lab` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del representante legal'
+  `Corr_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del representante legal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Informacion de representante legal';
 
 --
@@ -529,8 +553,8 @@ CREATE TABLE `solicitante` (
   `idsolicit` int NOT NULL,
   `Idti_soli` int DEFAULT NULL COMMENT 'Identificacion de Tipo de solicitante parte inferior',
   `No_solicit` double NOT NULL COMMENT 'Numero de identificacion del solicitante',
-  `Nom_solicit` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre completo del solicitante',
-  `Firma` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Firma del solicitante'
+  `Nom_solicit` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre completo del solicitante',
+  `Firma` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Firma del solicitante'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Medida de seguridad que contiene informacion del solicitante';
 
 --
@@ -550,7 +574,7 @@ INSERT INTO `solicitante` (`idsolicit`, `Idti_soli`, `No_solicit`, `Nom_solicit`
 
 CREATE TABLE `tien_re` (
   `Idtien_re` int NOT NULL COMMENT 'Identificacion de Tipo de entrega de Reporte Anual de Costos Totales',
-  `Nom_tien` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de entrega de Reporte Anual de Costos Totales'
+  `Nom_tien` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de entrega de Reporte Anual de Costos Totales'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de entrega de Reporte Anual de Costos Totales';
 
 --
@@ -569,7 +593,7 @@ INSERT INTO `tien_re` (`Idtien_re`, `Nom_tien`) VALUES
 
 CREATE TABLE `tiest_civ` (
   `Idest_ci` int NOT NULL COMMENT 'Identificacion de estado civil',
-  `Nom_civ` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de estado civil'
+  `Nom_civ` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de estado civil'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de estado civil';
 
 --
@@ -589,7 +613,7 @@ INSERT INTO `tiest_civ` (`Idest_ci`, `Nom_civ`) VALUES
 
 CREATE TABLE `tiocu_ofi` (
   `Idocu_ofi` int NOT NULL COMMENT 'Identificacion de ocupacion o oficio',
-  `Nom_ocu` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de ocupacion o oficio'
+  `Nom_ocu` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de ocupacion o oficio'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de ocupacion o oficio';
 
 --
@@ -619,7 +643,7 @@ INSERT INTO `tiocu_ofi` (`Idocu_ofi`, `Nom_ocu`) VALUES
 
 CREATE TABLE `tiop_mo` (
   `Idtiop_mo` int NOT NULL COMMENT 'Identificacio de Tipos de operaciones en moneda extranjera',
-  `Nom_opm` varchar(100) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipos de operaciones en moneda extranjera'
+  `Nom_opm` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipos de operaciones en moneda extranjera'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipos de operaciones en moneda extranjera';
 
 --
@@ -644,7 +668,7 @@ INSERT INTO `tiop_mo` (`Idtiop_mo`, `Nom_opm`) VALUES
 
 CREATE TABLE `tipro_bie` (
   `Idtripro_bie` int NOT NULL COMMENT 'Identificacion de tipos de proveniencia de bienes',
-  `Nomti_bie` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de proveniencia de bienes'
+  `Nomti_bie` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de proveniencia de bienes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tipos de proveniencia de bienes';
 
 --
@@ -664,7 +688,7 @@ INSERT INTO `tipro_bie` (`Idtripro_bie`, `Nomti_bie`) VALUES
 
 CREATE TABLE `tipro_mo` (
   `Idtipro_mo` int NOT NULL COMMENT 'Identificacion de Tipo de producto en moneda extranjera',
-  `Nom_promo` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de producto en moneda extranjera'
+  `Nom_promo` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de producto en moneda extranjera'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de producto en moneda extranjera';
 
 --
@@ -684,7 +708,7 @@ INSERT INTO `tipro_mo` (`Idtipro_mo`, `Nom_promo`) VALUES
 
 CREATE TABLE `tip_cue` (
   `Idti_cue` int NOT NULL COMMENT 'Identificacion de tipo de cuenta',
-  `Nom_cue` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de cuenta'
+  `Nom_cue` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de cuenta'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de cuenta ';
 
 --
@@ -703,7 +727,7 @@ INSERT INTO `tip_cue` (`Idti_cue`, `Nom_cue`) VALUES
 
 CREATE TABLE `tip_pro` (
   `Idti_pro` int NOT NULL COMMENT 'Identificacion de tipo de producto',
-  `Nom_pro` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del producto'
+  `Nom_pro` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del producto'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de producto';
 
 --
@@ -723,7 +747,7 @@ INSERT INTO `tip_pro` (`Idti_pro`, `Nom_pro`) VALUES
 
 CREATE TABLE `tip_rol` (
   `Idti_rol` int NOT NULL COMMENT 'Identificacion de tipo de rol',
-  `Nom_rol` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de rol'
+  `Nom_rol` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de rol'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -745,7 +769,7 @@ INSERT INTO `tip_rol` (`Idti_rol`, `Nom_rol`) VALUES
 
 CREATE TABLE `tireg_iv` (
   `Idtireg_iv` int NOT NULL COMMENT 'Identificacion de tipos de regimen de iva',
-  `Nom_reg` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de regimen de iva'
+  `Nom_reg` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de regimen de iva'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipos de regimen de iva';
 
 --
@@ -765,7 +789,7 @@ INSERT INTO `tireg_iv` (`Idtireg_iv`, `Nom_reg`) VALUES
 
 CREATE TABLE `ti_contr` (
   `Idti_contr` int NOT NULL COMMENT 'Identificacion de tipo de contribuyente',
-  `Nom_contr` varchar(300) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de contribuyente'
+  `Nom_contr` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de contribuyente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de contribuyente';
 
 --
@@ -787,7 +811,7 @@ INSERT INTO `ti_contr` (`Idti_contr`, `Nom_contr`) VALUES
 
 CREATE TABLE `ti_desc` (
   `Idti_desc` int NOT NULL COMMENT 'identificacion de tipos de entidades estatales descentralizadas de orden',
-  `Nom_desc` varchar(80) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de entidades estatales descentralizadas de orden'
+  `Nom_desc` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipos de entidades estatales descentralizadas de orden'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipos de entidades estatales descentralizadas de orden';
 
 --
@@ -807,7 +831,7 @@ INSERT INTO `ti_desc` (`Idti_desc`, `Nom_desc`) VALUES
 
 CREATE TABLE `ti_doc` (
   `Idti_doc` int NOT NULL COMMENT 'Identificacion de tipo de documento',
-  `Nom_doc` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de documento'
+  `Nom_doc` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de documento'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de documento';
 
 --
@@ -830,7 +854,7 @@ INSERT INTO `ti_doc` (`Idti_doc`, `Nom_doc`) VALUES
 
 CREATE TABLE `ti_ent` (
   `Idti_ent` int NOT NULL COMMENT 'Identificacion de tipo de entidad o asociacion',
-  `Noti_ent` varchar(300) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de entidad o asociacion'
+  `Noti_ent` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de entidad o asociacion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de entidad o asociacion';
 
 --
@@ -866,7 +890,7 @@ INSERT INTO `ti_ent` (`Idti_ent`, `Noti_ent`) VALUES
 
 CREATE TABLE `ti_est` (
   `Idti_est` int NOT NULL COMMENT 'Identificacion de tipos de entidades estatales',
-  `Nom_est` varchar(80) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de entidades estatales'
+  `Nom_est` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de entidades estatales'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipos de entidades estatales';
 
 --
@@ -886,7 +910,7 @@ INSERT INTO `ti_est` (`Idti_est`, `Nom_est`) VALUES
 
 CREATE TABLE `ti_nac` (
   `Id_nac` int NOT NULL COMMENT 'Identificacion de tipo de nacionalidad',
-  `Nom_nac` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de nacionalidad'
+  `Nom_nac` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de nacionalidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de nacionalidad';
 
 --
@@ -906,7 +930,7 @@ INSERT INTO `ti_nac` (`Id_nac`, `Nom_nac`) VALUES
 
 CREATE TABLE `ti_nat` (
   `Idti_nat` int NOT NULL COMMENT 'Identificacion de tipo de naturaleza ',
-  `Nom_nat` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de naturaleza'
+  `Nom_nat` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre del tipo de naturaleza'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de naturaleza de la entidad';
 
 --
@@ -926,7 +950,7 @@ INSERT INTO `ti_nat` (`Idti_nat`, `Nom_nat`) VALUES
 
 CREATE TABLE `ti_soc` (
   `Idti_soc` int NOT NULL COMMENT 'Identificacion del tipo de sociedad comercial o civil',
-  `nom_ti` varchar(100) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de sociedad comercial o civil'
+  `nom_ti` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de sociedad comercial o civil'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tipo de sociedad comercial o civil';
 
 --
@@ -955,7 +979,7 @@ INSERT INTO `ti_soc` (`Idti_soc`, `nom_ti`) VALUES
 
 CREATE TABLE `ti_sol` (
   `Idti_sol` int NOT NULL COMMENT 'Identificacion de tipo de solicitud',
-  `Nom_sol` varchar(30) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de solicitud'
+  `Nom_sol` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Entidad';
 
 --
@@ -974,7 +998,7 @@ INSERT INTO `ti_sol` (`Idti_sol`, `Nom_sol`) VALUES
 
 CREATE TABLE `ti_soli` (
   `Idti_soli` int NOT NULL COMMENT 'Identificacion de Tipo de solicitante parte inferior',
-  `Nom_soli` varchar(40) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de solicitante parte inferior'
+  `Nom_soli` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de tipo de solicitante parte inferior'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tipo de solicitante parte inferior';
 
 --
@@ -993,7 +1017,7 @@ INSERT INTO `ti_soli` (`Idti_soli`, `Nom_soli`) VALUES
 
 CREATE TABLE `ti_solicit` (
   `Idti_solicit` int NOT NULL COMMENT 'Identificacion de Tipo de solicitante ',
-  `Nomti_sol` varchar(60) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de solicitante'
+  `Nomti_sol` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nombre de Tipo de solicitante'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Tipo de solicitante';
 
 --
@@ -1012,10 +1036,10 @@ INSERT INTO `ti_solicit` (`Idti_solicit`, `Nomti_sol`) VALUES
 CREATE TABLE `vendedor` (
   `idcond` int NOT NULL,
   `Cod_vend` int NOT NULL COMMENT 'Código vendedor',
-  `Nom_vend` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre del vendedor',
-  `Oficina` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Oficina del vendedor',
-  `Obser` varchar(300) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Observaciones',
-  `Firma_vend` varchar(40) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Firma del vendedor'
+  `Nom_vend` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre del vendedor',
+  `Oficina` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Oficina del vendedor',
+  `Obser` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Observaciones',
+  `Firma_vend` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Firma del vendedor'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Vendedor';
 
 --
@@ -1036,8 +1060,8 @@ INSERT INTO `vendedor` (`idcond`, `Cod_vend`, `Nom_vend`, `Oficina`, `Obser`, `F
 --
 ALTER TABLE `act_cli`
   ADD PRIMARY KEY (`Idact_cli`),
-  ADD KEY `Idti_pro` (`Idti_pro`),
-  ADD KEY `No_cue` (`No_cue`);
+  ADD KEY `No_cue` (`No_cuec`),
+  ADD KEY `No_cuej` (`No_cuej`);
 
 --
 -- Indices de la tabla `cla_contr`
@@ -1339,7 +1363,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente';
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`
@@ -1375,7 +1399,7 @@ ALTER TABLE `ent_ti`
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=16;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `est_solij`
@@ -1387,25 +1411,25 @@ ALTER TABLE `est_solij`
 -- AUTO_INCREMENT de la tabla `prueba`
 --
 ALTER TABLE `prueba`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=32;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=9;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
 --
 ALTER TABLE `reg_usu`
-  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=43;
+  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `repr_le`
@@ -1433,8 +1457,8 @@ ALTER TABLE `vendedor`
 -- Filtros para la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  ADD CONSTRAINT `act_cli_ibfk_1` FOREIGN KEY (`Idti_pro`) REFERENCES `tip_pro` (`Idti_pro`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `act_cli_ibfk_2` FOREIGN KEY (`No_cue`) REFERENCES `cuenta_c` (`No_cuenta`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `act_cli_ibfk_2` FOREIGN KEY (`No_cuec`) REFERENCES `cuenta_c` (`No_cuenta`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `act_cli_ibfk_3` FOREIGN KEY (`No_cuej`) REFERENCES `cuenta_j` (`No_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `client_co`

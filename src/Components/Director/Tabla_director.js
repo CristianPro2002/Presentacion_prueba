@@ -77,6 +77,7 @@ export const Tabla_director = () => {
       .then((response) => {
         setData2(data2.concat(response.data));
         abrirCerrarModalInsertar();
+        peticionGetData();
       })
       .catch((error) => {
         return alert(error);
@@ -154,6 +155,7 @@ export const Tabla_director = () => {
         });
         setData2(dataNueva);
         abrirCerrarModalEditar();
+        peticionGetData();
       })
       .catch((error) => {
         console.log(error);
@@ -412,6 +414,7 @@ export const Tabla_director = () => {
         solicitud={solicitud}
         setSolicitud={setSolicitud}
         peticionGet3={peticionGet3}
+        peticionGet4={peticionGet4}
         solicitud2={solicitud2}
         setSolicitud2={setSolicitud2}
         abrirpj={abrirpj}

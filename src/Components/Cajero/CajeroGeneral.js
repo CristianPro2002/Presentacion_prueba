@@ -15,6 +15,8 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   const baseUrl2 = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useState([]);
+  const [getCuentaC, setGetCuentaC] = useState([]);
+  const [getCuentaJ, setGetCuentaJ] = useState([]);
   const [consulta, setConsulta] = useState([]);
   const [consulta2, setConsulta2] = useState([]);
   const [dataUsuario, setDataUsuario] = useState({
@@ -27,18 +29,51 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     Nom_ra: "",
   });
 
-  //console.log(dataUsuario)
+  const peticionPostFather = () => {
+    let Estado = true
+    peticionGetCuentaC();
+    peticionGetCuentaJ();
 
-  const peticionPost = async () => {
+    if(dataUsuario.No_cuenta == getCuentaC.No_cuenta){
+      peticionPost(Estado);
+    }else{
+      Estado = false
+      peticionPost(Estado);
+    }
+  }
+
+
+  const peticionGetCuentaC = async () => {
+    var f = new FormData();
+    f.append("METHOD", "GETCUENTAC");
+    await axios.post(baseUrl, f).then((response) => {
+      setGetCuentaC(response.data);
+      console.log(response.data);
+    });
+  };
+
+  const peticionGetCuentaJ = async () => {
+    var f = new FormData();
+    f.append("METHOD", "GETCUENTAJ");
+    await axios.post(baseUrl, f).then((response) => {
+      setGetCuentaJ(response.data);
+      console.log(response.data);
+    });
+  };
+
+  const peticionPost = async (Estado) => {
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
     f.append("Tip_pro", dataUsuario.Tip_pro);
     f.append("Valor_act", dataUsuario.Valor_act);
     f.append("Cajero", dataUsuario.Cajero);
+    f.append("No_cuenta", dataUsuario.No_cuenta);
+    f.append("Estado", Estado);
     f.append("METHOD", "POSET");
     await axios.post(baseUrl, f).then((response) => {
-      setData(data.concat(response.data));
+     setData(data.concat(response.data));
+     console.log(response.data);
     });
   };
 

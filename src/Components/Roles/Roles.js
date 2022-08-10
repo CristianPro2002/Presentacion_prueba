@@ -11,10 +11,10 @@ import Gerenteimg from "../../assets/Imagenes_R/gerente.webp";
 import Asesorimg from "../../assets/Imagenes_R/asesor.webp";
 import Cajeropimg from "../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../assets/Imagenes_R/usuario.webp";
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Roles = ({setisLoggedIn, userName}) => {
-  
+  const notify = () => toast('  Selecciona un numero de rol❕');
   let Navigate = useNavigate();
 
   const validar3 = (e) => {
@@ -34,7 +34,7 @@ const Roles = ({setisLoggedIn, userName}) => {
     } else if (validacion.value == 5 || validacion.value == "") {
       Navigate("/AsesorD5");
       validacion.focus();
-    } else alert("Por favor seleccione una opcion");
+    } else notify();
     validacion.focus();
   };
 
@@ -55,7 +55,7 @@ const Roles = ({setisLoggedIn, userName}) => {
     } else if (validacion.value == 5 || validacion.value == "") {
       Navigate("/Cajero5");
       validacion.focus();
-    } else alert("Por favor seleccione una opcion");
+    } else notify();
     validacion.focus();
   };
 
@@ -311,6 +311,25 @@ const Roles = ({setisLoggedIn, userName}) => {
           </div>
         </div>
       </div>
+      <Toaster
+     position="top-right"
+     reverseOrder={false}
+     gutter={8}
+     containerClassName=""
+     containerStyle={{}}
+     toastOptions={{
+       // Define default options
+       className: '',
+       duration: 3000,
+       style: {
+         background: '#FF0000',
+         color: '#ffff',
+       },
+    
+     }}
+      
+      
+      />
     </div>
   );
 };

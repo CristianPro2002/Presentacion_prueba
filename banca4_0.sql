@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-08-2022 a las 03:49:53
+-- Tiempo de generación: 10-08-2022 a las 01:57:43
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `act_cli` (
   `Idact_cli` int NOT NULL COMMENT 'Identificacion de actividad de cliente',
+  `Id_act` int DEFAULT NULL COMMENT 'Identificacion del cliente',
   `Fe_act` datetime DEFAULT NULL COMMENT 'Fecha de actividad',
   `ti_pro` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Identificacion de tipo de producto',
   `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor de actividad',
@@ -41,8 +42,9 @@ CREATE TABLE `act_cli` (
 -- Volcado de datos para la tabla `act_cli`
 --
 
-INSERT INTO `act_cli` (`Idact_cli`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
-(1, '2022-08-16 22:41:52', 'Consignacion', '43534', 'Cajero1', NULL, 551389);
+INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
+(15, 11111111, '2022-08-24 15:35:00', 'undefined', '54645332', 'Cajero2', NULL, 551389),
+(16, 435436, '2022-08-17 15:35:00', 'Consignación', '6645', 'Cajero2', 137627, NULL);
 
 -- --------------------------------------------------------
 
@@ -1363,7 +1365,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=2;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`

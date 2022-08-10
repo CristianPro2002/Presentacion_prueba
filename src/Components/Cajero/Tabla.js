@@ -9,28 +9,43 @@ import DataTable from "react-data-table-component";
 
 const columnas = [
   {
+    name: "Identificacion de actividad",
+    selector: "Idact_cli",
+    sortable: true,
+  },
+  {
     name: "Identificacion de actividad de cliente",
     selector: "Id_act",
     sortable: true,
   },
   {
     name: "Fecha de actividad",
-    selector: "Fecha_act",
+    selector: "Fe_act",
     sortable: true,
   },
   {
     name: "Tipo del producto",
-    selector: "Tip_pro",
+    selector: "ti_pro",
     sortable: true,
   },
   {
     name: "Valor de actividad",
-    selector: "Valor_act",
+    selector: "Valor",
     sortable: true,
   },
   {
     name: "# Cajero",
-    selector: "Cajero",
+    selector: "No_cajero",
+    sortable: true,
+  },
+  {
+    name: "# Cuenta Pn",
+    selector: "No_cuec",
+    sortable: true,
+  },
+  {
+    name: "# Cuenta Pj",
+    selector: "No_cuej",
     sortable: true,
   },
 ];

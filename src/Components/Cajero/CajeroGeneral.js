@@ -29,18 +29,21 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     Nom_ra: "",
   });
 
+ 
   const peticionPostFather = () => {
     let Estado = true
     peticionGetCuentaC();
     peticionGetCuentaJ();
-
-    if(dataUsuario.No_cuenta == getCuentaC.No_cuenta){
+    getCuentaC.map((cuenta) => {
+    if(dataUsuario.No_cuenta == cuenta.No_cuenta){
       peticionPost(Estado);
     }else{
       Estado = false
       peticionPost(Estado);
     }
+  })
   }
+
 
 
   const peticionGetCuentaC = async () => {
@@ -48,7 +51,6 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     f.append("METHOD", "GETCUENTAC");
     await axios.post(baseUrl, f).then((response) => {
       setGetCuentaC(response.data);
-      console.log(response.data);
     });
   };
 
@@ -57,11 +59,11 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     f.append("METHOD", "GETCUENTAJ");
     await axios.post(baseUrl, f).then((response) => {
       setGetCuentaJ(response.data);
-      console.log(response.data);
     });
   };
 
   const peticionPost = async (Estado) => {
+    //console.log(dataUsuario)
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
@@ -70,12 +72,14 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     f.append("Cajero", dataUsuario.Cajero);
     f.append("No_cuenta", dataUsuario.No_cuenta);
     f.append("Estado", Estado);
-    f.append("METHOD", "POSET");
+    f.append("METHOD", "POSTGET");
     await axios.post(baseUrl, f).then((response) => {
-     setData(data.concat(response.data));
-     console.log(response.data);
+     //setData(data.concat(response.data));
+     console.log(response.data)
     });
   };
+
+
 
   const peticionGetCajero = async () => {
     var f = new FormData();
@@ -88,6 +92,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
           Id_act: String(response.data[0].Nit),
           Cajero: String(numeroCajeroBD),
           Nom_ra: String(response.data[0].Nom_ra),
+          No_cuenta: String(response.data[0].No_cuenta),
         });
       }
     });
@@ -99,12 +104,12 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     f.append("METHOD", "CONSULTACAJERO2");
     await axios.post(baseUrl2, f).then((response) => {
       setConsulta2(response.data);
-      console.log(response.data);
       if (response.data.length == 1) {
         setDataUsuario({
           Id_act: String(response.data[0].No_ide),
           Cajero: String(numeroCajeroBD),
           Nom_ra: String(response.data[0].Pri_nom),
+          No_cuenta: String(response.data[0].No_cuenta),
         });
       }
     });
@@ -292,7 +297,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                       <div className="BUTTON">
                         <Button
                           className="BOTON2 btn-space"
-                          onClick={() => peticionPost()}
+                          onClick={() => peticionPostFather()}
                           type="submit"
                         >
                           {" "}

@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
     }else{
-        $query="select * from prueba where Id_act";
+        $query="select * from act_cli where Idact_cli";
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetchAll()); 
     }
@@ -48,21 +48,17 @@ if($_POST['METHOD']=='POSTGET'){
     $Cajero=$_POST['Cajero'];
     $No_cuenta=$_POST['No_cuenta'];
     $Estado = $_POST['Estado'];
-    
-    if($Estado){
-        $query = "insert into act_cli(Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values ('$Fecha_act', '$Tip_pro', '$Valor_act', '$Cajero', '$No_cuenta', NULL)";
+    $No_cuentaFalse = null;
+    if($Estado == 'true'){
+        $query = "insert into act_cli(Idact_cli,Id_act,Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values (NULL,'$Id_act','$Fecha_act','$Tip_pro','$Valor_act','$Cajero','$No_cuenta',NULL)";
         $queryAutoIncrement="select MAX(Idact_cli) as Idact_cli from frameworks";
         $resultado=metodoPost($query, $queryAutoIncrement);
         echo json_encode($resultado);
-        header("HTTP/1.1 200 OK");
-        exit();
     }else{
-        $query = "insert into act_cli(Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values ('$Fecha_act', '$Tip_pro', '$Valor_act', '$Cajero', NULL , '$No_cuenta')";
+        $query = "insert into act_cli(Idact_cli,Id_Act,Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values (NULL,'$Id_act','$Fecha_act','$Tip_pro','$Valor_act','$Cajero',NULL,'$No_cuenta')";
         $queryAutoIncrement="select MAX(Idact_cli) as Idact_cli from frameworks";
         $resultado=metodoPost($query, $queryAutoIncrement);
-        echo json_encode($resultado);
-        header("HTTP/1.1 200 OK");
-        exit();   
+        echo json_encode($resultado); 
     }
     header("HTTP/1.1 200 OK");
     exit();  

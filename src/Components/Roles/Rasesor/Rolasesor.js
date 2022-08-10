@@ -10,10 +10,13 @@ import Gerenteimg from "../../../assets/Imagenes_R/gerente.webp";
 import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
 import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Rolasesor = ({setisLoggedIn}) => {
 
 
+  const notify = () => toast('  Sin permisos para acceder a esta funcionalidad❕');
+  const notify2 = () => toast('  Selecciona un numero de rol❕');
   let Navigate = useNavigate();
 
 
@@ -34,24 +37,24 @@ const Rolasesor = ({setisLoggedIn}) => {
     } else if (validacion.value == 5 || validacion.value == "") {
       Navigate("/Asesor5");
       validacion.focus();
-    } else alert("Por favor seleccione una opcion");
+    } else notify2();
     validacion.focus();
   };
 
   const Vcajero = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad")
+    notify();
   };
 
   const Vgerente = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad")
+    notify();
   }
 
   const Vdirector = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad")
+    notify();
   }
 
   const Vcajerop = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad")
+    notify();
   }
 
   return (
@@ -292,6 +295,25 @@ const Rolasesor = ({setisLoggedIn}) => {
           </div>
         </div>
       </div>
+      <Toaster
+     position="top-right"
+     reverseOrder={false}
+     gutter={8}
+     containerClassName=""
+     containerStyle={{}}
+     toastOptions={{
+       // Define default options
+       className: '',
+       duration: 3000,
+       style: {
+         background: '#FF0000',
+         color: '#ffff',
+       },
+    
+     }}
+      
+      
+      />
     </div>
   );
 };

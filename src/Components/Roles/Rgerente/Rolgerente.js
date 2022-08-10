@@ -10,25 +10,26 @@ import Gerenteimg from "../../../assets/Imagenes_R/gerente.webp";
 import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
 import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Rolgerente = ({setisLoggedIn}) => {
 
-
+  const notify = () => toast('  Sin permisos para acceder a esta funcionalidad❕');
   let Navigate = useNavigate();
 
   const Vasesor = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad");
+    notify();
   };
 
   const Vcajero = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad");
+    notify();
   };
   const Vdirector = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad");
+    notify();
    
    };
    const Vcajerop = (e) => {
-    alert("Sin permisos para acceder a esta funcionalidad");
+    notify();
    
    };
 
@@ -271,6 +272,25 @@ const Rolgerente = ({setisLoggedIn}) => {
           </div>
         </div>
       </div>
+      <Toaster
+     position="top-right"
+     reverseOrder={false}
+     gutter={8}
+     containerClassName=""
+     containerStyle={{}}
+     toastOptions={{
+       // Define default options
+       className: '',
+       duration: 3000,
+       style: {
+         background: '#FF0000',
+         color: '#ffff',
+       },
+    
+     }}
+      
+      
+      />
     </div>
   );
 };

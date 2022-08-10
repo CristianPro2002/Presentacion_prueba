@@ -31,17 +31,14 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
 
  
   const peticionPostFather = () => {
-    let Estado = true
-    peticionGetCuentaC();
-    peticionGetCuentaJ();
-    getCuentaC.map((cuenta) => {
-    if(dataUsuario.No_cuenta == cuenta.No_cuenta){
+    let Estado = true; 
+    if(dataUsuario.No_cuenta == getCuentaC.map((cuenta) => cuenta.No_cuenta)){
       peticionPost(Estado);
     }else{
       Estado = false
       peticionPost(Estado);
     }
-  })
+ 
   }
 
 
@@ -135,7 +132,10 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
       setData(response.data);
     });
   };
-
+useEffect(() => {
+  peticionGetCuentaC();
+  peticionGetCuentaJ();
+} , [])
   useEffect(() => {
     peticionGet();
   }, [data]);

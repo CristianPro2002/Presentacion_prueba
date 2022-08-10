@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-08-2022 a las 01:57:43
+-- Tiempo de generación: 10-08-2022 a las 08:19:21
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -44,7 +44,14 @@ CREATE TABLE `act_cli` (
 
 INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
 (15, 11111111, '2022-08-24 15:35:00', 'undefined', '54645332', 'Cajero2', NULL, 551389),
-(16, 435436, '2022-08-17 15:35:00', 'Consignación', '6645', 'Cajero2', 137627, NULL);
+(16, 435436, '2022-08-17 15:35:00', 'Consignación', '6645', 'Cajero2', 137627, NULL),
+(17, 11111111, '2022-08-09 23:07:00', 'Consignación', '567676', 'Cajero1', NULL, 551389),
+(18, 435436, '2022-08-10 23:10:00', 'Retiro', '334343', 'Cajero3', 137627, NULL),
+(19, 11111111, '2022-08-10 23:11:00', 'Consignación', '343232', 'Cajero4', NULL, 551389),
+(20, 435436, '2022-08-24 23:12:00', 'Apertura de Cuenta', '54454', 'Cajero5', 137627, NULL),
+(21, 11111111, '2022-08-10 23:15:00', 'Consignación', '3433', 'Cajero2', NULL, 551389),
+(22, 11111111, '2022-08-11 03:17:00', 'Apertura de Cuenta', '1111111', 'Cajero3', NULL, 551389),
+(23, 435436, '2022-08-10 03:18:00', 'Retiro', '222222', 'Cajero5', 137627, NULL);
 
 -- --------------------------------------------------------
 
@@ -1365,7 +1372,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=17;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`

@@ -148,6 +148,53 @@ if($_POST['METHOD']=='CONSULTAIDENT'){
     exit();
 }
 
+//consultas cajero principal
+if($_POST['METHOD']=='CONSULTAM1'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cajero = 'Cajero1'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAM2'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cajero = 'Cajero2'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAM3'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cajero = 'Cajero3'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAM4'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cajero='Cajero4'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAM5'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cajero='Cajero5'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+
 
 //Registro de Fomulario persona natural
 if($_POST['METHOD']=='FORMN'){

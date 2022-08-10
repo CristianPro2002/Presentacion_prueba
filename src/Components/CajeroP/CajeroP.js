@@ -1,13 +1,65 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import './CajeroP.css'
 import img111 from '../../assets/Imagenes/pngwing.com.webp'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import cajeroimgp from '../../assets/Imagenes/cajero-4.webp'
+import { Mcajero1, Mcajero2, Mcajero3, Mcajero4, Mcajero5 } from '../Modal/McajeroP';
+import { useModalCajeros } from '../hooks/useModalCajeros';
+
 const CajeroP = () => {
 
+  const [mostrar, setMostrar] = useState(false);
+  const handleShow = () => setMostrar(!mostrar);
 
+  const [mostrarDos, setMostrarDos] = useState(false);
+  const handleShowDos = () => setMostrarDos(!mostrarDos);
+
+  const [mostrarTres, setMostrarTres] = useState(false);
+  const handleShowTres = () => setMostrarTres(!mostrarTres);
+
+  const [mostrarCuatro, setMostrarCuatro] = useState(false);
+  const handleShowCuatro = () => setMostrarCuatro(!mostrarCuatro);
+
+  const [mostrarCinco, setMostrarCinco] = useState(false);
+  const handleShowCinco = () => setMostrarCinco(!mostrarCinco);
+
+  const {ModalesData, datam1, datam2, datam3, datam4, datam5} = useModalCajeros();
+
+  const ConsultaFatherM1 = () =>{
+    ModalesData.ConsultaM1();
+    handleShow();
+  }
+
+  const ConsultaFatherM2 = () =>{
+    ModalesData.ConsultaM2();
+    handleShowDos();
+  }
+
+  const ConsultaFatherM3 = () =>{
+    ModalesData.ConsultaM3();
+    handleShowTres();
+  }
+
+  const ConsultaFatherM4 = () =>{
+    ModalesData.ConsultaM4();
+    handleShowCuatro();
+  }
+
+  const ConsultaFatherM5 = () =>{
+    ModalesData.ConsultaM5();
+    handleShowCinco();
+  }
+
+  useEffect(() => {
+    ModalesData.ConsultaM1();
+    ModalesData.ConsultaM2();
+    ModalesData.ConsultaM3();
+    ModalesData.ConsultaM4();
+    ModalesData.ConsultaM5();
+  } , []);
+ 
     let Navigate = useNavigate();
   return (
     <div className='pantallaP'>
@@ -30,7 +82,7 @@ const CajeroP = () => {
             <h1>Saldo Actual</h1>
               <p className="letricas">500,000</p>
               <div className="cadministrar">
-            <button className="administrar5" id='administrar'>Ver registros</button>
+            <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM1()}>Ver registros</button>
             </div>
           </div>
           <div className="container222" id='contre'>
@@ -39,7 +91,7 @@ const CajeroP = () => {
             <h1>Saldo Actual</h1>
             <p className="letricas">500,000</p>
             <div className="cadministrar">
-            <button className="administrar5" id='administrar'>Ver registros</button>
+            <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM2()}>Ver registros</button>
             </div>
           </div>
           <div className="container333" id='contre'>
@@ -48,7 +100,7 @@ const CajeroP = () => {
             <h1>Saldo Actual</h1>
             <p className="letricas">500,000</p>
             <div className="cadministrar">
-            <button className="administrar5" id='administrar'>Ver registros</button>
+            <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM3()}>Ver registros</button>
             </div>
           </div>
           <div className="container444" id='contre'>
@@ -57,7 +109,7 @@ const CajeroP = () => {
             <h1>Saldo Actual</h1>
             <p className="letricas">500,000</p>
             <div className="cadministrar">
-            <button className="administrar5" id='administrar'>Ver registros</button>
+            <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM4()}>Ver registros</button>
             </div>
           </div>
           <div className="container555" id='contre'>
@@ -66,7 +118,7 @@ const CajeroP = () => {
             <h1>Saldo Actual</h1>
             <p className="letricas">500,000</p>
             <div className="cadministrar">
-            <button className="administrar5" id='administrar'>Ver registros</button>
+            <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM5()}>Ver registros</button>
             </div>
           </div>
         </div>
@@ -90,6 +142,11 @@ const CajeroP = () => {
           </div>
         </div>
         </div>
+        <Mcajero1 handleShow={handleShow} mostrar={mostrar} datam1={datam1}/>
+        <Mcajero2 handleShowDos={handleShowDos} mostrarDos={mostrarDos} datam2={datam2}/>
+        <Mcajero3 handleShowTres={handleShowTres} mostrarTres={mostrarTres} datam3={datam3}/>
+        <Mcajero4 handleShowCuatro={handleShowCuatro} mostrarCuatro={mostrarCuatro} datam4={datam4}/>
+        <Mcajero5 handleShowCinco={handleShowCinco} mostrarCinco={mostrarCinco} datam5={datam5}/>
     </div>
   )
 }

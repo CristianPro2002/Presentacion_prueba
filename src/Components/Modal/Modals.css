@@ -1,0 +1,13 @@
+.padreModals01{
+    display: flex;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.content-info{
+    width: 24%;
+    text-align: center;
+    flex-direction: column;
+}

@@ -60,6 +60,29 @@ const CajeroP = () => {
     ModalesData.ConsultaM5();
   } , []);
  
+const initialValue = 0;
+const sumCaj1 = datam1.map(item=> parseInt(item.Valor)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+const sumCaj2 = datam2.map(item=> parseInt(item.Valor)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+const sumCaj3 = datam3.map(item=> parseInt(item.Valor)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+const sumCaj4 = datam4.map(item=> parseInt(item.Valor)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+const sumCaj5 = datam5.map(item=> parseInt(item.Valor)).reduce(
+  (previousValue, currentValue) => previousValue + currentValue,
+  initialValue
+);
+
+const sumTotal = sumCaj1 + sumCaj2 + sumCaj3 + sumCaj4 + sumCaj5;
     let Navigate = useNavigate();
   return (
     <div className='pantallaP'>
@@ -80,7 +103,7 @@ const CajeroP = () => {
             <h2>Cajero #1</h2>
             <img src={img111} alt="" className="Imagenes111"/>
             <h1>Saldo Actual</h1>
-              <p className="letricas">500,000</p>
+              <p className="letricas">{sumCaj1}</p>
               <div className="cadministrar">
             <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM1()}>Ver registros</button>
             </div>
@@ -89,7 +112,7 @@ const CajeroP = () => {
           <h2>Cajero #2</h2>
           <img src={img111} alt="" className="Imagenes111" />
             <h1>Saldo Actual</h1>
-            <p className="letricas">500,000</p>
+            <p className="letricas">{sumCaj2}</p>
             <div className="cadministrar">
             <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM2()}>Ver registros</button>
             </div>
@@ -98,7 +121,7 @@ const CajeroP = () => {
           <h2>Cajero #3</h2>
           <img src={img111} alt="" className="Imagenes111" />
             <h1>Saldo Actual</h1>
-            <p className="letricas">500,000</p>
+            <p className="letricas">{sumCaj3}</p>
             <div className="cadministrar">
             <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM3()}>Ver registros</button>
             </div>
@@ -107,7 +130,7 @@ const CajeroP = () => {
           <h2>Cajero #4</h2>
           <img src={img111} alt="" className="Imagenes111" />
             <h1>Saldo Actual</h1>
-            <p className="letricas">500,000</p>
+            <p className="letricas">{sumCaj4}</p>
             <div className="cadministrar">
             <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM4()}>Ver registros</button>
             </div>
@@ -116,7 +139,7 @@ const CajeroP = () => {
           <h2>Cajero #5</h2>
           <img src={img111} alt="" className="Imagenes111" />
             <h1>Saldo Actual</h1>
-            <p className="letricas">500,000</p>
+            <p className="letricas">{sumCaj5}</p>
             <div className="cadministrar">
             <button className="administrar5" id='administrar' onClick={()=> ConsultaFatherM5()}>Ver registros</button>
             </div>
@@ -136,7 +159,7 @@ const CajeroP = () => {
                 Valor Total:
               </h3>
               <p className="textointernop">
-                2'500,000
+                {sumTotal}
               </p>
             </div>
           </div>

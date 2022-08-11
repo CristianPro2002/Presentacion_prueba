@@ -8,8 +8,9 @@ import personan from "../../assets/Imagenes/personan.jpg";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import {AppContext} from '../../stateManagement/provider';
+import toast, { Toaster } from 'react-hot-toast';
 const Asesor = ({onclick, numeroAsesor}) => {
-
+  const notify = () => toast('  Selecciona una opcion❕');
   let Navigate = useNavigate();
 
   const validar = (e) => {
@@ -20,7 +21,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
     } else if (validacion.value == 2 || validacion.value == "") {
       Navigate("/PersonaJuridica");
       validacion.focus();
-    } else alert("Por favor seleccione una opcion");
+    } else notify();
     validacion.focus();
   };
 
@@ -32,7 +33,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
     } else if (validacion.value == 2 || validacion.value == "") {
       Navigate("/PersonaNatural");
       validacion.focus();
-    } else alert("Por favor seleccione una opcion");
+    } else notify();
     validacion.focus();
   };
 
@@ -122,7 +123,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
                             Consultar
                           </button>
                         </form>
-                        <form>
+                        
                           <div className="cdesplegable1">
                             <Form.Select
                               aria-label="Default select example"
@@ -146,7 +147,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
                               Persona Juridica
                             </button>
                           </div>
-                        </form>
+                      
                       </div>
                     </div>
 
@@ -171,7 +172,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
                             </button>
                           </form>
                         </div>
-                        <form>
+                       
                           <div className="cdesplegable2">
                             <Form.Select
                               aria-label="Default select example"
@@ -195,7 +196,7 @@ const Asesor = ({onclick, numeroAsesor}) => {
                               Persona Natural
                             </button>
                           </div>
-                        </form>
+                    
                       </div>
                     </div>
                   </div>
@@ -205,6 +206,25 @@ const Asesor = ({onclick, numeroAsesor}) => {
           </div>
         </div>
       </div>
+      <Toaster
+     position="top-right"
+     reverseOrder={false}
+     gutter={8}
+     containerClassName=""
+     containerStyle={{}}
+     toastOptions={{
+       // Define default options
+       className: '',
+       duration: 3000,
+       style: {
+         background: '#FF0000',
+         color: '#ffff',
+       },
+    
+     }}
+      
+      
+      />
     </div>
   );
 };

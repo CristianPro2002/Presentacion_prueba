@@ -17,6 +17,7 @@ import ModalInsertar from "../Modal/Minsertar";
 import ModalSolicitud from "../Modal/Msolicitud";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import Badge from 'react-bootstrap/Badge';
 
 export const Tabla_director = () => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
@@ -199,6 +200,7 @@ export const Tabla_director = () => {
   };
 
   const abrirp = (e) => {
+    timeSoli();
     document
       .getElementById("ventana_modalp")
       .setAttribute("style", "visibility:visible; top:50%;");
@@ -287,13 +289,26 @@ export const Tabla_director = () => {
       .setAttribute("style", "display:none;");
   };
 
+  const fatherSolid = () => {
+    peticionGet3();
+    peticionGet4();
+    abrirp();
+  }
+
+  const Num = solicitud.length + solicitud2.length;
+ 
+  const timeSoli = () => {
+    setInterval(peticionGet3, 5000);
+    setInterval(peticionGet4, 5000);
+  }
+
   useEffect(() => {
     peticionGet3();
-  }, [solicitud]);
+  }, []);
 
   useEffect(() => {
     peticionGet4();
-  }, [solicitud2]);
+  }, []);
 
   useEffect(() => {
     peticionGetData();
@@ -302,6 +317,7 @@ export const Tabla_director = () => {
   useEffect(() => {
     peticionGetRoles();
   }, []);
+
 
   return (
     <>
@@ -320,7 +336,7 @@ export const Tabla_director = () => {
               onClick={abrirp}
               style={{ height: "60%", margin: "5px" }}
             >
-              Solicitudes
+              Solicitudes <Badge bg="dark">{Num}</Badge>
             </button>
           </div>
         </div>

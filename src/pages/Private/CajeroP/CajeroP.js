@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import './CajeroP.css'
-import img111 from '../../assets/Imagenes/pngwing.com.webp'
+import img111 from '../../../assets/Imagenes/pngwing.com.webp'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import cajeroimgp from '../../assets/Imagenes/cajero-4.webp'
-import { Mcajero1, Mcajero2, Mcajero3, Mcajero4, Mcajero5 } from '../Modal/McajeroP';
-import { useModalCajeros } from '../hooks/useModalCajeros';
+import cajeroimgp from '../../../assets/Imagenes/cajero-4.webp'
+import { Mcajero1, Mcajero2, Mcajero3, Mcajero4, Mcajero5 } from '../../../Components/Modal/McajeroP';
+import { useModalCajeros } from '../../../Components/hooks/useModalCajeros';
 
 const CajeroP = () => {
 

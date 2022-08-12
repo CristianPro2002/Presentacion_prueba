@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Consulta2.css";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../../stateManagement/provider";
+import { AppContext } from "../../../../stateManagement/provider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Consulta2 = () => {

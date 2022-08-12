@@ -5,9 +5,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { Container, Form } from "react-bootstrap";
 import "./Cajero.css";
 import { useState, useEffect } from "react";
-import imagen from "../../assets/Imagenes/User-Login.png";
+import imagen from "../../../assets/Imagenes/User-Login.png";
 import axios from "axios";
-import { useCajero } from "../hooks/useCajero";
+import { useCajero } from "../../../Components/hooks/useCajero";
 
 export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   let Navigate = useNavigate();

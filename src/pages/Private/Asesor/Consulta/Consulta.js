@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import "./Consulta.css";
-import { AppContext } from "../../../stateManagement/provider";
+import { AppContext } from "../../../../stateManagement/provider";
 
 const Consulta = () => {
   let Navigate = useNavigate();

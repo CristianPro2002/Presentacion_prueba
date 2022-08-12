@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ESTILOS_FORMD/estile_form_d.css";
-import imagen from "../../assets/Imagenes/Manager-icon.png";
+import imagen from "../../../assets/Imagenes/Manager-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import ListGroup from "react-bootstrap/ListGroup";

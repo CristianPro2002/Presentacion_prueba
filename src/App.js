@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import Index from "./Components/Index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -21,11 +21,13 @@ import Rolgerente from "./Components/Roles/Rgerente/Rolgerente";
 import Rolcajero from "./Components/Roles/Rcajero/Rolcajero";
 import Rolcajerop from "./Components/Roles/Rcajerop/Rolcajerop";
 import MyProvider from "../src/stateManagement/provider";
-
+*/
 function App() {
   return (
     <>
-    <MyProvider>
+    {
+/*
+      <MyProvider>
       <Router>
         <Routes>
           <Route path="/AsesorD5" element={<AsesorD5 />}/>
@@ -69,6 +71,7 @@ function App() {
         </Routes>
       </Router>
     </MyProvider>
+    */ }
     </>
   );
 }

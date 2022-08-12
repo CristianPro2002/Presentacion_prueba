@@ -1,5 +1,5 @@
 import React from 'react'
-import App from './Inicio_sesion/InicioS'
+import App from '../pages/Public/Inicio_sesion/InicioS'
 
 const Index = ({setisLoggedIn}) => {
     return (

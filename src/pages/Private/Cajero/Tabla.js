@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./Tabla.css";
 import { AiFillPrinter } from "react-icons/ai";
 import DataTable from "react-data-table-component";
-import { useTablaCajero } from "../hooks/useTablaCajero";
+import { useTablaCajero } from "../../../Components/hooks/useTablaCajero";
 
 const columnas = [
   {

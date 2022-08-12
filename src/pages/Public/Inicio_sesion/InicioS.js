@@ -9,12 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import Input from "./ComponentesInicio/Input";
 import "./InicioS.css";
-import logo from "../../assets/Logo/logo.webp";
+import logo from "../../../assets/Logo/logo.webp";
 import { useNavigate } from "react-router-dom";
-import DashboardRoutes from "../../routes/DashboardRoutes";
-import { AppContext } from "../../stateManagement/provider";
-import { User } from "../Roles/Roles";
-import { useLogin } from "../hooks/useLogin";
+import DashboardRoutes from "../../../routes/DashboardRoutes";
+import { AppContext } from "../../../stateManagement/provider";
+import { User } from "../../Private/Roles/Roles";
+import { useLogin } from "../../../Components/hooks/useLogin";
 
 const App = ({setisLoggedIn}) => {
   const [usuario, cambiarUsuario] = useState({ campo: "", valido: null });

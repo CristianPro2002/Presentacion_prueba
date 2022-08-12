@@ -93,26 +93,26 @@ transition: all 1s;
 }
 
 #Flasesor01:hover{
-    background-image: url("../../assets/Imagenes_R/ImgAsesor.webp");
+    background-image: url("../../../assets/Imagenes_R/ImgAsesor.webp");
     background-size: cover;
     color: white !important;
 }
 #Fldirector01:hover{
-    background-image: url("../../assets/Imagenes_R/ImgDirector.webp");
+    background-image: url("../../../assets/Imagenes_R/ImgDirector.webp");
     background-size: cover;
     color: white !important;
 }
 #Flcajero01:hover{
-    background-image: url("../../assets/Imagenes_R/ImgCajero.webp");
+    background-image: url("../../../assets/Imagenes_R/ImgCajero.webp");
     background-size: cover;
 }
 
 #Flgerente01:hover{
-    background-image: url("../../assets/Imagenes_R/ImgGerente.webp");
+    background-image: url("../../../assets/Imagenes_R/ImgGerente.webp");
     background-size: cover;
 }
 #Flcajerop01:hover{
-    background-image: url("../../assets/Imagenes_R/ImgCajerop.webp");
+    background-image: url("../../../assets/Imagenes_R/ImgCajerop.webp");
     background-size: cover;
     color: white !important;
 }

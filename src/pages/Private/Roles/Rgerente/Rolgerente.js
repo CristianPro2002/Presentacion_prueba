@@ -1,64 +1,37 @@
-import React, {useState, useContext} from "react";
-import Button from "react-bootstrap/Button";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
-import "./Roles.css";
-import Cajeroimg from "../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../assets/Imagenes_R/usuario.webp";
+import "./Rolgerente.css";
+import Cajeroimg from "../../../../assets/Imagenes_R/cajero.webp";
+import Directorimg from "../../../../assets/Imagenes_R/director.webp";
+import Gerenteimg from "../../../../assets/Imagenes_R/gerente.webp";
+import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
+import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
+import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from 'react-hot-toast';
 
-const Roles = ({setisLoggedIn, userName}) => {
-  const notify = () => toast('  Selecciona un numero de rol❕');
+const Rolgerente = ({setisLoggedIn}) => {
+
+  const notify = () => toast('  Sin permisos para acceder a esta funcionalidad❕');
   let Navigate = useNavigate();
 
-  const validar3 = (e) => {
-    var validacion = document.getElementById("Asesorv");
-    if (validacion.value == 1 || validacion.value == "") {
-      Navigate("/AsesorD1");
-      validacion.focus();
-    } else if (validacion.value == 2 || validacion.value == "") {
-      Navigate("/AsesorD2");
-      validacion.focus();
-    } else if (validacion.value == 3 || validacion.value == "") {
-      Navigate("/AsesorD3");
-      validacion.focus();
-    } else if (validacion.value == 4 || validacion.value == "") {
-      Navigate("/AsesorD4");
-      validacion.focus();
-    } else if (validacion.value == 5 || validacion.value == "") {
-      Navigate("/AsesorD5");
-      validacion.focus();
-    } else notify();
-    validacion.focus();
+  const Vasesor = (e) => {
+    notify();
   };
 
-  const validar4 = (e) => {
-    var validacion = document.getElementById("cajerov");
-    if (validacion.value == 1 || validacion.value == "") {
-      Navigate("/Cajero1");
-      validacion.focus();
-    } else if (validacion.value == 2 || validacion.value == "") {
-      Navigate("/Cajero2");
-      validacion.focus();
-    } else if (validacion.value == 3 || validacion.value == "") {
-      Navigate("/Cajero3");
-      validacion.focus();
-    } else if (validacion.value == 4 || validacion.value == "") {
-      Navigate("/Cajero4");
-      validacion.focus();
-    } else if (validacion.value == 5 || validacion.value == "") {
-      Navigate("/Cajero5");
-      validacion.focus();
-    } else notify();
-    validacion.focus();
+  const Vcajero = (e) => {
+    notify();
   };
-
+  const Vdirector = (e) => {
+    notify();
+   
+   };
+   const Vcajerop = (e) => {
+    notify();
+   
+   };
 
   return (
     <div className="principal2">
@@ -67,30 +40,16 @@ const Roles = ({setisLoggedIn, userName}) => {
           <div className="f2">
             <i
               class="bi bi-arrow-left-circle-fill"
-              id="cir" 
+              id="cir"
               onClick={() => setisLoggedIn(false)}
             ></i>
-            {/*
-            <div class="dropdown">
-  <button className="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  <img
-                    className="imagen01"
-                    alt=""
-                    src={Usuariecito}
-                  />
-  </button>
-  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
-  </ul>
-</div>
-  */}
           </div>
           <div className="Croles">
             <div className="row" id="rows">
-              <h3 className="regis">Registrado con: {userName} </h3>
+              <h3 className="regis">Registrado con: {"hola"} </h3>
               <h1 className="TituloR">Escoge tu rol</h1>
               <div className="colsito1" id="colsito">
-                <div className="Fl" id="Fldirector01">
+                <div id="comuncss">
                   <img
                     className="ImagenI"
                     alt=""
@@ -116,9 +75,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                     </div>
                     <br />
                     <li>
-                      <button onClick={() => Navigate("/Tabla_director")} value="validar" className="button01">
+                      <button onClick={Vdirector} value="validar" className="button01">
                         <img
-                          className="ImagenF"
+                          className=""
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -174,7 +133,7 @@ const Roles = ({setisLoggedIn, userName}) => {
               </div>
               {/* column3 */}
               <div className="colsito3" id="colsito">
-                <div className="Fl" id="Flasesor01">
+                <div id="comuncss">
                   <img
                     className="ImagenI"
                     alt=""
@@ -190,8 +149,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                       <li>
                         <Form.Select
                           aria-label="Default select example"
-                          id="Asesorv"
+                          id="Asesorvcp"
                           name="Asesorv"
+                          disabled
                         >
                           <option value="0" className="Lform">
                             Selecciona el # de rol
@@ -206,9 +166,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                     </div>
                     <br />
                     <li>
-                      <button onClick={validar3} value="validar3" className="button01">
+                      <button onClick={Vasesor} value="validar3" className="button01">
                         <img
-                          className="ImagenF"
+                          className=""
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -221,7 +181,7 @@ const Roles = ({setisLoggedIn, userName}) => {
               </div>
 
               <div className="colsito4" id="colsito">
-                <div className="Fl" id="Flcajero01">
+                <div id="comuncss">
                   <img
                     className="ImagenI"
                     alt=""
@@ -237,8 +197,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                       <li>
                         <Form.Select
                           aria-label="Default select example"
-                          id="cajerov"
+                          id="cajerovcp"
                           name="cajerov"
+                          disabled
                         >
                           <option value="0" className="Lform">
                             Selecciona el # de rol
@@ -253,9 +214,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                     </div>
                     <br />
                     <li>
-                      <button onClick={validar4} value="validar4" className="button01">
+                      <button onClick={Vcajero} value="validar4" className="button01">
                         <img
-                          className="ImagenF"
+                          className=""
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -268,7 +229,7 @@ const Roles = ({setisLoggedIn, userName}) => {
               </div>
 
               <div className="colsito5" id="colsito">
-                <div className="Fl" id="Flcajerop01">
+                <div id="comuncss">
                   <img
                     className="ImagenI"
                     alt=""
@@ -294,9 +255,9 @@ const Roles = ({setisLoggedIn, userName}) => {
                     </div>
                     <br />
                     <li>
-                      <button onClick={()=> Navigate("/CajeroP")} value="validar5" className="button01">
+                      <button onClick={Vcajerop} value="validar5" className="button01">
                         <img
-                          className="ImagenF2"
+                          className=""
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -334,4 +295,4 @@ const Roles = ({setisLoggedIn, userName}) => {
   );
 };
 
-export default Roles;
+export default Rolgerente;

@@ -1,5 +1,5 @@
 import react from 'react';
-import AsesorGeneral from '../Components/Asesor/AsesorGeneral';
+import AsesorGeneral from '../pages/Private/Asesor/AsesorGeneral';
 import { useNavigate } from "react-router-dom";
 
 export const Asesor = () => {

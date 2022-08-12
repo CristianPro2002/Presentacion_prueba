@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Asesor.css";
-import personaj from "../../assets/Imagenes/personaj.png";
-import personan from "../../assets/Imagenes/personan.jpg";
+import personaj from "../../../assets/Imagenes/personaj.png";
+import personan from "../../../assets/Imagenes/personan.jpg";
 import Form from "react-bootstrap/Form";
 import toast, { Toaster } from "react-hot-toast";
-import { useAsesor } from "../hooks/useAsesor";
+import { useAsesor } from "../../../Components/hooks/useAsesor";
 
 const Asesor = ({ onclick, numeroAsesor }) => {
   const notify = () => toast("  Selecciona una opcion❕");

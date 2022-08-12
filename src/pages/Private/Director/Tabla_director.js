@@ -11,14 +11,14 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import ModalEliminar from "../Modal/Meliminar";
-import ModalEditar from "../Modal/Meditar";
-import ModalInsertar from "../Modal/Minsertar";
-import ModalSolicitud from "../Modal/Msolicitud";
+import ModalEliminar from "../../../Components/Modal/Meliminar";
+import ModalEditar from "../../../Components/Modal/Meditar";
+import ModalInsertar from "../../../Components/Modal/Minsertar";
+import ModalSolicitud from "../../../Components/Modal/Msolicitud";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
-import { useDirector } from "../hooks/useDirector";
+import { useDirector } from "../../../Components/hooks/useDirector";
 
 export const Tabla_director = () => {
   

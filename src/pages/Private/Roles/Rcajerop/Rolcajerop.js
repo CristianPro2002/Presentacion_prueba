@@ -4,12 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
 import "./Rolcajerop.css";
-import Cajeroimg from "../../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
+import Cajeroimg from "../../../../assets/Imagenes_R/cajero.webp";
+import Directorimg from "../../../../assets/Imagenes_R/director.webp";
+import Gerenteimg from "../../../../assets/Imagenes_R/gerente.webp";
+import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
+import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
+import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from 'react-hot-toast';
 
 const Rolcajerop = ({setisLoggedIn}) => {

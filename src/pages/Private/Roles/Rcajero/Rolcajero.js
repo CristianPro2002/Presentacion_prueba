@@ -3,59 +3,63 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
-import "./Rolasesor.css";
-import Cajeroimg from "../../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
+import "./Rolcajero.css";
+import Cajeroimg from "../../../../assets/Imagenes_R/cajero.webp";
+import Directorimg from "../../../../assets/Imagenes_R/director.webp";
+import Gerenteimg from "../../../../assets/Imagenes_R/gerente.webp";
+import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
+import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
+import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from 'react-hot-toast';
 
-const Rolasesor = ({setisLoggedIn}) => {
-
+const Rolcajero = ({setisLoggedIn}) => {
 
   const notify = () => toast('  Sin permisos para acceder a esta funcionalidad❕');
   const notify2 = () => toast('  Selecciona un numero de rol❕');
   let Navigate = useNavigate();
-
+;
 
   const Vasesor = (e) => {
-    var validacion = document.getElementById("Asesorv");
+   notify();
+    
+  };
+
+  const Vgerente = (e) => {
+    notify();
+     
+   };
+
+   const Vdirector = (e) => {
+    notify();
+     
+   };
+
+   const Vcajerop = (e) => {
+    notify();
+     
+   };
+
+  const Vcajero = (e) => {
+    var validacion = document.getElementById("cajerov");
     if (validacion.value == 1 || validacion.value == "") {
-      Navigate("/Asesor");
+      Navigate("/Cajero1");
       validacion.focus();
     } else if (validacion.value == 2 || validacion.value == "") {
-      Navigate("/Asesor2");
+      Navigate("/Cajero2");
       validacion.focus();
     } else if (validacion.value == 3 || validacion.value == "") {
-      Navigate("/Asesor3");
+      Navigate("/Cajero3");
       validacion.focus();
     } else if (validacion.value == 4 || validacion.value == "") {
-      Navigate("/Asesor4");
+      Navigate("/Cajero4");
       validacion.focus();
     } else if (validacion.value == 5 || validacion.value == "") {
-      Navigate("/Asesor5");
+      Navigate("/Cajero5");
       validacion.focus();
     } else notify2();
     validacion.focus();
   };
 
-  const Vcajero = (e) => {
-    notify();
-  };
-
-  const Vgerente = (e) => {
-    notify();
-  }
-
-  const Vdirector = (e) => {
-    notify();
-  }
-
-  const Vcajerop = (e) => {
-    notify();
-  }
 
   return (
     <div className="principal2">
@@ -157,7 +161,7 @@ const Rolasesor = ({setisLoggedIn}) => {
               </div>
               {/* column3 */}
               <div className="colsito3" id="colsito">
-                <div className="Fl" id="Flasesor01">
+                <div id="comuncss">
                   <img
                     className="ImagenI"
                     alt=""
@@ -173,8 +177,9 @@ const Rolasesor = ({setisLoggedIn}) => {
                       <li>
                         <Form.Select
                           aria-label="Default select example"
-                          id="Asesorv"
+                          id="Asesorvc"
                           name="Asesorv"
+                          disabled
                         >
                           <option value="0" className="Lform">
                             Selecciona el # de rol
@@ -191,7 +196,7 @@ const Rolasesor = ({setisLoggedIn}) => {
                     <li>
                       <button onClick={Vasesor} value="validar3" className="button01">
                         <img
-                          className="ImagenF"
+                          className=""
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -204,7 +209,7 @@ const Rolasesor = ({setisLoggedIn}) => {
               </div>
 
               <div className="colsito4" id="colsito">
-                <div id="comuncss">
+                <div className="Fl" id="Flcajero01">
                   <img
                     className="ImagenI"
                     alt=""
@@ -220,9 +225,8 @@ const Rolasesor = ({setisLoggedIn}) => {
                       <li>
                         <Form.Select
                           aria-label="Default select example"
-                          id="cajerova"
+                          id="cajerov"
                           name="cajerov"
-                          disabled
                         >
                           <option value="0" className="Lform">
                             Selecciona el # de rol
@@ -239,7 +243,7 @@ const Rolasesor = ({setisLoggedIn}) => {
                     <li>
                       <button onClick={Vcajero} value="validar4" className="button01">
                         <img
-                          className=""
+                          className="ImagenF"
                           alt=""
                           src="http://cenfma.com/img/flecha.png"
                           width="50"
@@ -318,4 +322,4 @@ const Rolasesor = ({setisLoggedIn}) => {
   );
 };
 
-export default Rolasesor;
+export default Rolcajero;

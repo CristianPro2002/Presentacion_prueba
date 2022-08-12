@@ -1,9 +1,6 @@
 import React from 'react'
 import { Modal, ModalBody, ModalFooter} from "reactstrap";
 
-
-
-
 const Modales = ({modalEliminar, dataUsuario,peticionDelete, abrirCerrarModalEliminar}) => {
   return (
 

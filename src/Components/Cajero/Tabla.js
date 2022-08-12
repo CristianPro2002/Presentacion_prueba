@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./Tabla.css";
 import { AiFillPrinter } from "react-icons/ai";
 import DataTable from "react-data-table-component";
+import { useTablaCajero } from "../hooks/useTablaCajero";
 
 const columnas = [
   {
@@ -58,44 +59,31 @@ const paginacionOpciones = {
 };
 
 const Tabla = () => {
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/cajero.php";
-  const [busqueda, setBusqueda]= useState("");
-  const [data, setData] = useState([]);
-  const [tablaUsuarios, setTablaUsuarios]= useState([]);
-  const [dataUsuario, setDataUsuario] = useState({
-    Id_act: "",
-    Fecha_act: "",
-    Tip_pro: "",
-    Valor_act: "",
-    Cajero: "",
-  });
-
-  const peticionGet = async () => {
-    await axios.get(baseUrl).then((response) => {
-      setData(response.data);
-      setTablaUsuarios(response.data);
-    });
-  };
+  const [busqueda, setBusqueda] = useState("");
+  const { TablaActions, data, setData, tablaUsuarios } = useTablaCajero({});
 
   useEffect(() => {
-    peticionGet();
+    TablaActions.peticionGet();
   }, []);
 
-  const handleChange=(e)=>{
+  const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
-  }
+  };
 
-
-  const filtrar=(terminoBusqueda)=>{
-    var resultadosBusqueda=tablaUsuarios.filter((elemento)=>{
-      if(elemento.Id_act.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-      ){
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
+      if (
+        elemento.Id_act.toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
         return elemento;
       }
     });
     setData(resultadosBusqueda);
-  }
+  };
+
   let Navigate = useNavigate();
 
   return (
@@ -134,15 +122,19 @@ const Tabla = () => {
                 />
               </div>
               <div className="col-md-3">
-                <a className="reporte" href="http://localhost:8080/documen" target="_blank">
+                <a
+                  className="reporte"
+                  href="http://localhost:8080/documen"
+                  target="_blank"
+                >
                   <AiFillPrinter />
                 </a>
               </div>
             </div>
           }
           subHeaderAlign="right"
-          noDataComponent="No se encuentra resultados." 
-        
+          noDataComponent="No se encuentra resultados."
+
           /* <input type="number"
          placeholder="Buscar documento" 
          className="w-25 form-control search"

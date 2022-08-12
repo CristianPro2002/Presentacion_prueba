@@ -14,20 +14,7 @@ import { useNavigate } from "react-router-dom";
 import DashboardRoutes from "../../routes/DashboardRoutes";
 import { AppContext } from "../../stateManagement/provider";
 import { User } from "../Roles/Roles";
-
-const URL_LOGIN = "http://localhost:8080/banca/bd_sesion/login.php";
-
-const enviarData = async (url, datos) => {
-  const resp = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(datos),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const json = await resp.json();
-  return json;
-};
+import { useLogin } from "../hooks/useLogin";
 
 const App = ({setisLoggedIn}) => {
   const [usuario, cambiarUsuario] = useState({ campo: "", valido: null });
@@ -35,6 +22,7 @@ const App = ({setisLoggedIn}) => {
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const [data2, setData2] = useContext(AppContext);
   const [dataUser, setDataUser] = useState([]);
+  const {URL_LOGIN, LoginActions} = useLogin();
 
   let Navigate = useNavigate();
 
@@ -46,6 +34,7 @@ const App = ({setisLoggedIn}) => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
+  
   const refUsuario = useRef(null);
 
   const refContraseña = useRef(null);
@@ -56,7 +45,7 @@ const App = ({setisLoggedIn}) => {
       Contra: refContraseña.current.value,
     };
 
-    const respuestaJson = await enviarData(URL_LOGIN, datos);
+    const respuestaJson = await LoginActions.enviarData(URL_LOGIN, datos);
     console.log("respuesta desde el evento", respuestaJson);
     const Rol = respuestaJson.Idti_rol;
     const Usuario = respuestaJson.Usuario;

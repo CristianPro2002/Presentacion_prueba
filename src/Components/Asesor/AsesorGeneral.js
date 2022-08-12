@@ -1,4 +1,4 @@
-import React, {useState,useContext} from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -6,11 +6,11 @@ import "./Asesor.css";
 import personaj from "../../assets/Imagenes/personaj.png";
 import personan from "../../assets/Imagenes/personan.jpg";
 import Form from "react-bootstrap/Form";
-import axios from "axios";
-import {AppContext} from '../../stateManagement/provider';
-import toast, { Toaster } from 'react-hot-toast';
-const Asesor = ({onclick, numeroAsesor}) => {
-  const notify = () => toast('  Selecciona una opcion❕');
+import toast, { Toaster } from "react-hot-toast";
+import { useAsesor } from "../hooks/useAsesor";
+
+const Asesor = ({ onclick, numeroAsesor }) => {
+  const notify = () => toast("  Selecciona una opcion❕");
   let Navigate = useNavigate();
 
   const validar = (e) => {
@@ -37,33 +37,8 @@ const Asesor = ({onclick, numeroAsesor}) => {
     validacion.focus();
   };
 
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-
-  const [data, setData] = useContext(AppContext);
-  const [dataUsuario, setDataUsuario] = useState({
-    No_ide: "",
-    Nit: "",
-  });
-  const peticionGet = async () => {
-    var f = new FormData();
-    f.append("Nit", dataUsuario.Nit);
-    f.append("METHOD", "CONSULTAIDENT");
-    await axios.post(baseUrl, f).then((response) => {
-      setData(response.data);
-      Navigate("/Consulta");
-    });  
-  };
-
-  const peticionGet2 = async () => {
-    var f = new FormData();
-    f.append("No_ide", dataUsuario.No_ide);
-    f.append("METHOD", "CONSULTAID");
-    await axios.post(baseUrl, f).then((response) => {
-      setData(response.data);
-      Navigate("/Consulta2");
-    });  
-  };
-  
+  const { AsesorActions, dataUsuario, setDataUsuario } =
+    useAsesor();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,9 +51,8 @@ const Asesor = ({onclick, numeroAsesor}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }
+  };
 
-  
   return (
     <div className="principal">
       <div className="padresito">
@@ -118,36 +92,35 @@ const Asesor = ({onclick, numeroAsesor}) => {
                           <button
                             type="submit"
                             className="consultar1"
-                            onClick={() => peticionGet()}
+                            onClick={() => AsesorActions.peticionGet()}
                           >
                             Consultar
                           </button>
                         </form>
-                        
-                          <div className="cdesplegable1">
-                            <Form.Select
-                              aria-label="Default select example"
-                              id="Eleccion1"
-                              name="Eleccion1"
-                              className="desplegable1"
-                            >
-                              <option value="0" className="Lform">
-                                Selecciona el proceso
-                              </option>
-                              <option value="1">Cuenta de ahorro</option>
-                              <option value="2">Cuenta corriente</option>
-                            </Form.Select>
-                          </div>
-                          <div className="bj">
-                            <button
-                              onClick={validar}
-                              name="validar"
-                              className="pj"
-                            >
-                              Persona Juridica
-                            </button>
-                          </div>
-                      
+
+                        <div className="cdesplegable1">
+                          <Form.Select
+                            aria-label="Default select example"
+                            id="Eleccion1"
+                            name="Eleccion1"
+                            className="desplegable1"
+                          >
+                            <option value="0" className="Lform">
+                              Selecciona el proceso
+                            </option>
+                            <option value="1">Cuenta de ahorro</option>
+                            <option value="2">Cuenta corriente</option>
+                          </Form.Select>
+                        </div>
+                        <div className="bj">
+                          <button
+                            onClick={validar}
+                            name="validar"
+                            className="pj"
+                          >
+                            Persona Juridica
+                          </button>
+                        </div>
                       </div>
                     </div>
 
@@ -155,7 +128,10 @@ const Asesor = ({onclick, numeroAsesor}) => {
                       <div className="col" id="contenedor1">
                         <img className="PN" alt="" src={personan} />
                         <div className="cont34">
-                          <form className="formulariocon" onSubmit={handleSubmit}>
+                          <form
+                            className="formulariocon"
+                            onSubmit={handleSubmit}
+                          >
                             <input
                               placeholder="Ingrese la cedula"
                               type="number"
@@ -166,37 +142,36 @@ const Asesor = ({onclick, numeroAsesor}) => {
                             <button
                               type="submit"
                               className="consultar2"
-                              onClick={() => peticionGet2()}
+                              onClick={() => AsesorActions.peticionGet2()}
                             >
                               Consultar
                             </button>
                           </form>
                         </div>
-                       
-                          <div className="cdesplegable2">
-                            <Form.Select
-                              aria-label="Default select example"
-                              id="Eleccion2"
-                              name="Eleccion2"
-                              className="desplegable2"
-                            >
-                              <option value="0" className="Lform">
-                                Selecciona el proceso
-                              </option>
-                              <option value="1">Cuenta de ahorro</option>
-                              <option value="2">Cuenta corriente</option>
-                            </Form.Select>
-                          </div>
-                          <div className="bn">
-                            <button
-                              onClick={validar2}
-                              name="vaidar2"
-                              className="pn"
-                            >
-                              Persona Natural
-                            </button>
-                          </div>
-                    
+
+                        <div className="cdesplegable2">
+                          <Form.Select
+                            aria-label="Default select example"
+                            id="Eleccion2"
+                            name="Eleccion2"
+                            className="desplegable2"
+                          >
+                            <option value="0" className="Lform">
+                              Selecciona el proceso
+                            </option>
+                            <option value="1">Cuenta de ahorro</option>
+                            <option value="2">Cuenta corriente</option>
+                          </Form.Select>
+                        </div>
+                        <div className="bn">
+                          <button
+                            onClick={validar2}
+                            name="vaidar2"
+                            className="pn"
+                          >
+                            Persona Natural
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -207,23 +182,20 @@ const Asesor = ({onclick, numeroAsesor}) => {
         </div>
       </div>
       <Toaster
-     position="top-right"
-     reverseOrder={false}
-     gutter={8}
-     containerClassName=""
-     containerStyle={{}}
-     toastOptions={{
-       // Define default options
-       className: '',
-       duration: 3000,
-       style: {
-         background: '#FF0000',
-         color: '#ffff',
-       },
-    
-     }}
-      
-      
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#FF0000",
+            color: "#ffff",
+          },
+        }}
       />
     </div>
   );

@@ -27,7 +27,8 @@ const Consulta2 = () => {
           <div className="col-md-4" id="estilos_row">
             <div>
               <label>
-                <h3>Tipo de solicitud:</h3><b>Vinculacion</b>
+                <h3>Tipo de solicitud:</h3>
+                <b>Vinculacion</b>
               </label>
             </div>
           </div>
@@ -104,11 +105,11 @@ const Consulta2 = () => {
       </div>
 
       <div className="Tabla2">
-      <center>
+        <center>
           <label>
             <h2>Informacion de contacto personal</h2>
           </label>
-          </center>
+        </center>
         <div className="table-responsive-sm">
           <table className="table table-hover table-borderless table-light">
             <thead className="">
@@ -127,12 +128,11 @@ const Consulta2 = () => {
                 <td>{data.Ap_ca}</td>
                 <td>{data.Barrio}</td>
                 <td>{data.Ciu_mu}</td>
-              
               </tr>
             </tbody>
             <thead className="">
               <tr>
-              <th>Departamento</th>
+                <th>Departamento</th>
                 <th>Pais</th>
                 <th>Telefono</th>
                 <th>Celular</th>
@@ -146,7 +146,6 @@ const Consulta2 = () => {
                 <td>{data.Telef}</td>
                 <td>{data.Celular}</td>
                 <td>{data.Corr_ele}</td>
-
               </tr>
             </tbody>
           </table>
@@ -154,11 +153,11 @@ const Consulta2 = () => {
       </div>
 
       <div className="Tabla2">
-      <center>
+        <center>
           <label>
             <h2>Actividad economica</h2>
           </label>
-          </center>
+        </center>
         <div className="table-responsive-sm">
           <table className="table table-hover table-borderless table-light">
             <thead className="">
@@ -183,147 +182,148 @@ const Consulta2 = () => {
         </div>
       </div>
 
-
-
- 
-
-<div className="row">
-<div className="col-md-6">
-      <div className="Tabla2">
-      <center>
-          <label>
-            <h2>Información laboral(Para Empleados e Independientes)</h2>
-          </label>
-          </center>
-        <div className="table-responsive-sm">
-          <table className="table table-hover table-borderless table-light">
-            <thead className="">
-              <tr>
-                <th>Nombre de la empresa</th>
-                <th>Dirección de la empresa o lugar donde desarrolla su actividad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Nom_emp}</td>
-                <td>{data.Dir_emp}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Barrio</th>
-                <th>Ciudad/Municipio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Barr_lab}</td>
-                <td>{data.Ciu_lab}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Departamento</th>
-                <th>Pais</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Dep_lab}</td>
-                <td>{data.Pais_lab}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Teléfono</th>
-                <th>Ext</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Tel_lab}</td>
-                <td>{data.Ext}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Celular</th>
-                <th>Correo electrónico laboral</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Cel_lab}</td>
-                <td>{data.Corr_lab}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="Tabla2">
+            <center>
+              <label>
+                <h2>Información laboral(Para Empleados e Independientes)</h2>
+              </label>
+            </center>
+            <div className="table-responsive-sm">
+              <table className="table table-hover table-borderless table-light">
+                <thead className="">
+                  <tr>
+                    <th>Nombre de la empresa</th>
+                    <th>
+                      Dirección de la empresa o lugar donde desarrolla su
+                      actividad
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Nom_emp}</td>
+                    <td>{data.Dir_emp}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Barrio</th>
+                    <th>Ciudad/Municipio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Barr_lab}</td>
+                    <td>{data.Ciu_lab}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Departamento</th>
+                    <th>Pais</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Dep_lab}</td>
+                    <td>{data.Pais_lab}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Teléfono</th>
+                    <th>Ext</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Tel_lab}</td>
+                    <td>{data.Ext}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Celular</th>
+                    <th>Correo electrónico laboral</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Cel_lab}</td>
+                    <td>{data.Corr_lab}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
 
-      <div className="col-md-6">
-      <div className="Tabla2">
-      <center>
-          <label>
-            <h2>Detalle información financiera</h2>
-          </label>
-          </center>
-        <div className="table-responsive-sm">
-          <table className="table table-hover table-borderless table-light">
-            <thead className="">
-              <tr>
-                <th>Ingresos mensuales $</th>
-                <th>Otros ingresos mensuales $</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Ing_men}</td>
-                <td>{data.Otr_ing}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Detalle otros ingresos mensuales (diferentes a su actividad económica principal)</th>
-                <th>Total activos $</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Det_otr}</td>
-                <td>{data.To_act}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Total pasivos $</th>
-                <th>Total egresos mensuales $</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.To_pa}</td>
-                <td>{data.To_egr}</td>
-              </tr>
-            </tbody>
-            <thead className="">
-              <tr>
-                <th>Ventas anuales $</th>
-                <th>Fecha de cierre de ventas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr key={data.No_ide}>
-                <td>{data.Vent_a}</td>
-                <td>{data.Fe_ci}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="col-md-6">
+          <div className="Tabla2">
+            <center>
+              <label>
+                <h2>Detalle información financiera</h2>
+              </label>
+            </center>
+            <div className="table-responsive-sm">
+              <table className="table table-hover table-borderless table-light">
+                <thead className="">
+                  <tr>
+                    <th>Ingresos mensuales $</th>
+                    <th>Otros ingresos mensuales $</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Ing_men}</td>
+                    <td>{data.Otr_ing}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>
+                      Detalle otros ingresos mensuales (diferentes a su
+                      actividad económica principal)
+                    </th>
+                    <th>Total activos $</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Det_otr}</td>
+                    <td>{data.To_act}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Total pasivos $</th>
+                    <th>Total egresos mensuales $</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.To_pa}</td>
+                    <td>{data.To_egr}</td>
+                  </tr>
+                </tbody>
+                <thead className="">
+                  <tr>
+                    <th>Ventas anuales $</th>
+                    <th>Fecha de cierre de ventas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={data.No_ide}>
+                    <td>{data.Vent_a}</td>
+                    <td>{data.Fe_ci}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
-
       </div>
     </div>
   );

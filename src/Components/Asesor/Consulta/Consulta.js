@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Table from 'react-bootstrap/Table'
-import './Consulta.css'
+import Table from "react-bootstrap/Table";
+import "./Consulta.css";
 import { AppContext } from "../../../stateManagement/provider";
 
 const Consulta = () => {
   let Navigate = useNavigate();
   const [data, setData] = useContext(AppContext);
+
   return (
     <div className="fondobg">
       <div className="inicio5">
@@ -26,7 +27,8 @@ const Consulta = () => {
           <div className="col-md-6" id="estilos_row">
             <div>
               <label>
-                <h3>Tipo de solicitud:</h3><b>Vinculacion</b>
+                <h3>Tipo de solicitud:</h3>
+                <b>Vinculacion</b>
               </label>
             </div>
           </div>
@@ -94,8 +96,7 @@ const Consulta = () => {
         </div>
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Consulta
+export default Consulta;

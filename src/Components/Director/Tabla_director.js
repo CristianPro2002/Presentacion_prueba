@@ -17,81 +17,17 @@ import ModalInsertar from "../Modal/Minsertar";
 import ModalSolicitud from "../Modal/Msolicitud";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import Badge from 'react-bootstrap/Badge';
+import Badge from "react-bootstrap/Badge";
+import { useDirector } from "../hooks/useDirector";
 
 export const Tabla_director = () => {
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-  const baseUrlUser = "http://localhost:8080/Banca/bd_crud/user.php";
-  const solicitudReg = "http://localhost:8080/Banca/bd_crud/solicitud1.php";
-  const solicitudReg2 = "http://localhost:8080/Banca/bd_crud/solicitud2.php";
-  const [data2, setData2] = useState([]);
-  const [dato, setDato] = useState([]);
-  const [solicitud, setSolicitud] = useState([]);
-  const [solicitud2, setSolicitud2] = useState([]);
-  const [tablaUsuarios, setTablaUsuarios] = useState([]);
+  
   const [busqueda, setBusqueda] = useState("");
   const [modalInsertar, setModalInsetar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-  const [dataUsuario, setDataUsuario] = useState({
-    Id_usu: "",
-    Usuario: "",
-    Contra: "",
-    Idti_rol: "",
-  });
 
   let Navigate = useNavigate();
-
-  const peticionGetData = async () => {
-    await axios
-      .get(baseUrlUser)
-      .then((response) => {
-        setData2(response.data);
-        setTablaUsuarios(response.data);
-      })
-      .catch((error) => {
-        return alert(error);
-      });
-  };
-
-  const peticionGet3 = async () => {
-    await axios.get(solicitudReg).then((response) => {
-      setSolicitud(response.data);
-    });
-  };
-
-  const peticionGet4 = async () => {
-    await axios.get(solicitudReg2).then((response) => {
-      setSolicitud2(response.data);
-    });
-  };
-
-  const peticionPost = async () => {
-    var f = new FormData();
-    f.append("Id_usu", dataUsuario.Id_usu);
-    f.append("Usuario", dataUsuario.Usuario);
-    f.append("Contra", dataUsuario.Contra);
-    f.append("Idti_rol", dataUsuario.Idti_rol);
-    f.append("METHOD", "POST");
-    await axios
-      .post(baseUrl, f)
-      .then((response) => {
-        setData2(data2.concat(response.data));
-        abrirCerrarModalInsertar();
-        peticionGetData();
-      })
-      .catch((error) => {
-        return alert(error);
-      });
-  };
-
-  const peticionGetRoles = async () => {
-    var f = new FormData();
-    f.append("METHOD", "ROLES");
-    await axios.post(baseUrl, f).then((response) => {
-      setDato(response.data);
-    });
-  };
 
   const abrirCerrarModalInsertar = () => {
     setModalInsetar(!modalInsertar);
@@ -135,34 +71,6 @@ export const Tabla_director = () => {
     caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
   };
 
-  const peticionPut = async () => {
-    var f = new FormData();
-    f.append("Id_usu", dataUsuario.Id_usu);
-    f.append("Usuario", dataUsuario.Usuario);
-    f.append("Contra", dataUsuario.Contra);
-    f.append("Idti_rol", dataUsuario.Idti_rol);
-    f.append("METHOD", "PUT");
-    await axios
-      .post(baseUrl, f, { params: { Id_usu: dataUsuario.Id_usu } })
-      .then((response) => {
-        var dataNueva = data2;
-        dataNueva.map((Usuario) => {
-          if (Usuario.Id_usu === dataUsuario.Id_usu) {
-            Usuario.Id_usu = dataUsuario.Id_usu;
-            Usuario.Usuario = dataUsuario.Usuario;
-            Usuario.Contra = dataUsuario.Contra;
-            Usuario.Idti_rol = dataUsuario.Idti_rol;
-          }
-        });
-        setData2(dataNueva);
-        abrirCerrarModalEditar();
-        peticionGetData();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const abrirCerrarModalEditar = () => {
     setModalEditar(!modalEditar);
   };
@@ -171,24 +79,9 @@ export const Tabla_director = () => {
     setModalEliminar(!modalEliminar);
   };
 
-  const peticionDelete = async () => {
-    var f = new FormData();
-    f.append("METHOD", "DELETE");
-    await axios
-      .post(baseUrl, f, { params: { Id_usu: dataUsuario.Id_usu } })
-      .then((response) => {
-        setData2(
-          data2.filter((Usuario) => Usuario.Id_usu !== dataUsuario.Id_usu)
-        );
-        abrirCerrarModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(faEyeSlash);
+
   const handleToggle = () => {
     if (type === "password") {
       setIcon(faEye);
@@ -207,9 +100,7 @@ export const Tabla_director = () => {
     document
       .getElementById("background__blur")
       .setAttribute("style", "visibility:visible");
-    document
-      .getElementById("father01")
-      .setAttribute("style", "display:none;");
+    document.getElementById("father01").setAttribute("style", "display:none;");
   };
   const cerrarp = (e) => {
     document
@@ -236,9 +127,9 @@ export const Tabla_director = () => {
     document
       .getElementById("ventana_modal3")
       .setAttribute("style", "visibility:visible; top:50%;");
-      document
+    document
       .getElementById("ventana_modalp")
-      .setAttribute("style", "display:none;");  
+      .setAttribute("style", "display:none;");
   };
 
   const cerrar = (e) => {
@@ -256,7 +147,7 @@ export const Tabla_director = () => {
       .setAttribute("style", "display:none;");
     document
       .getElementById("ventana_modalp")
-      .setAttribute("style", "visibility:visible; top:50%;");  
+      .setAttribute("style", "visibility:visible; top:50%;");
   };
 
   const abrir2 = (e) => {
@@ -265,11 +156,11 @@ export const Tabla_director = () => {
       .setAttribute("style", "visibility:visible; top:50%;");
   };
 
-  const abrir3 = (e) =>{
+  const abrir3 = (e) => {
     document
       .getElementById("ventana_modal4")
       .setAttribute("style", "visibility:visible; top:50%;");
-  }
+  };
 
   const cerrar2 = (e) => {
     document
@@ -277,7 +168,7 @@ export const Tabla_director = () => {
       .setAttribute("style", "display:none;");
     document
       .getElementById("ventana_modal4")
-      .setAttribute("style", "display:none;") 
+      .setAttribute("style", "display:none;");
   };
 
   const cerrarT = (e) => {
@@ -290,34 +181,42 @@ export const Tabla_director = () => {
   };
 
   const fatherSolid = () => {
-    peticionGet3();
-    peticionGet4();
+    DirectorActions.peticionGet3();
+    DirectorActions.peticionGet4();
     abrirp();
-  }
+  };
+
+  const {
+    data2,
+    setData2,
+    tablaUsuarios,
+    solicitud,
+    setSolicitud,
+    solicitud2,
+    setSolicitud2,
+    dato,
+    dataUsuario,
+    setDataUsuario,
+    DirectorActions,
+  } = useDirector({
+    abrirCerrarModalInsertar,
+    abrirCerrarModalEditar,
+    abrirCerrarModalEliminar,
+  });
 
   const Num = solicitud.length + solicitud2.length;
- 
+
   const timeSoli = () => {
-    setInterval(peticionGet3, 5000);
-    setInterval(peticionGet4, 5000);
-  }
+    setInterval(DirectorActions.peticionGet3, 5000);
+    setInterval(DirectorActions.peticionGet4, 5000);
+  };
 
   useEffect(() => {
-    peticionGet3();
+    DirectorActions.peticionGetRoles();
+    DirectorActions.peticionGetData();
+    DirectorActions.peticionGet3();
+    DirectorActions.peticionGet4();
   }, []);
-
-  useEffect(() => {
-    peticionGet4();
-  }, []);
-
-  useEffect(() => {
-    peticionGetData();
-  }, []);
-
-  useEffect(() => {
-    peticionGetRoles();
-  }, []);
-
 
   return (
     <>
@@ -378,45 +277,51 @@ export const Tabla_director = () => {
 
         <div className="conttable">
           <div className="cont-desc01">
-          <Table striped borderless hover responsive="sm" className="Table-user01">
-            <thead>
-              <tr>
-                <th className="ocultarid">Id</th>
-                <th>Nombre del usuario</th>
-                <th>Contraseña </th>
-                <th>Tipo de rol </th>
-                <th>Funcionalidades</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(data2).map(([key, value]) => (
-                <tr key={value.Id_usu}>
-                  <td className="ocultarid">{value.Id_usu}</td>
-                  <td>{value.Usuario}</td>
-                  <td>{value.Contra}</td>
-                  <td>{value.Nom_rol}</td>
-                  <td>
-                    <button
-                      id="boton_verde_tabla"
-                      className="btn btn-primary"
-                      onClick={() => seleccionarUsuario(value, "Editar")}
-                    >
-                      <FontAwesomeIcon icon={faPen} />
-                    </button>
-                    &nbsp;
-                    <button
-                      id="boton_danger_rojo"
-                      className="btn btn-danger"
-                      onClick={() => seleccionarUsuario(value, "Eliminar")}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                  </td>
+            <Table
+              striped
+              borderless
+              hover
+              responsive="sm"
+              className="Table-user01"
+            >
+              <thead>
+                <tr>
+                  <th className="ocultarid">Id</th>
+                  <th>Nombre del usuario</th>
+                  <th>Contraseña </th>
+                  <th>Tipo de rol </th>
+                  <th>Funcionalidades</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+              </thead>
+              <tbody>
+                {Object.entries(data2).map(([key, value]) => (
+                  <tr key={value.Id_usu}>
+                    <td className="ocultarid">{value.Id_usu}</td>
+                    <td>{value.Usuario}</td>
+                    <td>{value.Contra}</td>
+                    <td>{value.Nom_rol}</td>
+                    <td>
+                      <button
+                        id="boton_verde_tabla"
+                        className="btn btn-primary"
+                        onClick={() => seleccionarUsuario(value, "Editar")}
+                      >
+                        <FontAwesomeIcon icon={faPen} />
+                      </button>
+                      &nbsp;
+                      <button
+                        id="boton_danger_rojo"
+                        className="btn btn-danger"
+                        onClick={() => seleccionarUsuario(value, "Eliminar")}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
       <ModalSolicitud
@@ -429,8 +334,8 @@ export const Tabla_director = () => {
         cerrarp={cerrarp}
         solicitud={solicitud}
         setSolicitud={setSolicitud}
-        peticionGet3={peticionGet3}
-        peticionGet4={peticionGet4}
+        peticionGet3={DirectorActions.peticionGet3}
+        peticionGet4={DirectorActions.peticionGet4}
         solicitud2={solicitud2}
         setSolicitud2={setSolicitud2}
         abrirpj={abrirpj}
@@ -443,7 +348,7 @@ export const Tabla_director = () => {
         icon={icon}
         type={type}
         dato={dato}
-        peticionPost={peticionPost}
+        peticionPost={DirectorActions.peticionPost}
         abrirCerrarModalInsertar={abrirCerrarModalInsertar}
         modalInsertar={modalInsertar}
       />
@@ -452,14 +357,14 @@ export const Tabla_director = () => {
         handleChange={handleChange}
         modalEditar={modalEditar}
         dato={dato}
-        peticionPut={peticionPut}
+        peticionPut={DirectorActions.peticionPut}
         abrirCerrarModalEditar={abrirCerrarModalEditar}
       />
 
       <ModalEliminar
         modalEliminar={modalEliminar}
         dataUsuario={dataUsuario}
-        peticionDelete={peticionDelete}
+        peticionDelete={DirectorActions.peticionDelete}
         abrirCerrarModalEliminar={abrirCerrarModalEliminar}
       />
     </>

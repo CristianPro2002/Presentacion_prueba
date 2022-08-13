@@ -37,8 +37,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     validacion.focus();
   };
 
-  const { AsesorActions, dataUsuario, setDataUsuario } =
-    useAsesor();
+  const { AsesorActions, dataUsuario, setDataUsuario } = useAsesor();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -80,23 +79,24 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                   <div className="row" id="con">
                     <div className="contj">
                       <div className="col" id="contenedor1">
-                        <img className="PJ" alt="" src={personaj} />
-                        <form onSubmit={handleSubmit}>
-                          <input
-                            placeholder="Ingrese el Nit"
-                            type="number"
-                            className="campo1"
-                            name="Nit"
-                            onChange={handleChange}
-                          ></input>
-                          <button
-                            type="submit"
-                            className="consultar1"
-                            onClick={() => AsesorActions.peticionGet()}
-                          >
-                            Consultar
-                          </button>
-                        </form>
+                        <div className="cont-imgasesor01">
+                          <form onSubmit={handleSubmit}>
+                            <input
+                              placeholder="Ingrese el Nit"
+                              type="number"
+                              className="campo1"
+                              name="Nit"
+                              onChange={handleChange}
+                            ></input>
+                            <button
+                              type="submit"
+                              className="consultar1"
+                              onClick={() => AsesorActions.peticionGet()}
+                            >
+                              Consultar
+                            </button>
+                          </form>
+                        </div>
 
                         <div className="cdesplegable1">
                           <Form.Select
@@ -126,8 +126,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
 
                     <div className="conn">
                       <div className="col" id="contenedor1">
-                        <img className="PN" alt="" src={personan} />
-                        <div className="cont34">
+                        <div className="cont-imgasesor02">
                           <form
                             className="formulariocon"
                             onSubmit={handleSubmit}
@@ -148,7 +147,6 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                             </button>
                           </form>
                         </div>
-
                         <div className="cdesplegable2">
                           <Form.Select
                             aria-label="Default select example"

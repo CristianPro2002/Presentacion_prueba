@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-08-2022 a las 08:19:21
+-- Tiempo de generación: 13-08-2022 a las 02:51:52
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `act_cli` (
   `Idact_cli` int NOT NULL COMMENT 'Identificacion de actividad de cliente',
-  `Id_act` int DEFAULT NULL COMMENT 'Identificacion del cliente',
+  `Id_act` double DEFAULT NULL COMMENT 'Identificacion del cliente',
   `Fe_act` datetime DEFAULT NULL COMMENT 'Fecha de actividad',
   `ti_pro` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Identificacion de tipo de producto',
   `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor de actividad',
@@ -43,15 +43,32 @@ CREATE TABLE `act_cli` (
 --
 
 INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
-(15, 11111111, '2022-08-24 15:35:00', 'undefined', '54645332', 'Cajero2', NULL, 551389),
-(16, 435436, '2022-08-17 15:35:00', 'Consignación', '6645', 'Cajero2', 137627, NULL),
-(17, 11111111, '2022-08-09 23:07:00', 'Consignación', '567676', 'Cajero1', NULL, 551389),
-(18, 435436, '2022-08-10 23:10:00', 'Retiro', '334343', 'Cajero3', 137627, NULL),
-(19, 11111111, '2022-08-10 23:11:00', 'Consignación', '343232', 'Cajero4', NULL, 551389),
-(20, 435436, '2022-08-24 23:12:00', 'Apertura de Cuenta', '54454', 'Cajero5', 137627, NULL),
-(21, 11111111, '2022-08-10 23:15:00', 'Consignación', '3433', 'Cajero2', NULL, 551389),
-(22, 11111111, '2022-08-11 03:17:00', 'Apertura de Cuenta', '1111111', 'Cajero3', NULL, 551389),
-(23, 435436, '2022-08-10 03:18:00', 'Retiro', '222222', 'Cajero5', 137627, NULL);
+(45, 435436, '2022-08-20 21:44:00', 'Consignación', '400000', 'Cajero2', 137627, NULL),
+(46, 11111111, '2022-08-18 21:46:00', 'Retiro', '150000', 'Cajero2', NULL, 551389),
+(47, 435436, '2022-08-12 21:50:00', 'Apertura de Cuenta', '100000', 'Cajero1', 137627, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `act_val`
+--
+
+CREATE TABLE `act_val` (
+  `Id_act_val` int NOT NULL,
+  `Id_client` double DEFAULT NULL COMMENT 'Identificacion  del ciente',
+  `ti_product` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de producto',
+  `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor por cajero',
+  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='(F) Actividad de cliente solo los valores y tipo de producto';
+
+--
+-- Volcado de datos para la tabla `act_val`
+--
+
+INSERT INTO `act_val` (`Id_act_val`, `Id_client`, `ti_product`, `Valor`, `No_cajero`) VALUES
+(11, 435436, 'Consignación', '400000', 'Cajero2'),
+(12, 11111111, 'Retiro', '150000', 'Cajero2'),
+(13, 435436, 'Apertura de Cuenta', '100000', 'Cajero1');
 
 -- --------------------------------------------------------
 
@@ -387,7 +404,10 @@ CREATE TABLE `est_soli` (
 --
 
 INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
-(16, 435436, 'Aprobada', 'La solicitud fue aprobada');
+(16, 435436, 'Aprobada', 'La solicitud fue aprobada'),
+(17, 435436, 'Aprobada', 'La solicitud fue aprobada'),
+(18, 435436, 'Aprobada', 'La solicitud fue aprobada'),
+(19, 123, 'Denegada', 'por bobo');
 
 -- --------------------------------------------------------
 
@@ -401,6 +421,16 @@ CREATE TABLE `est_solij` (
   `Esta_soj` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud de la entidad',
   `Des_solij` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de solicitud de persona juridica';
+
+--
+-- Volcado de datos para la tabla `est_solij`
+--
+
+INSERT INTO `est_solij` (`Idest_solij`, `idclientj`, `Esta_soj`, `Des_solij`) VALUES
+(9, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
+(10, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
+(11, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
+(12, 11111111, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -477,6 +507,13 @@ CREATE TABLE `reg_soli` (
   `No_ide` double NOT NULL COMMENT 'Numero de identificacion del cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Registros de solicitudes';
 
+--
+-- Volcado de datos para la tabla `reg_soli`
+--
+
+INSERT INTO `reg_soli` (`Id_reg`, `No_ide`) VALUES
+(36, 123);
+
 -- --------------------------------------------------------
 
 --
@@ -493,7 +530,7 @@ CREATE TABLE `reg_solij` (
 --
 
 INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
-(9, 11111111);
+(12, 11111111);
 
 -- --------------------------------------------------------
 
@@ -1073,6 +1110,12 @@ ALTER TABLE `act_cli`
   ADD KEY `No_cuej` (`No_cuej`);
 
 --
+-- Indices de la tabla `act_val`
+--
+ALTER TABLE `act_val`
+  ADD PRIMARY KEY (`Id_act_val`);
+
+--
 -- Indices de la tabla `cla_contr`
 --
 ALTER TABLE `cla_contr`
@@ -1372,7 +1415,13 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=24;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT de la tabla `act_val`
+--
+ALTER TABLE `act_val`
+  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`
@@ -1408,13 +1457,13 @@ ALTER TABLE `ent_ti`
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=17;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
-  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=9;
+  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `prueba`
@@ -1426,19 +1475,19 @@ ALTER TABLE `prueba`
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=33;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=10;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
 --
 ALTER TABLE `reg_usu`
-  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=47;
+  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `repr_le`

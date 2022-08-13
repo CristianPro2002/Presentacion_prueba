@@ -32,9 +32,11 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     let Estado = true;
     if (dataUsuario.No_cuenta == getCuentaC.map((cuenta) => cuenta.No_cuenta)) {
       CajeroActions.peticionPost(Estado);
+      CajeroActions.peticionPostFalse();
     } else {
       Estado = false;
       CajeroActions.peticionPost(Estado);
+      CajeroActions.peticionPostFalse();
     }
   };
 

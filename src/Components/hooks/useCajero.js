@@ -38,7 +38,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
   };
 
   const peticionPost = async (Estado) => {
-    //console.log(dataUsuario)
+
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
@@ -50,6 +50,21 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("METHOD", "POSTGET");
     await axios.post(baseUrl, f).then((response) => {
       setData(data.concat(response.data));
+    });
+  };
+
+  const peticionPostFalse = async () => {
+
+    var f = new FormData();
+    f.append("Id_act", dataUsuario.Id_act);
+    f.append("Fecha_act", dataUsuario.Fecha_act);
+    f.append("Tip_pro", dataUsuario.Tip_pro);
+    f.append("Valor_act", dataUsuario.Valor_act);
+    f.append("Cajero", dataUsuario.Cajero);
+    f.append("No_cuenta", dataUsuario.No_cuenta);
+    f.append("METHOD", "POSTGETFALSE");
+    await axios.post(baseUrl, f).then((response) => {
+      console.log(response.data, "Realizado");
     });
   };
 
@@ -100,6 +115,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     peticionGetCajero,
     peticionGetCajero2,
     peticionGet,
+    peticionPostFalse,
   };
 
   return {

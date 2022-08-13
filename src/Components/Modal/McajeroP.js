@@ -11,7 +11,7 @@ export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
           Registros Cajero #1
         </ModalHeader>
         <ModalBody>
-          {datam1.map((data) => (
+          {datam1.length >= 1 ?  datam1.map((data) => (
             <div className="padreModals01">
               <div className="content-info">
                 <div>
@@ -45,7 +45,9 @@ export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
                 {data.No_cuej}
               </div>
             </div>
-          ))}
+          )):
+          <><div style={{backgroundColor: "red", color: "white", borderRadius: "10px", textAlign: "center"}}><h1><b>No hay registros</b></h1></div></>
+          }
         </ModalBody>
         <ModalFooter>
           <Button variant="danger" onClick={()=>handleShow()}>
@@ -64,7 +66,7 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
         <ModalHeader closeButton>
           Registros Cajero #2
         </ModalHeader>
-        <ModalBody> {datam2.map((data) => (
+        <ModalBody> { datam2.length >= 1 ? datam2.map((data) => (
             <div className="padreModals01">
               <div className="content-info">
                 <div>
@@ -98,7 +100,10 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
                 {data.No_cuej}
               </div>
             </div>
-          ))}</ModalBody>
+          )): 
+          <><div style={{backgroundColor: "red", color: "white", borderRadius: "10px", textAlign: "center"}}><h1><b>No hay registros</b></h1></div></>
+          } 
+          </ModalBody>
         <ModalFooter>
           <Button variant="danger" onClick={()=>handleShowDos()}>
             Cerrar
@@ -116,7 +121,7 @@ export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
         <ModalHeader closeButton>
           Registros Cajero #3
         </ModalHeader>
-        <ModalBody>{datam3.map((data) => (
+        <ModalBody>{datam3.length >= 1 ? datam3.map((data) => (
             <div className="padreModals01">
               <div className="content-info">
                 <div>
@@ -150,7 +155,9 @@ export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
                 {data.No_cuej}
               </div>
             </div>
-          ))}</ModalBody>
+          )):
+          <><div style={{backgroundColor: "red", color: "white", borderRadius: "10px", textAlign: "center"}}><h1><b>No hay registros</b></h1></div></>
+          }</ModalBody>
         <ModalFooter>
           <Button variant="danger" onClick={()=>handleShowTres()}>
             Cerrar
@@ -168,7 +175,7 @@ export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
         <ModalHeader closeButton>
           Registros Cajero #4
         </ModalHeader>
-        <ModalBody>{datam4.map((data) => (
+        <ModalBody>{datam4.length >= 1 ? datam4.map((data) => (
             <div className="padreModals01">
               <div className="content-info">
                 <div>
@@ -202,7 +209,9 @@ export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
                 {data.No_cuej}
               </div>
             </div>
-          ))}</ModalBody>
+          )):
+          <><div style={{backgroundColor: "red", color: "white", borderRadius: "10px", textAlign: "center"}}><h1><b>No hay registros</b></h1></div></>
+          }</ModalBody>
         <ModalFooter>
           <Button variant="danger" onClick={()=>handleShowCuatro()}>
             Cerrar
@@ -220,7 +229,7 @@ export const Mcajero5 = ({ handleShowCinco, mostrarCinco, datam5 }) => {
         <ModalHeader closeButton>
           Registros Cajero #5
         </ModalHeader>
-        <ModalBody>{datam5.map((data) => (
+        <ModalBody>{datam5.length >= 1 ? datam5.map((data) => (
             <div className="padreModals01">
               <div className="content-info">
                 <div>
@@ -254,7 +263,9 @@ export const Mcajero5 = ({ handleShowCinco, mostrarCinco, datam5 }) => {
                 {data.No_cuej}
               </div>
             </div>
-          ))}</ModalBody>
+          )):
+          <><div style={{backgroundColor: "red", color: "white", borderRadius: "10px", textAlign: "center"}}><h1><b>No hay registros</b></h1></div></>
+          }</ModalBody>
         <ModalFooter>
           <Button variant="danger" onClick={()=>handleShowCinco()}>
             Cerrar

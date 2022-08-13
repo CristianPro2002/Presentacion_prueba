@@ -58,10 +58,28 @@ if($_POST['METHOD']=='POSTGET'){
         $query = "insert into act_cli(Idact_cli,Id_Act,Fe_act,ti_pro,Valor,No_cajero,No_cuec,No_cuej) values (NULL,'$Id_act','$Fecha_act','$Tip_pro','$Valor_act','$Cajero',NULL,'$No_cuenta')";
         $queryAutoIncrement="select MAX(Idact_cli) as Idact_cli from frameworks";
         $resultado=metodoPost($query, $queryAutoIncrement);
-        echo json_encode($resultado); 
+        echo json_encode($resultado);
     }
     header("HTTP/1.1 200 OK");
     exit();  
+}
+
+if($_POST['METHOD']=='POSTGETFALSE'){
+    unset($_POST['METHOD']);
+    $Id_act=$_POST['Id_act'];
+    $Fecha_act=$_POST['Fecha_act'];
+    $Tip_pro=$_POST['Tip_pro'];
+    $Valor_act=$_POST['Valor_act'];
+    $Cajero=$_POST['Cajero'];
+    $No_cuenta=$_POST['No_cuenta'];
+    $Estado = $_POST['Estado'];
+
+    $query = "insert into act_val(Id_act_val,Id_client,ti_product,Valor,No_cajero) values (NULL,'$Id_act','$Tip_pro','$Valor_act','$Cajero')";
+    $queryAutoIncrement="select MAX(Id_act_val) as Id_act_val from frameworks";
+    $resultado=metodoPost($query, $queryAutoIncrement);
+    echo json_encode($resultado);
+    header("HTTP/1.1 200 OK");
+    exit();
 }
 
 if($_POST['METHOD']=='POST'){
@@ -107,10 +125,9 @@ if($_POST['METHOD']=='PUT'){
     exit();
 }
 
-if($_POST['METHOD']=='DELETE'){
+if($_POST['METHOD']=='DELETEVALUES'){
     unset($_POST['METHOD']);
-    $Id_usu=$_GET['Id_usu'];
-    $query="DELETE FROM reg_usu WHERE Id_usu='$Id_usu'";
+    $query="DELETE FROM act_val";
     $resultado=metodoDelete($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");

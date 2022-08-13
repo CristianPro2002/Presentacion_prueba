@@ -194,7 +194,95 @@ if($_POST['METHOD']=='CONSULTAM5'){
     exit();
 }
 
+if($_POST['METHOD']=='CONSULTAVALUE1'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero1' and (ti_product='Apertura de Cuenta' or ti_product='Consignacion')";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
 
+if($_POST['METHOD']=='CONSULTAVALUE2'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero2' and (ti_product='Apertura de Cuenta' or ti_product='Consignacion')";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUE3'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero3' and (ti_product='Apertura de Cuenta' or ti_product='Consignacion')";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUE4'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero4' and (ti_product='Apertura de Cuenta' or ti_product='Consignacion')";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUE5'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero5' and (ti_product='Apertura de Cuenta' or ti_product='Consignacion')";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUEREST1'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero1' and ti_product='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUEREST2'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero2' and ti_product='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUEREST3'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero3' and ti_product='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUEREST4'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero4' and ti_product='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTAVALUEREST5'){
+    unset($_POST['METHOD']);
+    $query="select * from act_val where No_cajero='Cajero5' and ti_product='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
 
 //Registro de Fomulario persona natural
 if($_POST['METHOD']=='FORMN'){

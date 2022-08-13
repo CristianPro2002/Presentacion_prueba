@@ -67,11 +67,8 @@
 }
 
 #comuncss{
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-border-radius: 10px;
-padding: 10px;
-background: #645a5a ;
-transition: all 1s;
+    filter: brightness(0.4);
+    padding: 0;
 }
 
 #EspecialGerente{

@@ -74,17 +74,11 @@ const Rolasesor = ({setisLoggedIn}) => {
               <h1 className="TituloR">Escoge tu rol</h1>
               <div className="colsito1" id="colsito">
                 <div id="comuncss">
-                  <img
-                    className="ImagenI"
-                    alt=""
-                    src={Directorimg}
-                    width="150"
-                    height="150"
-                  />
+                <div className="cont1-direct01">
+                    <h2 className="Title-general-Rol">Director</h2>
+                  </div>
+                  <div className="cont2-direct01">
                   <ul className="list-unstyled">
-                    <li>
-                      <b>Director</b>
-                    </li>
                     <div className="Formu">
                       <li>
                         <input
@@ -111,21 +105,16 @@ const Rolasesor = ({setisLoggedIn}) => {
                     </li>
                   </ul>
                 </div>
+                </div>
               </div>
               {/* column2 */}
               <div className="colsito2" id="colsito">
                 <div id="comuncss">
-                  <img
-                    className="ImagenI"
-                    alt=""
-                    src={Gerenteimg}
-                    width="150"
-                    height="150"
-                  />
+                <div className="cont1-gerent01">
+                    <h2 className="Title-general-Rol">Gerente</h2>
+                  </div>
+                  <div className="cont2-gerent01">
                   <ul className="list-unstyled">
-                    <li>
-                      <b>Gerente</b>
-                    </li>
                     <div className="Formu">
                       <li>
                         <li>
@@ -154,21 +143,17 @@ const Rolasesor = ({setisLoggedIn}) => {
                     </li>
                   </ul>
                 </div>
+                </div>
               </div>
               {/* column3 */}
               <div className="colsito3" id="colsito">
                 <div className="Fl" id="Flasesor01">
-                  <img
-                    className="ImagenI"
-                    alt=""
-                    src={Asesorimg}
-                    width="150"
-                    height="150"
-                  />
+                <div className="cont1-asesor01">
+                    <h2 className="Title-general-Rol">Asesor</h2>
+                  </div>
+                  <div className="cont2-asesor01">
                   <ul className="list-unstyled">
-                    <li>
-                      <b>Asesor</b>
-                    </li>
+            
                     <div className="Formu">
                       <li>
                         <Form.Select
@@ -201,21 +186,16 @@ const Rolasesor = ({setisLoggedIn}) => {
                     </li>
                   </ul>
                 </div>
+                </div>
               </div>
 
               <div className="colsito4" id="colsito">
                 <div id="comuncss">
-                  <img
-                    className="ImagenI"
-                    alt=""
-                    src={Cajeroimg}
-                    width="150"
-                    height="150"
-                  />
+                <div className="cont1-cajero01">
+                    <h2 className="Title-general-Rol">Cajero</h2>
+                  </div>
+                  <div className="cont2-cajero01">
                   <ul className="list-unstyled">
-                    <li>
-                      <b>Cajero</b>
-                    </li>
                     <div className="Formu">
                       <li>
                         <Form.Select
@@ -249,21 +229,16 @@ const Rolasesor = ({setisLoggedIn}) => {
                     </li>
                   </ul>
                 </div>
+                </div>
               </div>
 
               <div className="colsito5" id="colsito">
                 <div id="comuncss">
-                  <img
-                    className="ImagenI"
-                    alt=""
-                    src={Cajeropimg}
-                    width="150"
-                    height="150"
-                  />
+                <div className="cont1-cajerop01">
+                    <h2 className="Title-general-Rol">Cajero Principal</h2>
+                  </div>
+                  <div className="cont2-cajerop01">
                   <ul className="list-unstyled">
-                    <li>
-                      <b>Cajero Principal</b>
-                    </li>
                     <div className="Formu">
                       <li>
                         <input
@@ -289,6 +264,7 @@ const Rolasesor = ({setisLoggedIn}) => {
                       </button>
                     </li>
                   </ul>
+                </div>
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 .modoO{
     float: right;
     border-style: none;
@@ -79,42 +80,98 @@ width: 8%;
 
 .Fl{
     
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 10px;
-padding: 10px;
-background: #ffffff ;
+background: #F2F2F2;
 transition: all 1s;
 }
 
 .Fl:hover {
     transition: all 1s;
     transform: translateY(-5px);
-    
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.24);
+    background: #ffffff;
 }
 
-#Flasesor01:hover{
-    background-image: url("../../../assets/Imagenes_R/ImgAsesor.webp");
+.cont1-asesor01{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../../../assets/Imagenes_R/asesor_financierio.webp");
     background-size: cover;
-    color: white !important;
-}
-#Fldirector01:hover{
-    background-image: url("../../../assets/Imagenes_R/ImgDirector.webp");
-    background-size: cover;
-    color: white !important;
-}
-#Flcajero01:hover{
-    background-image: url("../../../assets/Imagenes_R/ImgCajero.webp");
-    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
 }
 
-#Flgerente01:hover{
-    background-image: url("../../../assets/Imagenes_R/ImgGerente.webp");
-    background-size: cover;
+.cont2-asesor01{
+padding: 5px;
 }
-#Flcajerop01:hover{
-    background-image: url("../../../assets/Imagenes_R/ImgCajerop.webp");
+
+.cont1-direct01{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../../../assets/Imagenes_R/ImgDirector.webp");
     background-size: cover;
-    color: white !important;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.Title-general-Rol{
+    position: absolute;
+    bottom: 0;
+    padding-left: 10px;
+    font-family: 'Bree Serif', serif;
+}
+
+.cont2-direct01{
+padding: 5px;
+}
+
+.cont1-cajero01{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../../../assets/Imagenes_R/cajeroAsesor.webp");
+    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.cont2-cajero01{
+padding: 5px;
+}
+
+.cont1-gerent01{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../../../assets/Imagenes_R/gerente01.webp");
+    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.cont2-gerent01{
+padding: 5px;
+}
+
+.cont1-cajerop01{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("../../../assets/Imagenes_R/ImgCajerop.webp");
+    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.cont2-cajerop01{
+padding: 5px;
 }
 
 .fondo2{

@@ -15,14 +15,16 @@ import DashboardRoutes from "../../../routes/DashboardRoutes";
 import { AppContext } from "../../../stateManagement/provider";
 import { User } from "../../Private/Roles/Roles";
 import { useLogin } from "../../../Components/hooks/useLogin";
+import useAuthContext from "../../../Components/hooks/useAuthContext";
 
-const App = ({setisLoggedIn}) => {
+const App = () => {
   const [usuario, cambiarUsuario] = useState({ campo: "", valido: null });
   const [password, cambiarPassword] = useState({ campo: "", valido: null });
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const [data2, setData2] = useContext(AppContext);
   const [dataUser, setDataUser] = useState([]);
   const {URL_LOGIN, LoginActions} = useLogin();
+  const {login} = useAuthContext();
 
   let Navigate = useNavigate();
 
@@ -50,42 +52,49 @@ const App = ({setisLoggedIn}) => {
     const Rol = respuestaJson.Idti_rol;
     const Usuario = respuestaJson.Usuario;
     const conectado = respuestaJson.conectado;
+   
     if ((conectado === true) & (Rol == "1")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", Usuario);
       setData2("/Roles");
-      setisLoggedIn(true);
+      login();
     } else if ((conectado === true) & (Rol == "2")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", Usuario);
       setData2("/Rasesor");
-      setisLoggedIn(true);
+      login();
     } else if ((conectado === true) & (Rol == "3")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", Usuario);
       setData2("/Rgerente");
-      setisLoggedIn(true);
+      login();
     } else if ((conectado === true) & (Rol == "4")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", Usuario);
       setData2("/Rcajero");
-      setisLoggedIn(true);
+      login();
     } else if ((conectado === true) & (Rol == "5")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", Usuario);
       setData2("/rcajerop");
-      setisLoggedIn(true);
+      login();
     } else if (usuario.valido === "true" && password.valido === "true") {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
+      localStorage.setItem("User", "ADMIN");
       setData2("/Roles");
-      setisLoggedIn(true);
+      login();
     } else {
       cambiarFormularioValido(false);
     }

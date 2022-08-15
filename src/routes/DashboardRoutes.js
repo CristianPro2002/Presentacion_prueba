@@ -21,7 +21,7 @@ import Rolgerente from "../pages/Private/Roles/Rgerente/Rolgerente";
 import Rolcajero from "../pages/Private/Roles/Rcajero/Rolcajero";
 import Rolcajerop from "../pages/Private/Roles/Rcajerop/Rolcajerop";
 import { AppContext } from "../stateManagement/provider";
-const DashboardRoutes = ({ setisLoggedIn }) => {
+const DashboardRoutes = () => {
     const [data2, setData2] = useContext(AppContext);
     return (
         <>
@@ -29,7 +29,7 @@ const DashboardRoutes = ({ setisLoggedIn }) => {
                 <Route path="/Asesor" element={<Asesor  />}/>
                 <Route path="/Gerente" element={<Gerente />}/>
                 <Route path="/Director" element={<><Director /><Funcionamiento_form /></>}/>
-                <Route path="/Roles" element={<Roles setisLoggedIn={setisLoggedIn}/>}/>
+                <Route path="/Roles" element={<Roles/>}/>
                 <Route path="/PersonaJuridica" element={<PersonaJuridica />}/>  
                 <Route path="/PersonaNatural" element={<PersonaNatural />}/>
                 <Route path="/Asesor2" element={<Asesor2 />}/>  
@@ -54,10 +54,10 @@ const DashboardRoutes = ({ setisLoggedIn }) => {
                 <Route path="/Cajero4" element={<Cajero4 />}/>
                 <Route path="/Cajero5" element={<Cajero5 />}/>
                 <Route path="/Tabla" element={<Tabla />}/> 
-                <Route path="/Rcajerop" element={<Rolcajerop setisLoggedIn={setisLoggedIn}/>}/>
-                <Route path="/Rcajero" element={<Rolcajero setisLoggedIn={setisLoggedIn}/>}/>
-                <Route path="/Rgerente" element={<Rolgerente setisLoggedIn={setisLoggedIn}/>}/>
-                <Route path="/Rasesor" element={<Rolasesor setisLoggedIn={setisLoggedIn}/>}/>
+                <Route path="/Rcajerop" element={<Rolcajerop />}/>
+                <Route path="/Rcajero" element={<Rolcajero />}/>
+                <Route path="/Rgerente" element={<Rolgerente />} />
+                <Route path="/Rasesor" element={<Rolasesor />}/>
                 <Route path="/AsesorD1" element={<AsesorD1 />}/>
                 <Route path="/AsesorD2" element={<AsesorD2 />}/>
                 <Route path="/AsesorD3" element={<AsesorD3 />}/>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,10 +12,14 @@ import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
 import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
+import useAuthContext from "../../../Components/hooks/useAuthContext";
 
-const Roles = ({ setisLoggedIn, userName }) => {
+const Roles = () => {
   const notify = () => toast("  Selecciona un numero de rol❕");
+  const { logout } = useAuthContext();
   let Navigate = useNavigate();
+
+  const [estadoUser, setEstadoUser] = useState(false);
 
   const validar3 = (e) => {
     var validacion = document.getElementById("Asesorv");
@@ -37,6 +41,13 @@ const Roles = ({ setisLoggedIn, userName }) => {
     } else notify();
     validacion.focus();
   };
+
+  const cerrarSesion = (e) => {
+    logout();
+    localStorage.removeItem("User");
+  };
+
+  const Usuario = localStorage.getItem("User");
 
   const validar4 = (e) => {
     var validacion = document.getElementById("cajerov");
@@ -64,29 +75,19 @@ const Roles = ({ setisLoggedIn, userName }) => {
       <div className="fondo" id="dark-mode">
         <div className="fondo2">
           <div className="f2">
-            <i
-              class="bi bi-arrow-left-circle-fill"
-              id="cir"
-              onClick={() => setisLoggedIn(false)}
-            ></i>
-            {/*
-            <div class="dropdown">
-  <button className="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  <img
-                    className="imagen01"
-                    alt=""
-                    src={Usuariecito}
-                  />
-  </button>
-  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
-  </ul>
-</div>
-  */}
+            <div className="cont-cerrar01">
+              <button
+                className="btn btn-danger"
+                onClick={() => cerrarSesion()}
+                id="btn-cerrar01"
+              >
+                Cerrar Sesion
+              </button>
+            </div>
           </div>
           <div className="Croles">
             <div className="row" id="rows">
-              <h3 className="regis">Registrado con: {userName} </h3>
+              <h3 className="regis">Registrado con: {Usuario} </h3>
               <h1 className="TituloR">Escoge tu rol</h1>
               <div className="colsito1" id="colsito">
                 <div className="Fl" id="Fldirector01">

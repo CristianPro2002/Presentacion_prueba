@@ -1,10 +1,10 @@
 import React from 'react'
 import App from '../pages/Public/Inicio_sesion/InicioS'
 
-const Index = ({setisLoggedIn}) => {
+const Index = () => {
     return (
         <div>
-            <App setisLoggedIn={setisLoggedIn}/>
+            <App/>
         </div>
     )
 }

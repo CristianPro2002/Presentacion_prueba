@@ -4,19 +4,20 @@ import DashboardRoutes from './DashboardRoutes';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import Index from "../Components/Index";
+import useAuthContext from '../Components/hooks/useAuthContext';
 const AppRouter = () => {
-    const [isLoggedIn, setisLoggedIn] = React.useState(false)
+    const {isAuthenticated} = useAuthContext();
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={
-                    <PublicRoute isAuthenticated={isLoggedIn}>
-                        <Index setisLoggedIn={setisLoggedIn} />
+                    <PublicRoute isAuthenticated={isAuthenticated}>
+                        <Index />
                     </PublicRoute>
                 } />
                 <Route path="/*" element={
-                    <PrivateRoute isAuthenticated={isLoggedIn}>
-                        <DashboardRoutes setisLoggedIn={setisLoggedIn} />                   
+                    <PrivateRoute isAuthenticated={isAuthenticated}>
+                        <DashboardRoutes />                   
                     </PrivateRoute>
                 } />
             </Routes>

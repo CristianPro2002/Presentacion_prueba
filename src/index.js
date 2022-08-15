@@ -6,11 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import AppRouter from './routes/AppRouter';
 import MyProvider from './stateManagement/provider';
+import AuthProvider from './stateManagement/authContexts';
 
 ReactDOM.render(
   <React.StrictMode>
     <MyProvider>
+      <AuthProvider>
     <AppRouter />
+    </AuthProvider>
     </MyProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-08-2022 a las 21:17:56
+-- Tiempo de generación: 15-08-2022 a las 21:30:24
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -45,7 +45,9 @@ CREATE TABLE `act_cli` (
 INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
 (45, 435436, '2022-08-20 21:44:00', 'Consignación', '400000', 'Cajero2', 137627, NULL),
 (46, 11111111, '2022-08-18 21:46:00', 'Retiro', '150000', 'Cajero2', NULL, 551389),
-(47, 435436, '2022-08-12 21:50:00', 'Apertura de Cuenta', '100000', 'Cajero1', 137627, NULL);
+(47, 435436, '2022-08-12 21:50:00', 'Apertura de Cuenta', '100000', 'Cajero1', 137627, NULL),
+(48, 435436, '2022-08-08 14:17:00', 'Consignación', '200000', 'Cajero3', 137627, NULL),
+(49, 11111111, '2022-08-25 16:27:00', 'Consignación', '200000', 'Cajero5', NULL, 551389);
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,9 @@ CREATE TABLE `act_val` (
 INSERT INTO `act_val` (`Id_act_val`, `Id_client`, `ti_product`, `Valor`, `No_cajero`) VALUES
 (11, 435436, 'Consignación', '400000', 'Cajero2'),
 (12, 11111111, 'Retiro', '150000', 'Cajero2'),
-(13, 435436, 'Apertura de Cuenta', '100000', 'Cajero1');
+(13, 435436, 'Apertura de Cuenta', '100000', 'Cajero1'),
+(14, 435436, 'Consignación', '200000', 'Cajero3'),
+(15, 11111111, 'Consignación', '200000', 'Cajero5');
 
 -- --------------------------------------------------------
 
@@ -1415,13 +1419,13 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=48;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `act_val`
 --
 ALTER TABLE `act_val`
-  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`

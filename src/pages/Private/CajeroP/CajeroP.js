@@ -104,7 +104,7 @@ const CajeroP = () => {
     CajeroPactions.ConsultaRest3();
     CajeroPactions.ConsultaRest4();
     CajeroPactions.ConsultaRest5();
-  }, []);
+  }, 8000);
 
   const initialValue = 0;
   const sumCaj1 = value1

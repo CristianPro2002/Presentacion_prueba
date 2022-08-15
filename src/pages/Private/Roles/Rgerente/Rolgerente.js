@@ -11,8 +11,10 @@ import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
 import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
+import useAuthContext from "../../../../Components/hooks/useAuthContext";
 
-const Rolgerente = ({ setisLoggedIn }) => {
+const Rolgerente = () => {
+  const { logout } = useAuthContext();
   const notify = () =>
     toast("  Sin permisos para acceder a esta funcionalidad❕");
   let Navigate = useNavigate();
@@ -31,20 +33,31 @@ const Rolgerente = ({ setisLoggedIn }) => {
     notify();
   };
 
+  const cerrarSesion = (e) => {
+    logout();
+    localStorage.removeItem("User");
+  };
+
+  const Usuario = localStorage.getItem("User");
+
   return (
     <div className="principal2">
       <div className="fondo" id="dark-mode">
         <div className="fondo2">
           <div className="f2">
-            <i
-              class="bi bi-arrow-left-circle-fill"
-              id="cir"
-              onClick={() => setisLoggedIn(false)}
-            ></i>
+            <div className="cont-cerrar01">
+              <button
+                className="btn btn-danger"
+                onClick={() => cerrarSesion()}
+                id="btn-cerrar01"
+              >
+                Cerrar Sesion
+              </button>
+            </div>
           </div>
           <div className="Croles">
             <div className="row" id="rows">
-              <h3 className="regis">Registrado con: {"hola"} </h3>
+              <h3 className="regis">Registrado con: {Usuario} </h3>
               <h1 className="TituloR">Escoge tu rol</h1>
               <div className="colsito1" id="colsito">
                 <div id="comuncss">

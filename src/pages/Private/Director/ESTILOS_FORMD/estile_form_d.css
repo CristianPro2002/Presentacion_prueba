@@ -612,7 +612,7 @@ justify-content: end;
 
 @media (max-width:770px){
   .icon_eye{
-    right: 5px ;
+    right: 20px ;
     padding-bottom: 10px;
     
   }

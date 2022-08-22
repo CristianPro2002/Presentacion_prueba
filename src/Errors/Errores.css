@@ -1,0 +1,27 @@
+.imagenerror{
+    border-radius: 20px;
+}
+
+.contenedorError{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+}
+.centarttitle{
+    text-align: center;
+    color: white;
+}
+.centrar_boton{
+    text-align: center;
+}
+.centrar_parrafo{
+    text-align: center;
+    color: white;
+}
+/* .containerCenter{
+    margin: 40px;
+} */

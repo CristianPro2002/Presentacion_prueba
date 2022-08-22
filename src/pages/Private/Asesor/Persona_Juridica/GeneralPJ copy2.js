@@ -4,306 +4,404 @@ import "./EstilosJ.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React from "react";
-import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
+import axios from "axios";
+import React, { useState } from "react";
 
 const PersonaJuridica = () => {
   let Navigate = useNavigate();
 
-  var min = 100000;
-  var max = 999999;
-  var random = Math.floor(Math.random() * (+max - +min)) + +min;
-  //console.log("el valor random es:"+ random)
-  const {ActionsFormPj} = useRegFormPj();
-
-  const formik = useFormik({
+  /*
+ const formik = useFormik({
     initialValues: {
-      Fe_dil: "",
-      Idti_sol: "",
-      tidoc_ent: "",
-      Nit: "",
-      Idti_doc: "",
-      Idti_doc2: "",
-      Pri_no: "",
-      Seg_no: "",
-      No_cuenta: random,
-      Pri_ape: "",
-      Seg_ape: "",
-      Pri_ape2: "",
-      Seg_ape2: "",
-      Cargo: "",
-      Cargo2: "",
-      Dir_lab: "",
-      Dir_lab2: "",
+      Tipo_Solicitud: "",
+      Fecha: "",
+      N_documento: "",
+      Nombre_RazonSocial: "",
+      NombreCorto_Sigla: "",
+      Fecha_Constitucion: "",
+      Ciudad_Constitucion: "",
+      Pais_Constitucion: "",
+      DireccionSedePrincipal: "",
       Barrio: "",
-      Barrio2: "",
-      Barrio3: "",
-      Ciu_mu: "",
-      Ciu_mu2: "",
-      Ciu_mu3: "",
-      Depart: "",
-      Depart2: "",
-      Depart3: "",
+      Ciudad_Municipio: "",
+      Departamento: "",
       Pais: "",
-      Pais2: "",
-      Pais3: "",
-      Tel_lab: "",
-      Tel_lab2: "",
-      Ext: "",
-      Ext2: "",
-      Ext3: "",
-      Celular: "",
-      Celular2: "",
-      Corr_lab: "",
-      Corr_lab2: "",
-      Fidei: "",
-      No_fide: "",
-      Nom_ra: "",
-      Nom_cor: "",
-      Fe_cons: "",
-      Ciu_cons: "",
-      Pai_cons: "",
-      Dir_se: "",
       Telefono: "",
-      Corr_se: "",
-      No_doc: "",
-      Pre_1: "",
-      Pre_2: "",
-      No_docu: "",
-      Pri_nom: "",
-      Seg_nom: "",
-      Idti_na: "",
-      Co_ciuu: "",
-      Det_act: "",
-      No_emp: "",
-      Idti_soci: "",
-      Otro_com: "",
-      Idti_en: "",
-      Otro_ent: "",
-      Idti_es: "",
-      Otro_est: "",
-      Idti_des: "",
-      Ing_op: "",
-      Ino_op: "",
-      Detno: "",
-      vent_an: "",
-      Fe_ci: "",
-      Egre_me: "",
-      Util_ne: "",
-      Tot_act: "",
-      Tot_pas: "",
-      Tot_pat: "",
-      Idti_cont: "",
-      Idcla_cont: "",
-      Res_iva: "",
-      Aut_ing: "",
-      Int_merc: "",
-      Vig_sup: "",
-      Obli_est: "",
-      No_id_tr: "",
-      Patri_1: "",
-      Patri_2: "",
-      NoidTrib_1: "",
-      NoidTrib_2: "",
-      Idtripro_bi: "",
-      Otro_fue: "",
-      Idfue_rec: "",
-      Otro_pro: "",
-      Pais_or: "",
-      Ciu_or: "",
-      Nat_recu: "",
-      Op_ext: "",
-      Idtiop_m: "",
-      Otro_mo: "",
-      Nom_ent: "",
-      Idtipro_m: "",
-      Otro_mo2: "",
-      No_pro: "",
-      Mo_pro: "",
+      Ext: "",
+      CorreoElectronicoSedePrincipal: "",
+      Tipo_Documento: "",
+      N_Documento2: "",
+      PrimerNombre: "",
+      SegundoNombre: "",
+      PrimerApellido: "",
+      SegundoApellido: "",
+      Cargo: "",
+      DireccionLaboral: "",
+      Barrio2: "",
+      Ciudad_Municipio2: "",
+      Departamento2: "",
+      Pais2: "",
+      TelefonoLaboral: "",
+      Ext2: "",
+      Celular: "",
+      CorreoElectronicoLaboral: "",
+      Socios_Accionistas: "",
+      Socios_Accionistas_Entidad: "",
+      Tipo_Documento2: "",
+      N_Documento3: "",
+      PrimerNombre2: "",
+      SegundoNombre2: "",
+      PrimerApellido2: "",
+      SegundoApellido2: "",
+      Cargo2: "",
+      DireccionLaboral2: "",
+      Barrio3: "",
+      Ciudad_Municipio3: "",
+      Departamento3: "",
+      Pais3: "",
+      TelefonoLaboral2: "",
+      Ext3: "",
+      Celular2: "",
+      CorreoElectronicoLaboral2: "",
+      NaturalezaEntidad: "",
+      CodigoCiiu: "",
+      DetalleActividadEconomicaPrincipal: "",
+      N_Empleados: "",
+      SociedadComercial_Civil: "",
+      TipoEntidad_Asociacion: "",
+      EntidadesEstatales: "",
+      EntidadesEstatalesDescentralizadasOrden: "",
+      IngresosOperacionalesMensuales: "",
+      IngresosNoOperacionalesMensuales: "",
+      DetalleIngresosNoOperacionales: "",
+      VentasAnuales: "",
+      FechaCierreVentas: "",
+      EgresosMensuales: "",
+      UtilidadNeta: "",
+      TotalActivos: "",
+      TotalPasivos: "",
+      TotalPatrimonio: "",
+      TipoContribuyente: "",
+      ClaseContribuyente: "",
+      ResponsableIva: "",
+      AutorretenedorIngresos: "",
+      IntermediarioMercadoCambiario: "",
+      VigiladoSuperintendenciaFinanciera: "",
+      ObligadoTributarEEUU: "",
+      NumeroIdTributario: "",
+      N_Id_Tributario: "",
+      OrigenBienesProviene: "",
+      RecursosEntregueProvienen: "",
+      PaisOrigen: "",
+      CiudadOrigenBienes: "",
+      RecursosPublicosNaturaleza: "",
+      OperacionesMonedaExtranjera: "",
+      CualesOperacionesRealizaMonedaExtranjera: "",
+      NombreEntidad: "",
+      TipoProducto: "",
+      N_Producto: "",
+      MontoMensualPromedio: "",
       Moneda: "",
-      Ciu_ent: "",
-      Pa_ent: "",
-      Idtien_re: "",
-      Idti_soli: "",
-      No_solicit: "",
-      Nom_solicit: "",
-      Firma: "",
-      Cod_vend: "",
-      Nom_vend: "",
+      Ciudad: "",
+      Pais4: "",
+      NombreEntidad2: "",
+      TipoProducto2: "",
+      N_Producto2: "",
+      MontoMensualPromedio2: "",
+      Moneda2: "",
+      Ciudad2: "",
+      Pais5: "",
+      ReporteAnualCostosTotales: "",
+      ActuaEnCalidadDe: "",
+      Nombre: "",
+      N_Identificacion: "",
+      CodigoVendedor: "",
+      Nombre2: "",
       Oficina: "",
-      Obser: "",
-      Firma_vend: "",
+      Observaciones: "",
     },
 
     validationSchema: Yup.object({
-      Fe_dil: Yup.string().required("Fecha de diligenciamiento es requerida"),
-      Idti_sol: Yup.string().required("el tipo de solicitud es obligatorio"),
-      tidoc_ent: Yup.string().required("El tipo de documento es obligatorio"),
-      Nit: Yup.string().required("El nit es obligatorio"),
-      Idti_doc: Yup.string().required("El tipo de documento es obligatorio"),
-      Idti_doc2: Yup.string().required("El tipo de documento es obligatorio"),
-      Pri_no: Yup.string().required("El primer nombre es obligatorio"),
-      Seg_no: Yup.string().required("El segundo nombre es obligatorio"),
-      No_cuenta: Yup.string(),
-      Pri_ape: Yup.string().required("El primer apellido es obligatorio"),
-      Seg_ape: Yup.string().required("El segundo apellido es obligatorio"),
-      Pri_ape2: Yup.string().required("El primer apellido es obligatorio"),
-      Seg_ape2: Yup.string().required("El segundo apellido es obligatorio"),
-      Cargo: Yup.string().required("El cargo es obligatorio"),
-      Cargo2: Yup.string().required("El cargo es obligatorio"),
-      Dir_lab: Yup.string().required("La dirección laboral es obligatoria"),
-      Dir_lab2: Yup.string().required("La dirección laboral es obligatoria"),
-      Barrio: Yup.string().required("El barrio es obligatorio"),
-      Barrio2: Yup.string().required("El barrio es obligatorio"),
-      Barrio3: Yup.string().required("El barrio es obligatorio"),
-      Ciu_mu: Yup.string().required("La ciudad o municipio es obligatorio"),
-      Ciu_mu2: Yup.string().required("La ciudad o municipio es obligatorio"),
-      Ciu_mu3: Yup.string().required("La ciudad o municipio es obligatorio"),
-      Depart: Yup.string().required("El departamento es obligatorio"),
-      Depart2: Yup.string().required("El departamento es obligatorio"),
-      Depart3: Yup.string().required("El departamento es obligatorio"),
-      Pais: Yup.string().required("El pais es obligatorio"),
-      Pais2: Yup.string().required("El pais es obligatorio"),
-      Pais3: Yup.string().required("El pais es obligatorio"),
-      Tel_lab: Yup.string().required("El teléfono laboral es obligatorio"),
-      Tel_lab2: Yup.string().required("El teléfono laboral es obligatorio"),
-      Ext: Yup.string().required("El extensión es obligatorio"),
-      Ext2: Yup.string().required("El extensión es obligatorio"),
-      Ext3: Yup.string().required("El extensión es obligatorio"),
-      Celular: Yup.string().required("El celular es obligatorio"),
-      Celular2: Yup.string().required("El celular es obligatorio"),
-      Corr_lab: Yup.string().required("El correo laboral es obligatorio"),
-      Corr_lab2: Yup.string().required("El correo laboral es obligatorio"),
-      Fidei: Yup.string().required("El fideicomiso es obligatorio"),
-      No_fide: Yup.string().required("El número de fideicomiso es obligatorio"),
-      Nom_ra: Yup.string().required(
-        "El nombre de la razón social es obligatorio"
-      ),
-      Nom_cor: Yup.string().required("El nombre corto o sigla es obligatorio"),
-      Fe_cons: Yup.string().required("La fecha de constitución es obligatoria"),
-      Ciu_cons: Yup.string().required(
-        "La ciudad de constitución es obligatoria"
-      ),
-      Pai_cons: Yup.string().required("El pais de constitución es obligatorio"),
-      Dir_se: Yup.string().required("La dirección de sede es obligatoria"),
-      Telefono: Yup.string().required("El teléfono es obligatorio"),
-      Corr_se: Yup.string().required("El correo de sede es obligatorio"),
-      No_doc: Yup.string().required("El número de documento es obligatorio"),
-      Pre_1: Yup.string().required("Esta pregunta es obligatoria"),
-      Pre_2: Yup.string().required("Esta pregunta es obligatoria"),
-      No_docu: Yup.string().required("El número de documento es obligatorio"),
-      Pri_nom: Yup.string().required("El primer nombre es obligatorio"),
-      Seg_nom: Yup.string().required("El segundo nombre es obligatorio"),
-      Idti_na: Yup.string().required("El tipo de naturaleza es obligatorio"),
-      Co_ciuu: Yup.string().required("El código Ciuu es obligatorio"),
-      Det_act: Yup.string().required("El detalle de actividad es obligatorio"),
-      No_emp: Yup.string().required("El número de empleados es obligatorio"),
-      Idti_soci: Yup.string().required("El tipo de sociedad es obligatorio"),
-      Otro_com: Yup.string().required(
-        "El otro tipo de sociedad es obligatoria"
-      ),
-      Idti_en: Yup.string().required("El tipo de entidad es obligatorio"),
-      Otro_ent: Yup.string().required("El otro tipo de entidad es obligatoria"),
-      Idti_es: Yup.string().required("El tipo de estado es obligatorio"),
-      Otro_est: Yup.string().required("El otro tipo de estado es obligatoria"),
-      Idti_des: Yup.string().required(
-        "El tipo de entidad estatal es obligatorio"
-      ),
-      Ing_op: Yup.string().required("El ingreso operacional es obligatorio"),
-      Ino_op: Yup.string().required("El ingreso no operacional es obligatorio"),
-      Detno: Yup.string().required(
-        "El detalle de ingresos no operaciones es obligatorio"
-      ),
-      vent_an: Yup.string().required("Las ventas anuales son obligatorias"),
-      Fe_ci: Yup.string().required(
-        "La fecha de cierre de ventas es obligatoria"
-      ),
-      Egre_me: Yup.string().required("El egreso mensual es obligatorio"),
-      Util_ne: Yup.string().required("La utilidad neta es obligatoria"),
-      Tot_act: Yup.string().required("El total activos es obligatorio"),
-      Tot_pas: Yup.string().required("El total pasivos es obligatorio"),
-      Tot_pat: Yup.string().required("El total patrimonio es obligatorio"),
-      Idti_cont: Yup.string().required(
-        "La identificacion de clase contribuyente es obligatorio"
-      ),
-      Idcla_cont: Yup.string().required(
-        "La clase de contribuyente es obligatorio"
-      ),
-      Res_iva: Yup.string().required("El responsable de iva es obligatorio"),
-      Aut_ing: Yup.string().required(
-        "Otros ingresos de Autoretenedor es obligatorio"
-      ),
-      Int_merc: Yup.string().required(
-        "El intermediario del mercado cambiario es obligatorio"
-      ),
-      Vig_sup: Yup.string().required("Esta pregunta es obligatoria"),
-      Obli_est: Yup.string().required("Esta pregunta es obligatoria"),
-      No_id_tr: Yup.string().required("Esta pregunta es obligatoria"),
-      Patri_1: Yup.string().required("Esta pregunta es obligatoria"),
-      Patri_2: Yup.string().required("Esta pregunta es obligatoria"),
-      NoidTrib_1: Yup.string().required("Numero de identificacion tributario"),
-      NoidTrib_2: Yup.string().required("Numero de identificacion tributario"),
-      Idtripro_bi: Yup.string().required(
-        "Tipos de proveniencia de bienes es obligatorio"
-      ),
-      Otro_fue: Yup.string().required(
-        "Otro tipo de proveniencia de bienes es obligatorio"
-      ),
-      Idfue_rec: Yup.string().required(
-        "Tipos de proveniencia de los recursos entregados es obligatorio"
-      ),
-      Otro_pro: Yup.string().required(
-        "Otro Tipo de proveniencia de los recursos entregados es obligatorio"
-      ),
-      Pais_or: Yup.string().required(
-        "El pais de origen de bienes y/o fondos es obligatorio"
-      ),
-      Ciu_or: Yup.string().required(
-        "La ciudad de origen de bienes y/o fondos es obligatorio"
-      ),
-      Nat_recu: Yup.string().required("Esta pregunta es obligatoria"),
-      Op_ext: Yup.string().required("Esta pregunta es obligatoria"),
-      Idtiop_m: Yup.string().required(
-        "Tipos de operaciones en moneda extranjera es obligatoria"
-      ),
-      Otro_mo: Yup.string().required(
-        "Otro tipo de operacion en moneda extranjera es obligatoria"
-      ),
-      Nom_ent: Yup.string().required("Nombre de la entidad es obligatoria"),
-      Idtipro_m: Yup.string().required(
-        "Tipo de producto en moneda extranjera es obligatorio"
-      ),
-      Otro_mo2: Yup.string().required(
-        "Otro tipo de producto en moneda extranjera es obligatorio"
-      ),
-      No_pro: Yup.string().required("El Numero de producto es obligatorio"),
-      Mo_pro: Yup.string().required("El Monto mensual promedio es obligatorio"),
-      Moneda: Yup.string().required("La moneda utilizada es obligatoria"),
-      Ciu_ent: Yup.string().required("La ciudad de la entidad es obligatoria"),
-      Pa_ent: Yup.string().required("El pais de la entidad es obligatoria"),
-      Idtien_re: Yup.string().required(
-        "El Tipo de entrega de Reporte Anual de Costos Totales es obligatoria"
-      ),
-      Idti_soli: Yup.string().required(
-        "El Numero de identificacion del solicitante es obligatoria"
-      ),
-      No_solicit: Yup.string().required(
-        "El Numero de identificacion del solicitante es obligatoria"
-      ),
-      Nom_solicit: Yup.string().required(
-        "El Nombre completo del solicitante es obligatorio"
-      ),
-      Firma: Yup.string().required("La Firma del solicitante es obligatoria"),
-      Cod_vend: Yup.string().required("El codigo del vendedor es obligatorio"),
-      Nom_vend: Yup.string().required("El nombre del vendedor es obligatorio"),
-      Oficina: Yup.string().required("La Oficina del vendedor es obligatoria"),
-      Obser: Yup.string().required("Las Observaciones son obligatorias"),
-      Firma_vend: Yup.string().required("La firma del vendedor es obligatoria"),
+      Fecha: Yup.date().default(function () {
+        return new Date();
+      }),
+      N_documento: Yup.string()
+        .max(10, `Máximo 10 caracteres`)
+        .required("el N° documento es obligatorio"),
+      Nombre_RazonSocial: Yup.string()
+        .max(15, `Máximo 15 caracteres`)
+        .required("Este campo es obligatorio"),
+      Tipo_Documento: Yup.string().required("Este campo es requerido"),
     }),
-    onSubmit: (data) => {
-      ActionsFormPj.peticionPost(data);
+    onSubmit: (formData) => {
+      console.log(formData);
     },
   });
+*/
+
+  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
+
+  var min=100000; 
+  var max=999999;  
+  var random =Math.floor(Math.random() * (+max - +min)) + +min; 
+  //console.log("el valor random es:"+ random)
+
+  const [data, setData] = useState([]);
+  const [dataUsuario, setDataUsuario] = useState({
+    Fe_dil: "",
+    Idti_sol: "",
+    tidoc_ent: "",
+    Nit: "",
+    Idti_doc: "",
+    Idti_doc2: "",
+    Pri_no: "",
+    Seg_no: "",
+    No_cuenta: random,
+    Pri_ape: "",
+    Seg_ape: "",
+    Pri_ape2: "",
+    Seg_ape2: "",
+    Cargo: "",
+    Cargo2: "",
+    Dir_lab: "",
+    Dir_lab2: "",
+    Barrio: "",
+    Barrio2: "",
+    Barrio3: "",
+    Ciu_mu: "",
+    Ciu_mu2: "",
+    Ciu_mu3: "",
+    Depart: "",
+    Depart2: "",
+    Depart3: "",
+    Pais: "",
+    Pais2: "",
+    Pais3: "",
+    Tel_lab: "",
+    Tel_lab2: "",
+    Ext: "",
+    Ext2: "",
+    Ext3: "",
+    Celular: "",
+    Celular2: "",
+    Corr_lab: "",
+    Corr_lab2: "",
+    Fidei: "",
+    No_fide: "",
+    Nom_ra: "",
+    Nom_cor: "",
+    Fe_cons: "",
+    Ciu_cons: "",
+    Pai_cons: "",
+    Dir_se: "",
+    Telefono: "",
+    Corr_se: "",
+    No_doc: "",
+    Pre_1: "",
+    Pre_2: "",
+    No_docu: "",
+    Pri_nom: "",
+    Seg_nom: "",
+    Idti_na: "",
+    Co_ciuu: "",
+    Det_act: "",
+    No_emp: "",
+    Idti_soci: "",
+    Otro_com: "",
+    Idti_en: "",
+    Otro_ent: "",
+    Idti_es: "",
+    Otro_est: "",
+    Idti_des: "",
+    Ing_op: "",
+    Ino_op: "",
+    Detno: "",
+    vent_an: "",
+    Fe_ci: "",
+    Egre_me: "",
+    Util_ne: "",
+    Tot_act: "",
+    Tot_pas: "",
+    Tot_pat: "",
+    Idti_cont: "",
+    Idcla_cont: "",
+    Res_iva: "",
+    Aut_ing: "",
+    Int_merc: "",
+    Vig_sup: "",
+    Obli_est: "",
+    No_id_tr: "",
+    Patri_1: "",
+    Patri_2: "",
+    NoidTrib_1: "",
+    NoidTrib_2: "",
+    Idtripro_bi: "",
+    Otro_fue: "",
+    Idfue_rec: "",
+    Otro_pro: "",
+    Pais_or: "",
+    Ciu_or: "",
+    Nat_recu: "",
+    Op_ext: "",
+    Idtiop_m: "",
+    Otro_mo: "",
+    Nom_ent: "",
+    Idtipro_m: "",
+    Otro_mo2: "",
+    No_pro: "",
+    Mo_pro: "",
+    Moneda: "",
+    Ciu_ent: "",
+    Pa_ent: "",
+    Idtien_re: "",
+    Idti_soli: "",
+    No_solicit: "",
+    Nom_solicit: "",
+    Firma: "",
+    Cod_vend: "",
+    Nom_vend: "",
+    Oficina: "",
+    Obser: "",
+    Firma_vend: "",
+  });
+
+  const peticionPost = async () => {
+    var f = new FormData();
+    f.append("Fe_dil", dataUsuario.Fe_dil);
+    f.append("Idti_sol", dataUsuario.Idti_sol);
+    f.append("tidoc_ent", dataUsuario.tidoc_ent);
+    f.append("Nit", dataUsuario.Nit);
+    f.append("No_cuenta", dataUsuario.No_cuenta);
+    f.append("Idti_doc", dataUsuario.Idti_doc);
+    f.append("Idti_doc2", dataUsuario.Idti_doc2);
+    f.append("Pri_no", dataUsuario.Pri_no);
+    f.append("Seg_no", dataUsuario.Seg_no);
+    f.append("Pri_ape", dataUsuario.Pri_ape);
+    f.append("Seg_ape", dataUsuario.Seg_ape);
+    f.append("Pri_ape2", dataUsuario.Pri_ape2);
+    f.append("Seg_ape2", dataUsuario.Seg_ape2);
+    f.append("Cargo", dataUsuario.Cargo);
+    f.append("Cargo2", dataUsuario.Cargo2);
+    f.append("Dir_lab", dataUsuario.Dir_lab);
+    f.append("Dir_lab2", dataUsuario.Dir_lab2);
+    f.append("Barrio", dataUsuario.Barrio);
+    f.append("Barrio2", dataUsuario.Barrio2);
+    f.append("Barrio3", dataUsuario.Barrio3);
+    f.append("Ciu_mu", dataUsuario.Ciu_mu);
+    f.append("Ciu_mu2", dataUsuario.Ciu_mu2);
+    f.append("Ciu_mu3", dataUsuario.Ciu_mu3);
+    f.append("Depart", dataUsuario.Depart);
+    f.append("Depart2", dataUsuario.Depart2);
+    f.append("Depart3", dataUsuario.Depart3);
+    f.append("Pais", dataUsuario.Pais);
+    f.append("Pais2", dataUsuario.Pais2);
+    f.append("Pais3", dataUsuario.Pais3);
+    f.append("Tel_lab", dataUsuario.Tel_lab);
+    f.append("Tel_lab2", dataUsuario.Tel_lab2);
+    f.append("Ext", dataUsuario.Ext);
+    f.append("Ext2", dataUsuario.Ext2);
+    f.append("Ext3", dataUsuario.Ext3);
+    f.append("Celular", dataUsuario.Celular);
+    f.append("Celular2", dataUsuario.Celular2);
+    f.append("Corr_lab", dataUsuario.Corr_lab);
+    f.append("Corr_lab2", dataUsuario.Corr_lab2);
+    f.append("Fidei", dataUsuario.Fidei);
+    f.append("No_fide", dataUsuario.No_fide);
+    f.append("Nom_ra", dataUsuario.Nom_ra);
+    f.append("Nom_cor", dataUsuario.Nom_cor);
+    f.append("Fe_cons", dataUsuario.Fe_cons);
+    f.append("Ciu_cons", dataUsuario.Ciu_cons);
+    f.append("Pai_cons", dataUsuario.Pai_cons);
+    f.append("Dir_se", dataUsuario.Dir_se);  
+    f.append("Telefono", dataUsuario.Telefono);  
+    f.append("Corr_se", dataUsuario.Corr_se);
+    f.append("No_doc", dataUsuario.No_doc);
+    f.append("Pre_1", dataUsuario.Pre_1);
+    f.append("Pre_2", dataUsuario.Pre_2);
+    f.append("No_docu", dataUsuario.No_docu);
+    f.append("Pri_nom", dataUsuario.Pri_nom);
+    f.append("Seg_nom", dataUsuario.Seg_nom);
+    f.append("Idti_na", dataUsuario.Idti_na);
+    f.append("Co_ciuu", dataUsuario.Co_ciuu);
+    f.append("Det_act", dataUsuario.Det_act);
+    f.append("No_emp", dataUsuario.No_emp);
+    f.append("Idti_soci", dataUsuario.Idti_soci);
+    f.append("Otro_com", dataUsuario.Otro_com);
+    f.append("Idti_en", dataUsuario.Idti_en);
+    f.append("Otro_ent", dataUsuario.Otro_ent);
+    f.append("Idti_es", dataUsuario.Idti_es);
+    f.append("Otro_est", dataUsuario.Otro_est);
+    f.append("Idti_des", dataUsuario.Idti_des);
+    f.append("Ing_op", dataUsuario.Ing_op);
+    f.append("Ino_op", dataUsuario.Ino_op);
+    f.append("Detno", dataUsuario.Detno);
+    f.append("vent_an", dataUsuario.vent_an);
+    f.append("Fe_ci", dataUsuario.Fe_ci);
+    f.append("Egre_me", dataUsuario.Egre_me);
+    f.append("Util_ne", dataUsuario.Util_ne);
+    f.append("Tot_act", dataUsuario.Tot_act);
+    f.append("Tot_pas", dataUsuario.Tot_pas);
+    f.append("Tot_pat", dataUsuario.Tot_pat);
+    f.append("Idti_cont", dataUsuario.Idti_cont);
+    f.append("Idcla_cont", dataUsuario.Idcla_cont);
+    f.append("Res_iva", dataUsuario.Res_iva);
+    f.append("Aut_ing", dataUsuario.Aut_ing);
+    f.append("Int_merc", dataUsuario.Int_merc);
+    f.append("Vig_sup", dataUsuario.Vig_sup);
+    f.append("Obli_est", dataUsuario.Obli_est);
+    f.append("No_id_tr", dataUsuario.No_id_tr);
+    f.append("Patri_1", dataUsuario.Patri_1);
+    f.append("Patri_2", dataUsuario.Patri_2);
+    f.append("NoidTrib_1", dataUsuario.NoidTrib_1);
+    f.append("NoidTrib_2", dataUsuario.NoidTrib_2);
+    f.append("Idtripro_bi", dataUsuario.Idtripro_bi);
+    f.append("Otro_fue", dataUsuario.Otro_fue);
+    f.append("Idfue_rec", dataUsuario.Idfue_rec);
+    f.append("Otro_pro", dataUsuario.Otro_pro);
+    f.append("Pais_or", dataUsuario.Pais_or);
+    f.append("Ciu_or", dataUsuario.Ciu_or);
+    f.append("Nat_recu", dataUsuario.Nat_recu);
+    f.append("Op_ext", dataUsuario.Op_ext);
+    f.append("Idtiop_m", dataUsuario.Idtiop_m);
+    f.append("Otro_mo", dataUsuario.Otro_mo);
+    f.append("Nom_ent", dataUsuario.Nom_ent);
+    f.append("Idtipro_m", dataUsuario.Idtipro_m);
+    f.append("Otro_mo2", dataUsuario.Otro_mo2);
+    f.append("No_pro", dataUsuario.No_pro);
+    f.append("Mo_pro", dataUsuario.Mo_pro);
+    f.append("Moneda", dataUsuario.Moneda);
+    f.append("Ciu_ent", dataUsuario.Ciu_ent);
+    f.append("Pa_ent", dataUsuario.Pa_ent);
+    f.append("Idtien_re", dataUsuario.Idtien_re);
+    f.append("Idti_soli", dataUsuario.Idti_soli);
+    f.append("No_solicit", dataUsuario.No_solicit);
+    f.append("Nom_solicit", dataUsuario.Nom_solicit);
+    f.append("Firma", dataUsuario.Firma);
+    f.append("Cod_vend", dataUsuario.Cod_vend);
+    f.append("Nom_vend", dataUsuario.Nom_vend);
+    f.append("Oficina", dataUsuario.Oficina);
+    f.append("Obser", dataUsuario.Obser);
+    f.append("Firma_vend", dataUsuario.Firma_vend);
+    f.append("METHOD", "FORMJ");
+    await axios
+      .post(baseUrl, f)
+      .then((response) => {
+        setData(data.concat(response.data));
+        Navigate(-1);
+      })
+      .catch((error) => {
+        alert("Error en el post");
+      });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataUsuario((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(dataUsuario);
+  };
 
   return (
     <div className="FONDO">
@@ -316,7 +414,7 @@ const PersonaJuridica = () => {
       </div>
       <div className="hijo">
         <h1 className="Titulo-principal">PERSONA JURIDICA</h1>
-        <form className="row red-red" onSubmit={formik.handleSubmit}>
+        <form className="row red-red">
           <div className="col-md-8 mb-1 " id="Container-1">
             <Col>
               <h5 className="Titulo">Tipo de solicitud</h5>
@@ -327,7 +425,7 @@ const PersonaJuridica = () => {
                   id="r1"
                   value="1"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 <label for="r1">Vinculación</label>
@@ -339,12 +437,11 @@ const PersonaJuridica = () => {
                   id="r2"
                   value="2"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 <label for="r2">Actualización</label>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_sol}</h6>
             </Col>
           </div>
 
@@ -357,11 +454,10 @@ const PersonaJuridica = () => {
                   type="date"
                   name="Fe_dil"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Fe_dil}</h6>
             </Col>
           </div>
 
@@ -374,15 +470,14 @@ const PersonaJuridica = () => {
                 <label className="">
                   Tipo de documento{" "}
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="tidoc_ent"
                     value="Nit"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   NIT
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.tidoc_ent}</h6>
               </div>
               <label className="label-2">
                 <div>Nº documento</div>
@@ -390,11 +485,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Nit"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Nit}</h6>
             </Col>
           </div>
 
@@ -404,15 +498,14 @@ const PersonaJuridica = () => {
               <div className="label-13">
                 <label className="label-14">
                   <input
-                    type="radio"
+                    type="checkbox"
                     value="Fideicomiso"
                     name="Fidei"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   Fideicomiso{" "}
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Fidei}</h6>
               </div>
               <label className="label-6">
                 Nº de fideicomiso{" "}
@@ -420,10 +513,9 @@ const PersonaJuridica = () => {
                   type="number"
                   name="No_fide"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_fide}</h6>
             </Col>
           </div>
 
@@ -435,11 +527,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Nom_ra"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Nom_ra}</h6>
             </Col>
           </div>
 
@@ -451,11 +542,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Nom_cor"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Nom_cor}</h6>
             </Col>
           </div>
 
@@ -467,11 +557,10 @@ const PersonaJuridica = () => {
                   type="date"
                   name="Fe_cons"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Fe_cons}</h6>
             </Col>
           </div>
 
@@ -483,11 +572,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_cons"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_cons}</h6>
             </Col>
           </div>
 
@@ -499,11 +587,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pai_cons"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pai_cons}</h6>
             </Col>
           </div>
 
@@ -515,11 +602,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Dir_se"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Dir_se}</h6>
             </Col>
           </div>
 
@@ -531,11 +617,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Barrio"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Barrio}</h6>
             </Col>
           </div>
 
@@ -547,11 +632,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_mu"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu}</h6>
             </Col>
           </div>
 
@@ -563,11 +647,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Depart"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Depart}</h6>
             </Col>
           </div>
 
@@ -579,11 +662,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pais"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais}</h6>
             </Col>
           </div>
 
@@ -595,10 +677,9 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Telefono"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Telefono}</h6>
               </label>
               <label className="label-4">
                 Ext
@@ -606,9 +687,8 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Ext"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Ext}</h6>
               </label>
             </Col>
           </div>
@@ -621,11 +701,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Corr_se"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Corr_se}</h6>
             </Col>
             <br />
           </div>
@@ -640,18 +719,19 @@ const PersonaJuridica = () => {
                 <div>Tipo de documento</div>
                 <select
                   className="Select-One"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   name="Idti_doc"
                   required
                 >
-                  <option>Seleccione su documento de identidad</option>
+                  <option >
+                    Seleccione su documento de identidad
+                  </option>
                   <option value="1">CC</option>
                   <option value="4">Cédula de extranjeria</option>
                   <option value="5">Pasaporte</option>
                   <option value="6">Carné diplomático</option>
                 </select>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_doc}</h6>
             </Col>
           </div>
 
@@ -664,11 +744,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="No_doc"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_doc}</h6>
             </Col>
           </div>
 
@@ -680,10 +759,9 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pri_no"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
-                <h6 style={{ color: "red" }}>{formik.errors.Pri_no}</h6>
               </label>
               <label className="label">
                 Segundo nombre{" "}
@@ -691,9 +769,8 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Seg_no"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Seg_no}</h6>
               </label>
             </Col>
             <Col>
@@ -703,10 +780,9 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pri_ape"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
-                <h6 style={{ color: "red" }}>{formik.errors.Pri_ape}</h6>
               </label>
               <label className="label">
                 Segundo apellido{" "}
@@ -714,9 +790,8 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Seg_ape"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Seg_ape}</h6>
               </label>
             </Col>
           </div>
@@ -729,11 +804,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Cargo"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Cargo}</h6>
             </Col>
           </div>
 
@@ -745,11 +819,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Dir_lab"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Dir_lab}</h6>
             </Col>
           </div>
 
@@ -761,11 +834,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Barrio2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Barrio2}</h6>
             </Col>
           </div>
 
@@ -777,11 +849,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_mu2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu2}</h6>
             </Col>
           </div>
 
@@ -793,11 +864,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Depart2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Depart2}</h6>
             </Col>
           </div>
 
@@ -809,11 +879,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pais2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais2}</h6>
             </Col>
           </div>
 
@@ -825,10 +894,9 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Tel_lab"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
               </label>
               <label className="label-4">
                 Ext
@@ -836,9 +904,8 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Ext2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Ext2}</h6>
               </label>
             </Col>
           </div>
@@ -852,11 +919,10 @@ const PersonaJuridica = () => {
                     type="number"
                     name="Celular"
                     className="Border-3"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Celular}</h6>
               </div>
             </Col>
           </div>
@@ -869,11 +935,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Corr_lab"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Corr_lab}</h6>
             </Col>
           </div>
 
@@ -891,7 +956,7 @@ const PersonaJuridica = () => {
                       name="Pre_1"
                       value="Si"
                       className="cursor-pointer"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                       required
                     />
                   </label>
@@ -902,12 +967,11 @@ const PersonaJuridica = () => {
                       name="Pre_1"
                       value="No"
                       className="cursor-pointer"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                       required
                     />
                   </label>
                 </p>
-                <h6 style={{ color: "red" }}>{formik.errors.Pre_1}</h6>
               </div>
             </Col>
           </div>
@@ -925,7 +989,7 @@ const PersonaJuridica = () => {
                       name="Pre_2"
                       value="Si"
                       className="cursor-pointer"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                       required
                     />
                   </label>
@@ -936,12 +1000,11 @@ const PersonaJuridica = () => {
                       name="Pre_2"
                       value="No"
                       className="cursor-pointer"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                       required
                     />
                   </label>
                 </p>
-                <h6 style={{ color: "red" }}>{formik.errors.Pre_2}</h6>
               </div>
             </Col>
           </div>
@@ -966,17 +1029,18 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_doc2"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione su documento de identidad</option>
+                  <option >
+                    Seleccione su documento de identidad
+                  </option>
                   <option value="1">CC</option>
                   <option value="4">Cédula de extranjeria</option>
                   <option value="5">Pasaporte</option>
                   <option value="6">Carné diplomático</option>
                 </select>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_doc2}</h6>
             </Col>
           </div>
 
@@ -993,11 +1057,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="No_docu"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_docu}</h6>
             </Col>
           </div>
 
@@ -1009,10 +1072,9 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pri_nom"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
-                <h6 style={{ color: "red" }}>{formik.errors.Pri_nom}</h6>
               </label>
               <label className="label">
                 Segundo nombre{" "}
@@ -1020,9 +1082,8 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Seg_nom"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Seg_nom}</h6>
               </label>
             </Col>
             <Col>
@@ -1032,10 +1093,9 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pri_ape2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
-                <h6 style={{ color: "red" }}>{formik.errors.Pri_ape2}</h6>
               </label>
               <label className="label">
                 Segundo apellido{" "}
@@ -1043,9 +1103,8 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Seg_ape2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Seg_ape2}</h6>
               </label>
             </Col>
           </div>
@@ -1058,11 +1117,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Cargo2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Cargo2}</h6>
             </Col>
           </div>
 
@@ -1074,11 +1132,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Dir_lab2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Dir_lab2}</h6>
             </Col>
           </div>
 
@@ -1090,11 +1147,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Barrio3"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Barrio3}</h6>
             </Col>
           </div>
 
@@ -1106,11 +1162,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_mu3"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu3}</h6>
             </Col>
           </div>
 
@@ -1122,11 +1177,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Depart3"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Depart3}</h6>
             </Col>
           </div>
 
@@ -1138,11 +1192,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pais3"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais3}</h6>
             </Col>
           </div>
 
@@ -1154,10 +1207,9 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Tel_lab2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab2}</h6>
               </label>
               <label className="label-4">
                 Ext
@@ -1165,10 +1217,9 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Ext3"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ext3}</h6>
             </Col>
           </div>
 
@@ -1180,11 +1231,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Celular2"
                   className="Border-3"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Celular2}</h6>
             </Col>
           </div>
 
@@ -1196,11 +1246,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Corr_lab2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Corr_lab2}</h6>
             </Col>
           </div>
           <div className="col-md-8" id="Container-1">
@@ -1216,7 +1265,7 @@ const PersonaJuridica = () => {
                     name="Idti_na"
                     value="1"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Privada
@@ -1227,7 +1276,7 @@ const PersonaJuridica = () => {
                     name="Idti_na"
                     value="2"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Pública
@@ -1238,13 +1287,12 @@ const PersonaJuridica = () => {
                     name="Idti_na"
                     value="3"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Mixta
                 </label>
               </div>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_na}</h6>
             </Col>
           </div>
           <div className="col-md-4" id="Container-1">
@@ -1256,11 +1304,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Co_ciuu"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Co_ciuu}</h6>
             </Col>
           </div>
           <div className="col-md-9" id="Container-1">
@@ -1271,11 +1318,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Det_act"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Det_act}</h6>
             </Col>
           </div>
           <div className="col-md-3" id="Container-1">
@@ -1286,11 +1332,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="No_emp"
                   className="Border-3"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_emp}</h6>
             </Col>
           </div>
 
@@ -1302,10 +1347,10 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_soci"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Por acciones simplificadas S.A.S</option>
                   <option value="2">Anónima</option>
                   <option value="3">Limitada</option>
@@ -1319,7 +1364,6 @@ const PersonaJuridica = () => {
                   <option value="11">Colectiva</option>
                   <option value="12">Ninguna</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_soci}</h6>
                 <Col className="">
                   <label className="label-12">
                     Otra, ¿cuál?{" "}
@@ -1327,10 +1371,9 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Otro_com"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_com}</h6>
                 </Col>
               </label>
             </Col>
@@ -1343,10 +1386,10 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_en"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Establecimiento público</option>
                   <option value="2">
                     Empresa industrial y comercial del estado
@@ -1373,7 +1416,6 @@ const PersonaJuridica = () => {
                   <option value="18">*Consorcio</option>
                   <option value="19">*Unión temporal</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_en}</h6>
                 <Col className="">
                   <label className="label-2">
                     <p className="">
@@ -1388,10 +1430,9 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Otro_ent"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_ent}</h6>
                 </Col>
               </label>
             </Col>
@@ -1404,15 +1445,14 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_es"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Nación</option>
                   <option value="2">Departamento</option>
                   <option value="3">Municipio</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_es}</h6>
                 <Col className="">
                   <label className="label-12">
                     Otra, ¿cuál?{" "}
@@ -1420,10 +1460,9 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Otro_est"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_est}</h6>
                 </Col>
               </label>
             </Col>
@@ -1436,16 +1475,15 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_des"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Nacional</option>
                   <option value="2">Departamental</option>
                   <option value="3">Municipal</option>
                 </select>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_des}</h6>
             </Col>
             <br />
           </div>
@@ -1463,11 +1501,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Ing_op"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ing_op}</h6>
             </Col>
           </div>
           <div className="col-md-6" id="Container-1">
@@ -1483,11 +1520,10 @@ const PersonaJuridica = () => {
                   type="numer"
                   name="Ino_op"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ino_op}</h6>
             </Col>
           </div>
 
@@ -1500,11 +1536,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Detno"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Detno}</h6>
             </Col>
           </div>
 
@@ -1516,11 +1551,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="vent_an"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.vent_an}</h6>
             </Col>
           </div>
 
@@ -1532,11 +1566,10 @@ const PersonaJuridica = () => {
                   type="date"
                   name="Fe_ci"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Fe_ci}</h6>
             </Col>
           </div>
 
@@ -1548,11 +1581,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Egre_me"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Egre_me}</h6>
             </Col>
           </div>
 
@@ -1564,11 +1596,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Util_ne"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Util_ne}</h6>
             </Col>
           </div>
 
@@ -1580,11 +1611,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Tot_act"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Tot_act}</h6>
             </Col>
           </div>
 
@@ -1598,11 +1628,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Tot_pas"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Tot_pas}</h6>
             </Col>
           </div>
           <div className="col-md-6" id="Container-1">
@@ -1615,11 +1644,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Tot_pat"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Tot_pat}</h6>
             </Col>
             <br />
           </div>
@@ -1633,10 +1661,10 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idti_cont"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">
                     Persona juridicas, comerciales y civiles, consorcios y
                     uniones temporales
@@ -1651,7 +1679,6 @@ const PersonaJuridica = () => {
                   <option value="5">No contribuyente</option>
                 </select>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_cont}</h6>
             </Col>
           </div>
 
@@ -1665,7 +1692,7 @@ const PersonaJuridica = () => {
                   name="Idcla_cont"
                   value="1"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Gran contribuyente{" "}
@@ -1674,12 +1701,11 @@ const PersonaJuridica = () => {
                   name="Idcla_cont"
                   value="2"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 No gran contribuyente
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idcla_cont}</h6>
             </Col>
           </div>
 
@@ -1692,7 +1718,7 @@ const PersonaJuridica = () => {
                   name="Res_iva"
                   value="Si"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Si{" "}
@@ -1701,12 +1727,11 @@ const PersonaJuridica = () => {
                   name="Res_iva"
                   Value="No"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 No
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Res_iva}</h6>
             </Col>
           </div>
 
@@ -1719,7 +1744,7 @@ const PersonaJuridica = () => {
                   name="Aut_ing"
                   value="Si"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Si{" "}
@@ -1728,12 +1753,11 @@ const PersonaJuridica = () => {
                   name="Aut_ing"
                   value="No"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 No
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Aut_ing}</h6>
             </Col>
           </div>
 
@@ -1748,7 +1772,7 @@ const PersonaJuridica = () => {
                   name="Int_merc"
                   value="Si"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Si{" "}
@@ -1757,12 +1781,11 @@ const PersonaJuridica = () => {
                   name="Int_merc"
                   Value="No"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 No
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Int_merc}</h6>
             </Col>
           </div>
 
@@ -1777,7 +1800,7 @@ const PersonaJuridica = () => {
                   name="Vig_sup"
                   value="Si"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Si{" "}
@@ -1786,12 +1809,11 @@ const PersonaJuridica = () => {
                   name="Vig_sup"
                   value="No"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 No
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Vig_sup}</h6>
             </Col>
           </div>
 
@@ -1807,7 +1829,7 @@ const PersonaJuridica = () => {
                     name="Obli_est"
                     value="Si"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Si{" "}
@@ -1816,12 +1838,11 @@ const PersonaJuridica = () => {
                     name="Obli_est"
                     Value="No"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Obli_est}</h6>
               </div>
 
               <p>
@@ -1833,12 +1854,11 @@ const PersonaJuridica = () => {
                       type="number"
                       name="No_id_tr"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
                 </label>
               </p>
-              <h6 style={{ color: "red" }}>{formik.errors.No_id_tr}</h6>
             </Col>
           </div>
 
@@ -1861,9 +1881,8 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Patri_1"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
-                    <h6 style={{ color: "red" }}>{formik.errors.Patri_1}</h6>
                   </label>
                   <label className="label">
                     <p className="Texto-3">N°. Id. Tributario</p>
@@ -1872,9 +1891,8 @@ const PersonaJuridica = () => {
                       type="number"
                       name="NoidTrib_1"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
-                    <h6 style={{ color: "red" }}>{formik.errors.NoidTrib_1}</h6>
                   </label>
                 </Col>
                 <Col>
@@ -1884,9 +1902,8 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Patri_2"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />{" "}
-                    <h6 style={{ color: "red" }}>{formik.errors.Patri_2}</h6>
                   </label>
                   <label className="label">
                     2.{" "}
@@ -1894,9 +1911,8 @@ const PersonaJuridica = () => {
                       type="number"
                       name="NoidTrib_2"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
-                    <h6 style={{ color: "red" }}>{formik.errors.NoidTrib_2}</h6>
                   </label>
                 </Col>
               </div>
@@ -1918,25 +1934,23 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idtripro_bi"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Compraventa</option>
                   <option value="2">Aporte de socios</option>
                   <option value="3">Utilidades</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtripro_bi}</h6>
                 <label className="label-12">
                   Otra, ¿cuál?{" "}
                   <input
                     type="text"
                     name="Otro_fue"
                     className="Border"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otro_fue}</h6>
               </label>
 
               <label className="label-2">
@@ -1947,26 +1961,23 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idfue_rec"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Capitalización por parte de socios</option>
                   <option value="2">Desarrollo del objeto social</option>
                   <option value="3">Utilidades del negocio</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idfue_rec}</h6>
-
                 <label className="label-12">
                   Otra, ¿cuál?{" "}
                   <input
                     type="text"
                     name="Otro_pro"
                     className="Border"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otro_pro}</h6>
               </label>
             </Col>
           </div>
@@ -1979,11 +1990,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pais_or"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais_or}</h6>
             </Col>
           </div>
           <div className="col-md-6" id="Container-1">
@@ -1996,11 +2006,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_or"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_or}</h6>
             </Col>
           </div>
           <div className="col-md-12" id="Container-1">
@@ -2032,7 +2041,7 @@ const PersonaJuridica = () => {
                     name="Nat_recu"
                     value="Si"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Sí{" "}
@@ -2041,12 +2050,11 @@ const PersonaJuridica = () => {
                     name="Nat_recu"
                     value="No"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nat_recu}</h6>
                 <br />
                 *En caso de responder afirmativamente favor diligenciar el anexo
                 de Declaración Naturaleza de los Recursos. Todo lo anterior de
@@ -2069,7 +2077,7 @@ const PersonaJuridica = () => {
                     value="Si"
                     name="Op_ext"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Sí{" "}
@@ -2078,13 +2086,12 @@ const PersonaJuridica = () => {
                     value="No"
                     name="Op_ext"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   No
                 </label>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Op_ext}</h6>
             </Col>
           </div>
 
@@ -2098,10 +2105,10 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idtiop_m"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Exportador e importador</option>
                   <option value="2">Pago de servicios</option>
                   <option value="3">Préstamos</option>
@@ -2110,7 +2117,6 @@ const PersonaJuridica = () => {
                   <option value="5">Inversiones</option>
                   <option value="7">Envío/Recepción de giros y remesas</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtiop_m}</h6>
                 <Col className="">
                   <label className="label-12">
                     Otra, ¿cuál?{" "}
@@ -2118,10 +2124,9 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Otro_mo"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_mo}</h6>
                 </Col>
               </label>
             </Col>
@@ -2138,11 +2143,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Nom_ent"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Nom_ent}</h6>
             </Col>
           </div>
           <div className="col-md-6" id="Container-1">
@@ -2152,14 +2156,13 @@ const PersonaJuridica = () => {
                 <select
                   className="Select-One"
                   name="Idtipro_m"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
-                  <option>Seleccione una opcion</option>
+                  <option >Seleccione una opcion</option>
                   <option value="1">Cuenta de ahorro</option>
                   <option value="2">Cuenta corriente</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtipro_m}</h6>
                 <Col>
                   <label className="label-12">
                     Otra, ¿cuál?{" "}
@@ -2167,10 +2170,9 @@ const PersonaJuridica = () => {
                       type="text"
                       name="Otro_mo2"
                       className="Border"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_mo2}</h6>
                 </Col>
               </label>
             </Col>
@@ -2184,11 +2186,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="No_pro"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_pro}</h6>
             </Col>
 
             <Col className="Col-4">
@@ -2198,11 +2199,10 @@ const PersonaJuridica = () => {
                   type="number"
                   name="Mo_pro"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Mo_pro}</h6>
             </Col>
           </div>
           <div className="col-md-4" id="Container-1">
@@ -2213,11 +2213,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Moneda"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Moneda}</h6>
             </Col>
           </div>
 
@@ -2229,11 +2228,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Ciu_ent"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_ent}</h6>
             </Col>
           </div>
 
@@ -2245,11 +2243,10 @@ const PersonaJuridica = () => {
                   type="text"
                   name="Pa_ent"
                   className="Border"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pa_ent}</h6>
             </Col>
           </div>
 
@@ -2707,7 +2704,7 @@ const PersonaJuridica = () => {
                     value="1"
                     name="Idtien_re"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Fisico{" "}
@@ -2716,11 +2713,10 @@ const PersonaJuridica = () => {
                     value="2"
                     name="Idtien_re"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtien_re}</h6>
                 <br />
                 <label className="color"> Firma y huella. </label> Autorizo a
                 LAS ENTIDADES a que la firma y huella, impuesta en este formato
@@ -2772,11 +2768,10 @@ const PersonaJuridica = () => {
                   className="Firma_solicitante"
                   type="text"
                   name="Firma"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 ></input>
                 <p>Firma del Solicitante</p>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Firma}</h6>
             </div>
             <div id="Container-5">
               <Col>
@@ -2799,7 +2794,7 @@ const PersonaJuridica = () => {
                   value="1"
                   name="Idti_soli"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Representante{" "}
@@ -2808,12 +2803,11 @@ const PersonaJuridica = () => {
                   value="2"
                   name="Idti_soli"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Apoderado
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_soli}</h6>
 
               <div className="float-left">
                 <label>
@@ -2822,21 +2816,29 @@ const PersonaJuridica = () => {
                     type="text"
                     name="Nom_solicit"
                     className="Border"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
-                  <h6 style={{ color: "red" }}>{formik.errors.Nom_solicit}</h6>
                 </label>
+                <div className="label-19">
+                  <input
+                    type="text"
+                    name=""
+                    className="Border"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
                 <label className="label-20">
                   No. Identificación{" "}
                   <input
                     type="number"
                     name="No_solicit"
                     className="Border"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
-                  <h6 style={{ color: "red" }}>{formik.errors.No_solicit}</h6>
                 </label>
               </div>
             </div>
@@ -2855,11 +2857,10 @@ const PersonaJuridica = () => {
                 type="number"
                 name="Cod_vend"
                 className="Border"
-                onChange={formik.handleChange}
+                onChange={handleChange}
                 required
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Cod_vend}</h6>
           </div>
           <div className="col-md-4" id="Container-7">
             <label className="Texto-5">
@@ -2868,11 +2869,10 @@ const PersonaJuridica = () => {
                 type="text"
                 name="Nom_vend"
                 className="Border"
-                onChange={formik.handleChange}
+                onChange={handleChange}
                 required
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Nom_vend}</h6>
           </div>
           <div className="col-md-4" id="Container-7">
             <label className="Texto-5">
@@ -2881,11 +2881,10 @@ const PersonaJuridica = () => {
                 type="text"
                 name="Oficina"
                 className="Border"
-                onChange={formik.handleChange}
+                onChange={handleChange}
                 required
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Oficina}</h6>
           </div>
 
           <div className="col-md-9" id="Container-1">
@@ -2905,10 +2904,9 @@ const PersonaJuridica = () => {
                     className="Observaciones"
                     type="text"
                     name="Obser"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Obser}</h6>
               </Col>
             </div>
           </div>
@@ -2920,15 +2918,19 @@ const PersonaJuridica = () => {
                   className="Row"
                   type="text"
                   name="Firma_vend"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 ></input>
                 <p>Firma</p>
               </Row>
-              <h6 style={{ color: "red" }}>{formik.errors.Firma_vend}</h6>
             </label>
           </div>
           <div className="col-md-12">
-            <Button type="submit" className="BOTON" variant="primary">
+            <Button
+              type="submit"
+              className="BOTON"
+              variant="primary"
+              onClick={() => peticionPost()}
+            >
               Guardar
             </Button>
           </div>

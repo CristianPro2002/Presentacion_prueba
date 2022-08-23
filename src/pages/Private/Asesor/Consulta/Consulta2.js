@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Consulta2 = () => {
   const [data, setData] = useContext(AppContext);
   let Navigate = useNavigate();
-  console.log(data);
+  
   return (
     <div className="fondobg">
       <div className="inicio5">

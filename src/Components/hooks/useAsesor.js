@@ -49,9 +49,15 @@ export const useAsesor = () => {
     f.append("METHOD", "CONSULTAIDENT");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
-      Navigate("/Consulta");
+      if(response.data){
+        Navigate("/Consulta");
+      }else{
+        alert("No se encontro el usuario");
+      }
     });
   };
+
+  console.log(data);
 
   const peticionGet2 = async () => {
     var f = new FormData();
@@ -59,13 +65,37 @@ export const useAsesor = () => {
     f.append("METHOD", "CONSULTAID");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
-      Navigate("/Consulta2");
+      if(response.data){
+        Navigate("/Consulta2");
+      }else{
+        alert("No se encontro el usuario");
+      }
     });
   };
+
+//   const validarConsultaPj = () => {
+//     peticionGet();
+//     if(data && peticionGet){
+//       Navigate("/Consulta");
+//     }else{
+//       alert("No se encontraron resultados");
+//     }
+//   }
+// console.log(data);
+//   const validarConsultaPn = () => {
+//     peticionGet2();
+//     if(data){
+//       Navigate("/Consulta2");
+//     }else{
+//       alert("No se encontraron resultados");
+//     }
+//   }
 
   const AsesorActions = {
     peticionGet,
     peticionGet2,
+    // validarConsultaPj,
+    // validarConsultaPn,
   };
 
   return {

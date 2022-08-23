@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import error from "../assets/ErrorImage/error.webp";
+import { useNavigate } from "react-router-dom";
 import "./Errores.css";
 class Error extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tieneError: false, mensajeError: "" };
+    this.state = { tieneError: false, mensajeError: "" };   
   }
 
   static getDerivedStateFromError(error) {
@@ -19,8 +20,9 @@ class Error extends React.Component {
     console.log("Component did catch:", error.message);
   }
 
-  render() {
+  render() { 
     if (this.state.tieneError) {
+      
       // "UI de emergencia"
       return (
         <div class="contenedorError">
@@ -35,7 +37,7 @@ class Error extends React.Component {
                 <p> {this.state.mensajeError} </p>
             </div>
             <div class="centrar_boton">
-                    <Button variant="danger" className="" onClick={() => (window.location.href = "/")}
+                    <Button variant="danger" className="" onClick={() => useNavigate(-1)}
                         class="">
                         Recargar la página {""}
                     </Button>

@@ -5,6 +5,7 @@ import "./Consulta.css";
 import { AppContext } from "../../../../stateManagement/provider";
 
 const Consulta = () => {
+ 
   let Navigate = useNavigate();
   const [data, setData] = useContext(AppContext);
 

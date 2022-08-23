@@ -17,6 +17,12 @@ export const useDirector = ({
   const [solicitud, setSolicitud] = useState([]);
   const [solicitud2, setSolicitud2] = useState([]);
   const [dato, setDato] = useState([]);
+  const [valiDi, setValiDi] = useState([]);
+  const [valiAse, setValiAse] = useState([]);
+  const [valiGer, setValiGer] = useState([]);
+  const [valiCaj, setValiCaj] = useState([]);
+  const [valiCajP, setValiCajP] = useState([]);
+  const [refreshData, setRefreshData] = useState(false);
   const [dataUsuario, setDataUsuario] = useState({
     Id_usu: "",
     Usuario: "",
@@ -119,6 +125,66 @@ export const useDirector = ({
       });
   };
 
+  /*------------------------------------*/
+        //peticion validar num roles
+
+  const peticionGetVDirect = async () => {
+    var f = new FormData();
+    f.append("METHOD", "CONSULTAVAROLD");
+    await axios.post(baseUrl, f).then((response) => {
+      setValiDi(response.data);
+    });
+  };
+  
+  const peticionGetVAsesor = async () => {
+    var f = new FormData();
+    f.append("METHOD", "CONSULTAVAROLA");
+    await axios.post(baseUrl, f).then((response) => {
+      setValiAse(response.data);
+    });
+  };
+
+  const peticionGetVGerente = async () => {
+    var f = new FormData();
+    f.append("METHOD", "CONSULTAVAROLG");
+    await axios.post(baseUrl, f).then((response) => {
+      setValiGer(response.data);
+    });
+  };
+
+  const peticionGetVCajero = async () => {
+    var f = new FormData();
+    f.append("METHOD", "CONSULTAVAROLC");
+    await axios.post(baseUrl, f).then((response) => {
+      setValiCaj(response.data);
+    });
+  };
+
+  const peticionGetVCajeroP = async () => {
+    var f = new FormData();
+    f.append("METHOD", "CONSULTAVAROLCP");
+    await axios.post(baseUrl, f).then((response) => {
+      setValiCajP(response.data);
+    });
+  };
+
+  const contarNDirector = () => {
+    setRefreshData(true);
+    if(valiDi.length >= 1 && dataUsuario.Idti_rol == 1){
+      alert("hay mas de un rol director")
+    } else if(valiAse.length >= 5 && dataUsuario.Idti_rol == 2){
+      alert("hay mas de un rol asesor")
+    } else if(valiGer.length >= 1 && dataUsuario.Idti_rol == 3){
+      alert("hay mas de un rol gerente")
+    } else if(valiCaj.length >= 5 && dataUsuario.Idti_rol == 4){
+      alert("hay mas de un rol cajero")
+    }else if(valiCajP.length >= 1 && dataUsuario.Idti_rol == 5){
+      alert("hay mas de un rol cajero principal")
+    }else{  
+      peticionPost();
+    }
+  }
+
   const DirectorActions = {
     peticionGetData,
     peticionGet3,
@@ -127,6 +193,12 @@ export const useDirector = ({
     peticionPut,
     peticionDelete,
     peticionGetRoles,
+    peticionGetVAsesor,
+    peticionGetVDirect,
+    contarNDirector,
+    peticionGetVGerente,
+    peticionGetVCajero,
+    peticionGetVCajeroP,
   };
 
   return {
@@ -143,5 +215,7 @@ export const useDirector = ({
     dataUsuario,
     setDataUsuario,
     DirectorActions,
+    refreshData,
+    setRefreshData,
   };
 };

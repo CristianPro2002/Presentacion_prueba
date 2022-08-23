@@ -88,24 +88,7 @@ const CajeroP = () => {
     }
   }
 
-  useEffect(() => {
-    ModalesData.ConsultaM1();
-    ModalesData.ConsultaM2();
-    ModalesData.ConsultaM3();
-    ModalesData.ConsultaM4();
-    ModalesData.ConsultaM5();
-    CajeroPactions.ConsultaValue1();
-    CajeroPactions.ConsultaValue2();
-    CajeroPactions.ConsultaValue3();
-    CajeroPactions.ConsultaValue4();
-    CajeroPactions.ConsultaValue5();
-    CajeroPactions.ConsultaRest1();
-    CajeroPactions.ConsultaRest2();
-    CajeroPactions.ConsultaRest3();
-    CajeroPactions.ConsultaRest4();
-    CajeroPactions.ConsultaRest5();
-  }, 8000);
-
+  
   const initialValue = 0;
   const sumCaj1 = value1
     .map((item) => parseInt(item.Valor))
@@ -177,6 +160,43 @@ const CajeroP = () => {
 
   const sumTotal = ValorC1 + ValorC2 + ValorC3 + ValorC4 + ValorC5;
   let Navigate = useNavigate();
+
+  useEffect(() => {
+    ModalesData.ConsultaM1();
+    ModalesData.ConsultaM2();
+    ModalesData.ConsultaM3();
+    ModalesData.ConsultaM4();
+    ModalesData.ConsultaM5();
+    CajeroPactions.ConsultaValue1();
+    CajeroPactions.ConsultaValue2();
+    CajeroPactions.ConsultaValue3();
+    CajeroPactions.ConsultaValue4();
+    CajeroPactions.ConsultaValue5();
+    CajeroPactions.ConsultaRest1();
+    CajeroPactions.ConsultaRest2();
+    CajeroPactions.ConsultaRest3();
+    CajeroPactions.ConsultaRest4();
+    CajeroPactions.ConsultaRest5();
+  }, []);
+
+  setTimeout(() => {
+    ModalesData.ConsultaM1();
+    ModalesData.ConsultaM2();
+    ModalesData.ConsultaM3();
+    ModalesData.ConsultaM4();
+    ModalesData.ConsultaM5();
+    CajeroPactions.ConsultaValue1();
+    CajeroPactions.ConsultaValue2();
+    CajeroPactions.ConsultaValue3();
+    CajeroPactions.ConsultaValue4();
+    CajeroPactions.ConsultaValue5();
+    CajeroPactions.ConsultaRest1();
+    CajeroPactions.ConsultaRest2();
+    CajeroPactions.ConsultaRest3();
+    CajeroPactions.ConsultaRest4();
+    CajeroPactions.ConsultaRest5();
+  } , 6000);
+
   return (
     <div className="pantallaP">
       <div className="pantallaP2">

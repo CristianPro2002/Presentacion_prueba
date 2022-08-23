@@ -45,7 +45,6 @@ const Asesor = ({ onclick, numeroAsesor }) => {
       ...prevState,
       [name]: value,
     }));
-    console.log(dataUsuario);
   };
 
   const handleSubmit = (e) => {

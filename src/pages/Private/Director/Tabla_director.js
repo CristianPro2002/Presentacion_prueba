@@ -31,6 +31,7 @@ export const Tabla_director = () => {
 
   const abrirCerrarModalInsertar = () => {
     setModalInsetar(!modalInsertar);
+    setRefreshData(!refreshData);
   };
 
   const handleChange = (e) => {
@@ -102,6 +103,7 @@ export const Tabla_director = () => {
       .setAttribute("style", "visibility:visible");
     document.getElementById("father01").setAttribute("style", "display:none;");
   };
+  
   const cerrarp = (e) => {
     document
       .getElementById("ventana_modalp")
@@ -198,6 +200,8 @@ export const Tabla_director = () => {
     dataUsuario,
     setDataUsuario,
     DirectorActions,
+    refreshData,
+    setRefreshData,
   } = useDirector({
     abrirCerrarModalInsertar,
     abrirCerrarModalEditar,
@@ -212,10 +216,24 @@ export const Tabla_director = () => {
   };
 
   useEffect(() => {
+    DirectorActions.peticionGetVAsesor();
+    DirectorActions.peticionGetVDirect();
+    DirectorActions.peticionGetVGerente();
+    DirectorActions.peticionGetVCajero();
+    DirectorActions.peticionGetVCajeroP();
+    DirectorActions.peticionGetData();
+  }, [refreshData]);
+
+  useEffect(() => {
     DirectorActions.peticionGetRoles();
     DirectorActions.peticionGetData();
     DirectorActions.peticionGet3();
     DirectorActions.peticionGet4();
+    DirectorActions.peticionGetVAsesor();
+    DirectorActions.peticionGetVDirect();
+    DirectorActions.peticionGetVGerente();
+    DirectorActions.peticionGetVCajero();
+    DirectorActions.peticionGetVCajeroP();
   }, []);
 
   return (
@@ -351,6 +369,7 @@ export const Tabla_director = () => {
         peticionPost={DirectorActions.peticionPost}
         abrirCerrarModalInsertar={abrirCerrarModalInsertar}
         modalInsertar={modalInsertar}
+        peticionPostFather = {DirectorActions.contarNDirector}
       />
       <ModalEditar
         dataUsuario={dataUsuario}

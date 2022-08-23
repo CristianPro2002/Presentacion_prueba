@@ -12,6 +12,7 @@ const Minsertar = ({
   dato,
   peticionPost,
   abrirCerrarModalInsertar,
+  peticionPostFather,
 }) => {
 
   const handleSubmit = (e) => {
@@ -83,7 +84,7 @@ const Minsertar = ({
           </div>
         </ModalBody>
         <ModalFooter>
-          <button className="btn third" onClick={() => peticionPost()}>
+          <button className="btn third" onClick={() => peticionPostFather()}>
             Crear
           </button>
           <button

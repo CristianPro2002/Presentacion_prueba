@@ -133,6 +133,57 @@ if($_POST['METHOD']=='CONSULTAIPJ'){
     exit();
 }
 
+/* Consultas Validar Numero de Roles */
+
+//consulta validar numero de rol Director
+if ($_POST ['METHOD']=='CONSULTAVAROLD'){
+    unset($_POST['METHOD']);
+    $query="select Idti_rol from reg_usu where Idti_rol  =1";
+    $resultado=metodoGet($query);
+    echo json_encode ($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+//consulta validar numero de rol Asesor 
+if ($_POST ['METHOD']=='CONSULTAVAROLA'){
+    unset($_POST['_POST']);
+    $query="select Idti_rol from reg_usu where Idti_rol = 2";
+    $resultado=metodoGet($query);
+    echo json_encode ($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+//consulta validar numero de rol  Gerente
+if ($_POST ['METHOD']=='CONSULTAVAROLG'){
+    unset($_POST['_POST']);
+    $query="select Idti_rol from reg_usu where Idti_rol = 3";
+    $resultado=metodoGet($query);
+    echo json_encode ($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+//consulta validar numero de rol  Cajero
+if ($_POST ['METHOD']=='CONSULTAVAROLC'){
+    unset($_POST['_POST']);
+    $query="select Idti_rol from reg_usu where Idti_rol = 4";
+    $resultado=metodoGet($query);
+    echo json_encode ($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+//consulta validar numero de Cajero Principal
+if ($_POST ['METHOD']=='CONSULTAVAROLCP'){
+    unset($_POST['_POST']);
+    $query="select Idti_rol from reg_usu where Idti_rol = 5";
+    $resultado=metodoGet($query);
+    echo json_encode ($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
 
 //consulta de informacion de persona juridica
 if($_POST['METHOD']=='CONSULTAIDENT'){

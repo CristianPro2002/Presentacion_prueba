@@ -18,6 +18,7 @@
   font-family: "Quicksand", sans-serif;
   display: flex;
   width: 100vw;
+  height: 100vh;
 }
 
 .padresito {
@@ -338,6 +339,12 @@ form {
   padding-top: 8px;
 }
 
+@media screen and (max-width: 1024px) {
+  .principal{
+    height: auto;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .conn {
     padding-left: 10%;
@@ -355,6 +362,7 @@ form {
   .contj {
     width: 100%;
   }
+
 }
 
 @media (max-width: 400px) {

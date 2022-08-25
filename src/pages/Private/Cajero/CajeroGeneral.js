@@ -84,7 +84,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                 <Form id="sign-in-form" className="text-center w-100">
                   <img className="mb-4 logo" src={imagen} alt="" />
                   <div className="Center">
-                    <h1 className=" title">Apertura de ahorro</h1>
+                    <h1 className=" title">Gestion de cuentas</h1>
                   </div>
                   <Form.Group controlId="sign-in-password" className="mb-3">
                     <Form.Control

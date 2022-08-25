@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
-import AppRouter from "./routes/AppRouter";
 import MyProvider from "./stateManagement/provider";
 import AuthProvider from "./stateManagement/authContexts";
 import Error from "./Errors/Error";
@@ -14,7 +13,7 @@ ReactDOM.render(
     <Error>
       <MyProvider>
         <AuthProvider>
-          <AppRouter />
+          <App />
         </AuthProvider>
       </MyProvider>
     </Error>

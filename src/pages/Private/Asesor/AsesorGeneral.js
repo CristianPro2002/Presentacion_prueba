@@ -37,7 +37,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     validacion.focus();
   };
 
-  const { AsesorActions, dataUsuario, setDataUsuario } = useAsesor();
+  const { AsesorActions, dataUsuario, setDataUsuario } = useAsesor({notify});
 
   const handleChange = (e) => {
     const { name, value } = e.target;

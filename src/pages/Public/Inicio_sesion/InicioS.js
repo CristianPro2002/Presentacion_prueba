@@ -58,6 +58,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", Usuario);
+      localStorage.setItem("Rol", Rol);
       setData2("/Roles");
       login();
     } else if ((conectado === true) & (Rol == "2")) {
@@ -65,6 +66,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", Usuario);
+      localStorage.setItem("Rol", Rol);
       setData2("/Rasesor");
       login();
     } else if ((conectado === true) & (Rol == "3")) {
@@ -72,6 +74,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", Usuario);
+      localStorage.setItem("Rol", Rol);
       setData2("/Rgerente");
       login();
     } else if ((conectado === true) & (Rol == "4")) {
@@ -79,6 +82,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", Usuario);
+      localStorage.setItem("Rol", Rol);
       setData2("/Rcajero");
       login();
     } else if ((conectado === true) & (Rol == "5")) {
@@ -86,6 +90,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", Usuario);
+      localStorage.setItem("Rol", Rol);
       setData2("/rcajerop");
       login();
     } else if (usuario.valido === "true" && password.valido === "true") {
@@ -93,6 +98,7 @@ const App = () => {
       cambiarUsuario({ campo: "", valido: "" });
       cambiarPassword({ campo: "", valido: null });
       localStorage.setItem("User", "ADMIN");
+      localStorage.setItem("Rol", "1");
       setData2("/Roles");
       login();
     } else {

@@ -179,24 +179,6 @@ const CajeroP = () => {
     CajeroPactions.ConsultaRest5();
   }, []);
 
-  setTimeout(() => {
-    ModalesData.ConsultaM1();
-    ModalesData.ConsultaM2();
-    ModalesData.ConsultaM3();
-    ModalesData.ConsultaM4();
-    ModalesData.ConsultaM5();
-    CajeroPactions.ConsultaValue1();
-    CajeroPactions.ConsultaValue2();
-    CajeroPactions.ConsultaValue3();
-    CajeroPactions.ConsultaValue4();
-    CajeroPactions.ConsultaValue5();
-    CajeroPactions.ConsultaRest1();
-    CajeroPactions.ConsultaRest2();
-    CajeroPactions.ConsultaRest3();
-    CajeroPactions.ConsultaRest4();
-    CajeroPactions.ConsultaRest5();
-  } , 6000);
-
   return (
     <div className="pantallaP">
       <div className="pantallaP2">

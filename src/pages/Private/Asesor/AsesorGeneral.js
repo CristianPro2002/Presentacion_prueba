@@ -11,6 +11,7 @@ import { useAsesor } from "../../../Components/hooks/useAsesor";
 
 const Asesor = ({ onclick, numeroAsesor }) => {
   const notify = () => toast("  Selecciona una opcion❕");
+  const notify2 = () => toast("  Este usuario no existe❕");
   let Navigate = useNavigate();
 
   const validar = (e) => {
@@ -37,7 +38,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     validacion.focus();
   };
 
-  const { AsesorActions, dataUsuario, setDataUsuario } = useAsesor({notify});
+  const { AsesorActions, dataUsuario, setDataUsuario } = useAsesor({notify2});
 
   const handleChange = (e) => {
     const { name, value } = e.target;

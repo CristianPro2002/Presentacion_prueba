@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../stateManagement/provider";
 import { useNavigate } from "react-router-dom";
 
-export const useAsesor = ({notify}) => {
+export const useAsesor = ({notify2}) => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useContext(AppContext);
@@ -53,7 +53,7 @@ export const useAsesor = ({notify}) => {
         Navigate("/Consulta");
       }else{
         // alert("No se encontro el usuario");
-        notify()
+        notify2()
       }
     });
   };
@@ -70,7 +70,7 @@ export const useAsesor = ({notify}) => {
         Navigate("/Consulta2");
       }else{
         // alert("No se encontro el usuario");
-        notify()
+        notify2()
       }
     });
   };

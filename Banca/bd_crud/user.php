@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $resultado=metodoGet($query);
          echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
      }else{
-         $query="select * from reg_usu, tip_rol where tip_rol.Idti_rol=reg_usu.Idti_rol";
+         $query="select * from act_cli where Fe_act >= '2022-08-12' and Fe_act <= '2022-08-30'";
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetchAll()); 
        /* if($resultado==true){

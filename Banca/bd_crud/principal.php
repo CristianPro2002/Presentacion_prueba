@@ -335,6 +335,27 @@ if($_POST['METHOD']=='CONSULTAVALUEREST5'){
     exit();
 }
 
+if($_POST['METHOD'] == 'REPORTCUENTA'){
+    unset($_POST['METHOD']);
+    $No_cuenta = $_POST['No_cuenta'];
+    $query="select * from act_cli where No_cuec= '$No_cuenta' or No_cuej= '$No_cuenta'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD'] == 'REPORTCUENTADATE'){
+    unset($_POST['METHOD']);
+    $Mindate = $_POST['Min_date'];
+    $Maxdate = $_POST['Max_date'];
+    $query="select * from act_cli where Fe_act >= '$Mindate' and Fe_act <= '$Maxdate'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
 //Registro de Fomulario persona natural
 if($_POST['METHOD']=='FORMN'){
     unset($_POST['METHOD']);

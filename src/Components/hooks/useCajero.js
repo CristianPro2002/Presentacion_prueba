@@ -11,6 +11,9 @@ export const useCajero = ({ numeroCajeroBD }) => {
   const [data, setData] = useState([]);
   const [consulta, setConsulta] = useState([]);
   const [consulta2, setConsulta2] = useState([]);
+  const [reportCuenta, setReportCuenta] = useState([]);
+  const [reportCuentaDate, setReportCuentaDate] = useState([]);
+  const [NoCuenta, setNoCuenta] = useState([]);
   const [dataUsuario, setDataUsuario] = useState({
     Id_act: "",
     Fecha_act: "",
@@ -20,6 +23,13 @@ export const useCajero = ({ numeroCajeroBD }) => {
     No_cuenta: "",
     Nom_ra: "",
   });
+  const [dataUsuarioReport, setDataUsuarioReport] = useState({
+    No_cuenta: "",
+  })
+  const [dataUsuarioReportDate, setDataUsuarioReportDate] = useState({
+    Min_date: "",
+    Max_date: "",
+  })
 
   const peticionGetCuentaC = async () => {
     var f = new FormData();
@@ -108,6 +118,31 @@ export const useCajero = ({ numeroCajeroBD }) => {
     });
   };
 
+  const peticionGetReport = async () => {
+    var f = new FormData();
+    f.append("No_cuenta", dataUsuarioReport.No_cuenta);
+    f.append("METHOD", "REPORTCUENTA");
+    await axios.post(baseUrl2, f).then((response) => {
+      setReportCuenta(response.data);
+      setNoCuenta(dataUsuarioReport.No_cuenta);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  const peticionGetReportDate = async () => {
+    var f = new FormData();
+    f.append("Min_date", dataUsuarioReportDate.Min_date);
+    f.append("Max_date", dataUsuarioReportDate.Max_date);
+    f.append("METHOD", "REPORTCUENTADATE");
+    await axios.post(baseUrl2, f).then((response) => {
+      setReportCuentaDate(response.data);
+      console.log(response.data);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   const CajeroActions = {
     peticionGetCuentaC,
     peticionGetCuentaJ,
@@ -116,6 +151,8 @@ export const useCajero = ({ numeroCajeroBD }) => {
     peticionGetCajero2,
     peticionGet,
     peticionPostFalse,
+    peticionGetReport,
+    peticionGetReportDate,
   };
 
   return {
@@ -132,5 +169,12 @@ export const useCajero = ({ numeroCajeroBD }) => {
     setConsulta2,
     dataUsuario,
     setDataUsuario,
+    dataUsuarioReport,
+    setDataUsuarioReport,
+    reportCuenta,
+    NoCuenta,
+    setDataUsuarioReportDate,
+    dataUsuarioReportDate,
+    reportCuentaDate,
   };
 };

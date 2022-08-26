@@ -26,6 +26,13 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     setConsulta2,
     dataUsuario,
     setDataUsuario,
+    dataUsuarioReport,
+    setDataUsuarioReport,
+    reportCuenta,
+    NoCuenta,
+    setDataUsuarioReportDate,
+    dataUsuarioReportDate,
+    reportCuentaDate
   } = useCajero({ numeroCajeroBD });
 
   const peticionPostFather = () => {
@@ -54,6 +61,23 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
       [name]: value,
     }));
   };
+
+  const handleChangeReport = (e) => {
+    const { name, value } = e.target;
+    setDataUsuarioReport((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeDate = (e) => {
+    const { name, value } = e.target;
+    setDataUsuarioReportDate((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(dataUsuarioReportDate);
+  }
 
   useEffect(() => {
     CajeroActions.peticionGetCuentaC();
@@ -248,6 +272,49 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
           </div>
         </div>
       </div>
+
+      <div>
+        <div>
+          <form>
+            <input
+              type="number"
+              name="No_cuenta"
+              onChange={handleChangeReport}
+            />
+            <button
+              type="button"
+              onClick={() => CajeroActions.peticionGetReport()}
+            >
+              Consultar
+            </button>
+          </form>
+        </div>
+        <div>
+          <h1>{NoCuenta}</h1>
+          {reportCuenta.map((item) => (
+            <>
+              <h1>{item.ti_pro}</h1>
+              <h1>{item.Valor}</h1>
+            </>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <form>
+            <div>
+            <label>Fecha minima</label>
+            <input type="date" name="Min_date" onChange={handleChangeDate}/>
+            </div>
+            <div>
+            <label>Fecha maxima</label>
+            <input type= "date" name="Max_date" onChange={handleChangeDate}/>
+            </div>
+            <button type="button" onClick={()=> CajeroActions.peticionGetReportDate()}>Consultar Fecha</button>
+          </form>
+        </div>
+        </div>
     </div>
   );
 };

@@ -32,7 +32,7 @@ export const useDirector = ({
 
   const peticionGetData = async () => {
     await axios
-      .get(baseUrlUser)
+      .get(baseUrl)
       .then((response) => {
         setData2(response.data);
         setTablaUsuarios(response.data);

@@ -109,7 +109,7 @@ export const McajeroReporte = ({
                 }}
               >
                 <h1>
-                  <b>No hay informacion</b>
+                  <b>No existe informacion</b>
                 </h1>
               </div>
             </>
@@ -133,6 +133,40 @@ export const McajeroReporte2 = ({
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
     page: { padding: "20px" },
+    logo_styles: { width: "200px" },
+    title_reporte: {
+      fontSize: "20px",
+      fontWeight: "bold",
+      textAlign: "center",
+      padding: "25px",
+    },
+    content_header: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+      fontSize: "15px",
+      border: "1px solid #000",
+    },
+    content_titles: {
+      width: "20%",
+      textAlign: "center",
+      fontWeight: "extrabold",
+      borderRight: "1px solid #000",
+      padding: "5px",
+    },
+    content_body: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+      fontSize: "15px",
+      border: "1px solid #000",
+    },
+    content_titles_body: {
+      width: "50%",
+      textAlign: "center",
+      borderRight: "1px solid #000",
+      padding: "5px",
+    },
   });
   return (
     <>
@@ -143,51 +177,54 @@ export const McajeroReporte2 = ({
             <PDFViewer style={styles.pdfViewers}>
               <Document>
                 <Page size="A4" style={styles.page}>
-                  {reportCuentaDate.map((data) => (
-                    <div>
-                      <div>
-                        <div>
-                          <label>
-                            <b>Id</b>
-                          </label>
-                        </div>
-                        {data.Id_act}
-                      </div>
-                      <div>
-                        <div>
-                          <label>
-                            <b>Fecha</b>
-                          </label>
-                        </div>
-                        {data.Fe_act}
-                      </div>
-                      <div>
-                        <div>
-                          <label>
-                            <b>Producto</b>
-                          </label>
-                        </div>
-                        {data.ti_pro}
-                      </div>
-                      <div>
-                        <div>
-                          <label>
-                            <b>Valor</b>
-                          </label>
-                        </div>
-                        {data.Valor}
-                      </div>
-                      <div>
-                        <div>
-                          <label>
-                            <b>Cuenta</b>
-                          </label>
-                        </div>
-                        {data.No_cuec}
-                        {data.No_cuej}
-                      </div>
-                    </div>
-                  ))}
+                  <View>
+                    <Image src={Logo} style={styles.logo_styles} />
+                    <Text style={styles.title_reporte}>
+                      Reporte de transacciones
+                    </Text>
+                    {/* <Text style={styles.title_cuenta}>
+                      Id. Actividad: {Id_act}
+                    </Text> */}
+                    <View style={styles.content_header}>
+                      <View style={styles.content_titles}>
+                        <Text>Id</Text>
+                      </View>
+                      <View style={styles.content_titles}>
+                        <Text>Fecha</Text>
+                      </View>
+                      <View style={styles.content_titles}>
+                        <Text>Producto</Text>
+                      </View>
+                      <View style={styles.content_titles}>
+                        <Text>Valor</Text>
+                      </View>
+                      <View style={styles.content_titles}>
+                        <Text>Cuenta</Text>
+                      </View>
+                    </View>
+                    {reportCuentaDate.map((data) => (
+                      <View>
+                        <View style={styles.content_body}>
+                          <View style={styles.content_titles_body}>
+                            <Text>{data.Id_act}</Text>
+                          </View>
+                          <View style={styles.content_titles_body}>
+                            <Text>{data.Fe_act} </Text>
+                          </View>
+                          <View style={styles.content_titles_body}>
+                            <Text>{data.ti_pro}</Text>
+                          </View>
+                          <View style={styles.content_titles_body}>
+                            <Text>{data.Valor}</Text>
+                          </View>
+                          <View style={styles.content_titles_body}>
+                            <Text>{data.No_cuec}</Text>
+                            <Text>{data.No_cuej}</Text>
+                          </View>
+                        </View>
+                      </View>
+                    ))}
+                  </View>                
                 </Page>
               </Document>
             </PDFViewer>
@@ -202,7 +239,7 @@ export const McajeroReporte2 = ({
                 }}
               >
                 <h1>
-                  <b>No hay informacion</b>
+                  <b>No existe informacion</b>
                 </h1>
               </div>
             </>

@@ -14,6 +14,10 @@ export const useCajero = ({ numeroCajeroBD }) => {
   const [reportCuenta, setReportCuenta] = useState([]);
   const [reportCuentaDate, setReportCuentaDate] = useState([]);
   const [NoCuenta, setNoCuenta] = useState([]);
+  const [mostrarReporte, setMostrarReporte] = useState(false);
+  const handleShow = () => setMostrarReporte(!mostrarReporte);
+  const [mostrarReporteDate, setMostrarReporteDate] = useState(false);
+  const handleShow2 = () => setMostrarReporteDate(!mostrarReporteDate);
   const [dataUsuario, setDataUsuario] = useState({
     Id_act: "",
     Fecha_act: "",
@@ -153,6 +157,8 @@ export const useCajero = ({ numeroCajeroBD }) => {
     peticionPostFalse,
     peticionGetReport,
     peticionGetReportDate,
+    handleShow,
+    handleShow2,
   };
 
   return {
@@ -176,5 +182,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     setDataUsuarioReportDate,
     dataUsuarioReportDate,
     reportCuentaDate,
+    mostrarReporte,
+    mostrarReporteDate,
   };
 };

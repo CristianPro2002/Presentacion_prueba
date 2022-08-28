@@ -37,7 +37,7 @@ class Error extends React.Component {
                 <p> {this.state.mensajeError} </p>
             </div>
             <div class="centrar_boton">
-                    <Button variant="danger" className="" onClick={window.location.reload()}
+                    <Button variant="danger" className="" onClick={null}
                         class="">
                         Recargar la página {""}
                     </Button>

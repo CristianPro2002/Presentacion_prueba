@@ -36,6 +36,8 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     reportCuentaDate,
     mostrarReporte,
     mostrarReporteDate,
+    reportValueC,
+    reportValueR,
   } = useCajero({ numeroCajeroBD });
 
   const peticionPostFather = () => {
@@ -60,6 +62,8 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   const peticionReport = () => {
     CajeroActions.peticionGetReport();
     CajeroActions.handleShow();
+    CajeroActions.peticionGetValueCuenta();
+    CajeroActions.peticionGetValueNCuenta();
   }
 
   const peticionReportDate = () => {
@@ -101,6 +105,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   }, [data]);
 
   return (
+    <div className="Principal-div01">
     <div className="Fondito">
       <div className="Contenedor-Principal">
         <div className="BOTON">
@@ -285,42 +290,83 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
         </div>
       </div>
 
-      <div>
-        <div>
-          <form>
-            <input
-              type="number"
-              name="No_cuenta"
-              onChange={handleChangeReport}
-            />
-            <button
-              type="button"
-              onClick={() => peticionReport()}
-            >
-              Consultar
-            </button>
-          </form>
+      <div className="dad_initial_container">
+        <div className="initial_container">
+          <div className="father_container_title">
+            <h2 className="title_reports">reportes de los usuarios banca4.0</h2>
+          </div>
+          <div className="dad_container">
+            <div className="container_form1">
+              <form action="">
+                <div className="dad_cotainer_form">
+                  <div className="child_container_form1_input">
+                    <div className="label_center">
+                      <label for="">Ingrese un numero de cuenta:</label>
+                    </div>
+                    <input
+                      type="number"
+                      name="No_cuenta"
+                      onChange={handleChangeReport}
+                      className="input_form_consult"
+                    />
+                  </div>
+                  <div className="child_container_form1_button">
+                    <Button
+                      id="button_form"
+                      type="button"
+                      onClick={() => peticionReport()}
+                    >
+                      Consultar
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div className="container_form2">
+              <form action="">
+                <div className="center_title_form2">
+                  <h4>Consulta por rango de fecha</h4>
+                  <div className="dad_container_form_2">
+                    <div className="child_container_form2_input2">
+                      <div>
+                        <div className="label_center">
+                          <label for="">Fecha minima</label>
+                        </div>
+                        <input
+                          type="date"
+                          name="Min_date"
+                          onChange={handleChangeDate}
+                        />
+                      </div>
+                    </div>
+                    <div className="child_container_form2_input3">
+                      <div>
+                        <div className="label_center">
+                          <label for="">Fecha maxima</label>
+                        </div>
+                        <input
+                          type="date"
+                          name="Max_date"
+                          onChange={handleChangeDate}
+                        />
+                      </div>
+                      <div>
+                       
+                      </div>
+                    </div>
+                    <div className="cont-btn-consult"><Button id="button2_form3" type="button" onClick={() => peticionReportDate()}>Consultar Fecha</Button></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <div>
-          <form>
-            <div>
-            <label>Fecha minima</label>
-            <input type="date" name="Min_date" onChange={handleChangeDate}/>
-            </div>
-            <div>
-            <label>Fecha maxima</label>
-            <input type= "date" name="Max_date" onChange={handleChangeDate}/>
-            </div>
-            <button type="button" onClick={()=> peticionReportDate()}>Consultar Fecha</button>
-          </form>
-        </div>
-        </div>
-
-        <McajeroReporte mostrarReporte={mostrarReporte} handleShowReporte={CajeroActions.handleShow} reportCuenta={reportCuenta} NoCuenta={NoCuenta}/>
-        <McajeroReporte2 mostrarReporteDate={mostrarReporteDate} handleShowReporteDate={CajeroActions.handleShow2} reportCuentaDate={reportCuentaDate}/>
+        <McajeroReporte mostrarReporte={mostrarReporte} handleShowReporte={CajeroActions.handleShow} reportCuenta={reportCuenta} NoCuenta={NoCuenta} reportValueC = {reportValueC} reportValueR = {reportValueR}/>
+        <McajeroReporte2 mostrarReporteDate={mostrarReporteDate} handleShowReporteDate={CajeroActions.handleShow2} reportCuentaDate={reportCuentaDate} dataUsuarioReportDate={dataUsuarioReportDate}/>
+    </div>
     </div>
   );
 };

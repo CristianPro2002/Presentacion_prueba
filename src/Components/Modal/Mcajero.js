@@ -19,7 +19,26 @@ export const McajeroReporte = ({
   handleShowReporte,
   reportCuenta,
   NoCuenta,
+  reportValueC,
+  reportValueR,
 }) => {
+  const initialValue = 0;
+  const sumValueC = reportValueC
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+
+  const restValueC = reportValueR
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+
+  const sumTotalCuent = sumValueC - restValueC;
+
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
     page: { padding: "20px" },
@@ -58,6 +77,22 @@ export const McajeroReporte = ({
       borderRight: "1px solid #000",
       padding: "5px",
     },
+
+    value_cuenta: {
+      width: "20%",
+      textAlign: "center",
+      border: "1px solid red",
+      color: "red",
+    },
+    text_value: {
+      width: "80%",
+    },
+    content_value: {
+      padding: "10px",
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+    },
   });
   return (
     <>
@@ -94,6 +129,12 @@ export const McajeroReporte = ({
                         </View>
                       </View>
                     ))}
+                    <View style={styles.content_value}>
+                      <Text style={styles.text_value}>
+                        Cantidad disponible:{" "}
+                      </Text>
+                      <Text style={styles.value_cuenta}>{sumTotalCuent}</Text>
+                    </View>
                   </View>
                 </Page>
               </Document>
@@ -109,7 +150,7 @@ export const McajeroReporte = ({
                 }}
               >
                 <h1>
-                  <b>No existe informacion</b>
+                  <b>No existe informacion de este numero de cuenta!</b>
                 </h1>
               </div>
             </>
@@ -129,7 +170,11 @@ export const McajeroReporte2 = ({
   mostrarReporteDate,
   handleShowReporteDate,
   reportCuentaDate,
+  dataUsuarioReportDate,
 }) => {
+  const Min_date = dataUsuarioReportDate.Min_date;
+  const Max_date = dataUsuarioReportDate.Max_date;
+
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
     page: { padding: "20px" },
@@ -167,13 +212,28 @@ export const McajeroReporte2 = ({
       borderRight: "1px solid #000",
       padding: "5px",
     },
+    content_dates: {
+      padding: "10px",
+      width: "100%",
+      display: "flex",
+      flexDirection: "row",
+    },
+    Fe_inicio: {
+      width: "50%",
+      textAlign: "center",
+    },
+    Fe_fin: {
+      width: "50%",
+      textAlign: "center",
+    },
   });
+
   return (
     <>
       <Modal isOpen={mostrarReporteDate} size="xl">
         <ModalHeader closeButton>Reporte de acciones de cuenta</ModalHeader>
         <ModalBody>
-          {reportCuentaDate.length >= 1 ? (
+          {reportCuentaDate.length >= 1 && reportCuentaDate.length <= 300 ? (
             <PDFViewer style={styles.pdfViewers}>
               <Document>
                 <Page size="A4" style={styles.page}>
@@ -182,9 +242,14 @@ export const McajeroReporte2 = ({
                     <Text style={styles.title_reporte}>
                       Reporte de transacciones
                     </Text>
-                    {/* <Text style={styles.title_cuenta}>
-                      Id. Actividad: {Id_act}
-                    </Text> */}
+                    <View style={styles.content_dates}>
+                      <Text style={styles.Fe_inicio}>
+                        Fecha de inicio: {Min_date}
+                      </Text>
+                      <Text style={styles.Fe_fin}>
+                        Fecha de fin: {Max_date}
+                      </Text>
+                    </View>
                     <View style={styles.content_header}>
                       <View style={styles.content_titles}>
                         <Text>Id</Text>
@@ -224,7 +289,7 @@ export const McajeroReporte2 = ({
                         </View>
                       </View>
                     ))}
-                  </View>                
+                  </View>
                 </Page>
               </Document>
             </PDFViewer>
@@ -239,7 +304,7 @@ export const McajeroReporte2 = ({
                 }}
               >
                 <h1>
-                  <b>No existe informacion</b>
+                  <b>No existen registros en este rango de fecha!</b>
                 </h1>
               </div>
             </>

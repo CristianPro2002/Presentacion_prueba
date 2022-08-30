@@ -13,6 +13,8 @@ export const useCajero = ({ numeroCajeroBD }) => {
   const [consulta2, setConsulta2] = useState([]);
   const [reportCuenta, setReportCuenta] = useState([]);
   const [reportCuentaDate, setReportCuentaDate] = useState([]);
+  const [reportValueC, setReportValueC] = useState([]);
+  const [reportValueR, setReportValueR] = useState([]);
   const [NoCuenta, setNoCuenta] = useState([]);
   const [mostrarReporte, setMostrarReporte] = useState(false);
   const handleShow = () => setMostrarReporte(!mostrarReporte);
@@ -134,6 +136,28 @@ export const useCajero = ({ numeroCajeroBD }) => {
     })
   }
 
+  const peticionGetValueCuenta = async () => {
+    var f = new FormData();
+    f.append("No_cuenta", dataUsuarioReport.No_cuenta);
+    f.append("METHOD", "REPORTVALUEPCUENTA");
+    await axios.post(baseUrl2, f).then((response) => {
+      setReportValueC(response.data);  
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  const peticionGetValueNCuenta = async () => {
+    var f = new FormData();
+    f.append("No_cuenta", dataUsuarioReport.No_cuenta);
+    f.append("METHOD", "REPORTVALUENCUENTA");
+    await axios.post(baseUrl2, f).then((response) => {
+      setReportValueR(response.data);   
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   const peticionGetReportDate = async () => {
     var f = new FormData();
     f.append("Min_date", dataUsuarioReportDate.Min_date);
@@ -141,7 +165,6 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("METHOD", "REPORTCUENTADATE");
     await axios.post(baseUrl2, f).then((response) => {
       setReportCuentaDate(response.data);
-      console.log(response.data);
     }).catch((error) => {
       console.log(error);
     })
@@ -159,6 +182,8 @@ export const useCajero = ({ numeroCajeroBD }) => {
     peticionGetReportDate,
     handleShow,
     handleShow2,
+    peticionGetValueCuenta,
+    peticionGetValueNCuenta,
   };
 
   return {
@@ -184,5 +209,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     reportCuentaDate,
     mostrarReporte,
     mostrarReporteDate,
+    reportValueC,
+    reportValueR,
   };
 };

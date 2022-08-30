@@ -356,6 +356,28 @@ if($_POST['METHOD'] == 'REPORTCUENTADATE'){
     exit();
 }
 
+if($_POST['METHOD'] == 'REPORTVALUEPCUENTA'){
+    unset($_POST['METHOD']);
+    $No_cuenta = $_POST['No_cuenta'];
+    $query="select * from act_cli where (No_cuec='$No_cuenta' or No_cuej='$No_cuenta') and ti_pro='Consignacion'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+if($_POST['METHOD'] == 'REPORTVALUENCUENTA'){
+    unset($_POST['METHOD']);
+    $No_cuenta = $_POST['No_cuenta'];
+    $query="select * from act_cli where (No_cuec='$No_cuenta' or No_cuej='$No_cuenta') and ti_pro='Retiro'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
+
+
 //Registro de Fomulario persona natural
 if($_POST['METHOD']=='FORMN'){
     unset($_POST['METHOD']);

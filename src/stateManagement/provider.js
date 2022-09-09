@@ -1,7 +1,7 @@
 import React, {createContext,useState} from "react";
 
 const MyProvider = (props) =>{
-    const [data,setData]= useState({});
+    const [data,setData]= useState([]);
     const [data2,setData2]= useState([]);
     const [dataUser,setDataUser]= useState([]);
     return (

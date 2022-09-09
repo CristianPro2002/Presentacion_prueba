@@ -3,12 +3,11 @@ import "./Consulta2.css";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../stateManagement/provider";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { usePageConsultas } from "../../../../Components/hooks/usePageConsultas";
 
 const Consulta2 = () => {
   const [data, setData] = useContext(AppContext);
   let Navigate = useNavigate();
-  const {consultasActions, currentPage, items } = usePageConsultas(data);
+  
   return (
     <div className="fondobg">
       <div className="inicio5">
@@ -18,25 +17,18 @@ const Consulta2 = () => {
           onClick={() => Navigate(-1)}
         ></i>
       </div>
-      {items.map((item) => (<>
       <div className="contenT">
         <h1>
-          Datos de: <b>{item.Pri_nom}</b>
+          Datos de: <b>{data.Pri_nom}</b>
         </h1>
       </div>
-      <div className="Format01">
-      <h3 style={{color: "black"}}>
-          Solicitud No {item.Id_client}
-        </h3>
       <div className="Tabla2">
         <div className="row" id="rowbg">
           <div className="col-md-4" id="estilos_row">
             <div>
               <label>
                 <h3>Tipo de solicitud:</h3>
-                <div className="div_info01">
-                  Vinculacion
-                </div>
+                <b>Vinculacion</b>
               </label>
             </div>
           </div>
@@ -44,7 +36,7 @@ const Consulta2 = () => {
             <div>
               <label>
                 <h3>Fecha de diligenciamiento:</h3>
-                <div className="div_info01">{item.Fec_dil}</div>
+                <b>{data.Fec_dil}</b>
               </label>
             </div>
           </div>
@@ -52,7 +44,7 @@ const Consulta2 = () => {
             <div>
               <label>
                 <h3>Tipo de solicitante:</h3>
-                <div className="div_info01">{item.Nomti_sol}</div>
+                <b>{data.Nomti_sol}</b>
               </label>
             </div>
           </div>
@@ -63,7 +55,7 @@ const Consulta2 = () => {
           </label>
         </center>
         <div className="table-responsive-sm">
-          <table className="table table-hover table-borderless table-transparent">
+          <table className="table table-hover table-borderless table-light">
             <thead className="">
               <tr>
                 <th>Identificacion</th>
@@ -76,14 +68,14 @@ const Consulta2 = () => {
               </tr>
             </thead>
             <tbody>
-              <tr key={item.No_ide}>
-                <td><div className="div_info01">{item.No_ide}</div></td>
-                <td><div className="div_info01">{item.Pri_nom}</div></td>
-                <td><div className="div_info01">{item.Seg_nom}</div></td>
-                <td><div className="div_info01">{item.Pri_ape}</div></td>
-                <td><div className="div_info01">{item.Seg_ape}</div></td>
-                <td><div className="div_info01">{item.Nom_doc}</div></td>
-                <td><div className="div_info01">{item.Fec_exp}</div></td>
+              <tr key={data.No_ide}>
+                <td>{data.No_ide}</td>
+                <td>{data.Pri_nom}</td>
+                <td>{data.Seg_nom}</td>
+                <td>{data.Pri_ape}</td>
+                <td>{data.Seg_ape}</td>
+                <td>{data.Nom_doc}</td>
+                <td>{data.Fec_exp}</td>
               </tr>
             </tbody>
             <thead className="">
@@ -99,13 +91,13 @@ const Consulta2 = () => {
             </thead>
             <tbody>
               <tr>
-                <td><div className="div_info01">{item.Lug_exp}</div></td>
-                <td><div className="div_info01">{item.Fec_nac}</div></td>
-                <td><div className="div_info01">{item.Ciu_nac}</div></td>
-                <td><div className="div_info01">{item.Nom_gen}</div></td>
-                <td><div className="div_info01">{item.Nom_civ}</div></td>
-                <td><div className="div_info01">{item.Nom_nac}</div></td>
-                <td><div className="div_info01">{item.Otr_nac}</div></td>
+                <td>{data.Lug_exp}</td>
+                <td>{data.Fec_nac}</td>
+                <td>{data.Ciu_nac}</td>
+                <td>{data.Nom_gen}</td>
+                <td>{data.Nom_civ}</td>
+                <td>{data.Nom_nac}</td>
+                <td>{data.Otr_nac}</td>
               </tr>
             </tbody>
           </table>
@@ -119,7 +111,7 @@ const Consulta2 = () => {
           </label>
         </center>
         <div className="table-responsive-sm">
-          <table className="table table-hover table-borderless table-transparent">
+          <table className="table table-hover table-borderless table-light">
             <thead className="">
               <tr>
                 <th>Direccion</th>
@@ -130,12 +122,12 @@ const Consulta2 = () => {
               </tr>
             </thead>
             <tbody>
-              <tr key={item.No_ide}>
-                <td><div className="div_info01">{item.Dir_re}</div></td>
-                <td><div className="div_info01">{item.Blo_to}</div></td>
-                <td><div className="div_info01">{item.Ap_ca}</div></td>
-                <td><div className="div_info01">{item.Barrio}</div></td>
-                <td><div className="div_info01">{item.Ciu_mu}</div></td>
+              <tr key={data.No_ide}>
+                <td>{data.Dir_re}</td>
+                <td>{data.Blo_to}</td>
+                <td>{data.Ap_ca}</td>
+                <td>{data.Barrio}</td>
+                <td>{data.Ciu_mu}</td>
               </tr>
             </tbody>
             <thead className="">
@@ -149,11 +141,11 @@ const Consulta2 = () => {
             </thead>
             <tbody>
               <tr>
-                <td><div className="div_info01">{item.Depart}</div></td>
-                <td><div className="div_info01">{item.Pais}</div></td>
-                <td><div className="div_info01">{item.Telef}</div></td>
-                <td><div className="div_info01">{item.Celular}</div></td>
-                <td><div className="div_info01">{item.Corr_ele}</div></td>
+                <td>{data.Depart}</td>
+                <td>{data.Pais}</td>
+                <td>{data.Telef}</td>
+                <td>{data.Celular}</td>
+                <td>{data.Corr_ele}</td>
               </tr>
             </tbody>
           </table>
@@ -167,7 +159,7 @@ const Consulta2 = () => {
           </label>
         </center>
         <div className="table-responsive-sm">
-          <table className="table table-hover table-borderless table-transparent">
+          <table className="table table-hover table-borderless table-light">
             <thead className="">
               <tr>
                 <th>Profesion</th>
@@ -178,12 +170,12 @@ const Consulta2 = () => {
               </tr>
             </thead>
             <tbody>
-              <tr key={item.No_ide}>
-                <td><div className="div_info01">{item.Profe}</div></td>
-                <td><div className="div_info01">{item.Nom_ocu}</div></td>
-                <td><div className="div_info01">{item.Det_act}</div></td>
-                <td><div className="div_info01">{item.Cod_ciuu}</div></td>
-                <td><div className="div_info01">{item.No_emp}</div></td>
+              <tr key={data.No_ide}>
+                <td>{data.Profe}</td>
+                <td>{data.Nom_ocu}</td>
+                <td>{data.Det_act}</td>
+                <td>{data.Cod_ciuu}</td>
+                <td>{data.No_emp}</td>
               </tr>
             </tbody>
           </table>
@@ -199,7 +191,7 @@ const Consulta2 = () => {
               </label>
             </center>
             <div className="table-responsive-sm">
-              <table className="table table-hover table-borderless table-transparent">
+              <table className="table table-hover table-borderless table-light">
                 <thead className="">
                   <tr>
                     <th>Nombre de la empresa</th>
@@ -210,9 +202,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Nom_emp}</div></td>
-                    <td><div className="div_info01">{item.Dir_emp}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Nom_emp}</td>
+                    <td>{data.Dir_emp}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -222,9 +214,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Barr_lab}</div></td>
-                    <td><div className="div_info01">{item.Ciu_lab}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Barr_lab}</td>
+                    <td>{data.Ciu_lab}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -234,9 +226,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Dep_lab}</div></td>
-                    <td><div className="div_info01">{item.Pais_lab}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Dep_lab}</td>
+                    <td>{data.Pais_lab}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -246,9 +238,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Tel_lab}</div></td>
-                    <td><div className="div_info01">{item.Ext}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Tel_lab}</td>
+                    <td>{data.Ext}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -258,9 +250,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Cel_lab}</div></td>
-                    <td><div className="div_info01">{item.Corr_lab}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Cel_lab}</td>
+                    <td>{data.Corr_lab}</td>
                   </tr>
                 </tbody>
               </table>
@@ -276,7 +268,7 @@ const Consulta2 = () => {
               </label>
             </center>
             <div className="table-responsive-sm">
-              <table className="table table-hover table-borderless table-transparent">
+              <table className="table table-hover table-borderless table-light">
                 <thead className="">
                   <tr>
                     <th>Ingresos mensuales $</th>
@@ -284,9 +276,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Ing_men}</div></td>
-                    <td><div className="div_info01">{item.Otr_ing}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Ing_men}</td>
+                    <td>{data.Otr_ing}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -299,9 +291,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Det_otr}</div></td>
-                    <td><div className="div_info01">{item.To_act}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Det_otr}</td>
+                    <td>{data.To_act}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -311,9 +303,9 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.To_pa}</div></td>
-                    <td><div className="div_info01">{item.To_egr}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.To_pa}</td>
+                    <td>{data.To_egr}</td>
                   </tr>
                 </tbody>
                 <thead className="">
@@ -323,23 +315,14 @@ const Consulta2 = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr key={item.No_ide}>
-                    <td><div className="div_info01">{item.Vent_a}</div></td>
-                    <td><div className="div_info01">{item.Fe_ci}</div></td>
+                  <tr key={data.No_ide}>
+                    <td>{data.Vent_a}</td>
+                    <td>{data.Fe_ci}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
-        </div>
-      </div>
-      </>))}
-      <div>
-        <div className="content_actionsPage01">
-          <button onClick={()=> consultasActions.prevHandler()}>Atras</button>
-          <p>{currentPage}</p>
-          <button onClick={()=> consultasActions.nextHandler()}>Siguiente</button>
         </div>
       </div>
     </div>

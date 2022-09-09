@@ -12,18 +12,11 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $resultado=metodoGet($query);
          echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
      }else{
-         $query="select * from act_cli where (No_cuec='null' or No_cuej='551389') and (ti_pro='Apertura de Cuenta' or ti_pro='Consignacion')";
+        $query="select * from cuenta_j inner join entidad on cuenta_j.Nit = entidad.Nit where No_cuenta= 551389";
         $resultado=metodoGet($query);
-        echo json_encode($resultado->fetchAll()); 
-       /* if($resultado==true){
-            $query2="select * from entidad";
-            $resultado2 = mysqli_query($conexion, $query2);
-            $row = mysqli_fetch_assoc($resultado2);
-            echo json_encode($row);
-        }*/
-        
+        echo json_encode($resultado->fetchAll());     
      }
-    header("HTTP/1.1 200 OK");
+
      exit();
 }
 

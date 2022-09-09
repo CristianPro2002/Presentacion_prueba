@@ -17,6 +17,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
   const [reportValueR, setReportValueR] = useState([]);
   const [NoCuenta, setNoCuenta] = useState([]);
   const [mostrarReporte, setMostrarReporte] = useState(false);
+  const [estadoPeticion, setEstadoPeticion] = useState(false);
   const handleShow = () => setMostrarReporte(!mostrarReporte);
   const [mostrarReporteDate, setMostrarReporteDate] = useState(false);
   const handleShow2 = () => setMostrarReporteDate(!mostrarReporteDate);
@@ -90,12 +91,15 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("METHOD", "CONSULTACAJERO");
     await axios.post(baseUrl2, f).then((response) => {
       setConsulta(response.data);
-      if (response.data.length == 1) {
+      if (response.data == []) {
+        setEstadoPeticion(false);
+      }else {
+        setEstadoPeticion(true);
         setDataUsuario({
-          Id_act: String(response.data[0].Nit),
+          Id_act: String(response.data.Nit),
           Cajero: String(numeroCajeroBD),
-          Nom_ra: String(response.data[0].Nom_ra),
-          No_cuenta: String(response.data[0].No_cuenta),
+          Nom_ra: String(response.data.Nom_ra),
+          No_cuenta: String(response.data.No_cuenta),
         });
       }
     });
@@ -107,12 +111,16 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("METHOD", "CONSULTACAJERO2");
     await axios.post(baseUrl2, f).then((response) => {
       setConsulta2(response.data);
-      if (response.data.length == 1) {
+      if (response.data == []) {
+        setEstadoPeticion(false);
+        peticionGetCajero();
+      }else{
+        setEstadoPeticion(true);
         setDataUsuario({
-          Id_act: String(response.data[0].No_ide),
+          Id_act: String(response.data.No_ide),
           Cajero: String(numeroCajeroBD),
-          Nom_ra: String(response.data[0].Pri_nom),
-          No_cuenta: String(response.data[0].No_cuenta),
+          Nom_ra: String(response.data.Pri_nom),
+          No_cuenta: String(response.data.No_cuenta),
         });
       }
     });
@@ -211,5 +219,6 @@ export const useCajero = ({ numeroCajeroBD }) => {
     mostrarReporteDate,
     reportValueC,
     reportValueR,
+    estadoPeticion,
   };
 };

@@ -9,7 +9,6 @@
 
 #estilos_row{
 border-style: none;
-background-color: #ffff;
 }
 
 #rowbg{
@@ -32,4 +31,23 @@ background-color: #ffff;
 .fondobg{
     background-color: #1E64F0;
     color: white;
+}
+
+
+.div_info01{
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: bisque;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.Format01{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 30px
+}
+
+.content_actionsPage01{
+    display: flex;
 }

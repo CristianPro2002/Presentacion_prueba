@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-08-2022 a las 21:30:24
+-- Tiempo de generación: 09-09-2022 a las 03:59:24
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -47,7 +47,16 @@ INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_c
 (46, 11111111, '2022-08-18 21:46:00', 'Retiro', '150000', 'Cajero2', NULL, 551389),
 (47, 435436, '2022-08-12 21:50:00', 'Apertura de Cuenta', '100000', 'Cajero1', 137627, NULL),
 (48, 435436, '2022-08-08 14:17:00', 'Consignación', '200000', 'Cajero3', 137627, NULL),
-(49, 11111111, '2022-08-25 16:27:00', 'Consignación', '200000', 'Cajero5', NULL, 551389);
+(49, 11111111, '2022-08-25 16:27:00', 'Consignación', '200000', 'Cajero5', NULL, 551389),
+(50, 11111111, '2022-08-18 21:56:00', 'Apertura de Cuenta', '100000', 'Cajero2', NULL, 551389),
+(60, 1192719887, '2022-09-16 20:20:00', 'Apertura de Cuenta', '100000', 'Cajero2', 562725, NULL),
+(61, 1192719887, '2022-09-09 21:42:00', 'Consignación', '500000', 'Cajero2', 562725, NULL),
+(62, 1192719887, '2022-09-17 22:41:00', 'Retiro', '200000', 'Cajero4', 562725, NULL),
+(63, 1192719887, '2022-09-15 22:53:00', 'Consignación', '19999', 'Cajero4', 562725, NULL),
+(64, 1192719887, '2022-09-09 22:54:00', 'Consignación', '19999', 'Cajero4', 562725, NULL),
+(65, 1192719887, '2022-09-09 22:54:00', 'Consignación', '30000', 'Cajero4', 562725, NULL),
+(66, 11111111, '2022-09-09 22:55:00', 'Consignación', '10000', 'Cajero4', NULL, 551389),
+(67, 435345, '2022-09-09 22:56:00', 'Apertura de Cuenta', '100000', 'Cajero4', NULL, 722416);
 
 -- --------------------------------------------------------
 
@@ -72,7 +81,12 @@ INSERT INTO `act_val` (`Id_act_val`, `Id_client`, `ti_product`, `Valor`, `No_caj
 (12, 11111111, 'Retiro', '150000', 'Cajero2'),
 (13, 435436, 'Apertura de Cuenta', '100000', 'Cajero1'),
 (14, 435436, 'Consignación', '200000', 'Cajero3'),
-(15, 11111111, 'Consignación', '200000', 'Cajero5');
+(15, 11111111, 'Consignación', '200000', 'Cajero5'),
+(16, 11111111, 'Apertura de Cuenta', '100000', 'Cajero2'),
+(17, 1192719887, 'Apertura de Cuenta', '9998', 'Cajero3'),
+(18, 1192719887, 'Apertura de Cuenta', '100000', 'Cajero3'),
+(19, 1192719887, 'Apertura de Cuenta', '99998', 'Cajero2'),
+(20, 1192719887, 'Apertura de Cuenta', '100000', 'Cajero2');
 
 -- --------------------------------------------------------
 
@@ -184,7 +198,10 @@ CREATE TABLE `client_co` (
 
 INSERT INTO `client_co` (`Id_client`, `No_ide`, `Idti_solicit`, `Fec_dil`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Idti_doc`, `Lug_exp`, `Fec_exp`, `Fec_nac`, `Ciu_nac`, `Id_gen`, `Idest_ci`, `Id_nac`, `Otr_nac`, `Dir_re`, `Blo_to`, `Ap_ca`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telef`, `Celular`, `Corr_ele`, `Profe`, `Idocu_ofii`, `Det_act`, `Cod_ciuu`, `No_emp`, `Nom_emp`, `Dir_emp`, `Barr_lab`, `Ciu_lab`, `Dep_lab`, `Pais_lab`, `Tel_lab`, `Ext`, `Cel_lab`, `Corr_lab`, `Ing_men`, `Otr_ing`, `Det_otr`, `To_act`, `To_pa`, `To_egr`, `Vent_a`, `Fe_ci`, `Dec_rent`, `Age_ret`, `Idtireg_iva`, `Ob_tri`, `Notri_est`, `Pais_1`, `Pais_2`, `No_tri1`, `No_tri2`, `Prov_bie`, `Pais_bi`, `Ciu_bie`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
 (1, 123, 1, '2022-06-10', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(12, 435436, 1, '2022-07-05', 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845);
+(12, 435436, 1, '2022-07-05', 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845),
+(13, 123, 1, '2022-06-10', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(14, 123, 1, '2022-06-04', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(15, 1192719887, 1, '2022-09-14', 'Cristian', 'Andres', 'Castaño', 'Salas', 1, 'Palmira', '2022-09-09', '2022-08-31', 'Florida', 1, 1, 1, 'Cual', 'calle 47', 34, 31, 'Poblado Comfaunion', 'Palmira', 'Valle', 'Colombia', 3172527140, 3172527140, 'cristian.0713.cs@gmail.com', 'Programador', 1, 'Programador', 3423, 32, 'YisusForEver', 'Cielo 45', 'La mesa', 'El paraiso', 'La eternidad', 'Cielo', 3242, 4234, 4234, 'yisus@gmail.com', 589988, 45652, 'dfgfd', 787778, 54654, 54653, 5645, '2022-09-16', 'No', 'Si', 1, 'Si', 345345, 'dfdsfs', 'dsfdsf', 34534, 3453453, 'fdgdfg', 'fdgdf', 'gfdgdf', 'Si', 2, 'dfgfd', 'gdfgd', 1, 'fdgdfdf', 4353, 5344, 'dfgdf', 'fdgdf', 'fdgdfg', 1, 1123234, 3463);
 
 -- --------------------------------------------------------
 
@@ -203,7 +220,8 @@ CREATE TABLE `clien_tip` (
 --
 
 INSERT INTO `clien_tip` (`Idclien_tip`, `Idti_sol`, `No_ide`) VALUES
-(11, 2, 435436);
+(11, 2, 435436),
+(12, 2, 1192719887);
 
 -- --------------------------------------------------------
 
@@ -238,7 +256,8 @@ CREATE TABLE `cont_ent` (
 INSERT INTO `cont_ent` (`idcont_ent`, `No_docu`, `Idti_doc`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Cargo`, `Dir_lab`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Tel_lab`, `Ext`, `Celular`, `Corr_lab`) VALUES
 (1, 22222, 4, '22222', '2222', '2222', '2222', '22222', '22222', '2222', '2222', '2222', '2222', 2222, 222222, 2222, '22222'),
 (2, 666666, 1, 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 4444, 444, 444, 'gh'),
-(3, 3333, 1, 'sdd', 'sssdds', 'sssddd', 'sssdd', 'sdd', 'ssddd', 'sdd', 'sds', 'sdsd', 'sdsd', 333, 333, 333, 'sdsd');
+(3, 3333, 1, 'sdd', 'sssdds', 'sssddd', 'sssdd', 'sdd', 'ssddd', 'sdd', 'sds', 'sdsd', 'sdsd', 333, 333, 333, 'sdsd'),
+(4, 657567, 4, 'gfhfgh', 'fghfghf', 'hfghfg', 'hgfhfgh', 'gfhfgh', 'fghfgh', 'ghfgh', 'fghfgh', 'fghfgh', 'hfhgh', 56456, 56456, 456456, 'gfhfghf');
 
 -- --------------------------------------------------------
 
@@ -257,7 +276,8 @@ CREATE TABLE `cuenta_c` (
 --
 
 INSERT INTO `cuenta_c` (`No_cuenta`, `No_ide`, `Idti_cue`) VALUES
-(137627, 435436, NULL);
+(137627, 435436, NULL),
+(562725, 1192719887, NULL);
 
 -- --------------------------------------------------------
 
@@ -276,7 +296,8 @@ CREATE TABLE `cuenta_j` (
 --
 
 INSERT INTO `cuenta_j` (`No_cuenta`, `Nit`, `Idti_cue`) VALUES
-(551389, 11111111, NULL);
+(551389, 11111111, NULL),
+(722416, 435345, NULL);
 
 -- --------------------------------------------------------
 
@@ -369,7 +390,9 @@ CREATE TABLE `entidad` (
 --
 
 INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `tidoc_ent`, `Nit`, `Fidei`, `No_fide`, `Nom_ra`, `Nom_cor`, `Fe_cons`, `Ciu_cons`, `Pai_cons`, `Dir_se`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telefono`, `Ext`, `Corr_se`, `No_doc`, `Pre_1`, `Pre_2`, `No_docu`, `Idti_na`, `Co_ciuu`, `Det_act`, `No_emp`, `Idti_soci`, `Otro_com`, `Idti_en`, `Otro_ent`, `Idti_es`, `Otro_est`, `Idti_des`, `Ing_op`, `Ino_op`, `Detno`, `vent_an`, `Fe_ci`, `Egre_me`, `Util_ne`, `Tot_act`, `Tot_pas`, `Tot_pat`, `Idti_cont`, `Idcla_cont`, `Res_iva`, `Aut_ing`, `Int_merc`, `Vig_sup`, `Obli_est`, `No_id_tr`, `Patri_1`, `Patri_2`, `NoidTrib_1`, `NoidTrib_2`, `Idtripro_bi`, `Otro_fue`, `Idfue_rec`, `Otro_pro`, `Pais_or`, `Ciu_or`, `Nat_recu`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
-(3, '2022-07-12', 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986);
+(3, '2022-07-12', 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
+(4, '2022-08-23', 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
+(5, '2022-07-12', 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986);
 
 -- --------------------------------------------------------
 
@@ -388,7 +411,8 @@ CREATE TABLE `ent_ti` (
 --
 
 INSERT INTO `ent_ti` (`Idint_entsol`, `Nit`, `Idti_sol`) VALUES
-(2, 11111111, 2);
+(2, 11111111, 2),
+(3, 435345, 2);
 
 -- --------------------------------------------------------
 
@@ -516,7 +540,8 @@ CREATE TABLE `reg_soli` (
 --
 
 INSERT INTO `reg_soli` (`Id_reg`, `No_ide`) VALUES
-(36, 123);
+(36, 123),
+(37, 1192719887);
 
 -- --------------------------------------------------------
 
@@ -534,6 +559,7 @@ CREATE TABLE `reg_solij` (
 --
 
 INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
+(14, 435345),
 (12, 11111111);
 
 -- --------------------------------------------------------
@@ -556,9 +582,9 @@ CREATE TABLE `reg_usu` (
 INSERT INTO `reg_usu` (`Id_usu`, `Usuario`, `Contra`, `Idti_rol`) VALUES
 (6, 'cristian31', 'cristian31', 2),
 (31, 'cristian32', 'cristian32', 4),
-(39, 'ADMIN', 'ADMIN', 1),
 (40, 'cristian33', 'cristian33', 5),
-(41, 'cristian34', 'cristian34', 3);
+(41, 'cristian34', 'cristian34', 3),
+(51, 'ADMIN', 'ADMIN', 1);
 
 -- --------------------------------------------------------
 
@@ -591,7 +617,8 @@ CREATE TABLE `repr_le` (
 --
 
 INSERT INTO `repr_le` (`idrepre`, `No_doc`, `Idti_doc`, `Pri_no`, `Seg_no`, `Pri_ape`, `Seg_ape`, `Cargo`, `Dir_lab`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Tel_lab`, `Ext`, `Celular`, `Corr_lab`) VALUES
-(4, 2222, 1, 'sdd', 'sdd', 'sdd', 'sdd', 'sdds', 'sdd', 'sddd', 'sdd', 'sdddsd', 'sdd', 222, 2210, 222, 'sddd');
+(4, 2222, 1, 'sdd', 'sdd', 'sdd', 'sdd', 'sdds', 'sdd', 'sddd', 'sdd', 'sdddsd', 'sdd', 222, 2210, 222, 'sddd'),
+(5, 657567, 4, 'gfhfg', 'hgffgh', 'fghfgh', 'fghfgh', 'gfhfg', 'gfhfgh', 'fghfg', 'hfgh', 'gfh', 'ghffghfg', 65756, 7567, 5675, 'gfhfgh');
 
 -- --------------------------------------------------------
 
@@ -614,7 +641,9 @@ CREATE TABLE `solicitante` (
 INSERT INTO `solicitante` (`idsolicit`, `Idti_soli`, `No_solicit`, `Nom_solicit`, `Firma`) VALUES
 (2, 2, 3453, 'fgdgd', 'dfgfgd'),
 (5, 1, 6573, 'sdsd', 'sdsd'),
-(7, 1, 7585, 'dfgdf', 'ftfhgffh');
+(7, 1, 7585, 'dfgdf', 'ftfhgffh'),
+(8, 1, 7686786, 'gfhfgh', 'gfhgfhgf'),
+(9, 2, 1123234, 'Cris', 'Cristian4k');
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1128,9 @@ CREATE TABLE `vendedor` (
 INSERT INTO `vendedor` (`idcond`, `Cod_vend`, `Nom_vend`, `Oficina`, `Obser`, `Firma_vend`) VALUES
 (2, 4353, 'dfgdfg', 'gfdgd', 'gdfgdf', 'dfgdgdf'),
 (5, 6986, 'ddsd', 'sdsds', 'sdsds', 'sdsdsds'),
-(7, 547845, 'fdgfd', 'fdgdf', 'dfgdfgdf', 'gfdgdfhd');
+(7, 547845, 'fdgfd', 'fdgdf', 'dfgdfgdf', 'gfdgdfhd'),
+(8, 456458, 'ghfg', 'gfhgfh', 'hgfhfgh', 'gfhfgh'),
+(9, 3463, 'vendedir', 'de4', 'ninguna', 'cristianacs');
 
 --
 -- Índices para tablas volcadas
@@ -1419,43 +1450,43 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=50;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `act_val`
 --
 ALTER TABLE `act_val`
-  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`
 --
 ALTER TABLE `client_co`
-  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion aleatorio de cada cliente', AUTO_INCREMENT=13;
+  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion aleatorio de cada cliente', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `clien_tip`
 --
 ALTER TABLE `clien_tip`
-  MODIFY `Idclien_tip` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia clien_tip', AUTO_INCREMENT=12;
+  MODIFY `Idclien_tip` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia clien_tip', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cont_ent`
 --
 ALTER TABLE `cont_ent`
-  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `entidad`
 --
 ALTER TABLE `entidad`
-  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `ent_ti`
 --
 ALTER TABLE `ent_ti`
-  MODIFY `Idint_entsol` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia entre entidad y tipo de solicitud', AUTO_INCREMENT=3;
+  MODIFY `Idint_entsol` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia entre entidad y tipo de solicitud', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `est_soli`
@@ -1479,37 +1510,37 @@ ALTER TABLE `prueba`
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=37;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=14;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
 --
 ALTER TABLE `reg_usu`
-  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=49;
+  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `repr_le`
 --
 ALTER TABLE `repr_le`
-  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitante`
 --
 ALTER TABLE `solicitante`
-  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

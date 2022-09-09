@@ -4,14 +4,194 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
-import { useRegFormPn } from "../../../../Components/hooks/useRegFormPn";
 
 
 const PersonaNatural = () => {
   let Navigate = useNavigate();
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     tiposolicitud: "",
+  //     fecha: "",
+  //     pnombre: "",
+  //     snombre: "",
+  //     panombre: "",
+  //     sanombre: "",
+  //     Tdocumento: "",
+  //     documento: "",
+  //     fechae: "",
+  //     lugare: "",
+  //     nacimiento: "",
+  //     ciudad: "",
+  //     genero: "",
+  //     EstadoCivil: "",
+  //     Nacionalidad: "",
+  //     cajon: "",
+  //     Dir: "",
+  //     bloq: "",
+  //     apca: "",
+  //     Barrio: "",
+  //     CiuMun: "",
+  //     depa: "",
+  //     Pais: "",
+  //     Tel: "",
+  //     Cel: "",
+  //     Email: "",
+  //     Profesion: "",
+  //     Sprofesion: "",
+  //     Dactieco: "",
+  //     Cciiu: "",
+  //     Nempleado: "",
+  //     nombreem: "",
+  //     Direccion: "",
+  //     Bar: "",
+  //     CiMu: "",
+  //     Depa: "",
+  //     Pa: "",
+  //     Phone: "",
+  //     Ex: "",
+  //     Cell: "",
+  //     CorreL: "",
+  //     IngreMensu: "",
+  //     Totalact: "",
+  //     OtrosIngreMensu: "",
+  //     Totalpas: "",
+  //     Detalle: "",
+  //     Totalegre: "",
+  //     Declarnatere: "",
+  //     Agentere: "",
+  //     RegimenIva: "",
+  //     TributarEU: "",
+  //     VentasA: "",
+  //     FechaCierre: "",
+  //     respuestaA: "",
+  //     uno: "",
+  //     unouno: "",
+  //     dos: "",
+  //     dosdos: "",
+  //     declaracion: "",
+  //     paisOrigen: "",
+  //     Ciudadorigen: "",
+  //     monedaE: "",
+  //     Operation: "",
+  //     nombreentidad: "",
+  //     tipodeproducto: "",
+  //     Input: "",
+  //     noProduct: "",
+  //     Montmensu: "",
+  //     MoneDa: "",
+  //     CiudAd: "",
+  //     PAIIS: "",
+  //   },
+
+  //   validationSchema: Yup.object({
+  //     fecha: Yup.date().default(function () {
+  //       return new Date();
+  //     }),
+  //     pnombre: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     snombre: Yup.string().max(10, `Maximo 10 caracteres`),
+  //     panombre: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     sanombre: Yup.string().max(10, `Maximo 10 caracteres`),
+  //     documento: Yup.string()
+  //       .required("el N° documento es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+
+  //     fechae: Yup.date().default(function () {
+  //       return new Date();
+  //     }),
+  //     nacimiento: Yup.date().default(function () {
+  //       return new Date();
+  //     }),
+  //     ciudad: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     lugare: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     Tdocumento: Yup.string().required("Este campo es requerido"),
+  //     Nacionalidad: Yup.string().required("Este campo es requerido"),
+  //     cajon: Yup.string(),
+  //     Dir: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(20, `Maximo 20 caracteres`),
+  //     bloq: Yup.string(),
+  //     apca: Yup.string(),
+  //     Barrio: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     CiuMun: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(15, `Maximo 15 caracteres`),
+  //     depa: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(15, `Maximo 15 caracteres`),
+  //     Pais: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(10, `Maximo 10 caracteres`),
+  //     Tel: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(11, `Maximo 11 caracteres`),
+  //     Cel: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(12, `Maximo 12 caracteres`),
+  //     Email: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(25, `Maximo 25 caracteres`),
+  //     Profesion: Yup.string().required("Este campo es obligatorio"),
+  //     Sprofesion: Yup.string().required("Este campo es obligatorio"),
+  //     Dactieco: Yup.string().required("Este campo es obligatorio"),
+  //     Cciiu: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(4, `Maximo 4 caracteres`),
+  //     Nempleado: Yup.string().required("Este campo es obligatorio"),
+  //     nombreem: Yup.string().required("Este campo es obligatorio"),
+  //     Direccion: Yup.string().required("Este campo es obligatorio"),
+  //     Bar: Yup.string().required("Este campo es obligatorio"),
+  //     CiMu: Yup.string().required("Este campo es obligatorio"),
+  //     Depa: Yup.string().required("Este campo es obligatorio"),
+  //     Pa: Yup.string().required("Este campo es obligatorio"),
+  //     Phone: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(11, `Maximo 11 caracteres`),
+  //     Ex: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(5, `Maximo 5 caracteres`),
+  //     Cell: Yup.string()
+  //       .required("Este campo es obligatorio")
+  //       .max(12, `Maximo 12 caracteres`),
+  //     CorreL: Yup.string().required("Este campo es obligatorio"),
+  //     IngreMensu: Yup.string().required("Este campo es obligatorio"),
+  //     Totalact: Yup.string().required("Este campo es obligatorio"),
+  //     OtrosIngreMensu: Yup.string().required("Este campo es obligatorio"),
+  //     Totalpas: Yup.string().required("Este campo es obligatorio"),
+  //     Detalle: Yup.string().required("Este campo es obligatorio"),
+  //     Totalegre: Yup.string().required("Este campo es obligatorio"),
+  //     VentasA: Yup.string(),
+  //     FechaCierre: Yup.date().default(function () {
+  //       return new Date();
+  //     }),
+  //     respuestaA: Yup.string(),
+  //     uno: Yup.string(),
+  //     unouno: Yup.string(),
+  //     dos: Yup.string(),
+  //     dosdos: Yup.string(),
+  //     declaracion: Yup.string().required("Este campo es obligatorio"),
+  //     paisOrigen: Yup.string().required("Este campo es obligatorio"),
+  //     Ciudadorigen: Yup.string().required("Este campo es obligatorio"),
+  //     Operation: Yup.string().required("Este campo es obligatorio"),
+  //     nombreentidad: Yup.string().required("Este campo es obligatorio"),
+  //     Input: Yup.string(),
+  //     noProduct: Yup.string().required("Este campo es obligatorio"),
+  //     Montmensu: Yup.string().required("Este campo es obligatorio"),
+  //     MoneDa: Yup.string().required("Este campo es obligatorio"),
+  //     CiudAd: Yup.string().required("Este campo es obligatorio"),
+  //     PAIIS: Yup.string().required("Este campo es obligatorio"),
+  //   }),
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   var min=100000; 
@@ -19,191 +199,202 @@ const PersonaNatural = () => {
   var random =Math.floor(Math.random() * (+max - +min)) + +min; 
   //console.log("el valor random es:"+ random)
 
-  const {ActionsFormPn} = useRegFormPn();
+  const [data, setData] = useState([]);
+  const [dataUsuario, setDataUsuario] = useState({
+    No_ide: "",
+    Idti_sol: "",
+    Idti_solicit: "",
+    Fec_dil: "",
+    Pri_nom: "",
+    No_cuenta: random,
+    Idti_cue: "",
+    Seg_nom: "",
+    Pri_ape: "",
+    Seg_ape: "",
+    Idti_doc: "",
+    Lug_exp: "",
+    Fec_exp: "",
+    Fec_nac: "",
+    Ciu_nac: "",
+    Id_gen: "",
+    Idest_ci: "",
+    Id_nac: "",
+    Otr_nac: "",
+    Dir_re: "",
+    Blo_to: "",
+    Ap_ca: "",
+    Barrio: "",
+    Ciu_mu: "",
+    Depart: "",
+    Pais: "",
+    Telef: "",
+    Celular: "",
+    Corr_ele: "",
+    Profe: "",
+    Idocu_ofii: "",
+    Det_act: "",
+    Cod_ciuu: "",
+    No_emp: "",
+    Nom_emp: "",
+    Dir_emp: "",
+    Barr_lab: "",
+    Ciu_lab: "",
+    Dep_lab: "",
+    Pais_lab: "",
+    Tel_lab: "",
+    Ext: "",
+    Cel_lab: "",
+    Corr_lab: "",
+    Ing_men: "",
+    Otr_ing: "",
+    Det_otr: "",
+    To_act: "",
+    To_pa: "",
+    To_egr: "",
+    Vent_a: "",
+    Fe_ci: "",
+    Dec_rent: "",
+    Age_ret: "",
+    Idtireg_iva: "",
+    Ob_tri: "",
+    Notri_est: "",
+    Pais_1: "",
+    Pais_2: "",
+    No_tri1: "",
+    No_tri2: "",
+    Prov_bie: "",
+    Pais_bi: "",
+    Ciu_bie: "",
+    Op_ext: "",
+    Idtiop_m: "",
+    Otro_mo: "",
+    Nom_ent: "",
+    Idtipro_m: "",
+    Otro_mo2: "",
+    No_pro: "",
+    Mo_pro: "",
+    Moneda: "",
+    Ciu_ent: "",
+    Pa_ent: "",
+    Idtien_re: "",
+    Idti_soli: "",
+    No_solicit: "",
+    Nom_solicit: "",
+    Firma: "",
+    Cod_vend: "",
+    Nom_vend: "",
+    Oficina: "",
+    Obser: "",
+    Firma_vend: ""
 
-  const formik = useFormik({
-    initialValues: {
-      No_ide: "",
-      Idti_sol: "",
-      Idti_solicit: "",
-      Fec_dil: "",
-      Pri_nom: "",
-      No_cuenta: random,
-      Idti_cue: "",
-      Seg_nom: "",
-      Pri_ape: "",
-      Seg_ape: "",
-      Idti_doc: "",
-      Lug_exp: "",
-      Fec_exp: "",
-      Fec_nac: "",
-      Ciu_nac: "",
-      Id_gen: "",
-      Idest_ci: "",
-      Id_nac: "",
-      Otr_nac: "",
-      Dir_re: "",
-      Blo_to: "",
-      Ap_ca: "",
-      Barrio: "",
-      Ciu_mu: "",
-      Depart: "",
-      Pais: "",
-      Telef: "",
-      Celular: "",
-      Corr_ele: "",
-      Profe: "",
-      Idocu_ofii: "",
-      Det_act: "",
-      Cod_ciuu: "",
-      No_emp: "",
-      Nom_emp: "",
-      Dir_emp: "",
-      Barr_lab: "",
-      Ciu_lab: "",
-      Dep_lab: "",
-      Pais_lab: "",
-      Tel_lab: "",
-      Ext: "",
-      Cel_lab: "",
-      Corr_lab: "",
-      Ing_men: "",
-      Otr_ing: "",
-      Det_otr: "",
-      To_act: "",
-      To_pa: "",
-      To_egr: "",
-      Vent_a: "",
-      Fe_ci: "",
-      Dec_rent: "",
-      Age_ret: "",
-      Idtireg_iva: "",
-      Ob_tri: "",
-      Notri_est: "",
-      Pais_1: "",
-      Pais_2: "",
-      No_tri1: "",
-      No_tri2: "",
-      Prov_bie: "",
-      Pais_bi: "",
-      Ciu_bie: "",
-      Op_ext: "",
-      Idtiop_m: "",
-      Otro_mo: "",
-      Nom_ent: "",
-      Idtipro_m: "",
-      Otro_mo2: "",
-      No_pro: "",
-      Mo_pro: "",
-      Moneda: "",
-      Ciu_ent: "",
-      Pa_ent: "",
-      Idtien_re: "",
-      Idti_soli: "",
-      No_solicit: "",
-      Nom_solicit: "",
-      Firma: "",
-      Cod_vend: "",
-      Nom_vend: "",
-      Oficina: "",
-      Obser: "",
-      Firma_vend: ""
-    },
-
-    validationSchema: Yup.object({
-      No_ide: Yup.string().required("El numero de identificacion es obligatorio"),
-      Idti_sol: Yup.string().required("El tipo de solicitud es obligatorio"),
-      Idti_solicit: Yup.string().required("El tipo de solicitante es obligatorio"),
-      Fec_dil: Yup.string().required("La fecha de diligenciamiento es obligatoria"),
-      Pri_nom: Yup.string().required("El primer nombre es obligatorio"),
-      No_cuenta: Yup.string().required("El numero de cuenta es obligatorio"),
-      Idti_cue: Yup.string(),
-      Seg_nom: Yup.string().required("El segundo nombre es obligatorio"),
-      Pri_ape: Yup.string().required("El primer apellido es obligatorio"),
-      Seg_ape: Yup.string().required("El segundo apellido es obligatorio"),
-      Idti_doc: Yup.string().required("El tipo de documento es obligatorio"),
-      Lug_exp: Yup.string().required("El lugar de expedicion es obligatorio"),
-      Fec_exp: Yup.string().required("La fecha de expedicion es obligatoria"),
-      Fec_nac: Yup.string().required("La fecha de nacimiento es obligatoria"),
-      Ciu_nac: Yup.string().required("La ciudad de nacimiento es obligatoria"),
-      Id_gen: Yup.string().required("El genero es obligatorio"),
-      Idest_ci: Yup.string().required("El estado civil es obligatorio"),
-      Id_nac: Yup.string().required("La nacionalidad es obligatoria"),
-      Otr_nac: Yup.string().required("La otra nacionalidad es obligatoria"),
-      Dir_re: Yup.string().required("La direccion de residencia es obligatoria"),
-      Blo_to: Yup.string().required("El bloque o torre es obligatorio"),
-      Ap_ca: Yup.string().required("El apartamento o casa es obligatorio"),
-      Barrio: Yup.string().required("El barrio es obligatorio"),
-      Ciu_mu: Yup.string().required("La ciudad o municipio es obligatorio"),
-      Depart: Yup.string().required("El departamento es obligatorio"),
-      Pais: Yup.string().required("El pais es obligatorio"),
-      Telef: Yup.string().required("El telefono es obligatorio"),
-      Celular: Yup.string().required("El celular es obligatorio"),
-      Corr_ele: Yup.string().required("El correo electronico es obligatorio"),
-      Profe: Yup.string().required("La profesion es obligatoria"),
-      Idocu_ofii: Yup.string().required("Este campo es obligatorio"),
-      Det_act: Yup.string().required("El detalle de actividad es obligatorio"),
-      Cod_ciuu: Yup.string().required("El codigo CIIU es obligatorio"),
-      No_emp: Yup.string().required("El numero de empleados es obligatorio"),
-      Nom_emp: Yup.string().required("El nombre de la empresa es obligatorio"),
-      Dir_emp: Yup.string().required("La direccion de la empresa es obligatoria"),
-      Barr_lab: Yup.string().required("El barrio de la empresa es obligatorio"),
-      Ciu_lab: Yup.string().required("La ciudad de la empresa es obligatoria"),
-      Dep_lab: Yup.string().required("El departamento de la empresa es obligatorio"),
-      Pais_lab: Yup.string().required("El pais de la empresa es obligatorio"),
-      Tel_lab: Yup.string().required("El telefono de la empresa es obligatorio"),
-      Ext: Yup.string().required("La extension es obligatoria"),
-      Cel_lab: Yup.string().required("El celular de la empresa es obligatorio"),
-      Corr_lab: Yup.string().required("El correo electronico de la empresa es obligatorio"),
-      Ing_men: Yup.string().required("Los ingresos mensuales son obligatorios"),
-      Otr_ing: Yup.string().required("Los otros ingresos son obligatorios"),
-      Det_otr: Yup.string().required("El detalle de otros ingresos es obligatio"),
-      To_act: Yup.string().required("El total de activos es obligatorio"),
-      To_pa: Yup.string().required("El total de pasivos es obligatorio"),
-      To_egr: Yup.string().required("El total de egresos es obligatorio"),
-      Vent_a: Yup.string().required("Las ventas anuales son obligatorias"),
-      Fe_ci: Yup.string().required("La fecha de cierre es obligatoria"),
-      Dec_rent: Yup.string().required("La declaracion de renta es obligatoria"),
-      Age_ret: Yup.string().required("El agente retenedor es obligatorio"),
-      Idtireg_iva: Yup.string().required("El regimen de iva es obligatorio"),
-      Ob_tri: Yup.string().required("El objeto tributario es obligatorio"),
-      Notri_est: Yup.string().required("El numero de tributario es obligatorio"),
-      Pais_1: Yup.string().required("El pais es obligatorio"),
-      Pais_2: Yup.string().required("El pais es obligatorio"),
-      No_tri1: Yup.string().required("El numero de tributario es obligatorio"),
-      No_tri2: Yup.string().required("El numero de tributario es obligatorio"),
-      Prov_bie: Yup.string().required("La provincia de bienes es obligatoria"),
-      Pais_bi: Yup.string().required("El pais de bienes es obligatorio"),
-      Ciu_bie: Yup.string().required("La ciudad de bienes es obligatoria"),
-      Op_ext: Yup.string().required("La operacion extranjera es obligatoria"),
-      Idtiop_m: Yup.string().required("El tipo de operacion es obligatorio"),
-      Otro_mo: Yup.string().required("El otro motivo es obligatorio"),
-      Nom_ent: Yup.string().required("El nombre de la entidad es obligatorio"),
-      Idtipro_m: Yup.string().required("El tipo de producto es obligatorio"),
-      Otro_mo2: Yup.string().required("El otro motivo es obligatorio"),
-      No_pro: Yup.string().required("El numero de producto es obligatorio"),
-      Mo_pro: Yup.string().required("El monto del producto es obligatorio"),
-      Moneda: Yup.string().required("La moneda es obligatoria"),
-      Ciu_ent: Yup.string().required("La ciudad de la entidad es obligatoria"),
-      Pa_ent: Yup.string().required("El pais de la entidad es obligatorio"),
-      Idtien_re: Yup.string().required("El tipo de relacion es obligatorio"),
-      Idti_soli: Yup.string().required("El tipo de solicitud es obligatorio"),
-      No_solicit: Yup.string().required("El numero de solicitud es obligatorio"),
-      Nom_solicit: Yup.string().required("El nombre del solicitante es obligatorio"),
-      Firma: Yup.string().required("La firma es obligatoria"),
-      Cod_vend: Yup.string().required("El codigo del vendedor es obligatorio"),
-      Nom_vend: Yup.string().required("El nombre del vendedor es obligatorio"),
-      Oficina: Yup.string().required("La oficina es obligatoria"),
-      Obser: Yup.string().required("Las observaciones son obligatorias"),
-      Firma_vend: Yup.string().required("La firma del vendedor es obligatoria"),
-    }),
-    onSubmit: (values) => {
-      ActionsFormPn.peticionPost(values);
-    }
   });
 
-  
-console.log(formik.values);
+  const peticionPost = async () => {
+    var f = new FormData();
+    f.append("No_ide", dataUsuario.No_ide);
+    f.append("Idti_sol", dataUsuario.Idti_sol);
+    f.append("Idti_solicit", dataUsuario.Idti_solicit);
+    f.append("Fec_dil", dataUsuario.Fec_dil);
+    f.append("Pri_nom", dataUsuario.Pri_nom);
+    f.append("No_cuenta", dataUsuario.No_cuenta);
+    f.append("Idti_cue", dataUsuario.Idti_cue);
+    f.append("Seg_nom", dataUsuario.Seg_nom);
+    f.append("Pri_ape", dataUsuario.Pri_ape);
+    f.append("Seg_ape", dataUsuario.Seg_ape);
+    f.append("Idti_doc", dataUsuario.Idti_doc);
+    f.append("Lug_exp", dataUsuario.Lug_exp);
+    f.append("Fec_exp", dataUsuario.Fec_exp);
+    f.append("Fec_nac", dataUsuario.Fec_nac);
+    f.append("Ciu_nac", dataUsuario.Ciu_nac);
+    f.append("Id_gen", dataUsuario.Id_gen);
+    f.append("Idest_ci", dataUsuario.Idest_ci);
+    f.append("Id_nac", dataUsuario.Id_nac);
+    f.append("Otr_nac", dataUsuario.Otr_nac);
+    f.append("Dir_re", dataUsuario.Dir_re);
+    f.append("Blo_to", dataUsuario.Blo_to);
+    f.append("Ap_ca", dataUsuario.Ap_ca);
+    f.append("Barrio", dataUsuario.Barrio);
+    f.append("Ciu_mu", dataUsuario.Ciu_mu);
+    f.append("Depart", dataUsuario.Depart);
+    f.append("Pais", dataUsuario.Pais);
+    f.append("Telef", dataUsuario.Telef);
+    f.append("Celular", dataUsuario.Celular);
+    f.append("Corr_ele", dataUsuario.Corr_ele);
+    f.append("Profe", dataUsuario.Profe);
+    f.append("Idocu_ofii", dataUsuario.Idocu_ofii);
+    f.append("Det_act", dataUsuario.Det_act);
+    f.append("Cod_ciuu", dataUsuario.Cod_ciuu);
+    f.append("No_emp", dataUsuario.No_emp);
+    f.append("Nom_emp", dataUsuario.Nom_emp);
+    f.append("Dir_emp", dataUsuario.Dir_emp);
+    f.append("Barr_lab", dataUsuario.Barr_lab);
+    f.append("Ciu_lab", dataUsuario.Ciu_lab);
+    f.append("Dep_lab", dataUsuario.Dep_lab);
+    f.append("Pais_lab", dataUsuario.Pais_lab);
+    f.append("Tel_lab", dataUsuario.Tel_lab);
+    f.append("Ext", dataUsuario.Ext);
+    f.append("Cel_lab", dataUsuario.Cel_lab);
+    f.append("Corr_lab", dataUsuario.Corr_lab);
+    f.append("Ing_men", dataUsuario.Ing_men);
+    f.append("Otr_ing", dataUsuario.Otr_ing);
+    f.append("Det_otr", dataUsuario.Det_otr);
+    f.append("To_act", dataUsuario.To_act);
+    f.append("To_pa", dataUsuario.To_pa);
+    f.append("To_egr", dataUsuario.To_egr);
+    f.append("Vent_a", dataUsuario.Vent_a);
+    f.append("Fe_ci", dataUsuario.Fe_ci);
+    f.append("Dec_rent", dataUsuario.Dec_rent);
+    f.append("Age_ret", dataUsuario.Age_ret);
+    f.append("Idtireg_iva", dataUsuario.Idtireg_iva);
+    f.append("Ob_tri", dataUsuario.Ob_tri);
+    f.append("Notri_est", dataUsuario.Notri_est);
+    f.append("Pais_1", dataUsuario.Pais_1);
+    f.append("Pais_2", dataUsuario.Pais_2);
+    f.append("No_tri1", dataUsuario.No_tri1);
+    f.append("No_tri2", dataUsuario.No_tri2);
+    f.append("Prov_bie", dataUsuario.Prov_bie);
+    f.append("Pais_bi", dataUsuario.Pais_bi);
+    f.append("Ciu_bie", dataUsuario.Ciu_bie);
+    f.append("Op_ext", dataUsuario.Op_ext);
+    f.append("Idtiop_m", dataUsuario.Idtiop_m);
+    f.append("Otro_mo", dataUsuario.Otro_mo);
+    f.append("Nom_ent", dataUsuario.Nom_ent);
+    f.append("Idtipro_m", dataUsuario.Idtipro_m);
+    f.append("Otro_mo2", dataUsuario.Otro_mo2);
+    f.append("No_pro", dataUsuario.No_pro);
+    f.append("Mo_pro", dataUsuario.Mo_pro);
+    f.append("Moneda", dataUsuario.Moneda);
+    f.append("Ciu_ent", dataUsuario.Ciu_ent);
+    f.append("Pa_ent", dataUsuario.Pa_ent);
+    f.append("Idtien_re", dataUsuario.Idtien_re);
+    f.append("Idti_soli", dataUsuario.Idti_soli);
+    f.append("No_solicit", dataUsuario.No_solicit);
+    f.append("Nom_solicit", dataUsuario.Nom_solicit);
+    f.append("Firma", dataUsuario.Firma);
+    f.append("Cod_vend", dataUsuario.Cod_vend);
+    f.append("Nom_vend", dataUsuario.Nom_vend);
+    f.append("Oficina", dataUsuario.Oficina);
+    f.append("Obser", dataUsuario.Obser);
+    f.append("Firma_vend", dataUsuario.Firma_vend);
+    f.append("METHOD", "FORMN");
+    await axios.post(baseUrl, f).then((response) => {
+      setData(data.concat(response.data));
+      Navigate(-1);
+    })
+    .catch(error => {
+        alert("Error en el post")
+    })
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataUsuario((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+    console.log(dataUsuario);
+  };
+
   return (
     <div className="padre">
       <div>
@@ -216,7 +407,7 @@ console.log(formik.values);
       <h1 className="titulo">PERSONA NATURAL</h1>
 
       <div className="hijo">
-        <form className="Form" onSubmit={formik.handleSubmit}>
+        <form className="Form">
           <div className="row red-red">
             <div className="col-md-4">
               <Col className="">
@@ -229,7 +420,7 @@ console.log(formik.values);
                     value="1"
                     className=""
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                   <label for="r1">Vinculación</label>
                 </label>
@@ -242,11 +433,10 @@ console.log(formik.values);
                     id="r2"
                     value="2"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                   <label for="r2">Actualización</label>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_sol}</h6>
               </Col>
             </div>
 
@@ -254,10 +444,9 @@ console.log(formik.values);
               <Col className="">
                 <h5 className="titulitos">Tipo de solicitante</h5>
                 <label className="labelu">
-                  <input type="radio" name="Idti_solicit" className="" value="1" onChange={formik.handleChange} required />
+                  <input type="radio" name="Idti_solicit" className="" value="1" onChange={handleChange} required />
                   Beneficiario/Ordenante de giros
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_solicit}</h6>
               </Col>
             </div>
 
@@ -270,10 +459,9 @@ console.log(formik.values);
                     name="Fec_dil"
                     className="select"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Fec_dil}</h6>
               </Col>
             </div>
           </div>
@@ -287,22 +475,22 @@ console.log(formik.values);
                 name="Pri_nom"
                 className="input"
                 required
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Pri_nom}</h6>
+
             <input
                 type="number"
                 name="No_cuenta"
                 className="inputoculto"
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
 
               <input
                 type="text"
                 name="Idti_cue"
                 className="inputoculto"
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
 
             <label className="labelo">
@@ -311,18 +499,18 @@ console.log(formik.values);
                 type="text"
                 name="Seg_nom"
                 className="input"
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
                <input
                 type="text"
                 name="No_cuenta"
                 className="input"
                 value={random}
-                onChange={formik.handleChange}
+                onChange={handleChange}
                 style={{display: "none"}}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Seg_nom}</h6>
+
             <label className="labelo">
               Primer Apellido
               <input
@@ -330,27 +518,26 @@ console.log(formik.values);
                 name="Pri_ape"
                 className="input"
                 required
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Pri_ape}</h6>
+
             <label className="labelo">
               Segundo Apellido
               <input
                 type="text"
                 name="Seg_ape"
                 className="input"
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Seg_ape}</h6>
           </div>
 
           <div className="select">
             <h5 className="h5">Tipo de documento</h5>
             <select
               className="selec"
-              onChange={formik.handleChange}
+              onChange={handleChange}
               name="Idti_doc"
               required
             >
@@ -364,7 +551,6 @@ console.log(formik.values);
               <option value="5">Pasaporte</option>
               <option value="6">Carné diplomático</option>
             </select>
-            <h6 style={{ color: "red" }}>{formik.errors.Idti_doc}</h6>
           </div>
 
           <div className="bordes">
@@ -376,10 +562,10 @@ console.log(formik.values);
                 className="input"
                 required
                 /*onChange={formik.handleChange}*/
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.No_ide}</h6>
+
             <label className="labelo">
               Fecha de expedición
               <input
@@ -387,10 +573,9 @@ console.log(formik.values);
                 name="Fec_exp"
                 className="input"
                 required
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Fec_exp}</h6>
           </div>
 
           <div className="bordes">
@@ -401,10 +586,10 @@ console.log(formik.values);
                 name="Lug_exp"
                 className="input"
                 required
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Lug_exp}</h6>
+
             <label className="labelo">
               Fecha de nacimiento
               <input
@@ -412,10 +597,9 @@ console.log(formik.values);
                 name="Fec_nac"
                 className="input"
                 required
-                onChange={formik.handleChange}
+                onChange={handleChange}
               />
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Fec_nac}</h6>
           </div>
 
           <div className="todo">
@@ -427,10 +611,10 @@ console.log(formik.values);
                   name="Ciu_nac"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_nac}</h6>
+
               <div className="conte">
                 <div className="col">
                   <div className="coso">
@@ -444,7 +628,7 @@ console.log(formik.values);
                           value="1"
                           className=""
                           required
-                          onChange={formik.handleChange}
+                          onChange={handleChange}
                         />
                         F
                       </label>
@@ -456,11 +640,10 @@ console.log(formik.values);
                           value="2"
                           className=""
                           required
-                          onChange={formik.handleChange}
+                          onChange={handleChange}
                         />
                         M
                       </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Id_gen}</h6>
                     </Col>
                   </div>
                 </div>
@@ -480,7 +663,7 @@ console.log(formik.values);
                                 id="r5"
                                 value="1"
                                 required
-                                onChange={formik.handleChange}
+                                onChange={handleChange}
                               />
                               <label for="r5">Soltero</label>
                             </label>
@@ -492,7 +675,7 @@ console.log(formik.values);
                                 id="r6"
                                 value="2"
                                 required
-                                onChange={formik.handleChange}
+                                onChange={handleChange}
                               />
                               <label for="r6">Unión Libre</label>
                             </label>
@@ -504,11 +687,10 @@ console.log(formik.values);
                                 id="r7"
                                 value="3"
                                 required
-                                onChange={formik.handleChange}
+                                onChange={handleChange}
                               />
                               <label for="r7">Casado</label>
                             </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idest_ci}</h6>                
                           </Col>
                         </div>
                       </div>
@@ -524,7 +706,7 @@ console.log(formik.values);
             <select
               className="seleccion"
               name="Id_nac"
-              onChange={formik.handleChange}
+              onChange={handleChange}
               required
             >
               <option value="">Seleccione la nacionalidad</option>
@@ -532,12 +714,10 @@ console.log(formik.values);
               <option value="2">Estadounidense</option>
               <option value="3">Otro</option>
             </select>
-            <h6 style={{ color: "red" }}>{formik.errors.Id_nac}</h6>
             <label className="labelo">
               Otro, cuál?
-              <input type="text" name="Otr_nac" className="inpuut" onChange={formik.handleChange}/>
+              <input type="text" name="Otr_nac" className="inpuut" onChange={handleChange}/>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Otr_nac}</h6>
 
             <div className="contenedor4">
               <h5 className="titulitos">Información de contacto personal</h5>
@@ -548,20 +728,17 @@ console.log(formik.values);
                   name="Dir_re"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Dir_re}</h6>
               <label className="cajon">
                 Bloque/Torre
-                <input type="number" name="Blo_to" className="input" onChange={formik.handleChange} />
+                <input type="number" name="Blo_to" className="input" onChange={handleChange} />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Blo_to}</h6>
               <label className="cajon">
                 Apto/Casa
-                <input type="number" name="Ap_ca" className="input" onChange={formik.handleChange} />
+                <input type="number" name="Ap_ca" className="input" onChange={handleChange} />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ap_ca}</h6>
             </div>
 
             <div className="contenedor4">
@@ -572,10 +749,9 @@ console.log(formik.values);
                   name="Barrio"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Barrio}</h6>
               <label className="cajon">
                 Ciudad/Municipio
                 <input
@@ -583,10 +759,9 @@ console.log(formik.values);
                   name="Ciu_mu"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu}</h6>
               <label className="cajon">
                 Departamento
                 <input
@@ -594,10 +769,9 @@ console.log(formik.values);
                   name="Depart"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Depart}</h6>
             </div>
 
             <div className="contenedor4">
@@ -608,10 +782,9 @@ console.log(formik.values);
                   name="Pais"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais}</h6>
               <label className="cajon">
                 Teléfono
                 <input
@@ -619,11 +792,10 @@ console.log(formik.values);
                   name="Telef"
                   className="input"
                   required
-                  /*onChange={formik.formik.handleChange}*/
-                  onChange={formik.handleChange}
+                  /*onChange={formik.handleChange}*/
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Telef}</h6>
               <label className="cajon">
                 Celular
                 <input
@@ -632,10 +804,9 @@ console.log(formik.values);
                   className="input"
                   required
                   /*onChange={formik.handleChange}*/
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Celular}</h6>
             </div>
 
             <div className="contenedor4">
@@ -646,10 +817,9 @@ console.log(formik.values);
                   name="Corr_ele"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Corr_ele}</h6>
             </div>
 
             <div className="contenedor4">
@@ -661,16 +831,15 @@ console.log(formik.values);
                   name="Profe"
                   className="input"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Profe}</h6>
               <h5 className="tituloos">Ocupación/Oficio</h5>
 
               <select
                 className="selec"
                 name="Idocu_ofii"
-                onChange={formik.handleChange}
+                onChange={handleChange}
                 required
               >
                 <option value="">Seleccione su profesión</option>
@@ -695,7 +864,6 @@ console.log(formik.values);
                 </option>
                 <option value="13">Socio o Empleado-socio</option>
               </select>
-              <h6 style={{ color: "red" }}>{formik.errors.Idocu_ofii}</h6>
               <p className="texto">
                 Si su ocupación es independiente, profesional independiente,
                 comerciante, ganadero, agricultor o rentista de capital, por
@@ -707,10 +875,9 @@ console.log(formik.values);
                   type="text"
                   name="Det_act"
                   className="input"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Det_act}</h6>
               <label className="cajoncitos">
                 Código CIIU
                 <input
@@ -718,20 +885,19 @@ console.log(formik.values);
                   name="Cod_ciuu"
                   className="input"
                   /*onChange={formik.handleChange}*/
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Cod_ciuu}</h6>
               <label className="cajoncitos">
                 Nº. Empleados
                 <input
                   type="number"
                   name="No_emp"
                   className="input"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_emp}</h6>
+
               <div className="contenedor4">
                 <h5 className="titulitos">
                   Información laboral(Para Empleados e Independientes)
@@ -742,22 +908,20 @@ console.log(formik.values);
                     type="text"
                     name="Nom_emp"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nom_emp}</h6>
                 <label className="largos">
                   Dirección de la empresa o lugar donde desarrolla su actividad
                   <input
                     type="text"
                     name="Dir_emp"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dir_emp}</h6>
               </div>
 
               <div className="contenedor4">
@@ -767,33 +931,30 @@ console.log(formik.values);
                     type="text"
                     name="Barr_lab"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Barr_lab}</h6>
                 <label className="cajon">
                   Ciudad/Municipio
                   <input
                     type="text"
                     name="Ciu_lab"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ciu_lab}</h6>
                 <label className="cajon">
                   Departamento
                   <input
                     type="text"
                     name="Dep_lab"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dep_lab}</h6>
               </div>
 
               <div className="contenedor4">
@@ -803,11 +964,10 @@ console.log(formik.values);
                     type="text"
                     name="Pais_lab"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_lab}</h6>
                 <label className="jumm">
                   Teléfono
                   <input
@@ -815,22 +975,20 @@ console.log(formik.values);
                     name="Tel_lab"
                     className="input"
                     /*onChange={formik.handleChange}*/
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
                 <label className="jumm">
                   Ext
                   <input
                     type="number"
                     name="Ext"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ext}</h6>
                 <label className="cajon">
                   Celular
                   <input
@@ -838,22 +996,20 @@ console.log(formik.values);
                     name="Cel_lab"
                     className="input"
                     /* onChange={formik.handleChange}*/
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Cel_lab}</h6>
                 <label className="largos">
                   Correo electrónico laboral
                   <input
                     type="email"
                     name="Corr_lab"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Corr_lab}</h6>
               </div>
 
               <div className="contenedor4">
@@ -864,44 +1020,40 @@ console.log(formik.values);
                     type="number"
                     name="Ing_men"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ing_men}</h6>
                 <label className="labelo">
                   Total activos $
                   <input
                     type="number"
                     name="To_act"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_act}</h6>
                 <label className="labelo">
                   Otros ingresos mensuales $
                   <input
                     type="number"
                     name="Otr_ing"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otr_ing}</h6>
                 <label className="labelo">
                   Total pasivos $
                   <input
                     type="number"
                     name="To_pa"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_pa}</h6>
                 <label className="labelo">
                   Detalle otros ingresos mensuales (diferentes a su actividad
                   económica principal)
@@ -909,22 +1061,20 @@ console.log(formik.values);
                     type="text"
                     name="Det_otr"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Det_otr}</h6>
                 <label className="labelo">
                   Total egresos mensuales $
                   <input
                     type="number"
                     name="To_egr"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_egr}</h6>
               </div>
 
               <div className="contenedor4">
@@ -938,22 +1088,20 @@ console.log(formik.values);
                     type="number"
                     name="Vent_a"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Vent_a}</h6>
                 <label className="cajon">
                   Fecha de cierre de ventas
                   <input
                     type="date"
                     name="Fe_ci"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Fe_ci}</h6>
               </div>
 
               <div className="contenedor4">
@@ -967,7 +1115,7 @@ console.log(formik.values);
                     id="r8"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   Si
                   <input
@@ -977,11 +1125,10 @@ console.log(formik.values);
                     id="r9"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dec_rent}</h6>
                 <label className="cajons">
                   Agente retenedor
                   <input
@@ -991,7 +1138,7 @@ console.log(formik.values);
                     value="Si"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   Si
                   <input
@@ -1001,11 +1148,10 @@ console.log(formik.values);
                     Value="No"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Age_ret}</h6>
                 <label className="cajonl">
                   Régimen de IVA
                   <input
@@ -1015,7 +1161,7 @@ console.log(formik.values);
                     Value="1"
                     id="r12"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   <label for="r12">Común</label>
                   <input
@@ -1025,7 +1171,7 @@ console.log(formik.values);
                     value="2"
                     id="r13"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   <label for="r13">Simplificado</label>
                   <input
@@ -1035,11 +1181,10 @@ console.log(formik.values);
                     value="3"
                     id="r14"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   <label for="r14">Ninguno</label>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtireg_iva}</h6>
               </div>
 
               <div className="contenedor4">
@@ -1052,7 +1197,7 @@ console.log(formik.values);
                     value="Si"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   Si
                   <input
@@ -1062,11 +1207,10 @@ console.log(formik.values);
                     value="No"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ob_tri}</h6>
                 <label className="otro">
                   *Si su respuesta es afirmativa indique el número de ID
                   tributario (TIN)
@@ -1075,9 +1219,8 @@ console.log(formik.values);
                   type="number"
                   name="Notri_est"
                   className="inpuut"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Notri_est}</h6>
               </div>
 
               <div className="contenedor4">
@@ -1092,40 +1235,39 @@ console.log(formik.values);
                     type="text"
                     name="Pais_1"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_1}</h6>
+
                 <label className="labelo">
                   1.
                   <input
                     type="number"
                     name="No_tri1"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_tri1}</h6>
+
                 <label className="labelo">
                   2.
                   <input
                     type="text"
                     name="Pais_2"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_2}</h6>
+
                 <label className="labelo">
                   2.
                   <input
                     type="number"
                     name="No_tri2"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_tri2}</h6>
               </div>
 
               <div className="contenedor4">
@@ -1141,9 +1283,8 @@ console.log(formik.values);
                   name="Prov_bie"
                   className="inpuut"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Prov_bie}</h6>
                 <label className="titulazo">
                   El país origen de bienes y/o fondos
                 </label>
@@ -1155,17 +1296,15 @@ console.log(formik.values);
                   name="Pais_bi"
                   className="inpuut"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_bi}</h6>
                 <input
                   type="text"
                   name="Ciu_bie"
                   className="inpuut"
                   required
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                 />
-                <h6 style={{ color: "red" }}>{formik.errors.Ciu_bie}</h6>
                 <label className="texto">
                   ii) Los bienes y recursos entregados y a manejar en las
                   cuentas, o aquel producto de giro internacional provienen de
@@ -1196,7 +1335,7 @@ console.log(formik.values);
                     value="Si"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   Si
                   <input
@@ -1206,11 +1345,10 @@ console.log(formik.values);
                     value="No"
                     className="civi"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />{" "}
                   No
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Op_ext}</h6>
               </div>
 
               <div className="contenedor4">
@@ -1220,7 +1358,7 @@ console.log(formik.values);
                 <select
                   className="seleccion"
                   name="Idtiop_m"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 >
                   <option value="">Seleccione la operación</option>
@@ -1233,12 +1371,11 @@ console.log(formik.values);
                   <option value="7">Envío/Recepción de giros y remesas</option>
                   <option value="8">Otro</option>
                 </select>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtiop_m}</h6>
+
                 <label className="labelo">
                   Otro, cuál?
-                  <input type="text" name="Otro_mo" className="inpuut" onChange={formik.handleChange} />
+                  <input type="text" name="Otro_mo" className="inpuut" onChange={handleChange} />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otro_mo}</h6>
               </div>
 
               <div className="contenedor4">
@@ -1248,11 +1385,10 @@ console.log(formik.values);
                     type="text"
                     name="Nom_ent"
                     className="input"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nom_ent}</h6>
 
                 <label className="largos">
                   Tipo de producto
@@ -1262,7 +1398,7 @@ console.log(formik.values);
                     id="r19"
                     className="civilo"
                     value="1"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                   Cuenta de ahorro
@@ -1272,7 +1408,7 @@ console.log(formik.values);
                     id="r20"
                     className="civilo"
                     value="2"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                   Cuenta corriente
@@ -1282,14 +1418,12 @@ console.log(formik.values);
                     id="r21"
                     className="civilo"
                     value="3"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                   Otro, cuál?
-                  <h6 style={{ color: "red" }}>{formik.errors.Idtipro_m}</h6>
-                  <input type="text" name="Otro_mo2" className="inpuut" onChange={formik.handleChange} />
+                  <input type="text" name="Otro_mo2" className="inpuut" onChange={handleChange} />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otro_mo2}</h6>
 
                 <label className="cajoneto">
                   N° de producto
@@ -1298,10 +1432,10 @@ console.log(formik.values);
                     name="No_pro"
                     className="input"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_pro}</h6>
+
                 <label className="cajoneto">
                   Monto mensual promedio
                   <input
@@ -1309,10 +1443,9 @@ console.log(formik.values);
                     name="Mo_pro"
                     className="input"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Mo_pro}</h6>
                 <label className="cajoneto">
                   Moneda
                   <input
@@ -1320,10 +1453,10 @@ console.log(formik.values);
                     name="Moneda"
                     className="input"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Moneda}</h6>
+
                 <label className="labelo">
                   Ciudad
                   <input
@@ -1331,10 +1464,10 @@ console.log(formik.values);
                     name="Ciu_ent"
                     className="input"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ciu_ent}</h6>
+
                 <label className="labelo">
                   País
                   <input
@@ -1342,10 +1475,9 @@ console.log(formik.values);
                     name="Pa_ent"
                     className="input"
                     required
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pa_ent}</h6>
               </div>
             </div>
           </div>
@@ -1675,7 +1807,7 @@ console.log(formik.values);
                   value="1"
                   name="Idtien_re"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />{" "}
                 Fisico{" "}
@@ -1684,12 +1816,10 @@ console.log(formik.values);
                   value="2"
                   name="Idtien_re"
                   className="cursor-pointer"
-                  onChange={formik.handleChange}
+                  onChange={handleChange}
                   required
                 />
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idtien_re}</h6>
-
               <br />
               <label className="letris"> Firma y huella. </label> Autorizo a LAS
               ENTIDADES a que la firma y huella, impuesta en este formato puedan
@@ -1735,10 +1865,9 @@ console.log(formik.values);
             <div>
               <div id="contenedor4">
                 <label className="labeli">
-                  <input className="firmita" type="text" onChange={formik.handleChange} name="Firma"></input>
+                  <input className="firmita" type="text" onChange={handleChange} name="Firma"></input>
                   <p>Firma del Solicitante</p>
                 </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Firma}</h6>
               </div>
 
               <div id="container-5">
@@ -1761,7 +1890,7 @@ console.log(formik.values);
                     value="1"
                     name="Idti_soli"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Representante{" "}
@@ -1770,12 +1899,11 @@ console.log(formik.values);
                     value="2"
                     name="Idti_soli"
                     className="cursor-pointer"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />{" "}
                   Apoderado
                 </div>
-                <h6 style={{ color: "red" }}>{formik.errors.Idti_soli}</h6>
               </div>
 
               <div className="NI">
@@ -1785,16 +1913,17 @@ console.log(formik.values);
                     type="text"
                     name="Nom_solicit"
                     className="Bordecito"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nom_solicit}</h6>
                 <div className="label19">
                   <input
                     type="text"
                     name=""
                     className="Bordecito"
+                    onChange={handleChange}
+                    required
                   />
                 </div>
 
@@ -1804,11 +1933,10 @@ console.log(formik.values);
                     type="text"
                     name="No_solicit"
                     className="Bordecito"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_solicit}</h6>
               </div>
             </div>
           </div>
@@ -1825,11 +1953,10 @@ console.log(formik.values);
                     type="text"
                     name="Cod_vend"
                     className="Bordecito"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Cod_vend}</h6>
               </div>
               <div className="col-md-4" id="Container-7">
                 <label className="textico">
@@ -1838,11 +1965,10 @@ console.log(formik.values);
                     type="text"
                     name="Nom_vend"
                     className="Bordecito"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nom_vend}</h6>
               </div>
               <div className="col-md-4" id="Container-7">
                 <label className="textico">
@@ -1851,11 +1977,10 @@ console.log(formik.values);
                     type="text"
                     name="Oficina"
                     className="Bordecito"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
                     required
                   />
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Oficina}</h6>
               </div>
             </div>
 
@@ -1876,10 +2001,9 @@ console.log(formik.values);
                       className="Observations"
                       type="text"
                       name="Obser"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                     />
                   </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Obser}</h6>
                 </Col>
               </div>
             </div>
@@ -1887,15 +2011,14 @@ console.log(formik.values);
             <div className="col-md-3" id="contain-1">
              
                 <Row>
-                  <input className="Row" type="text" onChange={formik.handleChange} name="Firma_vend"></input>
+                  <input className="Row" type="text" onChange={handleChange} name="Firma_vend"></input>
                   <p>Firma</p>
                 </Row>
-              <h6 style={{ color: "red" }}>{formik.errors.Firma_vend}</h6>
             </div>
           </div>
 
           <div className="bootoon">
-            <Button type="submit" className="button" variant="primary">
+            <Button type="submit" className="button" variant="primary" onClick={() => peticionPost()}>
               Guardar
             </Button>
           </div>

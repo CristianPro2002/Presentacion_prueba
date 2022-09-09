@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 export const useAsesor = ({notify2}) => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
+  const baseUrl2 = "http://localhost:8080/Banca/bd_crud/user.php";
 
   const [data, setData] = useContext(AppContext);
+  const [dataClient, setDataClient] = useState([]);
   const [dataUsuario, setDataUsuario] = useState({
     No_ide: "",
     Nit: "",
@@ -49,16 +51,16 @@ export const useAsesor = ({notify2}) => {
     f.append("METHOD", "CONSULTAIDENT");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
-      if(response.data){
-        Navigate("/Consulta");
-      }else{
-        // alert("No se encontro el usuario");
+      if(response.data == false){
         notify2()
+      }else if(dataUsuario.Nit.length == 0){ 
+        notify2()
+      }else if(response.data){
+        Navigate("/Consulta");
       }
     });
   };
 
-  console.log(data);
 
   const peticionGet2 = async () => {
     var f = new FormData();
@@ -66,14 +68,17 @@ export const useAsesor = ({notify2}) => {
     f.append("METHOD", "CONSULTAID");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
-      if(response.data){
-        Navigate("/Consulta2");
-      }else{
-        // alert("No se encontro el usuario");
+      if(response.data == false){
         notify2()
+      }else if(dataUsuario.No_ide.length == 0){ 
+        notify2()
+      }else if(response.data){
+        Navigate("/Consulta2");
       }
     });
   };
+
+  
 
 //   const validarConsultaPj = () => {
 //     peticionGet();
@@ -106,5 +111,6 @@ export const useAsesor = ({notify2}) => {
     setData,
     dataUsuario,
     setDataUsuario,
+    dataClient,
   };
 };

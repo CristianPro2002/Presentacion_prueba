@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -195,6 +195,8 @@ const Asesor = ({ onclick, numeroAsesor }) => {
           },
         }}
       />
+
+      
     </div>
   );
 };

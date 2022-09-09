@@ -3,14 +3,11 @@ import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import "./Consulta.css";
 import { AppContext } from "../../../../stateManagement/provider";
-import { usePageConsultas2 } from "../../../../Components/hooks/usePageConsultas";
 
 const Consulta = () => {
  
   let Navigate = useNavigate();
   const [data, setData] = useContext(AppContext);
-
-  const {consultasActions2, currentPage, items } = usePageConsultas2(data);
 
   return (
     <div className="fondobg">
@@ -21,11 +18,9 @@ const Consulta = () => {
           onClick={() => Navigate(-1)}
         ></i>
       </div>
-      {items.map((item) => (
-      <>
       <div className="contenT">
         <h1>
-          Datos de: <b>{item.Nom_ra}</b>
+          Datos de: <b>{data.Nom_ra}</b>
         </h1>
       </div>
       <div className="Tabla2">
@@ -42,7 +37,7 @@ const Consulta = () => {
             <div>
               <label>
                 <h3>Fecha de diligenciamiento:</h3>
-                <b>{item.Fe_dil}</b>
+                <b>{data.Fe_dil}</b>
               </label>
             </div>
           </div>
@@ -66,14 +61,14 @@ const Consulta = () => {
               </tr>
             </thead>
             <tbody>
-              <tr key={item.Nit}>
-                <td>{item.Nit}</td>
-                <td>{item.Nom_ra}</td>
-                <td>{item.Nom_cor}</td>
-                <td>{item.Fe_cons}</td>
-                <td>{item.Ciu_cons}</td>
-                <td>{item.Pai_cons}</td>
-                <td>{item.Dir_se}</td>
+              <tr key={data.Nit}>
+                <td>{data.Nit}</td>
+                <td>{data.Nom_ra}</td>
+                <td>{data.Nom_cor}</td>
+                <td>{data.Fe_cons}</td>
+                <td>{data.Ciu_cons}</td>
+                <td>{data.Pai_cons}</td>
+                <td>{data.Dir_se}</td>
               </tr>
             </tbody>
             <thead className="">
@@ -89,24 +84,16 @@ const Consulta = () => {
             </thead>
             <tbody>
               <tr>
-                <td>{item.Barrio}</td>
-                <td>{item.Ciu_mu}</td>
-                <td>{item.Depart}</td>
-                <td>{item.Pais}</td>
-                <td>{item.Telefono}</td>
-                <td>{item.Ext}</td>
-                <td>{item.Corr_se}</td>
+                <td>{data.Barrio}</td>
+                <td>{data.Ciu_mu}</td>
+                <td>{data.Depart}</td>
+                <td>{data.Pais}</td>
+                <td>{data.Telefono}</td>
+                <td>{data.Ext}</td>
+                <td>{data.Corr_se}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-      </>))}
-      <div>
-        <div className="content_actionsPage01">
-          <button onClick={()=> consultasActions2.prevHandler()}>Atras</button>
-          <p>{currentPage}</p>
-          <button onClick={()=> consultasActions2.nextHandler()}>Siguiente</button>
         </div>
       </div>
     </div>

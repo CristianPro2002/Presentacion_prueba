@@ -92,7 +92,7 @@ if($_POST['METHOD']=='SOLICITUDPJ'){
 
 if($_POST['METHOD']=='CONSULTAID'){
     unset($_POST['METHOD']);
-    $query="select * from client_co inner join ti_doc on client_co.Idti_doc = ti_doc.Idti_doc inner join ti_solicit on client_co.Idti_solicit = ti_solicit.Idti_solicit inner join genero on client_co.Id_gen = genero.Id_gen inner join tiest_civ on client_co.Idest_ci = tiest_civ.Idest_ci inner join ti_nac on client_co.Id_nac = ti_nac.Id_nac inner join tiocu_ofi on client_co.Idocu_ofii = tiocu_ofi.Idocu_ofi where No_ide=".$_POST['No_ide'];
+    $query="select * from client_co inner join ti_sol on client_co.Idti_sol = ti_sol.Idti_sol inner join ti_doc on client_co.Idti_doc = ti_doc.Idti_doc inner join ti_solicit on client_co.Idti_solicit = ti_solicit.Idti_solicit inner join genero on client_co.Id_gen = genero.Id_gen inner join tiest_civ on client_co.Idest_ci = tiest_civ.Idest_ci inner join ti_nac on client_co.Id_nac = ti_nac.Id_nac inner join tiocu_ofi on client_co.Idocu_ofii = tiocu_ofi.Idocu_ofi where No_ide=".$_POST['No_ide'];
     $resultado=metodoGet($query);
     echo json_encode($resultado->fetchAll());
     exit();

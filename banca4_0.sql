@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-09-2022 a las 02:44:59
+-- Tiempo de generación: 10-09-2022 a las 07:11:27
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -199,11 +199,11 @@ CREATE TABLE `client_co` (
 --
 
 INSERT INTO `client_co` (`Id_client`, `No_ide`, `Idti_solicit`, `Fec_dil`, `Idti_sol`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Idti_doc`, `Lug_exp`, `Fec_exp`, `Fec_nac`, `Ciu_nac`, `Id_gen`, `Idest_ci`, `Id_nac`, `Otr_nac`, `Dir_re`, `Blo_to`, `Ap_ca`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telef`, `Celular`, `Corr_ele`, `Profe`, `Idocu_ofii`, `Det_act`, `Cod_ciuu`, `No_emp`, `Nom_emp`, `Dir_emp`, `Barr_lab`, `Ciu_lab`, `Dep_lab`, `Pais_lab`, `Tel_lab`, `Ext`, `Cel_lab`, `Corr_lab`, `Ing_men`, `Otr_ing`, `Det_otr`, `To_act`, `To_pa`, `To_egr`, `Vent_a`, `Fe_ci`, `Dec_rent`, `Age_ret`, `Idtireg_iva`, `Ob_tri`, `Notri_est`, `Pais_1`, `Pais_2`, `No_tri1`, `No_tri2`, `Prov_bie`, `Pais_bi`, `Ciu_bie`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
-(1, 123, 1, '2022-06-10', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(12, 435436, 1, '2022-07-05', NULL, 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845),
-(13, 123, 1, '2022-06-10', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(14, 123, 1, '2022-06-04', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(15, 1192719887, 1, '2022-09-14', NULL, 'Cristian', 'Andres', 'Castaño', 'Salas', 1, 'Palmira', '2022-09-09', '2022-08-31', 'Florida', 1, 1, 1, 'Cual', 'calle 47', 34, 31, 'Poblado Comfaunion', 'Palmira', 'Valle', 'Colombia', 3172527140, 3172527140, 'cristian.0713.cs@gmail.com', 'Programador', 1, 'Programador', 3423, 32, 'YisusForEver', 'Cielo 45', 'La mesa', 'El paraiso', 'La eternidad', 'Cielo', 3242, 4234, 4234, 'yisus@gmail.com', 589988, 45652, 'dfgfd', 787778, 54654, 54653, 5645, '2022-09-16', 'No', 'Si', 1, 'Si', 345345, 'dfdsfs', 'dsfdsf', 34534, 3453453, 'fdgdfg', 'fdgdf', 'gfdgdf', 'Si', 2, 'dfgfd', 'gdfgd', 1, 'fdgdfdf', 4353, 5344, 'dfgdf', 'fdgdf', 'fdgdfg', 1, 1123234, 3463),
+(1, 123, 1, '2022-06-10', 1, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(12, 435436, 1, '2022-07-05', 1, 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845),
+(13, 123, 1, '2022-06-10', 2, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(14, 123, 1, '2022-06-04', 2, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(15, 1192719887, 1, '2022-09-14', 1, 'Cristian', 'Andres', 'Castaño', 'Salas', 1, 'Palmira', '2022-09-09', '2022-08-31', 'Florida', 1, 1, 1, 'Cual', 'calle 47', 34, 31, 'Poblado Comfaunion', 'Palmira', 'Valle', 'Colombia', 3172527140, 3172527140, 'cristian.0713.cs@gmail.com', 'Programador', 1, 'Programador', 3423, 32, 'YisusForEver', 'Cielo 45', 'La mesa', 'El paraiso', 'La eternidad', 'Cielo', 3242, 4234, 4234, 'yisus@gmail.com', 589988, 45652, 'dfgfd', 787778, 54654, 54653, 5645, '2022-09-16', 'No', 'Si', 1, 'Si', 345345, 'dfdsfs', 'dsfdsf', 34534, 3453453, 'fdgdfg', 'fdgdf', 'gfdgdf', 'Si', 2, 'dfgfd', 'gdfgd', 1, 'fdgdfdf', 4353, 5344, 'dfgdf', 'fdgdf', 'fdgdfg', 1, 1123234, 3463),
 (16, 566, 1, '2022-09-10', 2, 'dfg', 'dfgdf', 'fdgdf', 'gdfg', 3, 'dfsd', '2022-09-17', '2022-09-17', 'dsfsdf', 1, 1, 2, 'sdfsd', 'dsfsd', 4355, 345, 'dsfds', 'dfsdf', 'dsfsd', 'fsdfsd', 345345, 5345, 'cristian@gmail.com', 'fdgfdgfd', 4, 'dfgdfg', 54534, 434, 'fdgdfg', 'gfdgdfg', 'dfgdfg', 'dfgdfg', 'dfgdfg', 'gdfgdfg', 54645, 645, 545345, 'cristian@gmail.com', 546, 63453, 'fdgdf', 3563, 34643, 56456, 546345, '2022-09-16', 'Si', 'Si', 2, 'No', 546456, 'fdgfd', 'fdgfd', 54654, 54762, 'dfgdfg', 'fdgfdg', 'dfgdfg', 'No', 4, 'dfgdfg', 'fdgdfgdf', 2, 'fdgdfg', 5464, 5464, 'fdgfd', 'fgfdgfd', 'gdfgdf', 1, 67456, 54345);
 
 -- --------------------------------------------------------
@@ -404,7 +404,12 @@ INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
 (17, 435436, 'Aprobada', 'La solicitud fue aprobada'),
 (18, 435436, 'Aprobada', 'La solicitud fue aprobada'),
 (19, 123, 'Denegada', 'por bobo'),
-(20, 123, 'Aprobada', 'La solicitud fue aprobada');
+(20, 123, 'Aprobada', 'La solicitud fue aprobada'),
+(21, 123, 'Aprobada', 'La solicitud fue aprobada'),
+(22, 123, 'Aprobada', 'La solicitud fue aprobada'),
+(23, 123, 'Aprobada', 'La solicitud fue aprobada'),
+(24, 123, 'Aprobada', 'La solicitud fue aprobada'),
+(25, 123, 'Denegada', 'rrterter');
 
 -- --------------------------------------------------------
 
@@ -428,7 +433,8 @@ INSERT INTO `est_solij` (`Idest_solij`, `idclientj`, `Esta_soj`, `Des_solij`) VA
 (10, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
 (11, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
 (12, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(13, 11111111, 'Aprobada', 'La solicitud fue aprobada');
+(13, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
+(14, 11111111, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -505,7 +511,8 @@ CREATE TABLE `reg_solij` (
 
 INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
 (15, 345),
-(14, 435345);
+(14, 435345),
+(17, 11111111);
 
 -- --------------------------------------------------------
 
@@ -1408,25 +1415,25 @@ ALTER TABLE `entidad`
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=21;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
-  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=14;
+  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=39;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=16;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`

@@ -35,7 +35,7 @@ const Consulta2 = () => {
               <label>
                 <h3>Tipo de solicitud:</h3>
                 <div className="div_info01">
-                  Vinculacion
+                  {item.Nom_sol}
                 </div>
               </label>
             </div>

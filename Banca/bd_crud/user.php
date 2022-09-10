@@ -12,7 +12,8 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $resultado=metodoGet($query);
          echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
      }else{
-        $query="select * from cuenta_j inner join entidad on cuenta_j.Nit = entidad.Nit where No_cuenta= 551389";
+        
+    $query="select * from client_co inner join ti_sol on client_co.Idti_sol = ti_sol.Idti_sol where No_ide=123";
         $resultado=metodoGet($query);
         echo json_encode($resultado->fetchAll());     
      }

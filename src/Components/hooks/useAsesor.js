@@ -68,6 +68,7 @@ export const useAsesor = ({notify2}) => {
     f.append("METHOD", "CONSULTAID");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
+      console.log(response.data);
       if(response.data == false){
         notify2()
       }else if(dataUsuario.No_ide.length == 0){ 

@@ -117,7 +117,6 @@ const PersonaNatural = () => {
       Fec_dil: Yup.string().required("La fecha de diligenciamiento es obligatoria"),
       Pri_nom: Yup.string().required("El primer nombre es obligatorio"),
       No_cuenta: Yup.string().required("El numero de cuenta es obligatorio"),
-      Idti_cue: Yup.string(),
       Seg_nom: Yup.string().required("El segundo nombre es obligatorio"),
       Pri_ape: Yup.string().required("El primer apellido es obligatorio"),
       Seg_ape: Yup.string().required("El segundo apellido es obligatorio"),
@@ -203,7 +202,6 @@ const PersonaNatural = () => {
   });
 
   
-console.log(formik.values);
   return (
     <div className="padre">
       <div>

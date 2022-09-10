@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-09-2022 a las 03:59:24
+-- Tiempo de generación: 10-09-2022 a las 02:44:59
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -56,7 +56,8 @@ INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_c
 (64, 1192719887, '2022-09-09 22:54:00', 'Consignación', '19999', 'Cajero4', 562725, NULL),
 (65, 1192719887, '2022-09-09 22:54:00', 'Consignación', '30000', 'Cajero4', 562725, NULL),
 (66, 11111111, '2022-09-09 22:55:00', 'Consignación', '10000', 'Cajero4', NULL, 551389),
-(67, 435345, '2022-09-09 22:56:00', 'Apertura de Cuenta', '100000', 'Cajero4', NULL, 722416);
+(67, 435345, '2022-09-09 22:56:00', 'Apertura de Cuenta', '100000', 'Cajero4', NULL, 722416),
+(68, 566, '2022-09-10 21:42:00', 'Apertura de Cuenta', '100000', 'Cajero2', 791778, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,6 +119,7 @@ CREATE TABLE `client_co` (
   `No_ide` double NOT NULL COMMENT 'Nunero de identificacion del cliente',
   `Idti_solicit` int DEFAULT NULL COMMENT 'Identificacion de Tipo de solicitante',
   `Fec_dil` date DEFAULT NULL COMMENT 'Fecha de diligenciamiento',
+  `Idti_sol` int DEFAULT NULL COMMENT 'Identificacion de tipo de solicitud',
   `Pri_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del cliente',
   `Seg_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del cliente',
   `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del cliente',
@@ -196,32 +198,13 @@ CREATE TABLE `client_co` (
 -- Volcado de datos para la tabla `client_co`
 --
 
-INSERT INTO `client_co` (`Id_client`, `No_ide`, `Idti_solicit`, `Fec_dil`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Idti_doc`, `Lug_exp`, `Fec_exp`, `Fec_nac`, `Ciu_nac`, `Id_gen`, `Idest_ci`, `Id_nac`, `Otr_nac`, `Dir_re`, `Blo_to`, `Ap_ca`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telef`, `Celular`, `Corr_ele`, `Profe`, `Idocu_ofii`, `Det_act`, `Cod_ciuu`, `No_emp`, `Nom_emp`, `Dir_emp`, `Barr_lab`, `Ciu_lab`, `Dep_lab`, `Pais_lab`, `Tel_lab`, `Ext`, `Cel_lab`, `Corr_lab`, `Ing_men`, `Otr_ing`, `Det_otr`, `To_act`, `To_pa`, `To_egr`, `Vent_a`, `Fe_ci`, `Dec_rent`, `Age_ret`, `Idtireg_iva`, `Ob_tri`, `Notri_est`, `Pais_1`, `Pais_2`, `No_tri1`, `No_tri2`, `Prov_bie`, `Pais_bi`, `Ciu_bie`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
-(1, 123, 1, '2022-06-10', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(12, 435436, 1, '2022-07-05', 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845),
-(13, 123, 1, '2022-06-10', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(14, 123, 1, '2022-06-04', 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
-(15, 1192719887, 1, '2022-09-14', 'Cristian', 'Andres', 'Castaño', 'Salas', 1, 'Palmira', '2022-09-09', '2022-08-31', 'Florida', 1, 1, 1, 'Cual', 'calle 47', 34, 31, 'Poblado Comfaunion', 'Palmira', 'Valle', 'Colombia', 3172527140, 3172527140, 'cristian.0713.cs@gmail.com', 'Programador', 1, 'Programador', 3423, 32, 'YisusForEver', 'Cielo 45', 'La mesa', 'El paraiso', 'La eternidad', 'Cielo', 3242, 4234, 4234, 'yisus@gmail.com', 589988, 45652, 'dfgfd', 787778, 54654, 54653, 5645, '2022-09-16', 'No', 'Si', 1, 'Si', 345345, 'dfdsfs', 'dsfdsf', 34534, 3453453, 'fdgdfg', 'fdgdf', 'gfdgdf', 'Si', 2, 'dfgfd', 'gdfgd', 1, 'fdgdfdf', 4353, 5344, 'dfgdf', 'fdgdf', 'fdgdfg', 1, 1123234, 3463);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clien_tip`
---
-
-CREATE TABLE `clien_tip` (
-  `Idclien_tip` int NOT NULL COMMENT 'Identificacion de intermedia clien_tip',
-  `Idti_sol` int NOT NULL COMMENT 'Identificacion de tipo de solicitud	',
-  `No_ide` double NOT NULL COMMENT 'Nunero de identificacion del cliente'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Intermedia entre cliente comun y tipo de solicitud';
-
---
--- Volcado de datos para la tabla `clien_tip`
---
-
-INSERT INTO `clien_tip` (`Idclien_tip`, `Idti_sol`, `No_ide`) VALUES
-(11, 2, 435436),
-(12, 2, 1192719887);
+INSERT INTO `client_co` (`Id_client`, `No_ide`, `Idti_solicit`, `Fec_dil`, `Idti_sol`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Idti_doc`, `Lug_exp`, `Fec_exp`, `Fec_nac`, `Ciu_nac`, `Id_gen`, `Idest_ci`, `Id_nac`, `Otr_nac`, `Dir_re`, `Blo_to`, `Ap_ca`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telef`, `Celular`, `Corr_ele`, `Profe`, `Idocu_ofii`, `Det_act`, `Cod_ciuu`, `No_emp`, `Nom_emp`, `Dir_emp`, `Barr_lab`, `Ciu_lab`, `Dep_lab`, `Pais_lab`, `Tel_lab`, `Ext`, `Cel_lab`, `Corr_lab`, `Ing_men`, `Otr_ing`, `Det_otr`, `To_act`, `To_pa`, `To_egr`, `Vent_a`, `Fe_ci`, `Dec_rent`, `Age_ret`, `Idtireg_iva`, `Ob_tri`, `Notri_est`, `Pais_1`, `Pais_2`, `No_tri1`, `No_tri2`, `Prov_bie`, `Pais_bi`, `Ciu_bie`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
+(1, 123, 1, '2022-06-10', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(12, 435436, 1, '2022-07-05', NULL, 'dgdfgdf', 'gdfgdf', 'gfdgdf', 'fdgdfg', 1, 'sdfsdfs', '2022-07-22', '2022-07-15', 'dfsdfsd', 2, 1, 2, 'fdsfsdf', 'dsfsd', 435, 4353, 'dfsdf', 'dsfsd', 'sdfsd', 'sdfsf', 3452, 45232, 'fsdgsdh', 'dsfsdf', 6, 'sddsgds', 3453, 53453, 'dsfds', 'sdffsd', 'dsfsdfsd', 'fdhdf', 'fgdgf', 'fdgdf', 435, 34, 5345, 'fdgdf', 35435, 3453, 'dfgdfgd', 345, 453, 34534, 53453, '2022-07-12', 'Si', 'Si', 1, 'Si', 435345, 'fdgdf', 'gfdgdf', 34534, 534534, 'fdgdfg', 'dfgdf', 'dfgdfg', 'Si', 1, 'gdfgdf', 'fdgdfgd', 1, 'fdgdfgdf', 34534, 34534, 'dgfdgdf', 'dfgdfgdf', 'gdfgdf', 1, 7585, 547845),
+(13, 123, 1, '2022-06-10', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(14, 123, 1, '2022-06-04', NULL, 'sonia', 'maria', 'salas', 'sanchez', 4, 'dfdgfg', '2022-06-09', '2022-06-17', 'dfgdfgdf', 1, 3, 2, 'dgfdgd', 'dgfgdgd', 345, 534, 'dfgdg', 'dfgdfg', 'gdgdf', 'gdfgd', 3453, 53453, 'fdgdfg', 'gdfgd', 6, 'dfgdgd', 2342, 34, 'dsgsdg', 'dsfsdf', 'dsffs', 'fsdfs', 'fsdf', 'fdsf', 324, 43, 3242, 'dssfsfd', 3455, 5345, 'dgddfg', 54353, 5435, 3453, 53453, '2022-06-14', 'Si', 'No', 2, 'Si', 34535, 'fgdfgd', 'gdfgfd', 3453, 5344, 'dsfsdfs', 'dsfsf', 'sdfsf', 'Si', 5, 'gfhfh', 'dfhdhfhdhd', 2, 'dfgdfgd', 345, 3453, '5345', 'dgfdgd', 'gdfgd', 1, 3453, 4353),
+(15, 1192719887, 1, '2022-09-14', NULL, 'Cristian', 'Andres', 'Castaño', 'Salas', 1, 'Palmira', '2022-09-09', '2022-08-31', 'Florida', 1, 1, 1, 'Cual', 'calle 47', 34, 31, 'Poblado Comfaunion', 'Palmira', 'Valle', 'Colombia', 3172527140, 3172527140, 'cristian.0713.cs@gmail.com', 'Programador', 1, 'Programador', 3423, 32, 'YisusForEver', 'Cielo 45', 'La mesa', 'El paraiso', 'La eternidad', 'Cielo', 3242, 4234, 4234, 'yisus@gmail.com', 589988, 45652, 'dfgfd', 787778, 54654, 54653, 5645, '2022-09-16', 'No', 'Si', 1, 'Si', 345345, 'dfdsfs', 'dsfdsf', 34534, 3453453, 'fdgdfg', 'fdgdf', 'gfdgdf', 'Si', 2, 'dfgfd', 'gdfgd', 1, 'fdgdfdf', 4353, 5344, 'dfgdf', 'fdgdf', 'fdgdfg', 1, 1123234, 3463),
+(16, 566, 1, '2022-09-10', 2, 'dfg', 'dfgdf', 'fdgdf', 'gdfg', 3, 'dfsd', '2022-09-17', '2022-09-17', 'dsfsdf', 1, 1, 2, 'sdfsd', 'dsfsd', 4355, 345, 'dsfds', 'dfsdf', 'dsfsd', 'fsdfsd', 345345, 5345, 'cristian@gmail.com', 'fdgfdgfd', 4, 'dfgdfg', 54534, 434, 'fdgdfg', 'gfdgdfg', 'dfgdfg', 'dfgdfg', 'dfgdfg', 'gdfgdfg', 54645, 645, 545345, 'cristian@gmail.com', 546, 63453, 'fdgdf', 3563, 34643, 56456, 546345, '2022-09-16', 'Si', 'Si', 2, 'No', 546456, 'fdgfd', 'fdgfd', 54654, 54762, 'dfgdfg', 'fdgfdg', 'dfgdfg', 'No', 4, 'dfgdfg', 'fdgdfgdf', 2, 'fdgdfg', 5464, 5464, 'fdgfd', 'fgfdgfd', 'gdfgdf', 1, 67456, 54345);
 
 -- --------------------------------------------------------
 
@@ -257,7 +240,8 @@ INSERT INTO `cont_ent` (`idcont_ent`, `No_docu`, `Idti_doc`, `Pri_nom`, `Seg_nom
 (1, 22222, 4, '22222', '2222', '2222', '2222', '22222', '22222', '2222', '2222', '2222', '2222', 2222, 222222, 2222, '22222'),
 (2, 666666, 1, 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 4444, 444, 444, 'gh'),
 (3, 3333, 1, 'sdd', 'sssdds', 'sssddd', 'sssdd', 'sdd', 'ssddd', 'sdd', 'sds', 'sdsd', 'sdsd', 333, 333, 333, 'sdsd'),
-(4, 657567, 4, 'gfhfgh', 'fghfghf', 'hfghfg', 'hgfhfgh', 'gfhfgh', 'fghfgh', 'ghfgh', 'fghfgh', 'fghfgh', 'hfhgh', 56456, 56456, 456456, 'gfhfghf');
+(4, 657567, 4, 'gfhfgh', 'fghfghf', 'hfghfg', 'hgfhfgh', 'gfhfgh', 'fghfgh', 'ghfgh', 'fghfgh', 'fghfgh', 'hfhgh', 56456, 56456, 456456, 'gfhfghf'),
+(5, 573487, 4, 'fdg', 'fdgdf', 'gdfgfd', 'gdfg', 'fdgdg', 'gdfgd', 'gdfgdf', 'gdfgdf', 'gdfg', 'fdgdf', 5645, 56, 54644, 'cris@gmail.vom');
 
 -- --------------------------------------------------------
 
@@ -277,7 +261,8 @@ CREATE TABLE `cuenta_c` (
 
 INSERT INTO `cuenta_c` (`No_cuenta`, `No_ide`, `Idti_cue`) VALUES
 (137627, 435436, NULL),
-(562725, 1192719887, NULL);
+(562725, 1192719887, NULL),
+(791778, 566, NULL);
 
 -- --------------------------------------------------------
 
@@ -297,6 +282,7 @@ CREATE TABLE `cuenta_j` (
 
 INSERT INTO `cuenta_j` (`No_cuenta`, `Nit`, `Idti_cue`) VALUES
 (551389, 11111111, NULL),
+(683201, 345, NULL),
 (722416, 435345, NULL);
 
 -- --------------------------------------------------------
@@ -308,6 +294,7 @@ INSERT INTO `cuenta_j` (`No_cuenta`, `Nit`, `Idti_cue`) VALUES
 CREATE TABLE `entidad` (
   `Id_ent` int NOT NULL,
   `Fe_dil` date DEFAULT NULL COMMENT 'Fecha de diligenciamiento',
+  `Idti_sol` int DEFAULT NULL COMMENT 'Identificacion de tipo de solicitud',
   `tidoc_ent` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de documento de la entidad',
   `Nit` double DEFAULT NULL COMMENT 'Nit de la entidad',
   `Fidei` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'fideicomiso',
@@ -389,30 +376,11 @@ CREATE TABLE `entidad` (
 -- Volcado de datos para la tabla `entidad`
 --
 
-INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `tidoc_ent`, `Nit`, `Fidei`, `No_fide`, `Nom_ra`, `Nom_cor`, `Fe_cons`, `Ciu_cons`, `Pai_cons`, `Dir_se`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telefono`, `Ext`, `Corr_se`, `No_doc`, `Pre_1`, `Pre_2`, `No_docu`, `Idti_na`, `Co_ciuu`, `Det_act`, `No_emp`, `Idti_soci`, `Otro_com`, `Idti_en`, `Otro_ent`, `Idti_es`, `Otro_est`, `Idti_des`, `Ing_op`, `Ino_op`, `Detno`, `vent_an`, `Fe_ci`, `Egre_me`, `Util_ne`, `Tot_act`, `Tot_pas`, `Tot_pat`, `Idti_cont`, `Idcla_cont`, `Res_iva`, `Aut_ing`, `Int_merc`, `Vig_sup`, `Obli_est`, `No_id_tr`, `Patri_1`, `Patri_2`, `NoidTrib_1`, `NoidTrib_2`, `Idtripro_bi`, `Otro_fue`, `Idfue_rec`, `Otro_pro`, `Pais_or`, `Ciu_or`, `Nat_recu`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
-(3, '2022-07-12', 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
-(4, '2022-08-23', 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
-(5, '2022-07-12', 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ent_ti`
---
-
-CREATE TABLE `ent_ti` (
-  `Idint_entsol` int NOT NULL COMMENT 'Identificacion de intermedia entre entidad y tipo de solicitud',
-  `Nit` double NOT NULL COMMENT 'Nit de la entidad',
-  `Idti_sol` int NOT NULL COMMENT 'Identificacion de tipo de solicitud'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Intermedia entre entidad y tipo de solicitud';
-
---
--- Volcado de datos para la tabla `ent_ti`
---
-
-INSERT INTO `ent_ti` (`Idint_entsol`, `Nit`, `Idti_sol`) VALUES
-(2, 11111111, 2),
-(3, 435345, 2);
+INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `Idti_sol`, `tidoc_ent`, `Nit`, `Fidei`, `No_fide`, `Nom_ra`, `Nom_cor`, `Fe_cons`, `Ciu_cons`, `Pai_cons`, `Dir_se`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telefono`, `Ext`, `Corr_se`, `No_doc`, `Pre_1`, `Pre_2`, `No_docu`, `Idti_na`, `Co_ciuu`, `Det_act`, `No_emp`, `Idti_soci`, `Otro_com`, `Idti_en`, `Otro_ent`, `Idti_es`, `Otro_est`, `Idti_des`, `Ing_op`, `Ino_op`, `Detno`, `vent_an`, `Fe_ci`, `Egre_me`, `Util_ne`, `Tot_act`, `Tot_pas`, `Tot_pat`, `Idti_cont`, `Idcla_cont`, `Res_iva`, `Aut_ing`, `Int_merc`, `Vig_sup`, `Obli_est`, `No_id_tr`, `Patri_1`, `Patri_2`, `NoidTrib_1`, `NoidTrib_2`, `Idtripro_bi`, `Otro_fue`, `Idfue_rec`, `Otro_pro`, `Pais_or`, `Ciu_or`, `Nat_recu`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
+(3, '2022-07-12', NULL, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
+(4, '2022-08-23', NULL, 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
+(5, '2022-07-12', NULL, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
+(6, '2022-09-10', 2, 'Nit', 345, 'Fideicomiso', 5643, 'jose', 'gilberto', '2022-09-10', 'dfgdf', 'fdgdfg', 'fgd', 'fdgfd', 'gdfgdf', 'dfgdf', 'fgdf', 5645, 56, 'cris@gmail.com', 453456, 'Si', 'Si', 573487, 1, 546456, 'fdgfd', 54, 6, 'fhdf', 12, 'fdgfdg', 1, 'fdgdfg', 2, 54644, 6456, 'gfhgf', 5646, '2022-09-16', 56456, 456, 6456, 64564, 64564, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'dfgdf', 'fdgfd', 4353, 53234, 1, 'fdgdf', 1, 'fdgdf', 'gdfgd', 'fdgdfg', 'Si', 'Si', 2, 'gffhfg', 'gfhfg', 1, 'hfghfg', 5461, 54654, 'dfgfdg', 'gfdgdf', 'dgfgdf', 1, 5645674, 34156);
 
 -- --------------------------------------------------------
 
@@ -435,7 +403,8 @@ INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
 (16, 435436, 'Aprobada', 'La solicitud fue aprobada'),
 (17, 435436, 'Aprobada', 'La solicitud fue aprobada'),
 (18, 435436, 'Aprobada', 'La solicitud fue aprobada'),
-(19, 123, 'Denegada', 'por bobo');
+(19, 123, 'Denegada', 'por bobo'),
+(20, 123, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -458,7 +427,8 @@ INSERT INTO `est_solij` (`Idest_solij`, `idclientj`, `Esta_soj`, `Des_solij`) VA
 (9, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
 (10, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
 (11, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(12, 11111111, 'Aprobada', 'La solicitud fue aprobada');
+(12, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
+(13, 11111111, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -502,31 +472,6 @@ INSERT INTO `genero` (`Id_gen`, `Nom_gen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prueba`
---
-
-CREATE TABLE `prueba` (
-  `id` int NOT NULL,
-  `Id_act` int NOT NULL,
-  `Fecha_act` datetime NOT NULL,
-  `Tip_pro` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Valor_act` decimal(10,0) NOT NULL,
-  `Cajero` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `prueba`
---
-
-INSERT INTO `prueba` (`id`, `Id_act`, `Fecha_act`, `Tip_pro`, `Valor_act`, `Cajero`) VALUES
-(34, 11111111, '2022-07-15 21:49:00', 'Consignación', '435345', 'Cajero3'),
-(35, 11111111, '2022-08-20 12:56:00', 'Consignación', '500000', 'Cajero3'),
-(36, 435436, '2022-08-18 22:07:00', 'Apertura de Cuenta', '454443', 'Cajero2'),
-(37, 435436, '2022-08-18 22:07:00', 'Retiro', '4544435', 'Cajero2');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `reg_soli`
 --
 
@@ -540,7 +485,7 @@ CREATE TABLE `reg_soli` (
 --
 
 INSERT INTO `reg_soli` (`Id_reg`, `No_ide`) VALUES
-(36, 123),
+(38, 566),
 (37, 1192719887);
 
 -- --------------------------------------------------------
@@ -559,8 +504,8 @@ CREATE TABLE `reg_solij` (
 --
 
 INSERT INTO `reg_solij` (`Id_regj`, `Nit`) VALUES
-(14, 435345),
-(12, 11111111);
+(15, 345),
+(14, 435345);
 
 -- --------------------------------------------------------
 
@@ -618,7 +563,8 @@ CREATE TABLE `repr_le` (
 
 INSERT INTO `repr_le` (`idrepre`, `No_doc`, `Idti_doc`, `Pri_no`, `Seg_no`, `Pri_ape`, `Seg_ape`, `Cargo`, `Dir_lab`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Tel_lab`, `Ext`, `Celular`, `Corr_lab`) VALUES
 (4, 2222, 1, 'sdd', 'sdd', 'sdd', 'sdd', 'sdds', 'sdd', 'sddd', 'sdd', 'sdddsd', 'sdd', 222, 2210, 222, 'sddd'),
-(5, 657567, 4, 'gfhfg', 'hgffgh', 'fghfgh', 'fghfgh', 'gfhfg', 'gfhfgh', 'fghfg', 'hfgh', 'gfh', 'ghffghfg', 65756, 7567, 5675, 'gfhfgh');
+(5, 657567, 4, 'gfhfg', 'hgffgh', 'fghfgh', 'fghfgh', 'gfhfg', 'gfhfgh', 'fghfg', 'hfgh', 'gfh', 'ghffghfg', 65756, 7567, 5675, 'gfhfgh'),
+(6, 453456, 1, 'fdg', 'fdgdf', 'gdfg', 'dfgdf', 'fdfhdfh', 'fhdfhgdf', 'gfdgdf', 'fdgfdg', 'dfgdf', 'gdfgdf', 546, 6456, 4554, 'cris@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -643,7 +589,9 @@ INSERT INTO `solicitante` (`idsolicit`, `Idti_soli`, `No_solicit`, `Nom_solicit`
 (5, 1, 6573, 'sdsd', 'sdsd'),
 (7, 1, 7585, 'dfgdf', 'ftfhgffh'),
 (8, 1, 7686786, 'gfhfgh', 'gfhgfhgf'),
-(9, 2, 1123234, 'Cris', 'Cristian4k');
+(9, 2, 1123234, 'Cris', 'Cristian4k'),
+(10, 1, 67456, 'dfgdfgdf', 'dfgdfg'),
+(11, 1, 5645674, 'fgdf', 'fdgdfg');
 
 -- --------------------------------------------------------
 
@@ -1130,7 +1078,9 @@ INSERT INTO `vendedor` (`idcond`, `Cod_vend`, `Nom_vend`, `Oficina`, `Obser`, `F
 (5, 6986, 'ddsd', 'sdsds', 'sdsds', 'sdsdsds'),
 (7, 547845, 'fdgfd', 'fdgdf', 'dfgdfgdf', 'gfdgdfhd'),
 (8, 456458, 'ghfg', 'gfhgfh', 'hgfhfgh', 'gfhfgh'),
-(9, 3463, 'vendedir', 'de4', 'ninguna', 'cristianacs');
+(9, 3463, 'vendedir', 'de4', 'ninguna', 'cristianacs'),
+(10, 54345, 'gdfgd', 'gfdgd', 'fdgdfg', 'fdgfdgf'),
+(11, 34156, 'fdfsd', 'fsdfsd', 'fsdfsdf', 'fsdfdsfsd');
 
 --
 -- Índices para tablas volcadas
@@ -1173,16 +1123,8 @@ ALTER TABLE `client_co`
   ADD KEY `Idtireg_iva` (`Idtireg_iva`),
   ADD KEY `Idtipro_m` (`Idtipro_m`),
   ADD KEY `Idtiop_m` (`Idtiop_m`),
-  ADD KEY `No_ide` (`No_ide`);
-
---
--- Indices de la tabla `clien_tip`
---
-ALTER TABLE `clien_tip`
-  ADD PRIMARY KEY (`Idclien_tip`),
-  ADD KEY `Idti_sol` (`Idti_sol`),
   ADD KEY `No_ide` (`No_ide`),
-  ADD KEY `Idti_sol_2` (`Idti_sol`);
+  ADD KEY `Idti_sol` (`Idti_sol`);
 
 --
 -- Indices de la tabla `cont_ent`
@@ -1229,13 +1171,6 @@ ALTER TABLE `entidad`
   ADD KEY `Idfue_rec` (`Idfue_rec`),
   ADD KEY `Idtiop_m` (`Idtiop_m`),
   ADD KEY `Idtipro_m` (`Idtipro_m`),
-  ADD KEY `Nit` (`Nit`);
-
---
--- Indices de la tabla `ent_ti`
---
-ALTER TABLE `ent_ti`
-  ADD PRIMARY KEY (`Idint_entsol`),
   ADD KEY `Nit` (`Nit`),
   ADD KEY `Idti_sol` (`Idti_sol`);
 
@@ -1264,13 +1199,6 @@ ALTER TABLE `fue_recu`
 --
 ALTER TABLE `genero`
   ADD PRIMARY KEY (`Id_gen`);
-
---
--- Indices de la tabla `prueba`
---
-ALTER TABLE `prueba`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `Id_act` (`Id_act`);
 
 --
 -- Indices de la tabla `reg_soli`
@@ -1450,7 +1378,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=68;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `act_val`
@@ -1462,61 +1390,43 @@ ALTER TABLE `act_val`
 -- AUTO_INCREMENT de la tabla `client_co`
 --
 ALTER TABLE `client_co`
-  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion aleatorio de cada cliente', AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `clien_tip`
---
-ALTER TABLE `clien_tip`
-  MODIFY `Idclien_tip` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia clien_tip', AUTO_INCREMENT=13;
+  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion aleatorio de cada cliente', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `cont_ent`
 --
 ALTER TABLE `cont_ent`
-  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `entidad`
 --
 ALTER TABLE `entidad`
-  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `ent_ti`
---
-ALTER TABLE `ent_ti`
-  MODIFY `Idint_entsol` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de intermedia entre entidad y tipo de solicitud', AUTO_INCREMENT=4;
+  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=20;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
-  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `prueba`
---
-ALTER TABLE `prueba`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=38;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=15;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
@@ -1528,19 +1438,19 @@ ALTER TABLE `reg_usu`
 -- AUTO_INCREMENT de la tabla `repr_le`
 --
 ALTER TABLE `repr_le`
-  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitante`
 --
 ALTER TABLE `solicitante`
-  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -1564,18 +1474,12 @@ ALTER TABLE `client_co`
   ADD CONSTRAINT `client_co_ibfk_16` FOREIGN KEY (`Idtireg_iva`) REFERENCES `tireg_iv` (`Idtireg_iv`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_17` FOREIGN KEY (`Idtiop_m`) REFERENCES `tiop_mo` (`Idtiop_mo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_18` FOREIGN KEY (`Idtipro_m`) REFERENCES `tipro_mo` (`Idtipro_mo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `client_co_ibfk_19` FOREIGN KEY (`Idti_sol`) REFERENCES `ti_sol` (`Idti_sol`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_2` FOREIGN KEY (`Idti_solicit`) REFERENCES `ti_solicit` (`Idti_solicit`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_3` FOREIGN KEY (`Idti_doc`) REFERENCES `ti_doc` (`Idti_doc`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_4` FOREIGN KEY (`Id_gen`) REFERENCES `genero` (`Id_gen`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_5` FOREIGN KEY (`Idest_ci`) REFERENCES `tiest_civ` (`Idest_ci`) ON UPDATE CASCADE,
   ADD CONSTRAINT `client_co_ibfk_6` FOREIGN KEY (`Id_nac`) REFERENCES `ti_nac` (`Id_nac`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `clien_tip`
---
-ALTER TABLE `clien_tip`
-  ADD CONSTRAINT `clien_tip_ibfk_1` FOREIGN KEY (`Idti_sol`) REFERENCES `ti_sol` (`Idti_sol`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `clien_tip_ibfk_2` FOREIGN KEY (`No_ide`) REFERENCES `client_co` (`No_ide`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cont_ent`
@@ -1615,15 +1519,9 @@ ALTER TABLE `entidad`
   ADD CONSTRAINT `entidad_ibfk_22` FOREIGN KEY (`Idtripro_bi`) REFERENCES `tipro_bie` (`Idtripro_bie`) ON UPDATE CASCADE,
   ADD CONSTRAINT `entidad_ibfk_23` FOREIGN KEY (`Idtiop_m`) REFERENCES `tiop_mo` (`Idtiop_mo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `entidad_ibfk_24` FOREIGN KEY (`Idtipro_m`) REFERENCES `tipro_mo` (`Idtipro_mo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `entidad_ibfk_25` FOREIGN KEY (`Idti_sol`) REFERENCES `ti_sol` (`Idti_sol`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `entidad_ibfk_3` FOREIGN KEY (`No_doc`) REFERENCES `repr_le` (`No_doc`) ON UPDATE CASCADE,
   ADD CONSTRAINT `entidad_ibfk_5` FOREIGN KEY (`No_docu`) REFERENCES `cont_ent` (`No_docu`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ent_ti`
---
-ALTER TABLE `ent_ti`
-  ADD CONSTRAINT `ent_ti_ibfk_1` FOREIGN KEY (`Nit`) REFERENCES `entidad` (`Nit`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `ent_ti_ibfk_2` FOREIGN KEY (`Idti_sol`) REFERENCES `ti_sol` (`Idti_sol`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `est_soli`

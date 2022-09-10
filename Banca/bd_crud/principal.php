@@ -462,15 +462,10 @@ if($_POST['METHOD']=='FORMN'){
     $query ="insert into solicitante(Idti_soli,No_solicit,Nom_solicit, Firma) values ('$Idti_soli','$No_solicit','$Nom_solicit','$Firma')";
     $resultado2 = mysqli_query($conexion, $query);
         if ($resultado2 == 1) {
-        $query="insert into client_co(No_ide,Idti_solicit,Fec_dil,Pri_nom,Seg_nom,Pri_ape,Seg_ape,Idti_doc,Lug_exp,Fec_exp,Fec_nac,Ciu_nac,Id_gen,Idest_ci,Id_nac,Otr_nac,Dir_re,Blo_to,Ap_ca,Barrio,Ciu_mu,Depart,Pais,Telef,Celular,Corr_ele,Profe,Idocu_ofii,Det_act,Cod_ciuu,No_emp,Nom_emp,Dir_emp,Barr_lab,Ciu_lab,Dep_lab,Pais_lab,Tel_lab,Ext,Cel_lab,Corr_lab,Ing_men,Otr_ing,Det_otr,To_act,To_pa,To_egr,Vent_a,Fe_ci,Dec_rent,Age_ret,Idtireg_iva,Ob_tri,Notri_est,Pais_1,Pais_2,No_tri1,No_tri2,Prov_bie,Pais_bi,Ciu_bie,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
-        values ('$No_ide','$Idti_solicit','$Fec_dil','$Pri_nom','$Seg_nom','$Pri_ape','$Seg_ape','$Idti_doc','$Lug_exp','$Fec_exp','$Fec_nac','$Ciu_nac','$Id_gen','$Idest_ci','$Id_nac','$Otr_nac','$Dir_re','$Blo_to','$Ap_ca','$Barrio','$Ciu_mu','$Depart','$Pais','$Telef','$Celular','$Corr_ele','$Profe','$Idocu_ofii','$Det_act','$Cod_ciuu','$No_emp','$Nom_emp','$Dir_emp','$Barr_lab','$Ciu_lab','$Dep_lab','$Pais_lab','$Tel_lab','$Ext','$Cel_lab','$Corr_lab','$Ing_men','$Otr_ing','$Det_otr','$To_act','$To_pa','$To_egr','$Vent_a','$Fe_ci','$Dec_rent','$Age_ret','$Idtireg_iva','$Ob_tri','$Notri_est','$Pais_1','$Pais_2','$No_tri1','$No_tri2','$Prov_bie','$Pais_bi','$Ciu_bie','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
+        $query="insert into client_co(No_ide,Idti_solicit,Fec_dil,Idti_sol,Pri_nom,Seg_nom,Pri_ape,Seg_ape,Idti_doc,Lug_exp,Fec_exp,Fec_nac,Ciu_nac,Id_gen,Idest_ci,Id_nac,Otr_nac,Dir_re,Blo_to,Ap_ca,Barrio,Ciu_mu,Depart,Pais,Telef,Celular,Corr_ele,Profe,Idocu_ofii,Det_act,Cod_ciuu,No_emp,Nom_emp,Dir_emp,Barr_lab,Ciu_lab,Dep_lab,Pais_lab,Tel_lab,Ext,Cel_lab,Corr_lab,Ing_men,Otr_ing,Det_otr,To_act,To_pa,To_egr,Vent_a,Fe_ci,Dec_rent,Age_ret,Idtireg_iva,Ob_tri,Notri_est,Pais_1,Pais_2,No_tri1,No_tri2,Prov_bie,Pais_bi,Ciu_bie,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
+        values ('$No_ide','$Idti_solicit','$Fec_dil','$Idti_sol','$Pri_nom','$Seg_nom','$Pri_ape','$Seg_ape','$Idti_doc','$Lug_exp','$Fec_exp','$Fec_nac','$Ciu_nac','$Id_gen','$Idest_ci','$Id_nac','$Otr_nac','$Dir_re','$Blo_to','$Ap_ca','$Barrio','$Ciu_mu','$Depart','$Pais','$Telef','$Celular','$Corr_ele','$Profe','$Idocu_ofii','$Det_act','$Cod_ciuu','$No_emp','$Nom_emp','$Dir_emp','$Barr_lab','$Ciu_lab','$Dep_lab','$Pais_lab','$Tel_lab','$Ext','$Cel_lab','$Corr_lab','$Ing_men','$Otr_ing','$Det_otr','$To_act','$To_pa','$To_egr','$Vent_a','$Fe_ci','$Dec_rent','$Age_ret','$Idtireg_iva','$Ob_tri','$Notri_est','$Pais_1','$Pais_2','$No_tri1','$No_tri2','$Prov_bie','$Pais_bi','$Ciu_bie','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
          $resultado3 = mysqli_query($conexion, $query);
-        if($resultado3 == 1){
-        //intermedia tipo de solicitud
-            $query ="insert into clien_tip(Idti_sol,No_ide) values ('$Idti_sol','$No_ide')";
-            $resultado4 = mysqli_query($conexion, $query);
-
-            if($resultado4 == 1){
+            if($resultado3 == 1){
                 $query= "insert into reg_soli(No_ide) values ('$No_ide')";
                 $resultado5 = mysqli_query($conexion, $query);
                 if($resultado5 == 1){
@@ -481,11 +476,7 @@ if($_POST['METHOD']=='FORMN'){
                 } 
             }else{
                 echo("error en la cuarta insersion");
-            }
-
-            }else{
-                echo("error en la tercera insersion");
-            }
+            }    
     } else{
         echo("error en la segunda insersion");
     }
@@ -628,13 +619,10 @@ if ($_POST['METHOD'] == 'FORMJ') {
                 ('$No_doc','$Idti_doc','$Pri_no','$Seg_no','$Pri_ape','$Seg_ape','$Cargo','$Dir_lab','$Barrio2','$Ciu_mu2','$Depart2','$Pais2','$Tel_lab','$Ext2','$Celular','$Corr_lab')";
                 $resultado8 = mysqli_query($conexion, $query);         
                 if ($resultado8 == 1) {
-                    $query = "insert into entidad(Fe_dil,tidoc_ent,Nit,Fidei,No_fide,Nom_ra,Nom_cor,Fe_cons,Ciu_cons,Pai_cons,Dir_se,Barrio,Ciu_mu,Depart,Pais,Telefono,Ext,Corr_se,No_doc,Pre_1,Pre_2,No_docu,Idti_na,Co_ciuu,Det_act,No_emp,Idti_soci,Otro_com,Idti_en,Otro_ent,Idti_es,Otro_est,Idti_des,Ing_op,Ino_op,Detno,vent_an,Fe_ci,Egre_me,Util_ne,Tot_act,Tot_pas,Tot_pat,Idti_cont,Idcla_cont,Res_iva,Aut_ing,Int_merc,Vig_sup,Obli_est,No_id_tr,Patri_1,Patri_2,NoidTrib_1,NoidTrib_2,Idtripro_bi,Otro_fue,Idfue_rec,Otro_pro,Pais_or,Ciu_or,Nat_recu,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
-                    values ('$Fe_dil','$tidoc_ent','$Nit','$Fidei','$No_fide','$Nom_ra','$Nom_cor','$Fe_cons','$Ciu_cons','$Pai_cons','$Dir_se','$Barrio','$Ciu_mu','$Depart','$Pais','$Telefono','$Ext','$Corr_se','$No_doc','$Pre_1','$Pre_2','$No_docu','$Idti_na','$Co_ciuu','$Det_act','$No_emp','$Idti_soci','$Otro_com','$Idti_en','$Otro_ent','$Idti_es','$Otro_est','$Idti_des','$Ing_op','$Ino_op','$Detno','$vent_an','$Fe_ci','$Egre_me','$Util_ne','$Tot_act','$Tot_pas','$Tot_pat','$Idti_cont','$Idcla_cont','$Res_iva','$Aut_ing','$Int_merc','$Vig_sup','$Obli_est','$No_id_tr','$Patri_1','$Patri_2','$NoidTrib_1','$NoidTrib_2','$Idtripro_bi','$Otro_fue','$Idfue_rec','$Otro_pro','$Pais_or','$Ciu_or','$Nat_recu','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
+                    $query = "insert into entidad(Fe_dil,Idti_sol,tidoc_ent,Nit,Fidei,No_fide,Nom_ra,Nom_cor,Fe_cons,Ciu_cons,Pai_cons,Dir_se,Barrio,Ciu_mu,Depart,Pais,Telefono,Ext,Corr_se,No_doc,Pre_1,Pre_2,No_docu,Idti_na,Co_ciuu,Det_act,No_emp,Idti_soci,Otro_com,Idti_en,Otro_ent,Idti_es,Otro_est,Idti_des,Ing_op,Ino_op,Detno,vent_an,Fe_ci,Egre_me,Util_ne,Tot_act,Tot_pas,Tot_pat,Idti_cont,Idcla_cont,Res_iva,Aut_ing,Int_merc,Vig_sup,Obli_est,No_id_tr,Patri_1,Patri_2,NoidTrib_1,NoidTrib_2,Idtripro_bi,Otro_fue,Idfue_rec,Otro_pro,Pais_or,Ciu_or,Nat_recu,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
+                    values ('$Fe_dil','$Idti_sol','$tidoc_ent','$Nit','$Fidei','$No_fide','$Nom_ra','$Nom_cor','$Fe_cons','$Ciu_cons','$Pai_cons','$Dir_se','$Barrio','$Ciu_mu','$Depart','$Pais','$Telefono','$Ext','$Corr_se','$No_doc','$Pre_1','$Pre_2','$No_docu','$Idti_na','$Co_ciuu','$Det_act','$No_emp','$Idti_soci','$Otro_com','$Idti_en','$Otro_ent','$Idti_es','$Otro_est','$Idti_des','$Ing_op','$Ino_op','$Detno','$vent_an','$Fe_ci','$Egre_me','$Util_ne','$Tot_act','$Tot_pas','$Tot_pat','$Idti_cont','$Idcla_cont','$Res_iva','$Aut_ing','$Int_merc','$Vig_sup','$Obli_est','$No_id_tr','$Patri_1','$Patri_2','$NoidTrib_1','$NoidTrib_2','$Idtripro_bi','$Otro_fue','$Idfue_rec','$Otro_pro','$Pais_or','$Ciu_or','$Nat_recu','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
                     $resultado9 = mysqli_query($conexion, $query);  
-                    if ($resultado9 == 1) {
-                        $query = "insert into ent_ti(Nit, Idti_sol) values ('$Nit', '$Idti_sol')";
-                        $resultado10 = mysqli_query($conexion, $query);
-                        if($resultado10 == 1){
+                        if($resultado9 == 1){
                             $query= "insert into reg_solij(Nit) values ('$Nit')";
                             $resultado11 = mysqli_query($conexion, $query);
                             if($resultado11 == 1){
@@ -645,11 +633,7 @@ if ($_POST['METHOD'] == 'FORMJ') {
                             }
                         }else{
                             echo "Error en la sexta insersion ";
-                        }   
-                        
-                    }else{
-                        echo "Error en la quinta insersion ";
-                    }
+                        }  
                     } else {
                     echo ("error en la cuarta insersion");
                 }

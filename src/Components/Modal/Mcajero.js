@@ -38,6 +38,7 @@ export const McajeroReporte = ({
     );
 
   const sumTotalCuent = sumValueC - restValueC;
+  const prom = sumTotalCuent / (reportValueC.length + reportValueR.length);
 
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
@@ -93,6 +94,15 @@ export const McajeroReporte = ({
       display: "flex",
       flexDirection: "row",
     },
+    text_prom: {
+      width: "80%",
+    },
+    value_prom: {
+      width: "20%",
+      fontWeight: "bold",
+      textAlign: "center",
+      color: "#19C764"
+    }
   });
   return (
     <>
@@ -133,7 +143,13 @@ export const McajeroReporte = ({
                       <Text style={styles.text_value}>
                         Cantidad disponible:{" "}
                       </Text>
-                      <Text style={styles.value_cuenta}>{sumTotalCuent}</Text>
+                      <Text style={styles.value_cuenta}>${sumTotalCuent}</Text>
+                    </View>
+                    <View style={styles.content_value}>
+                      <Text style={styles.text_prom}>
+                        Promedio:
+                      </Text>
+                      <Text style={styles.value_prom}>${prom}</Text>
                     </View>
                   </View>
                 </Page>

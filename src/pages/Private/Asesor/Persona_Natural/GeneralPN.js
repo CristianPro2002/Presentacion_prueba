@@ -287,8 +287,9 @@ const PersonaNatural = () => {
                 required
                 onChange={formik.handleChange}
               />
+                   <h6 style={{ color: "red" }}>{formik.errors.Pri_nom}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Pri_nom}</h6>
+       
             <input
                 type="number"
                 name="No_cuenta"
@@ -319,8 +320,9 @@ const PersonaNatural = () => {
                 onChange={formik.handleChange}
                 style={{display: "none"}}
               />
+                          <h6 style={{ color: "red" }}>{formik.errors.Seg_nom}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Seg_nom}</h6>
+
             <label className="labelo">
               Primer Apellido
               <input
@@ -330,8 +332,9 @@ const PersonaNatural = () => {
                 required
                 onChange={formik.handleChange}
               />
+                   <h6 style={{ color: "red" }}>{formik.errors.Pri_ape}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Pri_ape}</h6>
+       
             <label className="labelo">
               Segundo Apellido
               <input
@@ -340,8 +343,9 @@ const PersonaNatural = () => {
                 className="input"
                 onChange={formik.handleChange}
               />
+                          <h6 style={{ color: "red" }}>{formik.errors.Seg_ape}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Seg_ape}</h6>
+
           </div>
 
           <div className="select">
@@ -376,8 +380,9 @@ const PersonaNatural = () => {
                 /*onChange={formik.handleChange}*/
                 onChange={formik.handleChange}
               />
+                <h6 style={{ color: "red" }}>{formik.errors.No_ide}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.No_ide}</h6>
+          
             <label className="labelo">
               Fecha de expedición
               <input
@@ -387,8 +392,8 @@ const PersonaNatural = () => {
                 required
                 onChange={formik.handleChange}
               />
+                      <h6 style={{ color: "red" }}>{formik.errors.Fec_exp}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Fec_exp}</h6>
           </div>
 
           <div className="bordes">
@@ -401,8 +406,8 @@ const PersonaNatural = () => {
                 required
                 onChange={formik.handleChange}
               />
+                          <h6 style={{ color: "red" }}>{formik.errors.Lug_exp}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Lug_exp}</h6>
             <label className="labelo">
               Fecha de nacimiento
               <input
@@ -412,8 +417,9 @@ const PersonaNatural = () => {
                 required
                 onChange={formik.handleChange}
               />
+              <h6 style={{ color: "red" }}>{formik.errors.Fec_nac}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Fec_nac}</h6>
+
           </div>
 
           <div className="todo">
@@ -427,8 +433,9 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
+                   <h6 style={{ color: "red" }}>{formik.errors.Ciu_nac}</h6>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_nac}</h6>
+          
               <div className="conte">
                 <div className="col">
                   <div className="coso">
@@ -534,8 +541,9 @@ const PersonaNatural = () => {
             <label className="labelo">
               Otro, cuál?
               <input type="text" name="Otr_nac" className="inpuut" onChange={formik.handleChange}/>
+              <h6 style={{ color: "red" }}>{formik.errors.Otr_nac}</h6>
             </label>
-            <h6 style={{ color: "red" }}>{formik.errors.Otr_nac}</h6>
+     
 
             <div className="contenedor4">
               <h5 className="titulitos">Información de contacto personal</h5>
@@ -548,18 +556,18 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Dir_re}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Dir_re}</h6>
+              </label>      
               <label className="cajon">
                 Bloque/Torre
                 <input type="number" name="Blo_to" className="input" onChange={formik.handleChange} />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Blo_to}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Blo_to}</h6>
+              </label>             
               <label className="cajon">
                 Apto/Casa
                 <input type="number" name="Ap_ca" className="input" onChange={formik.handleChange} />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ap_ca}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Ap_ca}</h6>
+              </label>             
             </div>
 
             <div className="contenedor4">
@@ -572,8 +580,8 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Barrio}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Barrio}</h6>
+              </label> 
               <label className="cajon">
                 Ciudad/Municipio
                 <input
@@ -583,8 +591,8 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu}</h6>
+                 <h6 style={{ color: "red" }}>{formik.errors.Ciu_mu}</h6>
+              </label>       
               <label className="cajon">
                 Departamento
                 <input
@@ -594,8 +602,8 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Depart}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Depart}</h6>
+              </label>      
             </div>
 
             <div className="contenedor4">
@@ -608,8 +616,8 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Pais}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Pais}</h6>
+              </label>      
               <label className="cajon">
                 Teléfono
                 <input
@@ -620,8 +628,8 @@ const PersonaNatural = () => {
                   /*onChange={formik.formik.handleChange}*/
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Telef}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Telef}</h6>
+              </label>      
               <label className="cajon">
                 Celular
                 <input
@@ -632,8 +640,8 @@ const PersonaNatural = () => {
                   /*onChange={formik.handleChange}*/
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Celular}</h6>
+                 <h6 style={{ color: "red" }}>{formik.errors.Celular}</h6>
+              </label>      
             </div>
 
             <div className="contenedor4">
@@ -646,8 +654,8 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Corr_ele}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Corr_ele}</h6>
+              </label>       
             </div>
 
             <div className="contenedor4">
@@ -661,10 +669,9 @@ const PersonaNatural = () => {
                   required
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Profe}</h6>
+                 <h6 style={{ color: "red" }}>{formik.errors.Profe}</h6>
+              </label>   
               <h5 className="tituloos">Ocupación/Oficio</h5>
-
               <select
                 className="selec"
                 name="Idocu_ofii"
@@ -707,8 +714,8 @@ const PersonaNatural = () => {
                   className="input"
                   onChange={formik.handleChange}
                 />
+                <h6 style={{ color: "red" }}>{formik.errors.Det_act}</h6>
               </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Det_act}</h6>
               <label className="cajoncitos">
                 Código CIIU
                 <input
@@ -718,8 +725,8 @@ const PersonaNatural = () => {
                   /*onChange={formik.handleChange}*/
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Cod_ciuu}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.Cod_ciuu}</h6>
+              </label>  
               <label className="cajoncitos">
                 Nº. Empleados
                 <input
@@ -728,8 +735,8 @@ const PersonaNatural = () => {
                   className="input"
                   onChange={formik.handleChange}
                 />
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.No_emp}</h6>
+                <h6 style={{ color: "red" }}>{formik.errors.No_emp}</h6>
+              </label>            
               <div className="contenedor4">
                 <h5 className="titulitos">
                   Información laboral(Para Empleados e Independientes)
@@ -743,8 +750,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Nom_emp}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Nom_emp}</h6>
+                </label>   
                 <label className="largos">
                   Dirección de la empresa o lugar donde desarrolla su actividad
                   <input
@@ -754,8 +761,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dir_emp}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Dir_emp}</h6>
+                </label>   
               </div>
 
               <div className="contenedor4">
@@ -768,8 +775,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Barr_lab}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Barr_lab}</h6>
+                </label>              
                 <label className="cajon">
                   Ciudad/Municipio
                   <input
@@ -779,8 +786,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ciu_lab}</h6>
+                   <h6 style={{ color: "red" }}>{formik.errors.Ciu_lab}</h6>
+                </label>  
                 <label className="cajon">
                   Departamento
                   <input
@@ -790,8 +797,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dep_lab}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Dep_lab}</h6>
+                </label> 
               </div>
 
               <div className="contenedor4">
@@ -804,8 +811,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_lab}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Pais_lab}</h6>
+                </label>     
                 <label className="jumm">
                   Teléfono
                   <input
@@ -816,8 +823,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
+                </label>    
                 <label className="jumm">
                   Ext
                   <input
@@ -827,8 +834,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ext}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Ext}</h6>
+                </label>         
                 <label className="cajon">
                   Celular
                   <input
@@ -839,8 +846,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.Cel_lab}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Cel_lab}</h6>
                 <label className="largos">
                   Correo electrónico laboral
                   <input
@@ -850,8 +857,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Corr_lab}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Corr_lab}</h6>
+                </label>              
               </div>
 
               <div className="contenedor4">
@@ -865,8 +872,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ing_men}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Ing_men}</h6>
+                </label>    
                 <label className="labelo">
                   Total activos $
                   <input
@@ -876,8 +883,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_act}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.To_act}</h6>
+                </label>               
                 <label className="labelo">
                   Otros ingresos mensuales $
                   <input
@@ -887,8 +894,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Otr_ing}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Otr_ing}</h6>
+                </label>   
                 <label className="labelo">
                   Total pasivos $
                   <input
@@ -898,8 +905,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_pa}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.To_pa}</h6>
+                </label>               
                 <label className="labelo">
                   Detalle otros ingresos mensuales (diferentes a su actividad
                   económica principal)
@@ -910,8 +917,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Det_otr}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Det_otr}</h6>
+                </label>         
                 <label className="labelo">
                   Total egresos mensuales $
                   <input
@@ -921,8 +928,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.To_egr}</h6>
+                   <h6 style={{ color: "red" }}>{formik.errors.To_egr}</h6>
+                </label>            
               </div>
 
               <div className="contenedor4">
@@ -939,8 +946,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Vent_a}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Vent_a}</h6>
+                </label>              
                 <label className="cajon">
                   Fecha de cierre de ventas
                   <input
@@ -950,8 +957,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                     required
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.Fe_ci}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Fe_ci}</h6>
               </div>
 
               <div className="contenedor4">
@@ -978,8 +985,9 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                   />{" "}
                   No
+                  <h6 style={{ color: "red" }}>{formik.errors.Dec_rent}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Dec_rent}</h6>
+               
                 <label className="cajons">
                   Agente retenedor
                   <input
@@ -1002,8 +1010,9 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                   />{" "}
                   No
+                  <h6 style={{ color: "red" }}>{formik.errors.Age_ret}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Age_ret}</h6>
+                
                 <label className="cajonl">
                   Régimen de IVA
                   <input
@@ -1036,8 +1045,8 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                   />{" "}
                   <label for="r14">Ninguno</label>
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Idtireg_iva}</h6>
+                  <h6 style={{ color: "red" }}>{formik.errors.Idtireg_iva}</h6>
+                </label>          
               </div>
 
               <div className="contenedor4">
@@ -1063,8 +1072,9 @@ const PersonaNatural = () => {
                     onChange={formik.handleChange}
                   />{" "}
                   No
+                  <h6 style={{ color: "red" }}>{formik.errors.Ob_tri}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Ob_tri}</h6>
+               
                 <label className="otro">
                   *Si su respuesta es afirmativa indique el número de ID
                   tributario (TIN)
@@ -1092,8 +1102,9 @@ const PersonaNatural = () => {
                     className="input"
                     onChange={formik.handleChange}
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.Pais_1}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_1}</h6>
+                
                 <label className="labelo">
                   1.
                   <input
@@ -1102,8 +1113,9 @@ const PersonaNatural = () => {
                     className="input"
                     onChange={formik.handleChange}
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.No_tri1}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_tri1}</h6>
+                
                 <label className="labelo">
                   2.
                   <input
@@ -1112,8 +1124,9 @@ const PersonaNatural = () => {
                     className="input"
                     onChange={formik.handleChange}
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.Pais_2}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Pais_2}</h6>
+                
                 <label className="labelo">
                   2.
                   <input
@@ -1122,8 +1135,9 @@ const PersonaNatural = () => {
                     className="input"
                     onChange={formik.handleChange}
                   />
+                  <h6 style={{ color: "red" }}>{formik.errors.No_tri2}</h6>
                 </label>
-                <h6 style={{ color: "red" }}>{formik.errors.No_tri2}</h6>
+                
               </div>
 
               <div className="contenedor4">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-09-2022 a las 21:18:06
+-- Tiempo de generación: 14-09-2022 a las 23:02:27
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -1444,7 +1444,7 @@ ALTER TABLE `reg_solij`
 -- AUTO_INCREMENT de la tabla `reg_usu`
 --
 ALTER TABLE `reg_usu`
-  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=56;
+  MODIFY `Id_usu` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de usuario', AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `repr_le`

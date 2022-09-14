@@ -111,7 +111,7 @@ if($_POST['METHOD']=='CONSULTAID2'){
 
 if($_POST['METHOD']=='CONSULTAID3'){
     unset($_POST['METHOD']);
-    $query="select * from client_co where No_ide=".$_POST['No_ide'];
+    $query="select * from client_co where Id_client=".$_POST['No_ide'];
     $resultado=metodoGet($query);
     echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
     header("HTTP/1.1 200 OK");
@@ -121,7 +121,7 @@ if($_POST['METHOD']=='CONSULTAID3'){
 
 if($_POST['METHOD']=='CONSULTAIPJ'){
     unset($_POST['METHOD']);
-    $query="select * from entidad where Nit=".$_POST['Nit'];
+    $query="select * from entidad where Id_ent=".$_POST['Nit'];
     $resultado=metodoGet($query);
     echo json_encode($resultado->fetch(PDO::FETCH_ASSOC));
     header("HTTP/1.1 200 OK");
@@ -465,8 +465,9 @@ if($_POST['METHOD']=='FORMN'){
         $query="insert into client_co(No_ide,Idti_solicit,Fec_dil,Idti_sol,Pri_nom,Seg_nom,Pri_ape,Seg_ape,Idti_doc,Lug_exp,Fec_exp,Fec_nac,Ciu_nac,Id_gen,Idest_ci,Id_nac,Otr_nac,Dir_re,Blo_to,Ap_ca,Barrio,Ciu_mu,Depart,Pais,Telef,Celular,Corr_ele,Profe,Idocu_ofii,Det_act,Cod_ciuu,No_emp,Nom_emp,Dir_emp,Barr_lab,Ciu_lab,Dep_lab,Pais_lab,Tel_lab,Ext,Cel_lab,Corr_lab,Ing_men,Otr_ing,Det_otr,To_act,To_pa,To_egr,Vent_a,Fe_ci,Dec_rent,Age_ret,Idtireg_iva,Ob_tri,Notri_est,Pais_1,Pais_2,No_tri1,No_tri2,Prov_bie,Pais_bi,Ciu_bie,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
         values ('$No_ide','$Idti_solicit','$Fec_dil','$Idti_sol','$Pri_nom','$Seg_nom','$Pri_ape','$Seg_ape','$Idti_doc','$Lug_exp','$Fec_exp','$Fec_nac','$Ciu_nac','$Id_gen','$Idest_ci','$Id_nac','$Otr_nac','$Dir_re','$Blo_to','$Ap_ca','$Barrio','$Ciu_mu','$Depart','$Pais','$Telef','$Celular','$Corr_ele','$Profe','$Idocu_ofii','$Det_act','$Cod_ciuu','$No_emp','$Nom_emp','$Dir_emp','$Barr_lab','$Ciu_lab','$Dep_lab','$Pais_lab','$Tel_lab','$Ext','$Cel_lab','$Corr_lab','$Ing_men','$Otr_ing','$Det_otr','$To_act','$To_pa','$To_egr','$Vent_a','$Fe_ci','$Dec_rent','$Age_ret','$Idtireg_iva','$Ob_tri','$Notri_est','$Pais_1','$Pais_2','$No_tri1','$No_tri2','$Prov_bie','$Pais_bi','$Ciu_bie','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
          $resultado3 = mysqli_query($conexion, $query);
+         $ultimo_id = mysqli_insert_id($conexion);
             if($resultado3 == 1){
-                $query= "insert into reg_soli(No_ide) values ('$No_ide')";
+                $query= "insert into reg_soli(id_soli) values ('$ultimo_id')";
                 $resultado5 = mysqli_query($conexion, $query);
                 if($resultado5 == 1){
                     $query = "insert into cuenta_c(No_cuenta,No_ide) values ('$No_cuenta', '$No_ide')";
@@ -622,8 +623,9 @@ if ($_POST['METHOD'] == 'FORMJ') {
                     $query = "insert into entidad(Fe_dil,Idti_sol,tidoc_ent,Nit,Fidei,No_fide,Nom_ra,Nom_cor,Fe_cons,Ciu_cons,Pai_cons,Dir_se,Barrio,Ciu_mu,Depart,Pais,Telefono,Ext,Corr_se,No_doc,Pre_1,Pre_2,No_docu,Idti_na,Co_ciuu,Det_act,No_emp,Idti_soci,Otro_com,Idti_en,Otro_ent,Idti_es,Otro_est,Idti_des,Ing_op,Ino_op,Detno,vent_an,Fe_ci,Egre_me,Util_ne,Tot_act,Tot_pas,Tot_pat,Idti_cont,Idcla_cont,Res_iva,Aut_ing,Int_merc,Vig_sup,Obli_est,No_id_tr,Patri_1,Patri_2,NoidTrib_1,NoidTrib_2,Idtripro_bi,Otro_fue,Idfue_rec,Otro_pro,Pais_or,Ciu_or,Nat_recu,Op_ext,Idtiop_m,Otro_mo,Nom_ent,Idtipro_m,Otro_mo2,No_pro,Mo_pro,Moneda,Ciu_ent,Pa_ent,Idtien_re,No_solicit,Cod_vend) 
                     values ('$Fe_dil','$Idti_sol','$tidoc_ent','$Nit','$Fidei','$No_fide','$Nom_ra','$Nom_cor','$Fe_cons','$Ciu_cons','$Pai_cons','$Dir_se','$Barrio','$Ciu_mu','$Depart','$Pais','$Telefono','$Ext','$Corr_se','$No_doc','$Pre_1','$Pre_2','$No_docu','$Idti_na','$Co_ciuu','$Det_act','$No_emp','$Idti_soci','$Otro_com','$Idti_en','$Otro_ent','$Idti_es','$Otro_est','$Idti_des','$Ing_op','$Ino_op','$Detno','$vent_an','$Fe_ci','$Egre_me','$Util_ne','$Tot_act','$Tot_pas','$Tot_pat','$Idti_cont','$Idcla_cont','$Res_iva','$Aut_ing','$Int_merc','$Vig_sup','$Obli_est','$No_id_tr','$Patri_1','$Patri_2','$NoidTrib_1','$NoidTrib_2','$Idtripro_bi','$Otro_fue','$Idfue_rec','$Otro_pro','$Pais_or','$Ciu_or','$Nat_recu','$Op_ext','$Idtiop_m','$Otro_mo','$Nom_ent','$Idtipro_m','$Otro_mo2','$No_pro','$Mo_pro','$Moneda','$Ciu_ent','$Pa_ent','$Idtien_re','$No_solicit','$Cod_vend')";
                     $resultado9 = mysqli_query($conexion, $query);  
+                    $ultimo_id2 = mysqli_insert_id($conexion);
                         if($resultado9 == 1){
-                            $query= "insert into reg_solij(Nit) values ('$Nit')";
+                            $query= "insert into reg_solij(Id_solij) values ('$ultimo_id2')";
                             $resultado11 = mysqli_query($conexion, $query);
                             if($resultado11 == 1){
                                 $query = "insert into cuenta_j(No_cuenta,Nit) values ('$No_cuenta', '$Nit')";

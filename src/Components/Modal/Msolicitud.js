@@ -99,7 +99,7 @@ const Msolicitud = ({
                                     <button
                                       onClick={() =>
                                         MsolicitudActions.Detalleid2(
-                                          Data.Nit,
+                                          Data.Id_ent,
                                           Data.Id_regj
                                         )
                                       }
@@ -144,7 +144,7 @@ const Msolicitud = ({
                                     <button
                                       onClick={() =>
                                         MsolicitudActions.Detalleid(
-                                          Data.No_ide,
+                                          Data.Id_client,
                                           Data.Id_reg
                                         )
                                       }

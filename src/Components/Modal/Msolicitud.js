@@ -217,7 +217,7 @@ const Msolicitud = ({
                   id="boton_modal_verde"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionDeleteSoli(detalle.No_ide)
+                    MsolicitudActions.peticionDeleteSoli(detalle.No_ide, detalle.Id_client)
                   }
                 >
                   Aceptar
@@ -284,7 +284,7 @@ const Msolicitud = ({
                   id="boton_modal_verde"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionDeleteSoliJ(detalle2.Nit)
+                    MsolicitudActions.peticionDeleteSoliJ(detalle2.Nit, detalle2.Id_ent)
                   }
                 >
                   Aceptar
@@ -324,7 +324,7 @@ const Msolicitud = ({
                   id="boton_Modal_2_0"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionPostsolicitud(detalle.No_ide)
+                    MsolicitudActions.peticionPostsolicitud(detalle.No_ide, detalle.Id_client)
                   }
                 >
                   Aceptar
@@ -364,7 +364,7 @@ const Msolicitud = ({
                   id="boton_Modal_2_0"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionPostsolicitudJ(detalle2.Nit)
+                    MsolicitudActions.peticionPostsolicitudJ(detalle2.Nit, detalle2.Id_ent)
                   }
                 >
                   Aceptar

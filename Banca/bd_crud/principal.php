@@ -717,8 +717,9 @@ if($_POST['METHOD']=='DELETE'){
 if($_POST['METHOD']=='DELETESOLI'){
     unset($_POST['METHOD']);
     $No_ide=$_GET['No_ide'];
+    $Id_soli=$_GET['Id_soli'];
     $Id_reg=$_GET['Id_reg'];
-    $query="insert into est_soli(Idclient,Esta_so,Des_soli) values ('$No_ide','Aprobada','La solicitud fue aprobada')";
+    $query="insert into est_soli(Idclient,Id_soli,Esta_so,Des_soli) values ('$No_ide','$Id_soli','Aprobada','La solicitud fue aprobada')";
     $resultado = mysqli_query($conexion, $query); 
     if($resultado == 1){
         $query="DELETE FROM reg_soli WHERE Id_reg='$Id_reg'";
@@ -733,8 +734,9 @@ if($_POST['METHOD']=='DELETESOLI'){
 if($_POST['METHOD']=='DELETESOLIJ'){
     unset($_POST['METHOD']);
     $Nit=$_GET['Nit'];
+    $Id_solij=$_GET['Id_solij'];
     $Id_regj=$_GET['Id_regj'];
-    $query="insert into est_solij(Idclientj,Esta_soj,Des_solij) values ('$Nit','Aprobada','La solicitud fue aprobada')";
+    $query="insert into est_solij(Idclientj,Id_solij,Esta_soj,Des_solij) values ('$Nit','$Id_solij','Aprobada','La solicitud fue aprobada')";
     $resultado = mysqli_query($conexion, $query); 
     if($resultado == 1){
         $query="DELETE FROM reg_solij WHERE Id_regj='$Id_regj'";
@@ -751,8 +753,9 @@ if($_POST['METHOD']=='CANCELSOLI'){
     unset($_POST['METHOD']);
     $Des_soli=$_POST['Des_soli'];
     $No_ide=$_GET['No_ide'];
+    $Id_soli=$_GET['Id_soli'];
     $Id_reg=$_GET['Id_reg'];
-    $query="insert into est_soli(Idclient,Esta_so,Des_soli) values ('$No_ide','Denegada','$Des_soli')";
+    $query="insert into est_soli(Idclient,Id_soli,Esta_so,Des_soli) values ('$No_ide','$Id_soli','Denegada','$Des_soli')";
     $resultado = mysqli_query($conexion, $query); 
     if($resultado == 1){
         $query="DELETE FROM reg_soli WHERE Id_reg='$Id_reg'";
@@ -768,8 +771,9 @@ if($_POST['METHOD']=='CANCELSOLIJ'){
     unset($_POST['METHOD']);
     $Des_soli=$_POST['Des_soli'];
     $Nit=$_GET['Nit'];
+    $Id_solij=$_GET['Id_solij'];
     $Id_regj=$_GET['Id_regj'];
-    $query="insert into est_solij(Idclientj,Esta_soj,Des_solij) values ('$Nit','Denegada','$Des_soli')";
+    $query="insert into est_solij(Idclientj,Id_solij,Esta_soj,Des_solij) values ('$Nit','$Id_solij','Denegada','$Des_soli')";
     $resultado = mysqli_query($conexion, $query); 
     if($resultado == 1){
         $query="DELETE FROM reg_solij WHERE Id_regj='$Id_regj'";

@@ -18,13 +18,14 @@ export const useMsolicitud = ({
     Des_soli: "",
   });
 
-  const peticionPostsolicitud = async (value) => {
+  const peticionPostsolicitud = async (value, value2) => {
     var f = new FormData();
     let No_ide = value;
+    let Id_soli = value2;
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLI");
     await axios
-      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi } })
+      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
       .then((response) => {
         setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
         cerrar2();
@@ -40,13 +41,14 @@ export const useMsolicitud = ({
       });
   };
 
-  const peticionPostsolicitudJ = async (value) => {
+  const peticionPostsolicitudJ = async (value, value2) => {
     var f = new FormData();
     let Nit = value;
+    let Id_solij = value2;
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLIJ");
     await axios
-      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi } })
+      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
       .then((response) => {
         setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
         cerrar2();
@@ -88,12 +90,13 @@ export const useMsolicitud = ({
     });
   };
 
-  const peticionDeleteSoli = async (value) => {
+  const peticionDeleteSoli = async (value, value2) => {
     let No_ide = value;
+    let Id_soli = value2;
     var f = new FormData();
     f.append("METHOD", "DELETESOLI");
     await axios
-      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi } })
+      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
       .then((response) => {
         setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
         document
@@ -108,12 +111,13 @@ export const useMsolicitud = ({
       });
   };
 
-  const peticionDeleteSoliJ = async (value) => {
+  const peticionDeleteSoliJ = async (value, value2) => {
     let Nit = value;
+    let Id_solij = value2;
     var f = new FormData();
     f.append("METHOD", "DELETESOLIJ");
     await axios
-      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi } })
+      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
       .then((response) => {
         setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
         document

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-09-2022 a las 20:12:32
+-- Tiempo de generación: 14-09-2022 a las 21:18:06
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -396,6 +396,7 @@ INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `Idti_sol`, `tidoc_ent`, `Nit`, `Fide
 CREATE TABLE `est_soli` (
   `Idest_soli` int NOT NULL COMMENT 'Identificacion de estado de la solicitud',
   `Idclient` double DEFAULT NULL COMMENT 'Identificacion de cliente tanto comun como entidad',
+  `Id_soli` int DEFAULT NULL COMMENT 'Identificacion de la solicitud',
   `Esta_so` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud',
   `Des_soli` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de la solicitud';
@@ -404,17 +405,13 @@ CREATE TABLE `est_soli` (
 -- Volcado de datos para la tabla `est_soli`
 --
 
-INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
-(16, 435436, 'Aprobada', 'La solicitud fue aprobada'),
-(17, 435436, 'Aprobada', 'La solicitud fue aprobada'),
-(18, 435436, 'Aprobada', 'La solicitud fue aprobada'),
-(19, 123, 'Denegada', 'por bobo'),
-(20, 123, 'Aprobada', 'La solicitud fue aprobada'),
-(21, 123, 'Aprobada', 'La solicitud fue aprobada'),
-(22, 123, 'Aprobada', 'La solicitud fue aprobada'),
-(23, 123, 'Aprobada', 'La solicitud fue aprobada'),
-(24, 123, 'Aprobada', 'La solicitud fue aprobada'),
-(25, 123, 'Denegada', 'rrterter');
+INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Id_soli`, `Esta_so`, `Des_soli`) VALUES
+(16, 435436, NULL, 'Aprobada', 'La solicitud fue aprobada'),
+(19, 123, NULL, 'Denegada', 'por bobo'),
+(20, 123, NULL, 'Aprobada', 'La solicitud fue aprobada'),
+(21, 123, NULL, 'Aprobada', 'La solicitud fue aprobada'),
+(26, 75074275, 17, 'Denegada', 'TAMPOCO CUMPLIO'),
+(27, 566, 16, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -425,6 +422,7 @@ INSERT INTO `est_soli` (`Idest_soli`, `Idclient`, `Esta_so`, `Des_soli`) VALUES
 CREATE TABLE `est_solij` (
   `Idest_solij` int NOT NULL COMMENT 'Identificacion de estado de la solicitud de persona juridica',
   `idclientj` double DEFAULT NULL COMMENT 'Identificacion de cliente entidad',
+  `Id_solij` int DEFAULT NULL COMMENT 'Identificacion de la solicitudde pj',
   `Esta_soj` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Estado de la solicitud de la entidad',
   `Des_solij` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Descripcion del estado de la solicitud'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Estado de solicitud de persona juridica';
@@ -433,13 +431,11 @@ CREATE TABLE `est_solij` (
 -- Volcado de datos para la tabla `est_solij`
 --
 
-INSERT INTO `est_solij` (`Idest_solij`, `idclientj`, `Esta_soj`, `Des_solij`) VALUES
-(9, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(10, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(11, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(12, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(13, 11111111, 'Aprobada', 'La solicitud fue aprobada'),
-(14, 11111111, 'Aprobada', 'La solicitud fue aprobada');
+INSERT INTO `est_solij` (`Idest_solij`, `idclientj`, `Id_solij`, `Esta_soj`, `Des_solij`) VALUES
+(9, 11111111, NULL, 'Aprobada', 'La solicitud fue aprobada'),
+(10, 11111111, NULL, 'Aprobada', 'La solicitud fue aprobada'),
+(15, 222, 7, 'Denegada', 'NO CUMPLIIO'),
+(16, 11111111, 5, 'Aprobada', 'La solicitud fue aprobada');
 
 -- --------------------------------------------------------
 
@@ -496,8 +492,8 @@ CREATE TABLE `reg_soli` (
 --
 
 INSERT INTO `reg_soli` (`Id_reg`, `id_soli`) VALUES
-(45, 16),
-(46, 17);
+(48, 13),
+(47, 15);
 
 -- --------------------------------------------------------
 
@@ -515,8 +511,8 @@ CREATE TABLE `reg_solij` (
 --
 
 INSERT INTO `reg_solij` (`Id_regj`, `Id_solij`) VALUES
-(18, 5),
-(19, 7);
+(21, 4),
+(20, 6);
 
 -- --------------------------------------------------------
 
@@ -1195,14 +1191,14 @@ ALTER TABLE `entidad`
 --
 ALTER TABLE `est_soli`
   ADD PRIMARY KEY (`Idest_soli`),
-  ADD KEY `Idclient` (`Idclient`);
+  ADD KEY `Id_soli` (`Id_soli`);
 
 --
 -- Indices de la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
   ADD PRIMARY KEY (`Idest_solij`),
-  ADD KEY `idclientj` (`idclientj`);
+  ADD KEY `Id_solij` (`Id_solij`);
 
 --
 -- Indices de la tabla `fue_recu`
@@ -1424,25 +1420,25 @@ ALTER TABLE `entidad`
 -- AUTO_INCREMENT de la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=26;
+  MODIFY `Idest_soli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud', AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
-  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=15;
+  MODIFY `Idest_solij` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de estado de la solicitud de persona juridica', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_soli`
 --
 ALTER TABLE `reg_soli`
-  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=47;
+  MODIFY `Id_reg` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=20;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
@@ -1543,13 +1539,13 @@ ALTER TABLE `entidad`
 -- Filtros para la tabla `est_soli`
 --
 ALTER TABLE `est_soli`
-  ADD CONSTRAINT `est_soli_ibfk_1` FOREIGN KEY (`Idclient`) REFERENCES `client_co` (`No_ide`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `est_soli_ibfk_1` FOREIGN KEY (`Id_soli`) REFERENCES `client_co` (`Id_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `est_solij`
 --
 ALTER TABLE `est_solij`
-  ADD CONSTRAINT `est_solij_ibfk_1` FOREIGN KEY (`idclientj`) REFERENCES `entidad` (`Nit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `est_solij_ibfk_1` FOREIGN KEY (`Id_solij`) REFERENCES `entidad` (`Id_ent`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reg_soli`

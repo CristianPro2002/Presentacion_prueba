@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-09-2022 a las 23:02:27
+-- Tiempo de generación: 15-09-2022 a las 08:40:02
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -219,25 +219,25 @@ CREATE TABLE `cont_ent` (
   `Idti_doc` int DEFAULT NULL COMMENT 'Identificacion del tipo de documento',
   `Pri_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del contacto de la entidad',
   `Seg_nom` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del contacto de la entidad',
-  `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del contacto de la entidad',
-  `Seg_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del contacto de la entidad',
-  `Cargo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del contacto de la entidad',
-  `Dir_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del contacto de la entidad',
-  `Barrio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del contacto de la entidad',
-  `Ciu_mu` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del contacto de la entidad',
-  `Depart` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del contacto de la entidad',
-  `Pais` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del contacto de la entidad',
-  `Tel_lab` double DEFAULT NULL COMMENT 'Telefono laboral del contacto de la entidad',
-  `Ext` int DEFAULT NULL COMMENT 'Extension de numero',
-  `Celular` double DEFAULT NULL COMMENT 'Celular del contacto de la entidad',
-  `Corr_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del contacto de la entidad'
+  `Pri_apec` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del contacto de la entidad',
+  `Seg_apec` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo apellido del contacto de la entidad',
+  `Cargo_c` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del contacto de la entidad',
+  `Dir_labc` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del contacto de la entidad',
+  `Barrio_c` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del contacto de la entidad',
+  `Ciu_muc` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del contacto de la entidad',
+  `Depart_c` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del contacto de la entidad',
+  `Pais_c` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del contacto de la entidad',
+  `Tel_lab_c` double DEFAULT NULL COMMENT 'Telefono laboral del contacto de la entidad',
+  `Ext_c` int DEFAULT NULL COMMENT 'Extension de numero',
+  `Celular_c` double DEFAULT NULL COMMENT 'Celular del contacto de la entidad',
+  `Corr_lab_c` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del contacto de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Informacion de un contacto de la entidad';
 
 --
 -- Volcado de datos para la tabla `cont_ent`
 --
 
-INSERT INTO `cont_ent` (`idcont_ent`, `No_docu`, `Idti_doc`, `Pri_nom`, `Seg_nom`, `Pri_ape`, `Seg_ape`, `Cargo`, `Dir_lab`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Tel_lab`, `Ext`, `Celular`, `Corr_lab`) VALUES
+INSERT INTO `cont_ent` (`idcont_ent`, `No_docu`, `Idti_doc`, `Pri_nom`, `Seg_nom`, `Pri_apec`, `Seg_apec`, `Cargo_c`, `Dir_labc`, `Barrio_c`, `Ciu_muc`, `Depart_c`, `Pais_c`, `Tel_lab_c`, `Ext_c`, `Celular_c`, `Corr_lab_c`) VALUES
 (1, 22222, 4, '22222', '2222', '2222', '2222', '22222', '22222', '2222', '2222', '2222', '2222', 2222, 222222, 2222, '22222'),
 (2, 666666, 1, 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 'gh', 4444, 444, 444, 'gh'),
 (3, 3333, 1, 'sdd', 'sssdds', 'sssddd', 'sssdd', 'sdd', 'ssddd', 'sdd', 'sds', 'sdsd', 'sdsd', 333, 333, 333, 'sdsd'),
@@ -381,9 +381,9 @@ CREATE TABLE `entidad` (
 --
 
 INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `Idti_sol`, `tidoc_ent`, `Nit`, `Fidei`, `No_fide`, `Nom_ra`, `Nom_cor`, `Fe_cons`, `Ciu_cons`, `Pai_cons`, `Dir_se`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Telefono`, `Ext`, `Corr_se`, `No_doc`, `Pre_1`, `Pre_2`, `No_docu`, `Idti_na`, `Co_ciuu`, `Det_act`, `No_emp`, `Idti_soci`, `Otro_com`, `Idti_en`, `Otro_ent`, `Idti_es`, `Otro_est`, `Idti_des`, `Ing_op`, `Ino_op`, `Detno`, `vent_an`, `Fe_ci`, `Egre_me`, `Util_ne`, `Tot_act`, `Tot_pas`, `Tot_pat`, `Idti_cont`, `Idcla_cont`, `Res_iva`, `Aut_ing`, `Int_merc`, `Vig_sup`, `Obli_est`, `No_id_tr`, `Patri_1`, `Patri_2`, `NoidTrib_1`, `NoidTrib_2`, `Idtripro_bi`, `Otro_fue`, `Idfue_rec`, `Otro_pro`, `Pais_or`, `Ciu_or`, `Nat_recu`, `Op_ext`, `Idtiop_m`, `Otro_mo`, `Nom_ent`, `Idtipro_m`, `Otro_mo2`, `No_pro`, `Mo_pro`, `Moneda`, `Ciu_ent`, `Pa_ent`, `Idtien_re`, `No_solicit`, `Cod_vend`) VALUES
-(3, '2022-07-12', NULL, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
-(4, '2022-08-23', NULL, 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
-(5, '2022-07-12', NULL, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
+(3, '2022-07-12', 1, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
+(4, '2022-08-23', 1, 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
+(5, '2022-07-12', 2, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
 (6, '2022-09-10', 2, 'Nit', 345, 'Fideicomiso', 5643, 'jose', 'gilberto', '2022-09-10', 'dfgdf', 'fdgdfg', 'fgd', 'fdgfd', 'gdfgdf', 'dfgdf', 'fgdf', 5645, 56, 'cris@gmail.com', 453456, 'Si', 'Si', 573487, 1, 546456, 'fdgfd', 54, 6, 'fhdf', 12, 'fdgfdg', 1, 'fdgdfg', 2, 54644, 6456, 'gfhgf', 5646, '2022-09-16', 56456, 456, 6456, 64564, 64564, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'dfgdf', 'fdgfd', 4353, 53234, 1, 'fdgdf', 1, 'fdgdf', 'gdfgd', 'fdgdfg', 'Si', 'Si', 2, 'gffhfg', 'gfhfg', 1, 'hfghfg', 5461, 54654, 'dfgfdg', 'gfdgdf', 'dgfgdf', 1, 5645674, 34156),
 (7, '2022-09-07', 1, 'Nit', 222, 'Fideicomiso', 333, 'sonia', 'salas', '2022-09-07', 'palmira', 'colombia', 'calle45', 'poblado', 'palmira', 'valle', 'colombia', 45, 45, 'sonia@gmail.com', 5555, 'Si', 'Si', 6666, 1, 444534, 'cdsdfs', 343, 5, 'sdfdsg', 9, 'dgdsf', 1, 'dfsf', 1, 54645, 654654, 'fdgdf', 54645, '2022-09-13', 65765, 7567, 5767, 57657, 75675, 1, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 56353, 'fdgd', 'dfgfdg', 4354, 5353, 1, 'cvcbcv', 1, 'vcbcvbc', 'cvbcvb', 'vcbcvbcvb', 'Si', 'Si', 3, 'bvcbcv', 'Jesus', 2, 'fdfgddf', 4353, 43534, 'dfgfd', 'dfgdf', 'gdfgd', 1, 7854, 34837);
 
@@ -547,28 +547,28 @@ INSERT INTO `reg_usu` (`Id_usu`, `Usuario`, `Contra`, `Idti_rol`) VALUES
 CREATE TABLE `repr_le` (
   `idrepre` int NOT NULL,
   `No_doc` double NOT NULL COMMENT 'Numero de documento del representante legal',
-  `Idti_doc` int DEFAULT NULL COMMENT 'Identificacion de tipo de documento',
-  `Pri_no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del representante legal',
-  `Seg_no` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del representante legal',
-  `Pri_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del representante legal',
-  `Seg_ape` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'SEgundo apellido del representante legal',
-  `Cargo` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del representante legal',
-  `Dir_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del representante legal',
-  `Barrio` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del representante legal',
-  `Ciu_mu` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del representante legal',
-  `Depart` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del representante legal',
-  `Pais` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del representante legal',
-  `Tel_lab` double DEFAULT NULL COMMENT 'Telefono laboral del representante legal',
-  `Ext` int DEFAULT NULL COMMENT 'Extension de telefono',
-  `Celular` double DEFAULT NULL COMMENT 'Celular del representante legal',
-  `Corr_lab` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del representante legal'
+  `Idti_docr` int DEFAULT NULL COMMENT 'Identificacion de tipo de documento',
+  `Pri_nor` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer nombre del representante legal',
+  `Seg_nor` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Segundo nombre del representante legal',
+  `Pri_aper` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Primer apellido del representante legal',
+  `Seg_aper` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'SEgundo apellido del representante legal',
+  `Cargo_r` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Cargo del representante legal',
+  `Dir_labr` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Direccion laboral del representante legal',
+  `Barrio_r` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Barrio del representante legal',
+  `Ciu_mur` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad o municipio del representante legal',
+  `Depart_r` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Departamento del representante legal',
+  `Pais_r` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Pais del representante legal',
+  `Tel_labr` double DEFAULT NULL COMMENT 'Telefono laboral del representante legal',
+  `Ext_r` int DEFAULT NULL COMMENT 'Extension de telefono',
+  `Celular_r` double DEFAULT NULL COMMENT 'Celular del representante legal',
+  `Corr_labr` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo laboral del representante legal'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Informacion de representante legal';
 
 --
 -- Volcado de datos para la tabla `repr_le`
 --
 
-INSERT INTO `repr_le` (`idrepre`, `No_doc`, `Idti_doc`, `Pri_no`, `Seg_no`, `Pri_ape`, `Seg_ape`, `Cargo`, `Dir_lab`, `Barrio`, `Ciu_mu`, `Depart`, `Pais`, `Tel_lab`, `Ext`, `Celular`, `Corr_lab`) VALUES
+INSERT INTO `repr_le` (`idrepre`, `No_doc`, `Idti_docr`, `Pri_nor`, `Seg_nor`, `Pri_aper`, `Seg_aper`, `Cargo_r`, `Dir_labr`, `Barrio_r`, `Ciu_mur`, `Depart_r`, `Pais_r`, `Tel_labr`, `Ext_r`, `Celular_r`, `Corr_labr`) VALUES
 (4, 2222, 1, 'sdd', 'sdd', 'sdd', 'sdd', 'sdds', 'sdd', 'sddd', 'sdd', 'sdddsd', 'sdd', 222, 2210, 222, 'sddd'),
 (5, 657567, 4, 'gfhfg', 'hgffgh', 'fghfgh', 'fghfgh', 'gfhfg', 'gfhfgh', 'fghfg', 'hfgh', 'gfh', 'ghffghfg', 65756, 7567, 5675, 'gfhfgh'),
 (6, 453456, 1, 'fdg', 'fdgdf', 'gdfg', 'dfgdf', 'fdfhdfh', 'fhdfhgdf', 'gfdgdf', 'fdgfdg', 'dfgdf', 'gdfgdf', 546, 6456, 4554, 'cris@gmail.com'),
@@ -1238,7 +1238,7 @@ ALTER TABLE `reg_usu`
 --
 ALTER TABLE `repr_le`
   ADD PRIMARY KEY (`idrepre`),
-  ADD KEY `Idti_doc` (`Idti_doc`),
+  ADD KEY `Idti_doc` (`Idti_docr`),
   ADD KEY `No_doc` (`No_doc`);
 
 --
@@ -1569,7 +1569,7 @@ ALTER TABLE `reg_usu`
 -- Filtros para la tabla `repr_le`
 --
 ALTER TABLE `repr_le`
-  ADD CONSTRAINT `repr_le_ibfk_1` FOREIGN KEY (`Idti_doc`) REFERENCES `ti_doc` (`Idti_doc`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `repr_le_ibfk_1` FOREIGN KEY (`Idti_docr`) REFERENCES `ti_doc` (`Idti_doc`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `solicitante`

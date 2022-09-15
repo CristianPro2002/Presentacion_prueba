@@ -393,6 +393,7 @@
   font-size: 110%;
 }
 
+
 .selec {
   width: 100%;
   font-family: 'Quicksand', sans-serif;
@@ -559,7 +560,7 @@
   border: none;
   background: none;
   font-size: 18px;
-  width: 1000px;
+  width: 100%;
   border-bottom-style: outset;
   border-bottom-width: 1px;
 }
@@ -571,6 +572,7 @@
 
 .Row {
   margin-top: 140px;
+  height: 100%;
   outline: none;
   border: none;
   background: none;

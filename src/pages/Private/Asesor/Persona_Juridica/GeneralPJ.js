@@ -4,6 +4,7 @@ import "./EstilosJ.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 import React from "react";
 import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
 
@@ -14,8 +15,11 @@ const PersonaJuridica = () => {
   var max = 999999;
   var random = Math.floor(Math.random() * (+max - +min)) + +min;
   //console.log("el valor random es:"+ random)
-  const {ActionsFormPj} = useRegFormPj();
 
+ 
+ 
+  const {ActionsFormPj} = useRegFormPj();
+  
   const formik = useFormik({
     initialValues: {
       Fe_dil: "",
@@ -135,6 +139,8 @@ const PersonaJuridica = () => {
       Firma_vend: "",
     },
 
+   
+   
     validationSchema: Yup.object({
       Fe_dil: Yup.string().required("Fecha de diligenciamiento es requerida"),
       Idti_sol: Yup.string().required("el tipo de solicitud es obligatorio"),
@@ -300,10 +306,13 @@ const PersonaJuridica = () => {
       Obser: Yup.string().required("Las Observaciones son obligatorias"),
       Firma_vend: Yup.string().required("La firma del vendedor es obligatoria"),
     }),
+    
     onSubmit: (data) => {
       ActionsFormPj.peticionPost(data);
     },
+    
   });
+ 
 
   return (
     <div className="FONDO">
@@ -2928,12 +2937,30 @@ const PersonaJuridica = () => {
             </label>
           </div>
           <div className="col-md-12">
-            <Button type="submit" className="BOTON" variant="primary">
+            <Button 
+           
+            type="submit" className="BOTON" variant="primary">
               Guardar
             </Button>
           </div>
         </form>
       </div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#008000",
+            color: "#ffff",
+          },
+        }}
+      />
     </div>
   );
 };

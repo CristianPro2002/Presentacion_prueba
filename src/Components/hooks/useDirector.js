@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export const useDirector = ({
   abrirCerrarModalInsertar,
@@ -53,7 +54,12 @@ export const useDirector = ({
       setSolicitud2(response.data);
     });
   };
-
+/* notificaciones */
+const notify1 = () => toast("  no puede haber mas de un rol tipo director ❕");
+const notify2 = () => toast("  no puede haber mas de 5 roles tipo Asesor ❕");
+const notify3 = () => toast("  no puede haber mas de un  rol tipo Gerente ❕");
+const notify4 = () => toast("  no puede haber mas de 5 roles tipo Cajero ❕");
+const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principal ❕");
   const peticionPost = async () => {
     var f = new FormData();
     f.append("Id_usu", dataUsuario.Id_usu);
@@ -171,15 +177,15 @@ export const useDirector = ({
   const contarNDirector = () => {
     setRefreshData(true);
     if(valiDi.length >= 1 && dataUsuario.Idti_rol == 1){
-      alert("hay mas de un rol director")
+      notify1("hay mas de un rol director")
     } else if(valiAse.length >= 5 && dataUsuario.Idti_rol == 2){
-      alert("hay mas de un rol asesor")
+      notify2("hay mas de un rol asesor")
     } else if(valiGer.length >= 1 && dataUsuario.Idti_rol == 3){
-      alert("hay mas de un rol gerente")
+      notify3("hay mas de un rol gerente")
     } else if(valiCaj.length >= 5 && dataUsuario.Idti_rol == 4){
-      alert("hay mas de un rol cajero")
+      notify4("hay mas de un rol cajero")
     }else if(valiCajP.length >= 1 && dataUsuario.Idti_rol == 5){
-      alert("hay mas de un rol cajero principal")
+      notify5("hay mas de un rol cajero principal")
     }else{  
       peticionPost();
     }
@@ -199,6 +205,11 @@ export const useDirector = ({
     peticionGetVGerente,
     peticionGetVCajero,
     peticionGetVCajeroP,
+    notify1,
+    notify2,
+    notify3,
+    notify4,
+    notify5
   };
 
   return {

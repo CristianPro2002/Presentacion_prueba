@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table } from "react-bootstrap"
 import { AiFillPrinter } from "react-icons/ai";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   faEye,
@@ -341,7 +342,24 @@ export const Tabla_director = () => {
             </Table>
           </div>
         </div>
+        
       </div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#FF0000",
+            color: "#ffff",
+          },
+        }}
+      />
       <ModalSolicitud
         abrir={abrir}
         cerrar={cerrar}
@@ -387,5 +405,8 @@ export const Tabla_director = () => {
         abrirCerrarModalEliminar={abrirCerrarModalEliminar}
       />
     </>
+
+
+
   );
 };

@@ -516,6 +516,258 @@ const Consulta = () => {
               </div>
             </div>
 
+            <div className="Tabla2">
+              <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Declaración de origen de bienes y/o fondos
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                <thead className="">
+                    <tr className="tr1">
+                      <th>El origen de sus bienes provienen de:</th>
+                      <th>Otro</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.Nit} className="tr1-info">
+                      <td>{item.Nomti_bie}</td>
+                      <td>{item.Otro_fue}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                    <th>Los recursos entregados provienen de la fuente de:</th>
+                      <th>Otro</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="tr1-info">
+                      <td>{item.Nom_rec}</td>
+                      <td>{item.Otro_pro}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>El país origen</th>
+                      <th>La ciudad origen de bienes y/o fondos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="tr1-info">
+                      <td>{item.Pais_or}</td>
+                      <td>{item.Ciu_or}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+              <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Declaración naturaleza de los recursos
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                <thead className="">
+                    <tr className="tr1">
+                      <th> En las cuentas de las cuales sea titular mi representada, se manejan recursos públicos de naturaleza inembargable: </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.Nit} className="tr1-info">
+                      <td>{item.Nat_recu}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+              <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Información de operaciones internacionales
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                <thead className="">
+                    <tr className="tr1">
+                      <th>¿Realiza operaciones en moneda extranjera?</th>
+                      <th>Operaciones que realiza en moneda extranjera:</th>
+                      <th>Otra</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.Nit} className="tr1-info">
+                      <td>{item.Op_ext}</td>
+                      <td>{item.Nom_opm}</td>
+                      <td>{item.Otro_mo}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+              <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Descripción de los productos financieros en moneda extranjera
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Nombre de la entidad</th>
+                      <th>Tipo de producto</th>
+                      <th>Otro</th>        
+                      <th>No producto</th>        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Nom_ent}</td>
+                      <td>{item.Idtipro_m}</td>
+                      <td>{item.Otro_mo2}</td>
+                      <td>{item.No_pro}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Monto mensual promedio</th>
+                      <th>Moneda</th>
+                      <th>Ciudad</th>        
+                      <th>Pais</th>        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Mo_pro}</td>
+                      <td>{item.Moneda}</td>
+                      <td>{item.Ciu_ent}</td>
+                      <td>{item.Pa_ent}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+              <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Autorizaciones y declaraciones
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Recibe el reporte anual de costos:</th>
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Nom_tien}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Actua en calidad de:</th>
+                      <th>Nombre de solicitante:</th>       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Idti_soli}</td>
+                      <td>{item.Nom_solicit}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>No de identificacion:</th>
+                      <th>Firma del solicitante:</th>       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.No_solicit}</td>
+                      <td>{item.Firma}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="Tabla2">
+            <center>
+                <label>
+                  <h2 className="title-content-info01">
+                  Para uso Exclusivo de las Entidades del Grupo Empresarial
+                  </h2>
+                </label>
+              </center>
+              <div className="table-responsive-sm">
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Codigo de vendedor:</th>
+                      <th>Nombre de vendedor:</th>       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Cod_vend}</td>
+                      <td>{item.Nom_vend}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Oficina:</th>
+                      <th>Observaciones:</th>       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Oficina}</td>
+                      <td>{item.Obser}</td>
+                    </tr>
+                  </tbody>
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Firma de vendedor:</th>      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr key={item.No_ide} className="tr1-info">
+                      <td>{item.Firma_vend}</td>                    
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
         </>
       ))}

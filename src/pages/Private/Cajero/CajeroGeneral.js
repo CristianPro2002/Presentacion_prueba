@@ -7,6 +7,8 @@ import "./Cajero.css";
 import { useState, useEffect } from "react";
 import imagen from "../../../assets/Imagenes/User-Login.png";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+
 import { useCajero } from "../../../Components/hooks/useCajero";
 import {
   McajeroReporte,
@@ -15,7 +17,7 @@ import {
 
 export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
   let Navigate = useNavigate();
-
+  const notifyCajero = () => toast(" Por favor ingrese un numero de cuenta❕");
   const {
     CajeroActions,
     getCuentaC,
@@ -59,7 +61,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
 
   const peticionGetGeneral = () => {
     if (dataUsuario.No_cuenta == "") {
-      alert("Por favor ingrese un numero de cuenta");
+      notifyCajero();
     } else {
       CajeroActions.peticionGetCajero2();
     }
@@ -395,6 +397,24 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
           reportCuentaDate={reportCuentaDate}
           dataUsuarioReportDate={dataUsuarioReportDate}
         />
+
+<Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#FF0000",
+            color: "#ffff",
+          },
+        }}
+      />
+
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useRegFormPn } from "../../../../Components/hooks/useRegFormPn";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const PersonaNatural = () => {
@@ -1926,6 +1927,22 @@ const PersonaNatural = () => {
           </div>
         </form>
       </div>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#008000",
+            color: "#ffff",
+          },
+        }}
+      />
     </div>
   );
 };

@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Consulta.css";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../stateManagement/provider";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { usePageConsultas } from "../../../../Components/hooks/usePageConsultas";
+import { useConsultaCuentaPn } from "../../../../Components/hooks/useConsultasCuentas";
+import { McuentasPJ } from "../../../../Components/Modal/Mcuentas";
 
 const Consulta2 = () => {
-  const [data, setData] = useContext(AppContext);
+  const [
+    data,
+    setData,
+    dataCuenta,
+    setDataCuenta,
+    dataEstados,
+    setDataEstados,
+  ] = useContext(AppContext);
   let Navigate = useNavigate();
   const { consultasActions, currentPage, items } = usePageConsultas(data);
+  const { CuentaActions, dataExtraCuenta } = useConsultaCuentaPn();
+  const [mostrarCuenta, setMostrarCuenta] = useState(false);
+  const handleShow = () => setMostrarCuenta(!mostrarCuenta);
+
+  const peticionGetCuentaGeneral = (No_cuenta) => {
+    CuentaActions.peticionGetCuenta(No_cuenta);
+    handleShow();
+  };
+
   return (
     <div className="fondobg">
       <div className="inicio5">
@@ -344,7 +362,7 @@ const Consulta2 = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información tributaria
+                    Información tributaria
                   </h2>
                 </label>
               </center>
@@ -355,7 +373,6 @@ const Consulta2 = () => {
                       <th>Declarante de renta?</th>
                       <th>Agente retenedor</th>
                       <th>Regimen de IVA</th>
-                      
                     </tr>
                   </thead>
                   <tbody>
@@ -366,24 +383,22 @@ const Consulta2 = () => {
                     </tr>
                   </tbody>
                   <thead className="">
-                    <tr className="tr1"> 
-                    <th>
-                      Obligado a tributar en Estados Unidos
-                      </th>   
+                    <tr className="tr1">
+                      <th>Obligado a tributar en Estados Unidos</th>
                       <th>número de ID tributario (TIN)</th>
                       <th>Pais No 1 donde tributa diferente a colombia</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr key={item.No_ide} className="tr1-info">
-                    <td>{item.Ob_tri}</td>
+                      <td>{item.Ob_tri}</td>
                       <td>{item.Notri_est}</td>
                       <td>{item.Pais_1}</td>
                     </tr>
                   </tbody>
                   <thead className="">
                     <tr className="tr1">
-                    <th>Pais No 2 donde tributa diferente a colombia</th>
+                      <th>Pais No 2 donde tributa diferente a colombia</th>
                       <th>N°. Id. Tributario 1</th>
                       <th>N°. Id. Tributario 2</th>
                     </tr>
@@ -403,7 +418,7 @@ const Consulta2 = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Declaración de origen de bienes y/o fondos
+                    Declaración de origen de bienes y/o fondos
                   </h2>
                 </label>
               </center>
@@ -413,7 +428,7 @@ const Consulta2 = () => {
                     <tr className="tr1">
                       <th>El origen de sus bienes provienen de:</th>
                       <th>El país origen de bienes y/o fondos</th>
-                      <th>La ciudad origen de bienes y/o fondos</th>                    
+                      <th>La ciudad origen de bienes y/o fondos</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -431,7 +446,7 @@ const Consulta2 = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información de operaciones internacionales
+                    Información de operaciones internacionales
                   </h2>
                 </label>
               </center>
@@ -441,7 +456,7 @@ const Consulta2 = () => {
                     <tr className="tr1">
                       <th>Operaciones en moneda extranjera?</th>
                       <th>Operaciones que realiza en moneda extranjera</th>
-                      <th>Otra</th>        
+                      <th>Otra</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -459,7 +474,8 @@ const Consulta2 = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Descripción de los productos financieros en moneda extranjera
+                    Descripción de los productos financieros en moneda
+                    extranjera
                   </h2>
                 </label>
               </center>
@@ -469,8 +485,8 @@ const Consulta2 = () => {
                     <tr className="tr1">
                       <th>Nombre de la entidad</th>
                       <th>Tipo de producto</th>
-                      <th>Otro</th>        
-                      <th>No producto</th>        
+                      <th>Otro</th>
+                      <th>No producto</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -485,8 +501,8 @@ const Consulta2 = () => {
                     <tr className="tr1">
                       <th>Monto mensual promedio</th>
                       <th>Moneda</th>
-                      <th>Ciudad</th>        
-                      <th>Pais</th>        
+                      <th>Ciudad</th>
+                      <th>Pais</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -505,7 +521,7 @@ const Consulta2 = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Autorizaciones y declaraciones
+                    Autorizaciones y declaraciones
                   </h2>
                 </label>
               </center>
@@ -514,7 +530,6 @@ const Consulta2 = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Recibe el reporte anual de costos:</th>
-                        
                     </tr>
                   </thead>
                   <tbody>
@@ -532,7 +547,7 @@ const Consulta2 = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Actua en calidad de:</th>
-                      <th>Nombre de solicitante:</th>       
+                      <th>Nombre de solicitante:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -544,7 +559,7 @@ const Consulta2 = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>No de identificacion:</th>
-                      <th>Firma del solicitante:</th>       
+                      <th>Firma del solicitante:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -558,10 +573,10 @@ const Consulta2 = () => {
             </div>
 
             <div className="Tabla2">
-            <center>
+              <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Para uso Exclusivo de las Entidades del Grupo Empresarial
+                    Para uso Exclusivo de las Entidades del Grupo Empresarial
                   </h2>
                 </label>
               </center>
@@ -570,7 +585,7 @@ const Consulta2 = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Codigo de vendedor:</th>
-                      <th>Nombre de vendedor:</th>       
+                      <th>Nombre de vendedor:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -582,7 +597,7 @@ const Consulta2 = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Oficina:</th>
-                      <th>Observaciones:</th>       
+                      <th>Observaciones:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -593,34 +608,117 @@ const Consulta2 = () => {
                   </tbody>
                   <thead className="">
                     <tr className="tr1">
-                      <th>Firma de vendedor:</th>      
+                      <th>Firma de vendedor:</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr key={item.No_ide} className="tr1-info">
-                      <td>{item.Firma_vend}</td>                    
+                      <td>{item.Firma_vend}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-
+            <center>
+              <label>
+                <h3 className="title-content-info01">
+                  Solicitud No {item.Id_client}
+                </h3>
+              </label>
+            </center>
           </div>
         </>
       ))}
-        <div>
-            <div className="content_actionsPage01">
-              <button onClick={() => consultasActions.prevHandler()}>
-                Atras
-              </button>
-              <div className="content-num-page">
-                <p>{currentPage}</p>
-              </div>
-              <button onClick={() => consultasActions.nextHandler()}>
-                Siguiente
-              </button>
-            </div>
+      <div>
+        <div className="content_actionsPage01">
+          <button onClick={() => consultasActions.prevHandler()}>Atras</button>
+          <div className="content-num-page">
+            <p>{currentPage}</p>
           </div>
+          <button onClick={() => consultasActions.nextHandler()}>
+            Siguiente
+          </button>
+        </div>
+      </div>
+
+      <div className="content-cuentas">
+        <div className="Cuentas">
+          {dataCuenta.length === 0 ? (
+            <>
+              <h3>Este usuario no tiene numero de cuentas activas</h3>
+            </>
+          ) : (
+            <>
+              <div className="Cuenta-content01">
+                <h3>Numero de cuentas activas</h3>
+                <div className="row">
+                  {dataCuenta.map((item) => (
+                    <>
+                      <div className="col-md-4 columnaCuentas">
+                        <div className="Cuenta01">
+                          <p>{item.No_cuenta}</p>
+                          <button
+                            type="submit"
+                            onClick={() =>
+                              peticionGetCuentaGeneral(item.No_cuenta)
+                            }
+                          >
+                            Consultar Cuenta
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className="cont-info-estados">
+        <div className="cont-estados">
+          <h2>Estado de Solicitudes</h2>
+          {dataEstados.length === 0 ? (
+            <>
+              <div>
+                <h3>Este usuario no tiene solicitudes</h3>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Numero de solicitud</th>
+                      <th>Estado</th>
+                      <th>Descripcion del estado de la solicitud</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dataEstados.map((item) => (
+                      <>
+                        <tr key={item.Id_soli} className="tr1-info">
+                          <td>{item.Id_soli}</td>
+                          <td>{item.Esta_so}</td>
+                          <td>{item.Des_soli}</td>
+                        </tr>
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <McuentasPJ
+        handleShow={handleShow}
+        mostrar={mostrarCuenta}
+        datam1={dataExtraCuenta}
+      />
     </div>
   );
 };

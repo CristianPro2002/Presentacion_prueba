@@ -26,6 +26,8 @@
 .letricas {
   font-family: 'Quicksand', sans-serif;
   font-size: 40px;
+  color: #1471d9;
+  font-weight: bold;
 }
 
 #administrar {
@@ -122,15 +124,7 @@
 
 .conteinerSec {
   border-radius: 10px;
-  background-image: radial-gradient(
-    circle at 50% -20.71%,
-    #ade5ff 0,
-    #7dcefb 25%,
-    #3cb5f2 50%,
-    #009ce9 75%,
-    #0085e0 100%
-  );
-
+  background-color: #1471d9;
   width: 100%;
   box-shadow: 3px 0px 20px rgb(24, 17, 17);
   transition: all 1s;
@@ -163,7 +157,7 @@
 
 .textointernoh3 {
   width: 100%;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 900;
 }
 
@@ -183,16 +177,22 @@
     font-weight: bold;
     width: 40%;
     height: 35px;
-    border-style: none;
+    border: 2px solid  white;
     border-radius: 10px;
-    color: rgb(0, 138, 252);
+    color: #1471d9;
     background: white;
     font-size: 25px;
- 
+    text-align: center;
 }
 
 .resetb:hover{
-background: rgb(223, 214, 214);
+background: #1471d9;
+color: white;
+transition: all 0.4s;
+}
+
+.SaldoActual{
+  font-weight: bold;
 }
 
 @media (max-width: 1540px) and (min-width:1200px){

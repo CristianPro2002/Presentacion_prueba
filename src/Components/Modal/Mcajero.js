@@ -40,6 +40,12 @@ export const McajeroReporte = ({
   const sumTotalCuent = sumValueC - restValueC;
   const prom = sumTotalCuent / (reportValueC.length + reportValueR.length);
 
+  function separator(numb) {
+    var str = numb.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return str.join(".");
+  }
+
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
     page: { padding: "20px" },
@@ -134,7 +140,7 @@ export const McajeroReporte = ({
                             <Text>{data.ti_pro}</Text>
                           </View>
                           <View style={styles.content_titles_body}>
-                            <Text>{data.Valor}</Text>
+                            <Text>{separator(data.Valor)}</Text>
                           </View>
                         </View>
                       </View>
@@ -143,13 +149,13 @@ export const McajeroReporte = ({
                       <Text style={styles.text_value}>
                         Cantidad disponible:{" "}
                       </Text>
-                      <Text style={styles.value_cuenta}>${sumTotalCuent}</Text>
+                      <Text style={styles.value_cuenta}>${separator(sumTotalCuent)}</Text>
                     </View>
                     <View style={styles.content_value}>
                       <Text style={styles.text_prom}>
                         Promedio:
                       </Text>
-                      <Text style={styles.value_prom}>${prom}</Text>
+                      <Text style={styles.value_prom}>${separator(prom)}</Text>
                     </View>
                   </View>
                 </Page>
@@ -190,6 +196,12 @@ export const McajeroReporte2 = ({
 }) => {
   const Min_date = dataUsuarioReportDate.Min_date;
   const Max_date = dataUsuarioReportDate.Max_date;
+
+  function separator(numb) {
+    var str = numb.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return str.join(".");
+  }
 
   const styles = StyleSheet.create({
     pdfViewers: { width: "100%", height: "100vh" },
@@ -296,7 +308,7 @@ export const McajeroReporte2 = ({
                             <Text>{data.ti_pro}</Text>
                           </View>
                           <View style={styles.content_titles_body}>
-                            <Text>{data.Valor}</Text>
+                            <Text>{separator(data.Valor)}</Text>
                           </View>
                           <View style={styles.content_titles_body}>
                             <Text>{data.No_cuec}</Text>

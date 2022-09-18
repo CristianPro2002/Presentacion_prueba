@@ -7,7 +7,7 @@ export const useAsesor = ({notify2}) => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const baseUrl2 = "http://localhost:8080/Banca/bd_crud/user.php";
 
-  const [data, setData] = useContext(AppContext);
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados] = useContext(AppContext);
   const [dataClient, setDataClient] = useState([]);
   const [dataUsuario, setDataUsuario] = useState({
     No_ide: "",
@@ -61,6 +61,23 @@ export const useAsesor = ({notify2}) => {
     });
   };
 
+  const peticionGetCuenta = async () => {
+    var f = new FormData();
+    f.append("Nit", dataUsuario.Nit);
+    f.append("METHOD", "CONSULTAIDENTCUENTA");
+    await axios.post(baseUrl, f).then((response) => {
+      setDataCuenta(response.data);
+    });
+  };
+
+  const peticionEstadosCuentasPj = async () => {
+    var f = new FormData();
+    f.append("Nit", dataUsuario.Nit);
+    f.append("METHOD", "ESTADOSCUENTASPJ");
+    await axios.post(baseUrl, f).then((response) => {
+        setDataEstados(response.data);
+    });
+  }
 
   const peticionGet2 = async () => {
     var f = new FormData();
@@ -68,7 +85,6 @@ export const useAsesor = ({notify2}) => {
     f.append("METHOD", "CONSULTAID");
     await axios.post(baseUrl, f).then((response) => {
       setData(response.data);
-      console.log(response.data);
       if(response.data == false){
         notify2()
       }else if(dataUsuario.No_ide.length == 0){ 
@@ -78,6 +94,25 @@ export const useAsesor = ({notify2}) => {
       }
     });
   };
+
+  const peticionGetCuenta2 = async () => {
+    var f = new FormData();
+    f.append("No_ide", dataUsuario.No_ide);
+    f.append("METHOD", "CONSULTAIDCUENTA");
+    await axios.post(baseUrl, f).then((response) => {
+      setDataCuenta(response.data);
+    });
+  };
+
+  const peticionEstadosCuentasPn = async () => {
+    var f = new FormData();
+    f.append("No_ide", dataUsuario.No_ide);
+    f.append("METHOD", "ESTADOSCUENTASPN");
+    await axios.post(baseUrl, f).then((response) => {
+        setDataEstados(response.data);
+    });
+  }
+
 
   
 
@@ -102,6 +137,10 @@ export const useAsesor = ({notify2}) => {
   const AsesorActions = {
     peticionGet,
     peticionGet2,
+    peticionGetCuenta,
+    peticionGetCuenta2,
+    peticionEstadosCuentasPj,
+    peticionEstadosCuentasPn,
     // validarConsultaPj,
     // validarConsultaPn,
   };
@@ -113,5 +152,6 @@ export const useAsesor = ({notify2}) => {
     dataUsuario,
     setDataUsuario,
     dataClient,
+    dataCuenta,
   };
 };

@@ -73,22 +73,21 @@ const CajeroP = () => {
   };
 
   const ConsultaFatherPrincipal = () => {
-    CajeroPactions.DeleteValues()
-    if(CajeroPactions.DeleteValues()){
-    CajeroPactions.ConsultaValue1();
-    CajeroPactions.ConsultaValue2();
-    CajeroPactions.ConsultaValue3();
-    CajeroPactions.ConsultaValue4();
-    CajeroPactions.ConsultaValue5();
-    CajeroPactions.ConsultaRest1();
-    CajeroPactions.ConsultaRest2();
-    CajeroPactions.ConsultaRest3();
-    CajeroPactions.ConsultaRest4();
-    CajeroPactions.ConsultaRest5();
+    CajeroPactions.DeleteValues();
+    if (CajeroPactions.DeleteValues()) {
+      CajeroPactions.ConsultaValue1();
+      CajeroPactions.ConsultaValue2();
+      CajeroPactions.ConsultaValue3();
+      CajeroPactions.ConsultaValue4();
+      CajeroPactions.ConsultaValue5();
+      CajeroPactions.ConsultaRest1();
+      CajeroPactions.ConsultaRest2();
+      CajeroPactions.ConsultaRest3();
+      CajeroPactions.ConsultaRest4();
+      CajeroPactions.ConsultaRest5();
     }
-  }
+  };
 
-  
   const initialValue = 0;
   const sumCaj1 = value1
     .map((item) => parseInt(item.Valor))
@@ -179,6 +178,12 @@ const CajeroP = () => {
     CajeroPactions.ConsultaRest5();
   }, []);
 
+  function separator(numb) {
+    var str = numb.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return str.join(".");
+  }
+
   return (
     <div className="pantallaP">
       <div className="pantallaP2">
@@ -197,8 +202,8 @@ const CajeroP = () => {
             <div className="container111" id="contre">
               <h2>Cajero #1</h2>
               <img src={img111} alt="" className="Imagenes111" />
-              <h1>Saldo Actual</h1>
-              <p className="letricas">{ValorC1}</p>
+              <h2 className="SaldoActual">Saldo Actual</h2>
+              <p className="letricas">{separator(ValorC1)}</p>
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -212,8 +217,8 @@ const CajeroP = () => {
             <div className="container222" id="contre">
               <h2>Cajero #2</h2>
               <img src={img111} alt="" className="Imagenes111" />
-              <h1>Saldo Actual</h1>
-              <p className="letricas">{ValorC2}</p>
+              <h2 className="SaldoActual">Saldo Actual</h2>
+              <p className="letricas">{separator(ValorC2)}</p>
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -227,8 +232,8 @@ const CajeroP = () => {
             <div className="container333" id="contre">
               <h2>Cajero #3</h2>
               <img src={img111} alt="" className="Imagenes111" />
-              <h1>Saldo Actual</h1>
-              <p className="letricas">{ValorC3}</p>
+              <h2 className="SaldoActual">Saldo Actual</h2>
+              <p className="letricas">{separator(ValorC3)}</p>
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -242,8 +247,8 @@ const CajeroP = () => {
             <div className="container444" id="contre">
               <h2>Cajero #4</h2>
               <img src={img111} alt="" className="Imagenes111" />
-              <h1>Saldo Actual</h1>
-              <p className="letricas">{ValorC4}</p>
+              <h2 className="SaldoActual">Saldo Actual</h2>
+              <p className="letricas">{separator(ValorC4)}</p>
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -257,8 +262,8 @@ const CajeroP = () => {
             <div className="container555" id="contre">
               <h2>Cajero #5</h2>
               <img src={img111} alt="" className="Imagenes111" />
-              <h1>Saldo Actual</h1>
-              <p className="letricas">{ValorC5}</p>
+              <h2 className="SaldoActual">Saldo Actual</h2>
+              <p className="letricas">{separator(ValorC5)}</p>
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -274,14 +279,17 @@ const CajeroP = () => {
         <div className="conteinerPri2">
           <div className="conteinerSec">
             <div className="buttonreset">
-              <button className="resetb" type="button" onClick={()=> ConsultaFatherPrincipal()}>Resetear Valores</button>
-            </div>
-            <div className="cimgcp">
-              <img src={cajeroimgp} alt="" className="imgcp" />
+              <button
+                className="resetb"
+                type="button"
+                onClick={() => ConsultaFatherPrincipal()}
+              >
+                Resetear Valores
+              </button>
             </div>
             <div className="textointerno">
               <h3 className="textointernoh3">Valor Total:</h3>
-              <p className="textointernop">{sumTotal}</p>
+              <p className="textointernop">{separator(sumTotal)}</p>
             </div>
           </div>
         </div>

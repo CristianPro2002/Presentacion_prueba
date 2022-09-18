@@ -49,14 +49,14 @@ $pdf->Cell(30, 6,'Valor', 1, 0, 'C', 1);
 $pdf->Cell(30, 6,utf8_decode('N° Cajero'), 1, 1, 'C', 1);
 
 $pdf->setFont('Arial', '', 10);
-$query = "SELECT * FROM prueba";
+$query = "SELECT * FROM act_cli";
 $resultado = $mysqli->query($query);
 while($fila = $resultado->fetch_assoc()){
     $pdf->Cell(30, 6, $fila['Id_act'], 1, 0, 'C');
-    $pdf->Cell(50, 6, utf8_decode($fila['Fecha_act']), 1, 0, 'C');
-    $pdf->Cell(50, 6, utf8_decode($fila['Tip_pro']), 1, 0,'C');
-    $pdf->Cell(30, 6,'$'.utf8_decode($fila['Valor_act']),1, 0, 'C');
-    $pdf->Cell(30, 6, utf8_decode($fila['Cajero']), 1, 1,'C');
+    $pdf->Cell(50, 6, utf8_decode($fila['Fe_act']), 1, 0, 'C');
+    $pdf->Cell(50, 6, utf8_decode($fila['ti_pro']), 1, 0,'C');
+    $pdf->Cell(30, 6,'$'.utf8_decode($fila['Valor']),1, 0, 'C');
+    $pdf->Cell(30, 6, utf8_decode($fila['No_cajero']), 1, 1,'C');
 }
 $pdf->Output();
 

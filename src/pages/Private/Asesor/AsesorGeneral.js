@@ -52,6 +52,18 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     e.preventDefault();
   };
 
+  const consultaUserNit = () => {
+    AsesorActions.peticionGet();
+    AsesorActions.peticionGetCuenta();
+    AsesorActions.peticionEstadosCuentasPj();
+  }
+
+  const consultaUserId = () => {
+    AsesorActions.peticionGet2();
+    AsesorActions.peticionGetCuenta2();
+    AsesorActions.peticionEstadosCuentasPn();
+  }
+
   return (
     <div className="principal">
       <div className="padresito">
@@ -91,7 +103,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                             <button
                               type="submit"
                               className="consultar1"
-                              onClick={() => AsesorActions.peticionGet()}
+                              onClick={() => consultaUserNit()}
                             >
                               Consultar
                             </button>
@@ -141,7 +153,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                             <button
                               type="submit"
                               className="consultar2"
-                              onClick={() => AsesorActions.peticionGet2()}
+                              onClick={() => consultaUserId()}
                             >
                               Consultar
                             </button>

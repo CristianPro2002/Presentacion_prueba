@@ -110,6 +110,29 @@ if($_POST['METHOD']=='CONSULTAID'){
     exit();
 }
 
+if($_POST['METHOD']=='CONSULTAIDCUENTA'){
+    unset($_POST['METHOD']);
+    $query="select * from cuenta_c where No_ide=".$_POST['No_ide'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTACUENTAPN'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cuec=".$_POST['No_cuenta'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
+
+if($_POST['METHOD']=='ESTADOSCUENTASPN'){
+    unset($_POST['METHOD']);
+    $query="select * from est_soli where Idclient=".$_POST['No_ide'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
 
 if($_POST['METHOD']=='CONSULTAID2'){
     unset($_POST['METHOD']);
@@ -217,6 +240,31 @@ if($_POST['METHOD']=='CONSULTAIDENT'){
     echo json_encode($resultado->fetchAll());
     exit();
 }
+
+if($_POST['METHOD']=='CONSULTAIDENTCUENTA'){
+    unset($_POST['METHOD']);
+    $query="select * from cuenta_j where Nit=".$_POST['Nit'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
+
+if($_POST['METHOD']=='CONSULTACUENTAPJ'){
+    unset($_POST['METHOD']);
+    $query="select * from act_cli where No_cuej=".$_POST['No_cuenta'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
+
+if($_POST['METHOD']=='ESTADOSCUENTASPJ'){
+    unset($_POST['METHOD']);
+    $query="select * from est_solij where idclientj=".$_POST['Nit'];
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());
+    exit();
+}
+
 
 //consultas cajero principal
 if($_POST['METHOD']=='CONSULTAM1'){

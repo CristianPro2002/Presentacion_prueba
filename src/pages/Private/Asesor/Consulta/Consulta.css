@@ -70,6 +70,7 @@ border-style: none;
 .content_actionsPage01{
     display: flex;
     justify-content: right;
+    height: 50px;
 }
 
 .content_actionsPage01 button{
@@ -83,11 +84,83 @@ border-style: none;
     font-weight: bold;
 }
 
+.content_actionsPage01 button:hover{
+    background-color: #1E64F0;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transition: all 0.5s;
+}
+
 .content-num-page{
     display: flex;
     align-items: center;
 }
+
 .content-num-page p {
     align-items: center;
     margin: 0;
+}
+
+.Cuenta-content01{
+    text-align: center;
+}
+
+.Cuenta-content01 h3{
+    font-weight: bold;
+}
+
+.Cuenta01{
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: #1E64F0;
+    transition: all 1s;
+}
+.Cuenta01:hover{
+    transform: translateY(-5px);
+    transition: all 1s;
+}
+
+.Cuenta01 p{
+    font-weight: bold;
+    margin: 0;
+    font-size: 20px;
+}
+
+.Cuenta01 button{
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    color: #ffffff;
+    background-color: #1E64F0;
+    font-weight: bold;
+}
+
+.Cuenta01 button:hover{
+    background-color: #ffffff;
+    color: #1E64F0;
+    border: 2px solid #1E64F0;
+    transition: all 0.5s;
+}
+
+.columnaCuentas{
+    border: none;
+}
+
+.cont-estados{
+    background-color: #ffffff;
+    color: #1E64F0;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 10px 0px 10px;
+}
+
+.cont-estados h2{
+    text-align: center;
+    font-weight: bold;
+}
+
+.cont-info-estados{
+    padding: 20px;
 }

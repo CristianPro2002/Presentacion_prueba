@@ -1,15 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import "./Consulta.css";
 import { AppContext } from "../../../../stateManagement/provider";
 import { usePageConsultas2 } from "../../../../Components/hooks/usePageConsultas";
+import { useConsultaCuentaPj } from "../../../../Components/hooks/useConsultasCuentas";
+import { McuentasPN } from "../../../../Components/Modal/Mcuentas";
 
 const Consulta = () => {
   let Navigate = useNavigate();
-  const [data, setData] = useContext(AppContext);
+  const [
+    data,
+    setData,
+    dataCuenta,
+    setDataCuenta,
+    dataEstados,
+    setDataEstados,
+  ] = useContext(AppContext);
 
   const { consultasActions2, currentPage, items } = usePageConsultas2(data);
+  const { CuentaActions, dataExtraCuenta } = useConsultaCuentaPj();
+  const [mostrarCuenta, setMostrarCuenta] = useState(false);
+  const handleShow = () => setMostrarCuenta(!mostrarCuenta);
+
+  const peticionGetCuentaGeneral = (No_cuenta) => {
+    CuentaActions.peticionGetCuenta(No_cuenta);
+    handleShow();
+  };
 
   return (
     <div className="fondobg">
@@ -262,13 +279,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información de un contacto en la entidad
+                    Información de un contacto en la entidad
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>Tipo de documento</th>
                       <th>No de documento</th>
@@ -340,13 +357,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información de la naturaleza y tipo de entidad jurídica
+                    Información de la naturaleza y tipo de entidad jurídica
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>Naturaleza de la entidad</th>
                       <th>Codigo CIUU</th>
@@ -400,13 +417,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información financiera
+                    Información financiera
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>Ingresos operacionales mensuales</th>
                       <th>Ingresos no operacionales mensuales</th>
@@ -458,13 +475,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información tributaria
+                    Información tributaria
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>Tipo de contribuyente</th>
                       <th>Clase de contribuyente</th>
@@ -520,13 +537,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Declaración de origen de bienes y/o fondos
+                    Declaración de origen de bienes y/o fondos
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>El origen de sus bienes provienen de:</th>
                       <th>Otro</th>
@@ -540,7 +557,9 @@ const Consulta = () => {
                   </tbody>
                   <thead className="">
                     <tr className="tr1">
-                    <th>Los recursos entregados provienen de la fuente de:</th>
+                      <th>
+                        Los recursos entregados provienen de la fuente de:
+                      </th>
                       <th>Otro</th>
                     </tr>
                   </thead>
@@ -570,15 +589,20 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Declaración naturaleza de los recursos
+                    Declaración naturaleza de los recursos
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
-                      <th> En las cuentas de las cuales sea titular mi representada, se manejan recursos públicos de naturaleza inembargable: </th>
+                      <th>
+                        {" "}
+                        En las cuentas de las cuales sea titular mi
+                        representada, se manejan recursos públicos de naturaleza
+                        inembargable:{" "}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -594,13 +618,13 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Información de operaciones internacionales
+                    Información de operaciones internacionales
                   </h2>
                 </label>
               </center>
               <div className="table-responsive-sm">
                 <table className="table table-hover table-borderless table-transparent">
-                <thead className="">
+                  <thead className="">
                     <tr className="tr1">
                       <th>¿Realiza operaciones en moneda extranjera?</th>
                       <th>Operaciones que realiza en moneda extranjera:</th>
@@ -622,7 +646,8 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Descripción de los productos financieros en moneda extranjera
+                    Descripción de los productos financieros en moneda
+                    extranjera
                   </h2>
                 </label>
               </center>
@@ -632,8 +657,8 @@ const Consulta = () => {
                     <tr className="tr1">
                       <th>Nombre de la entidad</th>
                       <th>Tipo de producto</th>
-                      <th>Otro</th>        
-                      <th>No producto</th>        
+                      <th>Otro</th>
+                      <th>No producto</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -648,8 +673,8 @@ const Consulta = () => {
                     <tr className="tr1">
                       <th>Monto mensual promedio</th>
                       <th>Moneda</th>
-                      <th>Ciudad</th>        
-                      <th>Pais</th>        
+                      <th>Ciudad</th>
+                      <th>Pais</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -668,7 +693,7 @@ const Consulta = () => {
               <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Autorizaciones y declaraciones
+                    Autorizaciones y declaraciones
                   </h2>
                 </label>
               </center>
@@ -677,7 +702,6 @@ const Consulta = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Recibe el reporte anual de costos:</th>
-                        
                     </tr>
                   </thead>
                   <tbody>
@@ -695,7 +719,7 @@ const Consulta = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Actua en calidad de:</th>
-                      <th>Nombre de solicitante:</th>       
+                      <th>Nombre de solicitante:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -707,7 +731,7 @@ const Consulta = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>No de identificacion:</th>
-                      <th>Firma del solicitante:</th>       
+                      <th>Firma del solicitante:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -721,10 +745,10 @@ const Consulta = () => {
             </div>
 
             <div className="Tabla2">
-            <center>
+              <center>
                 <label>
                   <h2 className="title-content-info01">
-                  Para uso Exclusivo de las Entidades del Grupo Empresarial
+                    Para uso Exclusivo de las Entidades del Grupo Empresarial
                   </h2>
                 </label>
               </center>
@@ -733,7 +757,7 @@ const Consulta = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Codigo de vendedor:</th>
-                      <th>Nombre de vendedor:</th>       
+                      <th>Nombre de vendedor:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -745,7 +769,7 @@ const Consulta = () => {
                   <thead className="">
                     <tr className="tr1">
                       <th>Oficina:</th>
-                      <th>Observaciones:</th>       
+                      <th>Observaciones:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -756,18 +780,24 @@ const Consulta = () => {
                   </tbody>
                   <thead className="">
                     <tr className="tr1">
-                      <th>Firma de vendedor:</th>      
+                      <th>Firma de vendedor:</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr key={item.No_ide} className="tr1-info">
-                      <td>{item.Firma_vend}</td>                    
+                      <td>{item.Firma_vend}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-
+            <center>
+              <label>
+                <h3 className="title-content-info01">
+                  Solicitud No {item.Id_ent}
+                </h3>
+              </label>
+            </center>
           </div>
         </>
       ))}
@@ -782,6 +812,85 @@ const Consulta = () => {
           </button>
         </div>
       </div>
+
+      <div className="content-cuentas">
+        <div className="Cuentas">
+          {dataCuenta.length === 0 ? (
+            <>
+              <h3>Este usuario no tiene numero de cuentas activas</h3>
+            </>
+          ) : (
+            <>
+              <div className="Cuenta-content01">
+                <h3>Numero de cuentas activas</h3>
+                <div className="row">
+                  {dataCuenta.map((item) => (
+                    <>
+                      <div className="col-md-4 columnaCuentas">
+                        <div className="Cuenta01">
+                          <p>{item.No_cuenta}</p>
+                          <button
+                            type="submit"
+                            onClick={() =>
+                              peticionGetCuentaGeneral(item.No_cuenta)
+                            }
+                          >
+                            Consultar Cuenta
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className="cont-info-estados">
+        <div className="cont-estados">
+          <h2>Estado de Solicitudes</h2>
+          {dataEstados.length === 0 ? (
+            <>
+              <div>
+                <h3>Este usuario no tiene solicitudes</h3>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <table className="table table-hover table-borderless table-transparent">
+                  <thead className="">
+                    <tr className="tr1">
+                      <th>Numero de solicitud</th>
+                      <th>Estado</th>
+                      <th>Descripcion del estado de la solicitud</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dataEstados.map((item) => (
+                      <>
+                        <tr key={item.Id_solij} className="tr1-info">
+                          <td>{item.Id_solij}</td>
+                          <td>{item.Esta_soj}</td>
+                          <td>{item.Des_solij}</td>
+                        </tr>
+                      </>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <McuentasPN
+        handleShow={handleShow}
+        mostrar={mostrarCuenta}
+        datam1={dataExtraCuenta}
+      />
     </div>
   );
 };

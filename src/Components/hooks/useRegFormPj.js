@@ -16,6 +16,7 @@ export const useRegFormPj = () => {
     f.append("tidoc_ent", dataForm.tidoc_ent);
     f.append("Nit", dataForm.Nit);
     f.append("No_cuenta", dataForm.No_cuenta);
+    f.append("Idti_cue", dataForm.Idti_cue);
     f.append("Idti_doc", dataForm.Idti_doc);
     f.append("Idti_doc2", dataForm.Idti_doc2);
     f.append("Pri_no", dataForm.Pri_no);

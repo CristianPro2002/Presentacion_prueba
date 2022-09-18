@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-09-2022 a las 00:40:55
+-- Tiempo de generación: 18-09-2022 a las 01:55:09
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -244,7 +244,8 @@ INSERT INTO `cont_ent` (`idcont_ent`, `No_docu`, `Idti_doc`, `Pri_nom`, `Seg_nom
 (3, 3333, 1, 'sdd', 'sssdds', 'sssddd', 'sssdd', 'sdd', 'ssddd', 'sdd', 'sds', 'sdsd', 'sdsd', 333, 333, 333, 'sdsd'),
 (4, 657567, 4, 'gfhfgh', 'fghfghf', 'hfghfg', 'hgfhfgh', 'gfhfgh', 'fghfgh', 'ghfgh', 'fghfgh', 'fghfgh', 'hfhgh', 56456, 56456, 456456, 'gfhfghf'),
 (5, 573487, 4, 'fdg', 'fdgdf', 'gdfgfd', 'gdfg', 'fdgdg', 'gdfgd', 'gdfgdf', 'gdfgdf', 'gdfg', 'fdgdf', 5645, 56, 54644, 'cris@gmail.vom'),
-(6, 6666, 1, 'gilma', 'nose', 'castaño', 'loaiza', 'casa', 'calle', 'poblado', 'palmira', 'valle', 'colombia', 343, 43, 4343, 'gilma@gmail.com');
+(6, 6666, 1, 'gilma', 'nose', 'castaño', 'loaiza', 'casa', 'calle', 'poblado', 'palmira', 'valle', 'colombia', 343, 43, 4343, 'gilma@gmail.com'),
+(7, 99999, 4, 'fdgfd', 'fdgdfgdf', 'gfdgdfg', 'dfgdfg', 'gdfgdfg', 'gdfgdfg', 'gdfgdfg', 'gfdgdfgdf', 'gdfgdfg', 'gdfgdfgd', 676657, 655, 435344, 'hola@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -290,7 +291,8 @@ INSERT INTO `cuenta_j` (`No_cuenta`, `Nit`, `Idti_cue`) VALUES
 (472534, 222, NULL),
 (551389, 11111111, NULL),
 (683201, 345, NULL),
-(722416, 435345, NULL);
+(722416, 435345, NULL),
+(905159, 99999, 1);
 
 -- --------------------------------------------------------
 
@@ -388,7 +390,8 @@ INSERT INTO `entidad` (`Id_ent`, `Fe_dil`, `Idti_sol`, `tidoc_ent`, `Nit`, `Fide
 (4, '2022-08-23', 1, 'Nit', 435345, 'Fideicomiso', 34534, 'fdgdfg', 'dfgdf', '2022-08-11', 'fghgf', 'hfghf', 'gfhfghf', 'fghfgh', 'gfhfg', 'hfghfg', 'fghfgh', 657, 56756, 'gfhfg', 657567, 'Si', 'Si', 657567, 1, 5467546, 'fghfgh', 5745, 7, 'gfhfgh', 11, 'gfhfgh', 2, 'gfhfghf', 1, 6576547, 4674, 'gfhfghg', 674674, '2022-08-24', 654456, 645645, 645645, 546456, 465645, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'gfhfgh', 'fghfghf', 54645, 64564, 1, 'gfhfgh', 2, 'hgfhfg', 'ghfgh', 'fghfgh', 'Si', 'Si', 3, 'gfhfgh', 'fghfghf', 2, 'gfhfgh', 567434, 456456, '64564', '56456', '4564', 1, 7686786, 456458),
 (5, '2022-07-12', 2, 'Nit', 11111111, 'Fideicomiso', 1111111, 'sd', 'sd', '2022-07-18', 'sdddddd', 'sdsd', 'sd', 'sdsd', 'sd', 'sd', 'sd', 111111, 1111, '1111', 2222, 'Si', 'Si', 3333, 1, 2435, 'sddd', 34, 7, 'sddd', 10, 'sddd', 2, 'sddd', 2, 333, 44343, 'sdsdsdd', 345345, '2022-07-11', 34534, 54353, 345344, 345345, 43535, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 43663, 'sddd', 'sdddd', 4545, 45445, 1, 'sdddd', 2, 'sddd', 'sddd', 'sddd', 'Si', 'Si', 2, 'sddd', 'sddd', 2, 'sddd', 3453, 546456, 'sdd', 'sdd', 'sdsdd', 1, 6573, 6986),
 (6, '2022-09-10', 2, 'Nit', 345, 'Fideicomiso', 5643, 'jose', 'gilberto', '2022-09-10', 'dfgdf', 'fdgdfg', 'fgd', 'fdgfd', 'gdfgdf', 'dfgdf', 'fgdf', 5645, 56, 'cris@gmail.com', 453456, 'Si', 'Si', 573487, 1, 546456, 'fdgfd', 54, 6, 'fhdf', 12, 'fdgfdg', 1, 'fdgdfg', 2, 54644, 6456, 'gfhgf', 5646, '2022-09-16', 56456, 456, 6456, 64564, 64564, 2, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 546455, 'dfgdf', 'fdgfd', 4353, 53234, 1, 'fdgdf', 1, 'fdgdf', 'gdfgd', 'fdgdfg', 'Si', 'Si', 2, 'gffhfg', 'gfhfg', 1, 'hfghfg', 5461, 54654, 'dfgfdg', 'gfdgdf', 'dgfgdf', 1, 5645674, 34156),
-(7, '2022-09-07', 1, 'Nit', 222, 'Fideicomiso', 333, 'sonia', 'salas', '2022-09-07', 'palmira', 'colombia', 'calle45', 'poblado', 'palmira', 'valle', 'colombia', 45, 45, 'sonia@gmail.com', 5555, 'Si', 'Si', 6666, 1, 444534, 'cdsdfs', 343, 5, 'sdfdsg', 9, 'dgdsf', 1, 'dfsf', 1, 54645, 654654, 'fdgdf', 54645, '2022-09-13', 65765, 7567, 5767, 57657, 75675, 1, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 56353, 'fdgd', 'dfgfdg', 4354, 5353, 1, 'cvcbcv', 1, 'vcbcvbc', 'cvbcvb', 'vcbcvbcvb', 'Si', 'Si', 3, 'bvcbcv', 'Jesus', 2, 'fdfgddf', 4353, 43534, 'dfgfd', 'dfgdf', 'gdfgd', 1, 7854, 34837);
+(7, '2022-09-07', 1, 'Nit', 222, 'Fideicomiso', 333, 'sonia', 'salas', '2022-09-07', 'palmira', 'colombia', 'calle45', 'poblado', 'palmira', 'valle', 'colombia', 45, 45, 'sonia@gmail.com', 5555, 'Si', 'Si', 6666, 1, 444534, 'cdsdfs', 343, 5, 'sdfdsg', 9, 'dgdsf', 1, 'dfsf', 1, 54645, 654654, 'fdgdf', 54645, '2022-09-13', 65765, 7567, 5767, 57657, 75675, 1, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 56353, 'fdgd', 'dfgfdg', 4354, 5353, 1, 'cvcbcv', 1, 'vcbcvbc', 'cvbcvb', 'vcbcvbcvb', 'Si', 'Si', 3, 'bvcbcv', 'Jesus', 2, 'fdfgddf', 4353, 43534, 'dfgfd', 'dfgdf', 'gdfgd', 1, 7854, 34837),
+(8, '2022-09-09', 2, 'Nit', 99999, 'Fideicomiso', 99999, 'dgdfg', 'gfdgdfgd', '2022-09-15', 'dfgfdgdf', 'gdfgdgdf', 'fdgdfgd', 'fgdfgdfg', 'gfdgdfg', 'dfgdfgdfg', 'gfdgdfgdfggdf', 56456, 645625, 'hola@gmail.com', 99999, 'Si', 'Si', 99999, 1, 645, 'dfgfdg', 45, 3, 'fdgfdgdf', 4, 'fgdfgd', 1, 'gdfgdf', 1, 56456, 645645, 'fgfdfgd', 546456, '2022-09-21', 56456, 546456, 64564, 645654, 645645, 1, 1, 'Si', 'Si', 'Si', 'Si', 'Si', 564564, 'dfgdf', 'gfdgdf', 45345, 353543, 1, 'fdgdfgd', 2, 'fdgdfgd', 'fgdfgd', 'gdfgdfgdf', 'Si', 'Si', 1, 'fdgdfgdf', 'gdfgdfgdf', 1, 'fgdfgdf', 56456, 65464, 'fdgfdg', 'gfdgfd', 'fdgdfgd', 2, 55652, 9999);
 
 -- --------------------------------------------------------
 
@@ -514,7 +517,8 @@ CREATE TABLE `reg_solij` (
 
 INSERT INTO `reg_solij` (`Id_regj`, `Id_solij`) VALUES
 (21, 4),
-(20, 6);
+(20, 6),
+(22, 8);
 
 -- --------------------------------------------------------
 
@@ -574,7 +578,8 @@ INSERT INTO `repr_le` (`idrepre`, `No_doc`, `Idti_docr`, `Pri_nor`, `Seg_nor`, `
 (4, 2222, 1, 'sdd', 'sdd', 'sdd', 'sdd', 'sdds', 'sdd', 'sddd', 'sdd', 'sdddsd', 'sdd', 222, 2210, 222, 'sddd'),
 (5, 657567, 4, 'gfhfg', 'hgffgh', 'fghfgh', 'fghfgh', 'gfhfg', 'gfhfgh', 'fghfg', 'hfgh', 'gfh', 'ghffghfg', 65756, 7567, 5675, 'gfhfgh'),
 (6, 453456, 1, 'fdg', 'fdgdf', 'gdfg', 'dfgdf', 'fdfhdfh', 'fhdfhgdf', 'gfdgdf', 'fdgfdg', 'dfgdf', 'gdfgdf', 546, 6456, 4554, 'cris@gmail.com'),
-(7, 5555, 1, 'ester', 'julia', 'castaño', 'loaiza', 'trabajo', 'calle', 'poblado', 'palmira', 'valle', 'colombia', 4534, 54, 543, 'ester@gmail.com');
+(7, 5555, 1, 'ester', 'julia', 'castaño', 'loaiza', 'trabajo', 'calle', 'poblado', 'palmira', 'valle', 'colombia', 4534, 54, 543, 'ester@gmail.com'),
+(8, 99999, 1, 'fdgfdg', 'fdgdfgdf', 'gfdgdf', 'fgdfgdfg', 'dfgdfgdf', 'fgdfgdfg', 'gfdgdfg', 'gfdgdfgd', 'gdfgdf', 'gfdgdfgdf', 56546, 645645, 564564, 'hola@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -604,7 +609,10 @@ INSERT INTO `solicitante` (`idsolicit`, `Idti_soli`, `No_solicit`, `Nom_solicit`
 (11, 1, 5645674, 'fgdf', 'fdgdfg'),
 (12, 1, 31628274, 'jose', 'Jose'),
 (13, 1, 7854, 'jsose', 'jose'),
-(14, 1, 87665, 'ffdhd', 'dghdfgd');
+(14, 1, 87665, 'ffdhd', 'dghdfgd'),
+(15, 1, 5464581, 'fdgdfgdfg', 'gfdgdfgdf'),
+(17, 1, 888888, 'fdgdfgdf', 'fdgdfgfd'),
+(18, 1, 55652, 'fgdfgdf', 'fdgdfgdf');
 
 -- --------------------------------------------------------
 
@@ -1096,7 +1104,10 @@ INSERT INTO `vendedor` (`idcond`, `Cod_vend`, `Nom_vend`, `Oficina`, `Obser`, `F
 (11, 34156, 'fdfsd', 'fsdfsd', 'fsdfsdf', 'fsdfdsfsd'),
 (12, 77777, 'Jesus', 'Cielo3k', 'JesusForEver', 'Jesus'),
 (13, 34837, 'jhon', 'gdf', 'fgfg', 'jhon'),
-(14, 78564, 'gdf', 'fdgdf', 'dfgdfgd', 'gfdgfdg');
+(14, 78564, 'gdf', 'fdgdf', 'dfgdfgd', 'gfdgfdg'),
+(15, 7, 'dfsd', 'fdsfs', 'ddsfdsfdsf', 'dfsdfds'),
+(17, 888887, 'fdgfd', 'gfdgdfgfd', 'gdfgdfg', 'gfdgdfgdf'),
+(18, 9999, 'dfgfdgdf', 'gdfgdg', 'fdgdfgdfg', 'fdgdfgdgffd');
 
 --
 -- Índices para tablas volcadas
@@ -1412,13 +1423,13 @@ ALTER TABLE `client_co`
 -- AUTO_INCREMENT de la tabla `cont_ent`
 --
 ALTER TABLE `cont_ent`
-  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idcont_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `entidad`
 --
 ALTER TABLE `entidad`
-  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_ent` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `est_soli`
@@ -1442,7 +1453,7 @@ ALTER TABLE `reg_soli`
 -- AUTO_INCREMENT de la tabla `reg_solij`
 --
 ALTER TABLE `reg_solij`
-  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=22;
+  MODIFY `Id_regj` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de los registros de las solicitudes', AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `reg_usu`
@@ -1454,19 +1465,19 @@ ALTER TABLE `reg_usu`
 -- AUTO_INCREMENT de la tabla `repr_le`
 --
 ALTER TABLE `repr_le`
-  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idrepre` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitante`
 --
 ALTER TABLE `solicitante`
-  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idsolicit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --
 ALTER TABLE `vendedor`
-  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idcond` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas

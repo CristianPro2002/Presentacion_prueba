@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Estilos.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Col, Row } from "react-bootstrap";
@@ -9,11 +9,14 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useRegFormPn } from "../../../../Components/hooks/useRegFormPn";
 import toast, { Toaster } from "react-hot-toast";
+import {AppContext} from "../../../../stateManagement/provider";
 
 
 const PersonaNatural = () => {
   let Navigate = useNavigate();
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
+
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
 
   var min=100000; 
   var max=999999;  
@@ -30,7 +33,7 @@ const PersonaNatural = () => {
       Fec_dil: "",
       Pri_nom: "",
       No_cuenta: random,
-      Idti_cue: "",
+      Idti_cue: select,
       Seg_nom: "",
       Pri_ape: "",
       Seg_ape: "",

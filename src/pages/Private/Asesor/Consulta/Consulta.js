@@ -15,7 +15,7 @@ const Consulta = () => {
     dataCuenta,
     setDataCuenta,
     dataEstados,
-    setDataEstados,
+    setDataEstados
   ] = useContext(AppContext);
 
   const { consultasActions2, currentPage, items } = usePageConsultas2(data);
@@ -27,6 +27,7 @@ const Consulta = () => {
     CuentaActions.peticionGetCuenta(No_cuenta);
     handleShow();
   };
+
 
   return (
     <div className="fondobg">

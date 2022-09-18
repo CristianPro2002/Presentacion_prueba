@@ -7,12 +7,16 @@ export const useAsesor = ({notify2}) => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const baseUrl2 = "http://localhost:8080/Banca/bd_crud/user.php";
 
-  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados] = useContext(AppContext);
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
   const [dataClient, setDataClient] = useState([]);
   const [dataUsuario, setDataUsuario] = useState({
     No_ide: "",
     Nit: "",
   });
+
+  const [dataSelect, setDataSelect] = useState({
+    Tip_prod: "",
+  })
 
   let Navigate = useNavigate();
 
@@ -113,7 +117,6 @@ export const useAsesor = ({notify2}) => {
     });
   }
 
-
   
 
 //   const validarConsultaPj = () => {
@@ -153,5 +156,7 @@ export const useAsesor = ({notify2}) => {
     setDataUsuario,
     dataClient,
     dataCuenta,
+    dataSelect,
+    setDataSelect,
   };
 };

@@ -443,8 +443,6 @@ if($_POST['METHOD'] == 'REPORTVALUENCUENTA'){
     exit();
 }
 
-
-
 //Registro de Fomulario persona natural
 if($_POST['METHOD']=='FORMN'){
     unset($_POST['METHOD']);
@@ -547,7 +545,7 @@ if($_POST['METHOD']=='FORMN'){
                 $query= "insert into reg_soli(id_soli) values ('$ultimo_id')";
                 $resultado5 = mysqli_query($conexion, $query);
                 if($resultado5 == 1){
-                    $query = "insert into cuenta_c(No_cuenta,No_ide) values ('$No_cuenta', '$No_ide')";
+                    $query = "insert into cuenta_c(No_cuenta,No_ide,Idti_cue) values ('$No_cuenta', '$No_ide','$Idti_cue')";
                     $resultado6 = mysqli_query($conexion, $query);
                 }  else{
                     echo("error en la quinta insersion");
@@ -572,6 +570,7 @@ if ($_POST['METHOD'] == 'FORMJ') {
     $tidoc_ent = $_POST['tidoc_ent'];
     $Nit = $_POST['Nit'];
     $No_cuenta =$_POST['No_cuenta'];
+    $Idti_cue =$_POST['Idti_cue'];
     $Idti_sol = $_POST['Idti_sol'];
     $Idti_doc = $_POST['Idti_doc'];
     $Idti_doc2 = $_POST['Idti_doc2'];
@@ -689,11 +688,11 @@ if ($_POST['METHOD'] == 'FORMJ') {
         $query = "insert into solicitante(Idti_soli,No_solicit,Nom_solicit,Firma) values ('$Idti_soli','$No_solicit','$Nom_solicit','$Firma')";
         $resultado6 = mysqli_query($conexion, $query);
         if ($resultado6 == 1) {
-            $query = "insert into cont_ent(No_docu,Idti_doc,Pri_nom,Seg_nom,Pri_ape,Seg_ape,Cargo,Dir_lab,Barrio,Ciu_mu,Depart,Pais,Tel_lab,Ext,Celular,Corr_lab) values 
+            $query = "insert into cont_ent(No_docu,Idti_doc,Pri_nom,Seg_nom,Pri_apec,Seg_apec,Cargo_c,Dir_labc,Barrio_c,Ciu_muc,Depart_c,Pais_c,Tel_lab_c,Ext_c,Celular_c,Corr_lab_c) values 
             ('$No_docu','$Idti_doc2','$Pri_nom','$Seg_nom','$Pri_ape2','$Seg_ape2','$Cargo2','$Dir_lab2','$Barrio3','$Ciu_mu3','$Depart3','$Pais3','$Tel_lab2','$Ext3','$Celular2','$Corr_lab2')"; 
             $resultado7 = mysqli_query($conexion, $query);
             if ($resultado7 == 1) {
-                $query = "insert into repr_le(No_doc,Idti_doc,Pri_no,Seg_no,Pri_ape,Seg_ape,Cargo,Dir_lab,Barrio,Ciu_mu,Depart,Pais,Tel_lab,Ext,Celular,Corr_lab) values 
+                $query = "insert into repr_le(No_doc,Idti_docr,Pri_nor,Seg_nor,Pri_aper,Seg_aper,Cargo_r,Dir_labr,Barrio_r,Ciu_mur,Depart_r,Pais_r,Tel_labr,Ext_r,Celular_r,Corr_labr) values 
                 ('$No_doc','$Idti_doc','$Pri_no','$Seg_no','$Pri_ape','$Seg_ape','$Cargo','$Dir_lab','$Barrio2','$Ciu_mu2','$Depart2','$Pais2','$Tel_lab','$Ext2','$Celular','$Corr_lab')";
                 $resultado8 = mysqli_query($conexion, $query);         
                 if ($resultado8 == 1) {
@@ -705,7 +704,7 @@ if ($_POST['METHOD'] == 'FORMJ') {
                             $query= "insert into reg_solij(Id_solij) values ('$ultimo_id2')";
                             $resultado11 = mysqli_query($conexion, $query);
                             if($resultado11 == 1){
-                                $query = "insert into cuenta_j(No_cuenta,Nit) values ('$No_cuenta', '$Nit')";
+                                $query = "insert into cuenta_j(No_cuenta,Nit,Idti_cue) values ('$No_cuenta', '$Nit','$Idti_cue')";
                                 $resultado12 = mysqli_query($conexion, $query);
                             }else{
                                 echo "Error en la septima insersion ";

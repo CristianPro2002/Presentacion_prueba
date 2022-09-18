@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
-import React from "react";
+import React, {useContext} from "react";
 import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
+import {AppContext} from "../../../../stateManagement/provider";
 
 const PersonaJuridica = () => {
   let Navigate = useNavigate();
@@ -16,7 +17,7 @@ const PersonaJuridica = () => {
   var random = Math.floor(Math.random() * (+max - +min)) + +min;
   //console.log("el valor random es:"+ random)
 
- 
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
  
   const {ActionsFormPj} = useRegFormPj();
   
@@ -31,6 +32,7 @@ const PersonaJuridica = () => {
       Pri_no: "",
       Seg_no: "",
       No_cuenta: random,
+      Idti_cue: select,
       Pri_ape: "",
       Seg_ape: "",
       Pri_ape2: "",
@@ -138,9 +140,6 @@ const PersonaJuridica = () => {
       Obser: "",
       Firma_vend: "",
     },
-
-   
-   
     validationSchema: Yup.object({
       Fe_dil: Yup.string().required("Fecha de diligenciamiento es requerida"),
       Idti_sol: Yup.string().required("el tipo de solicitud es obligatorio"),
@@ -309,11 +308,10 @@ const PersonaJuridica = () => {
     
     onSubmit: (data) => {
       ActionsFormPj.peticionPost(data);
-    },
-    
+    },   
   });
- 
 
+  console.log(formik.values);
   return (
     <div className="FONDO">
       <div>

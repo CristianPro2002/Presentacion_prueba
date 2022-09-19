@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap"
+import { Table } from "react-bootstrap";
 import { AiFillPrinter } from "react-icons/ai";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -22,7 +22,6 @@ import Badge from "react-bootstrap/Badge";
 import { useDirector } from "../../../Components/hooks/useDirector";
 
 export const Tabla_director = () => {
-  
   const [busqueda, setBusqueda] = useState("");
   const [modalInsertar, setModalInsetar] = useState(false);
   const [modalEditar, setModalEditar] = useState(false);
@@ -104,7 +103,7 @@ export const Tabla_director = () => {
       .setAttribute("style", "visibility:visible");
     document.getElementById("father01").setAttribute("style", "display:none;");
   };
-  
+
   const cerrarp = (e) => {
     document
       .getElementById("ventana_modalp")
@@ -237,6 +236,23 @@ export const Tabla_director = () => {
     DirectorActions.peticionGetVCajeroP();
   }, []);
 
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const filterData = () => {
+    return data2.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= data2.length) return;
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 5);
+    }
+  };
+
   return (
     <>
       <div className="father01" id="father01">
@@ -313,7 +329,7 @@ export const Tabla_director = () => {
                 </tr>
               </thead>
               <tbody>
-                {Object.entries(data2).map(([key, value]) => (
+                {Object.entries(filterData()).map(([key, value]) => (
                   <tr key={value.Id_usu}>
                     <td className="ocultarid">{value.Id_usu}</td>
                     <td>{value.Usuario}</td>
@@ -340,9 +356,14 @@ export const Tabla_director = () => {
                 ))}
               </tbody>
             </Table>
+            <div>
+              <div className="content_actionsPage01">
+                <button onClick={() => prevPage()}>Atras</button>
+                <button onClick={() => nextPage()}>Siguiente</button>
+              </div>
+            </div>
           </div>
         </div>
-        
       </div>
       <Toaster
         position="top-right"
@@ -387,7 +408,7 @@ export const Tabla_director = () => {
         peticionPost={DirectorActions.peticionPost}
         abrirCerrarModalInsertar={abrirCerrarModalInsertar}
         modalInsertar={modalInsertar}
-        peticionPostFather = {DirectorActions.contarNDirector}
+        peticionPostFather={DirectorActions.contarNDirector}
       />
       <ModalEditar
         dataUsuario={dataUsuario}
@@ -405,8 +426,5 @@ export const Tabla_director = () => {
         abrirCerrarModalEliminar={abrirCerrarModalEliminar}
       />
     </>
-
-
-
   );
 };

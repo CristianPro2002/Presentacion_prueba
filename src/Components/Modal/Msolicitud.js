@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useMsolicitud } from "../hooks/useMsolicitud";
+import { usePagePrimSoli, usePageSecSoli } from "../hooks/usePageSoli";
 
 const Msolicitud = ({
   abrir,
@@ -22,12 +23,7 @@ const Msolicitud = ({
   cerrarpj,
   abrir3,
 }) => {
-  const {
-    MsolicitudActions,
-    detalle,
-    detalle2,
-    setEstado,
-  } = useMsolicitud({
+  const { MsolicitudActions, detalle, detalle2, setEstado } = useMsolicitud({
     setSolicitud,
     solicitud,
     cerrar2,
@@ -37,6 +33,9 @@ const Msolicitud = ({
     abrirpj,
     abrir3,
   });
+
+  const { ActionsPagePrim } = usePagePrimSoli(solicitud2);
+  const { ActionsPageSec } = usePageSecSoli(solicitud);
 
   useEffect(() => {
     peticionGet3();
@@ -78,7 +77,7 @@ const Msolicitud = ({
                       <h2 className="title__modal">Persona Juridica</h2>
 
                       <div>
-                        {solicitud2.map((Data) => (
+                        {ActionsPagePrim.filterData().map((Data) => (
                           <>
                             <div className="card" id="cardsoli">
                               <div className="card-body">
@@ -114,6 +113,16 @@ const Msolicitud = ({
                           </>
                         ))}
                       </div>
+                      <div>
+                        <div className="content_actionsPage01">
+                          <button onClick={() => ActionsPagePrim.prevPage()}>
+                            Atras
+                          </button>
+                          <button onClick={() => ActionsPagePrim.nextPage()}>
+                            Siguiente
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -121,9 +130,7 @@ const Msolicitud = ({
                     <div className="body__modal">
                       <h2 className="title__modal">Persona Natural</h2>
                       <div>
-                        <div></div>
-
-                        {solicitud.map((Data) => (
+                        {ActionsPageSec.filterData().map((Data) => (
                           <>
                             <div className="card" id="cardsoli">
                               <div className="card-body">
@@ -158,6 +165,16 @@ const Msolicitud = ({
                             </div>
                           </>
                         ))}
+                      </div>
+                      <div>
+                        <div className="content_actionsPage01">
+                          <button onClick={() => ActionsPageSec.prevPage()}>
+                            Atras
+                          </button>
+                          <button onClick={() => ActionsPageSec.nextPage()}>
+                            Siguiente
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -217,7 +234,10 @@ const Msolicitud = ({
                   id="boton_modal_verde"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionDeleteSoli(detalle.No_ide, detalle.Id_client)
+                    MsolicitudActions.peticionDeleteSoli(
+                      detalle.No_ide,
+                      detalle.Id_client
+                    )
                   }
                 >
                   Aceptar
@@ -284,7 +304,10 @@ const Msolicitud = ({
                   id="boton_modal_verde"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionDeleteSoliJ(detalle2.Nit, detalle2.Id_ent)
+                    MsolicitudActions.peticionDeleteSoliJ(
+                      detalle2.Nit,
+                      detalle2.Id_ent
+                    )
                   }
                 >
                   Aceptar
@@ -324,7 +347,10 @@ const Msolicitud = ({
                   id="boton_Modal_2_0"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionPostsolicitud(detalle.No_ide, detalle.Id_client)
+                    MsolicitudActions.peticionPostsolicitud(
+                      detalle.No_ide,
+                      detalle.Id_client
+                    )
                   }
                 >
                   Aceptar
@@ -364,7 +390,10 @@ const Msolicitud = ({
                   id="boton_Modal_2_0"
                   className="btn btn-success"
                   onClick={() =>
-                    MsolicitudActions.peticionPostsolicitudJ(detalle2.Nit, detalle2.Id_ent)
+                    MsolicitudActions.peticionPostsolicitudJ(
+                      detalle2.Nit,
+                      detalle2.Id_ent
+                    )
                   }
                 >
                   Aceptar

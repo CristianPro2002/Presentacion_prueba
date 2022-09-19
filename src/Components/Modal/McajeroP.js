@@ -4,57 +4,87 @@ import Button from "react-bootstrap/Button";
 import "./Modals.css";
 
 export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
+
+  const filterData = () => {
+    return datam1.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= datam1.length) return;
+    setCurrentPageNum(currentPageNum + 1);
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPageNum(currentPageNum - 1);
+      setCurrentPage(currentPage - 5);
+    }
+  };
   return (
     <>
       <Modal isOpen={mostrar}>
         <ModalHeader closeButton>Registros Cajero #1</ModalHeader>
         <ModalBody>
           {datam1.length >= 1 ? (
-            datam1.map((data) => (
-              <div className="padreModals01">
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Id</b>
-                    </label>
+            <div>
+              {filterData().map((data) => (
+                <div className="padreModals01">
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Id</b>
+                      </label>
+                    </div>
+                    {data.Id_act}
                   </div>
-                  {data.Id_act}
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Fecha</b>
+                      </label>
+                    </div>
+                    {data.Fe_act}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Producto</b>
+                      </label>
+                    </div>
+                    {data.ti_pro}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Valor</b>
+                      </label>
+                    </div>
+                    {data.Valor}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Cuenta</b>
+                      </label>
+                    </div>
+                    {data.No_cuec}
+                    {data.No_cuej}
+                  </div>
                 </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Fecha</b>
-                    </label>
+              ))}
+              <div>
+                <div className="content_actionsPage01">
+                  <button onClick={() => prevPage()}>Atras</button>
+                  <div className="content-num-page">
+                    <p>{currentPageNum}</p>
                   </div>
-                  {data.Fe_act}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Producto</b>
-                    </label>
-                  </div>
-                  {data.ti_pro}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Valor</b>
-                    </label>
-                  </div>
-                  {data.Valor}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Cuenta</b>
-                    </label>
-                  </div>
-                  {data.No_cuec}
-                  {data.No_cuej}
+                  <button onClick={() => nextPage()}>Siguiente</button>
                 </div>
               </div>
-            ))
+            </div>
           ) : (
             <>
               <div
@@ -83,6 +113,26 @@ export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
 };
 
 export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
+
+  const filterData = () => {
+    return datam2.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= datam2.length) return;
+    setCurrentPageNum(currentPageNum + 1);
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPageNum(currentPageNum - 1);
+      setCurrentPage(currentPage - 5);
+    }
+  };
+
   return (
     <>
       <Modal isOpen={mostrarDos}>
@@ -90,51 +140,62 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
         <ModalBody>
           {" "}
           {datam2.length >= 1 ? (
-            datam2.map((data) => (
-              <div className="padreModals01">
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Id</b>
-                    </label>
+            <div>
+              {filterData().map((data) => (
+                <div className="padreModals01">
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Id</b>
+                      </label>
+                    </div>
+                    {data.Id_act}
                   </div>
-                  {data.Id_act}
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Fecha</b>
+                      </label>
+                    </div>
+                    {data.Fe_act}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Producto</b>
+                      </label>
+                    </div>
+                    {data.ti_pro}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Valor</b>
+                      </label>
+                    </div>
+                    {data.Valor}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Cuenta</b>
+                      </label>
+                    </div>
+                    {data.No_cuec}
+                    {data.No_cuej}
+                  </div>
                 </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Fecha</b>
-                    </label>
+              ))}
+              <div>
+                <div className="content_actionsPage01">
+                  <button onClick={() => prevPage()}>Atras</button>
+                  <div className="content-num-page">
+                    <p>{currentPageNum}</p>
                   </div>
-                  {data.Fe_act}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Producto</b>
-                    </label>
-                  </div>
-                  {data.ti_pro}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Valor</b>
-                    </label>
-                  </div>
-                  {data.Valor}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Cuenta</b>
-                    </label>
-                  </div>
-                  {data.No_cuec}
-                  {data.No_cuej}
+                  <button onClick={() => nextPage()}>Siguiente</button>
                 </div>
               </div>
-            ))
+            </div>
           ) : (
             <>
               <div
@@ -163,57 +224,87 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
 };
 
 export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
+
+  const filterData = () => {
+    return datam3.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= datam3.length) return;
+    setCurrentPageNum(currentPageNum + 1);
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPageNum(currentPageNum - 1);
+      setCurrentPage(currentPage - 5);
+    }
+  };
   return (
     <>
       <Modal isOpen={mostrarTres}>
         <ModalHeader closeButton>Registros Cajero #3</ModalHeader>
         <ModalBody>
           {datam3.length >= 1 ? (
-            datam3.map((data) => (
-              <div className="padreModals01">
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Id</b>
-                    </label>
+            <div>
+              {filterData().map((data) => (
+                <div className="padreModals01">
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Id</b>
+                      </label>
+                    </div>
+                    {data.Id_act}
                   </div>
-                  {data.Id_act}
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Fecha</b>
+                      </label>
+                    </div>
+                    {data.Fe_act}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Producto</b>
+                      </label>
+                    </div>
+                    {data.ti_pro}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Valor</b>
+                      </label>
+                    </div>
+                    {data.Valor}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Cuenta</b>
+                      </label>
+                    </div>
+                    {data.No_cuec}
+                    {data.No_cuej}
+                  </div>
                 </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Fecha</b>
-                    </label>
+              ))}
+              <div>
+                <div className="content_actionsPage01">
+                  <button onClick={() => prevPage()}>Atras</button>
+                  <div className="content-num-page">
+                    <p>{currentPageNum}</p>
                   </div>
-                  {data.Fe_act}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Producto</b>
-                    </label>
-                  </div>
-                  {data.ti_pro}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Valor</b>
-                    </label>
-                  </div>
-                  {data.Valor}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Cuenta</b>
-                    </label>
-                  </div>
-                  {data.No_cuec}
-                  {data.No_cuej}
+                  <button onClick={() => nextPage()}>Siguiente</button>
                 </div>
               </div>
-            ))
+            </div>
           ) : (
             <>
               <div
@@ -242,57 +333,87 @@ export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
 };
 
 export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
+
+  const filterData = () => {
+    return datam4.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= datam4.length) return;
+    setCurrentPageNum(currentPageNum + 1);
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPageNum(currentPageNum - 1);
+      setCurrentPage(currentPage - 5);
+    }
+  };
   return (
     <>
       <Modal isOpen={mostrarCuatro}>
         <ModalHeader closeButton>Registros Cajero #4</ModalHeader>
         <ModalBody>
           {datam4.length >= 1 ? (
-            datam4.map((data) => (
-              <div className="padreModals01">
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Id</b>
-                    </label>
+            <div>
+              {filterData().map((data) => (
+                <div className="padreModals01">
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Id</b>
+                      </label>
+                    </div>
+                    {data.Id_act}
                   </div>
-                  {data.Id_act}
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Fecha</b>
+                      </label>
+                    </div>
+                    {data.Fe_act}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Producto</b>
+                      </label>
+                    </div>
+                    {data.ti_pro}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Valor</b>
+                      </label>
+                    </div>
+                    {data.Valor}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Cuenta</b>
+                      </label>
+                    </div>
+                    {data.No_cuec}
+                    {data.No_cuej}
+                  </div>
                 </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Fecha</b>
-                    </label>
+              ))}
+              <div>
+                <div className="content_actionsPage01">
+                  <button onClick={() => prevPage()}>Atras</button>
+                  <div className="content-num-page">
+                    <p>{currentPageNum}</p>
                   </div>
-                  {data.Fe_act}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Producto</b>
-                    </label>
-                  </div>
-                  {data.ti_pro}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Valor</b>
-                    </label>
-                  </div>
-                  {data.Valor}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Cuenta</b>
-                    </label>
-                  </div>
-                  {data.No_cuec}
-                  {data.No_cuej}
+                  <button onClick={() => nextPage()}>Siguiente</button>
                 </div>
               </div>
-            ))
+            </div>
           ) : (
             <>
               <div
@@ -321,57 +442,87 @@ export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
 };
 
 export const Mcajero5 = ({ handleShowCinco, mostrarCinco, datam5 }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
+
+  const filterData = () => {
+    return datam5.slice(currentPage, currentPage + 5);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= datam5.length) return;
+    setCurrentPageNum(currentPageNum + 1);
+    setCurrentPage(currentPage + 5);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPageNum(currentPageNum - 1);
+      setCurrentPage(currentPage - 5);
+    }
+  };
   return (
     <>
       <Modal isOpen={mostrarCinco}>
         <ModalHeader closeButton>Registros Cajero #5</ModalHeader>
         <ModalBody>
           {datam5.length >= 1 ? (
-            datam5.map((data) => (
-              <div className="padreModals01">
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Id</b>
-                    </label>
+            <div>
+              {filterData().map((data) => (
+                <div className="padreModals01">
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Id</b>
+                      </label>
+                    </div>
+                    {data.Id_act}
                   </div>
-                  {data.Id_act}
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Fecha</b>
+                      </label>
+                    </div>
+                    {data.Fe_act}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Producto</b>
+                      </label>
+                    </div>
+                    {data.ti_pro}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Valor</b>
+                      </label>
+                    </div>
+                    {data.Valor}
+                  </div>
+                  <div className="content-info">
+                    <div>
+                      <label>
+                        <b>Cuenta</b>
+                      </label>
+                    </div>
+                    {data.No_cuec}
+                    {data.No_cuej}
+                  </div>
                 </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Fecha</b>
-                    </label>
+              ))}
+              <div>
+                <div className="content_actionsPage01">
+                  <button onClick={() => prevPage()}>Atras</button>
+                  <div className="content-num-page">
+                    <p>{currentPageNum}</p>
                   </div>
-                  {data.Fe_act}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Producto</b>
-                    </label>
-                  </div>
-                  {data.ti_pro}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Valor</b>
-                    </label>
-                  </div>
-                  {data.Valor}
-                </div>
-                <div className="content-info">
-                  <div>
-                    <label>
-                      <b>Cuenta</b>
-                    </label>
-                  </div>
-                  {data.No_cuec}
-                  {data.No_cuej}
+                  <button onClick={() => nextPage()}>Siguiente</button>
                 </div>
               </div>
-            ))
+            </div>
           ) : (
             <>
               <div

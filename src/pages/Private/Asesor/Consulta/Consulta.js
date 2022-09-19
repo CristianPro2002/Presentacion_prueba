@@ -855,7 +855,7 @@ const Consulta = () => {
           {dataEstados.length === 0 ? (
             <>
               <div>
-                <h3>Este usuario no tiene solicitudes</h3>
+                <h3>Este usuario no tiene solicitudes respondidas</h3>
               </div>
             </>
           ) : (

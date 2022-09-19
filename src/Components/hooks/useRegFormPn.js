@@ -10,7 +10,7 @@ export const useRegFormPn = () => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useState([]);
-  const notifyNatural = () => toast("El formulario se ha enviado Exitosamente ✔");
+  const notifyNatural = () => toast.success("El formulario se ha enviado Exitosamente ✔");
 
 
   const peticionPost = async (dataForm) => {

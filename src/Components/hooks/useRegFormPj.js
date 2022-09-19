@@ -8,7 +8,7 @@ export const useRegFormPj = () => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData] = useState([]);
-  const notifyJuridica = () => toast("El formulario se ha enviado Exitosamente ✔");
+  const notifyJuridica = () => toast.success("El formulario se ha enviado Exitosamente ✔");
   const peticionPost = async (dataForm) => {
     var f = new FormData();
     f.append("Fe_dil", dataForm.Fe_dil);

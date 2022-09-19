@@ -4,10 +4,15 @@ import "./EstilosJ.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React from "react";
+import React, {useContext} from "react";
 import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
+import {AppContext} from "../../../../stateManagement/provider";
+
 
 const PersonaJuridica = () => {
+
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
+
   let Navigate = useNavigate();
 
   var min = 100000;
@@ -27,6 +32,7 @@ const PersonaJuridica = () => {
       Pri_no: "",
       Seg_no: "",
       No_cuenta: random,
+      Idti_cue: select,
       Pri_ape: "",
       Seg_ape: "",
       Pri_ape2: "",

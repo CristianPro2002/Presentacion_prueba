@@ -4,10 +4,8 @@ import "./EstilosJ.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import toast, { Toaster } from "react-hot-toast";
-import React, {useContext} from "react";
+import React from "react";
 import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
-import {AppContext} from "../../../../stateManagement/provider";
 
 const PersonaJuridica = () => {
   let Navigate = useNavigate();
@@ -16,11 +14,8 @@ const PersonaJuridica = () => {
   var max = 999999;
   var random = Math.floor(Math.random() * (+max - +min)) + +min;
   //console.log("el valor random es:"+ random)
+  const { ActionsFormPj } = useRegFormPj();
 
-  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
- 
-  const {ActionsFormPj} = useRegFormPj();
-  
   const formik = useFormik({
     initialValues: {
       Fe_dil: "",
@@ -32,7 +27,6 @@ const PersonaJuridica = () => {
       Pri_no: "",
       Seg_no: "",
       No_cuenta: random,
-      Idti_cue: select,
       Pri_ape: "",
       Seg_ape: "",
       Pri_ape2: "",
@@ -140,6 +134,7 @@ const PersonaJuridica = () => {
       Obser: "",
       Firma_vend: "",
     },
+
     validationSchema: Yup.object({
       Fe_dil: Yup.string().required("Fecha de diligenciamiento es requerida"),
       Idti_sol: Yup.string().required("el tipo de solicitud es obligatorio"),
@@ -305,13 +300,11 @@ const PersonaJuridica = () => {
       Obser: Yup.string().required("Las Observaciones son obligatorias"),
       Firma_vend: Yup.string().required("La firma del vendedor es obligatoria"),
     }),
-    
     onSubmit: (data) => {
       ActionsFormPj.peticionPost(data);
-    },   
+    },
   });
 
-  console.log(formik.values);
   return (
     <div className="FONDO">
       <div>
@@ -825,29 +818,27 @@ const PersonaJuridica = () => {
           </div>
 
           <div className="col-md-5" id="Container-1">
-            <Col>
-              <label className="label-4">
-                Teléfono laboral
-                <input
-                  type="number"
-                  name="Tel_lab"
-                  className="Border"
-                  onChange={formik.handleChange}
-                  required
-                />
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
-              </label>
-              <label className="label-4">
-                Ext
-                <input
-                  type="number"
-                  name="Ext2"
-                  className="Border"
-                  onChange={formik.handleChange}
-                />
-                <h6 style={{ color: "red" }}>{formik.errors.Ext2}</h6>
-              </label>
-            </Col>
+            <label className="label-4">
+              Teléfono laboral
+              <input
+                type="number"
+                name="Tel_lab"
+                className="Border"
+                onChange={formik.handleChange}
+                required
+              />
+              <h6 style={{ color: "red" }}>{formik.errors.Tel_lab}</h6>
+            </label>
+            <label className="label-4">
+              Ext
+              <input
+                type="number"
+                name="Ext2"
+                className="Border"
+                onChange={formik.handleChange}
+              />
+              <h6 style={{ color: "red" }}>{formik.errors.Ext2}</h6>
+            </label>
           </div>
 
           <div className="col-md-3" id="Container-1">
@@ -885,38 +876,36 @@ const PersonaJuridica = () => {
           </div>
 
           <div className="col-md-12" id="Container-1">
-            <Col>
-              <h5 className="Titulo">Información de socios o accionistas</h5>
-              <div>
-                <p className="Texto label">
-                  ¿Tienes socios o accionistas con participación directa o
-                  indirecta superior al 5%?
-                  <label className="label-16">
-                    Sí{" "}
-                    <input
-                      type="radio"
-                      name="Pre_1"
-                      value="Si"
-                      className="cursor-pointer"
-                      onChange={formik.handleChange}
-                      required
-                    />
-                  </label>
-                  <label className="label">
-                    No{" "}
-                    <input
-                      type="radio"
-                      name="Pre_1"
-                      value="No"
-                      className="cursor-pointer"
-                      onChange={formik.handleChange}
-                      required
-                    />
-                  </label>
-                </p>
+            <h5 className="Titulo">Información de socios o accionistas</h5>
+            <div>
+              <p className="Texto label">
+                ¿Tienes socios o accionistas con participación directa o
+                indirecta superior al 5%?
+                <label className="label-16">
+                  Sí{" "}
+                  <input
+                    type="radio"
+                    name="Pre_1"
+                    value="Si"
+                    className="cursor-pointer"
+                    onChange={formik.handleChange}
+                    required
+                  />
+                </label>
+                <label className="label">
+                  No{" "}
+                  <input
+                    type="radio"
+                    name="Pre_1"
+                    value="No"
+                    className="cursor-pointer"
+                    onChange={formik.handleChange}
+                    required
+                  />
+                </label>
                 <h6 style={{ color: "red" }}>{formik.errors.Pre_1}</h6>
-              </div>
-            </Col>
+              </p>
+            </div>
           </div>
           <div className="col-md-12" id="Container-1">
             <Col>
@@ -947,8 +936,8 @@ const PersonaJuridica = () => {
                       required
                     />
                   </label>
+                  <h6 style={{ color: "red" }}>{formik.errors.Pre_2}</h6>
                 </p>
-                <h6 style={{ color: "red" }}>{formik.errors.Pre_2}</h6>
               </div>
             </Col>
           </div>
@@ -1154,29 +1143,27 @@ const PersonaJuridica = () => {
           </div>
 
           <div className="col-md-5" id="Container-1">
-            <Col>
-              <label className="label-4">
-                Teléfono laboral
-                <input
-                  type="number"
-                  name="Tel_lab2"
-                  className="Border"
-                  onChange={formik.handleChange}
-                  required
-                />
-                <h6 style={{ color: "red" }}>{formik.errors.Tel_lab2}</h6>
-              </label>
-              <label className="label-4">
-                Ext
-                <input
-                  type="number"
-                  name="Ext3"
-                  className="Border"
-                  onChange={formik.handleChange}
-                />
-              </label>
+            <label className="label-4">
+              Teléfono laboral
+              <input
+                type="number"
+                name="Tel_lab2"
+                className="Border"
+                onChange={formik.handleChange}
+                required
+              />
+              <h6 style={{ color: "red" }}>{formik.errors.Tel_lab2}</h6>
+            </label>
+            <label className="label-4">
+              Ext
+              <input
+                type="number"
+                name="Ext3"
+                className="Border"
+                onChange={formik.handleChange}
+              />
               <h6 style={{ color: "red" }}>{formik.errors.Ext3}</h6>
-            </Col>
+            </label>
           </div>
 
           <div className="col-md-3" id="Container-1">
@@ -1327,18 +1314,16 @@ const PersonaJuridica = () => {
                   <option value="12">Ninguna</option>
                 </select>
                 <h6 style={{ color: "red" }}>{formik.errors.Idti_soci}</h6>
-                <Col className="">
-                  <label className="label-12">
-                    Otra, ¿cuál?{" "}
-                    <input
-                      type="text"
-                      name="Otro_com"
-                      className="Border"
-                      onChange={formik.handleChange}
-                    />
-                  </label>
+                <label className="label-12">
+                  Otra, ¿cuál?{" "}
+                  <input
+                    type="text"
+                    name="Otro_com"
+                    className="Border"
+                    onChange={formik.handleChange}
+                  />
                   <h6 style={{ color: "red" }}>{formik.errors.Otro_com}</h6>
-                </Col>
+                </label>
               </label>
             </Col>
           </div>
@@ -1381,25 +1366,23 @@ const PersonaJuridica = () => {
                   <option value="19">*Unión temporal</option>
                 </select>
                 <h6 style={{ color: "red" }}>{formik.errors.Idti_en}</h6>
-                <Col className="">
-                  <label className="label-2">
-                    <p className="">
-                      Si el tipo de entidad es Consorcio o Unión temporal
-                      diligencie el anexo Conocimiento del Cliente Consorcio o
-                      Unión temporal.
-                    </p>
-                  </label>
-                  <label className="label-12">
-                    Otra, ¿cuál?{" "}
-                    <input
-                      type="text"
-                      name="Otro_ent"
-                      className="Border"
-                      onChange={formik.handleChange}
-                    />
-                  </label>
+                <label className="label-2">
+                  <p className="">
+                    Si el tipo de entidad es Consorcio o Unión temporal
+                    diligencie el anexo Conocimiento del Cliente Consorcio o
+                    Unión temporal.
+                  </p>
+                </label>
+                <label className="label-12">
+                  Otra, ¿cuál?{" "}
+                  <input
+                    type="text"
+                    name="Otro_ent"
+                    className="Border"
+                    onChange={formik.handleChange}
+                  />
                   <h6 style={{ color: "red" }}>{formik.errors.Otro_ent}</h6>
-                </Col>
+                </label>
               </label>
             </Col>
           </div>
@@ -1420,18 +1403,16 @@ const PersonaJuridica = () => {
                   <option value="3">Municipio</option>
                 </select>
                 <h6 style={{ color: "red" }}>{formik.errors.Idti_es}</h6>
-                <Col className="">
-                  <label className="label-12">
-                    Otra, ¿cuál?{" "}
-                    <input
-                      type="text"
-                      name="Otro_est"
-                      className="Border"
-                      onChange={formik.handleChange}
-                    />
-                  </label>
+                <label className="label-12">
+                  Otra, ¿cuál?{" "}
+                  <input
+                    type="text"
+                    name="Otro_est"
+                    className="Border"
+                    onChange={formik.handleChange}
+                  />
                   <h6 style={{ color: "red" }}>{formik.errors.Otro_est}</h6>
-                </Col>
+                </label>
               </label>
             </Col>
           </div>
@@ -1461,11 +1442,9 @@ const PersonaJuridica = () => {
             <Col>
               <h5 className="Titulo">Información financiera </h5>
               <label className="label-2">
-                Ingresos operacionales mensuales
+                Ingresos operacionales mensuales$
               </label>
-              <label className="label float-left">
-                {" "}
-                ${" "}
+              <label className="label">
                 <input
                   type="number"
                   name="Ing_op"
@@ -1481,11 +1460,10 @@ const PersonaJuridica = () => {
             <Col>
               <h5 className="Titulo-3"></h5>
               <label className="label-2">
-                Ingresos no operacionales mensuales
+                {" "}
+                Ingresos no operacionales mensuales$
               </label>
               <label className="label float-left">
-                {" "}
-                ${" "}
                 <input
                   type="numer"
                   name="Ino_op"
@@ -1580,27 +1558,23 @@ const PersonaJuridica = () => {
           </div>
 
           <div className="col-md-12" id="Container-1">
-            <Col>
-              <label className="label-18">
-                Total activos ${" "}
-                <input
-                  type="number"
-                  name="Tot_act"
-                  className="Border"
-                  onChange={formik.handleChange}
-                  required
-                />
-              </label>
+            <label className="label-18">
+              Total activos ${" "}
+              <input
+                type="number"
+                name="Tot_act"
+                className="Border"
+                onChange={formik.handleChange}
+                required
+              />
               <h6 style={{ color: "red" }}>{formik.errors.Tot_act}</h6>
-            </Col>
+            </label>
           </div>
 
           <div className="col-md-6" id="Container-1">
             <Col>
-              <label className="label-2">Total pasivos</label>
+              <label className="label-2">Total pasivos$</label>
               <label className="label float-left">
-                {" "}
-                ${" "}
                 <input
                   type="number"
                   name="Tot_pas"
@@ -1614,10 +1588,8 @@ const PersonaJuridica = () => {
           </div>
           <div className="col-md-6" id="Container-1">
             <Col>
-              <label className="label-2">Total patrimonio </label>
-              <label className="label float-left">
-                {" "}
-                ${" "}
+              <label className="label-2">Total patrimonio$ </label>
+              <label className="label">
                 <input
                   type="number"
                   name="Tot_pat"
@@ -2063,36 +2035,34 @@ const PersonaJuridica = () => {
           </div>
 
           <div className="col-md-12" id="Container-1">
-            <Col>
-              <h5 className="Titulo">
-                Información de operaciones internacionales
-              </h5>
-              <label className="label-18">
-                ¿Realiza operaciones en moneda extranjera?
-                <label className="label padding">
-                  {" "}
-                  <input
-                    type="radio"
-                    value="Si"
-                    name="Op_ext"
-                    className="cursor-pointer"
-                    onChange={formik.handleChange}
-                    required
-                  />{" "}
-                  Sí{" "}
-                  <input
-                    type="radio"
-                    value="No"
-                    name="Op_ext"
-                    className="cursor-pointer"
-                    onChange={formik.handleChange}
-                    required
-                  />{" "}
-                  No
-                </label>
+            <h5 className="Titulo">
+              Información de operaciones internacionales
+            </h5>
+            <label className="label-18">
+              ¿Realiza operaciones en moneda extranjera?
+              <label className="label padding">
+                {" "}
+                <input
+                  type="radio"
+                  value="Si"
+                  name="Op_ext"
+                  className="cursor-pointer"
+                  onChange={formik.handleChange}
+                  required
+                />{" "}
+                Sí{" "}
+                <input
+                  type="radio"
+                  value="No"
+                  name="Op_ext"
+                  className="cursor-pointer"
+                  onChange={formik.handleChange}
+                  required
+                />{" "}
+                No
               </label>
               <h6 style={{ color: "red" }}>{formik.errors.Op_ext}</h6>
-            </Col>
+            </label>
           </div>
 
           <div className="col-md-12" id="Container-1">
@@ -2118,18 +2088,16 @@ const PersonaJuridica = () => {
                   <option value="7">Envío/Recepción de giros y remesas</option>
                 </select>
                 <h6 style={{ color: "red" }}>{formik.errors.Idtiop_m}</h6>
-                <Col className="">
-                  <label className="label-12">
-                    Otra, ¿cuál?{" "}
-                    <input
-                      type="text"
-                      name="Otro_mo"
-                      className="Border"
-                      onChange={formik.handleChange}
-                    />
-                  </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_mo}</h6>
-                </Col>
+                <label className="label-12">
+                  Otra, ¿cuál?{" "}
+                  <input
+                    type="text"
+                    name="Otro_mo"
+                    className="Border"
+                    onChange={formik.handleChange}
+                  />
+                </label>
+                <h6 style={{ color: "red" }}>{formik.errors.Otro_mo}</h6>
               </label>
             </Col>
           </div>
@@ -2176,8 +2144,8 @@ const PersonaJuridica = () => {
                       className="Border"
                       onChange={formik.handleChange}
                     />
+                    <h6 style={{ color: "red" }}>{formik.errors.Otro_mo2}</h6>
                   </label>
-                  <h6 style={{ color: "red" }}>{formik.errors.Otro_mo2}</h6>
                 </Col>
               </label>
             </Col>
@@ -2773,8 +2741,8 @@ const PersonaJuridica = () => {
               el Tratamiento de Datos Personales y el derecho a la Revocatoria
               que me asiste en los términos de ley.
             </p>
-            <div id="Container-6">
-              <label className="label">
+            <div className="flex-container">
+              <div className="flex-item">
                 <input
                   className="Firma_solicitante"
                   type="text"
@@ -2782,69 +2750,64 @@ const PersonaJuridica = () => {
                   onChange={formik.handleChange}
                 ></input>
                 <p>Firma del Solicitante</p>
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Firma}</h6>
-            </div>
-            <div id="Container-5">
-              <Col>
-                <label className="label">
-                  <canvas id="rectangulo" width="140" height="188">
+                <h6 style={{ color: "red" }}>{formik.errors.Firma}</h6>
+              </div>
+
+              <div className="flex-item" id="Container-2">
+                <div className="contenedor-flex">
+                  <p className="label-21">
                     {" "}
-                  </canvas>
-                </label>
-              </Col>
-            </div>
+                    * Solo diligenciar si actúa en calidad de:{" "}
+                  </p>
 
-            <div className="col-md-8" id="Container-2">
-              <p className="label-21">
-                {" "}
-                * Solo diligenciar si actúa en calidad de:{" "}
-              </p>
-              <label className="label-22">
-                <input
-                  type="radio"
-                  value="1"
-                  name="Idti_soli"
-                  className="cursor-pointer"
-                  onChange={formik.handleChange}
-                  required
-                />{" "}
-                Representante{" "}
-                <input
-                  type="radio"
-                  value="2"
-                  name="Idti_soli"
-                  className="cursor-pointer"
-                  onChange={formik.handleChange}
-                  required
-                />{" "}
-                Apoderado
-              </label>
-              <h6 style={{ color: "red" }}>{formik.errors.Idti_soli}</h6>
-
-              <div className="float-left">
-                <label>
-                  Nombre{" "}
-                  <input
-                    type="text"
-                    name="Nom_solicit"
-                    className="Border"
-                    onChange={formik.handleChange}
-                    required
-                  />
+                  <label className="label-22">
+                    <input
+                      type="radio"
+                      value="1"
+                      name="Idti_soli"
+                      className="cursor-pointer"
+                      onChange={formik.handleChange}
+                      required
+                    />{" "}
+                    Representante{" "}
+                    <input
+                      type="radio"
+                      value="2"
+                      name="Idti_soli"
+                      className="cursor-pointer"
+                      onChange={formik.handleChange}
+                      required
+                    />{" "}
+                    Apoderado
+                  </label>
+                </div>
+                <h6 style={{ color: "red" }}>{formik.errors.Idti_soli}</h6>
+                <div className="cont-label">
+                  <div className="contenedor-flex">
+                    <label className="cont__label-input">Nombre </label>
+                    <input
+                      type="text"
+                      name="Nom_solicit"
+                      className="Border"
+                      onChange={formik.handleChange}
+                      required
+                    />
+                  </div>
                   <h6 style={{ color: "red" }}>{formik.errors.Nom_solicit}</h6>
-                </label>
-                <label className="label-20">
-                  No. Identificación{" "}
-                  <input
-                    type="number"
-                    name="No_solicit"
-                    className="Border"
-                    onChange={formik.handleChange}
-                    required
-                  />
+                  <div className="contenedor-flex">
+                    <label className="cont__label-input">
+                      No. Identificación{" "}
+                    </label>
+                    <input
+                      type="number"
+                      name="No_solicit"
+                      className="Border"
+                      onChange={formik.handleChange}
+                      required
+                    />
+                  </div>
                   <h6 style={{ color: "red" }}>{formik.errors.No_solicit}</h6>
-                </label>
+                </div>
               </div>
             </div>
           </div>
@@ -2904,61 +2867,39 @@ const PersonaJuridica = () => {
               libre en el presente formato y con la finalidad que LAS ENTIDADES
               adelanten dicho proceso.
             </p>
-            <div>
-              <Col>
-                <label className="Observaciones1">
-                  <p> Observaciones</p>
-                  <input
-                    className="Observaciones"
-                    type="text"
-                    name="Obser"
-                    onChange={formik.handleChange}
-                  />
-                </label>
-                <h6 style={{ color: "red" }}>{formik.errors.Obser}</h6>
-              </Col>
+            <div className="cont__label-p">
+              <label className="Observaciones1">
+                <p className="cont-p"> Observaciones</p>
+                <input
+                  className="Observaciones"
+                  type="text"
+                  name="Obser"
+                  onChange={formik.handleChange}
+                />
+              </label>
+              <h6 style={{ color: "red" }}>{formik.errors.Obser}</h6>
             </div>
           </div>
 
           <div className="col-md-3" id="Container-1">
             <label>
-              <Row>
-                <input
-                  className="Row"
-                  type="text"
-                  name="Firma_vend"
-                  onChange={formik.handleChange}
-                ></input>
-                <p>Firma</p>
-              </Row>
+              <input
+                className="Row"
+                type="text"
+                name="Firma_vend"
+                onChange={formik.handleChange}
+              ></input>
+              <p>Firma</p>
               <h6 style={{ color: "red" }}>{formik.errors.Firma_vend}</h6>
             </label>
           </div>
           <div className="col-md-12">
-            <Button 
-           
-            type="submit" className="BOTON" variant="primary">
+            <Button type="submit" className="BOTON" variant="primary">
               Guardar
             </Button>
           </div>
         </form>
       </div>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          // Define default options
-          className: "",
-          duration: 3000,
-          style: {
-            background: "#008000",
-            color: "#ffff",
-          },
-        }}
-      />
     </div>
   );
 };

@@ -1,11 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.contenedor-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .Titulo-principal {
   text-align: center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 400%;
   color: black;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding: 10px;
+}
+.flex-item:first-child {
+  flex-grow: 1;
+}
+
+.flex-item {
+  flex-grow: 5;
+  margin: 5px;
+  padding: 5px;
 }
 
 #CIRCULO {
@@ -94,7 +122,6 @@
   display: grid;
   font-weight: 700;
   padding: 6px;
-
   color: rgb(7, 5, 5);
   text-align: left;
 }
@@ -107,10 +134,10 @@
 }
 
 .label-4 {
+  width: 50%;
   text-align: left;
-  width: 220px;
   font-weight: 700;
-  padding: 10.5px;
+  padding: 10px;
   cursor: pointer;
   color: rgb(7, 5, 5);
 }
@@ -227,7 +254,8 @@
   padding: 10px;
   cursor: pointer;
   color: rgb(7, 5, 5);
-  float: left;
+  width: 100%;
+  text-align: start;
 }
 
 .label-19 {
@@ -244,15 +272,14 @@
   font-weight: 700;
   padding: 10px;
   color: rgb(7, 5, 5);
-  float: left;
+  width: 40%;
+  text-align: start;
 }
 
 .label-22 {
-  height: 63px;
+  width: 60%;
   padding: 10px;
-  margin: 0;
-  text-align: left;
-  display: block;
+  text-align: end;
 }
 
 .label-23 {
@@ -270,6 +297,7 @@
   border-width: 1px;
   border-radius: 5px;
   border-style: solid;
+  width: 100%;
 }
 
 .Border-2 {
@@ -285,7 +313,7 @@
   border-width: 1px;
   border-radius: 5px;
   border-style: solid;
-  max-width: 160px;
+  width: 100%;
 }
 
 .Border-4 {
@@ -440,9 +468,9 @@
 }
 
 .Texto-5 {
-  display: grid;
   padding: 6px;
   text-align: left;
+  width: 100%;
 }
 .Col-2 {
   border-color: #000000;
@@ -493,7 +521,6 @@
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
-  float: left;
 }
 
 #Container-3 {
@@ -516,12 +543,14 @@
 }
 
 #Container-7 {
+  display: flex;
+  flex-direction: column;
   border-color: #000000;
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
-  height: 70px;
 }
+
 
 .Div {
   text-align: left;
@@ -555,23 +584,36 @@
   color: rgb(7, 5, 5);
 }
 
+.cont__label-p {
+  width: 100%;
+}
+
 .Observaciones {
+  margin-bottom: 30px;
+  width: 100%;
   outline: none;
   border: none;
   background: none;
-  font-size: 8px;
-  width: 100px;
+  font-size: 15px;
   border-bottom-style: outset;
   border-bottom-width: 1px;
 }
 .Observaciones1 {
-  float: left;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
 }
 
-.float-left {
-  float: left;
-  margin-top: 10px;
+.cont-p {
+  text-align: left;
+}
+
+.cont-label {
+  width: 100%;
+  text-align: center;
+}
+
+.cont__label-input {
+  margin: 10px;
 }
 
 .padding {
@@ -595,7 +637,7 @@
   padding: 1px;
   cursor: pointer;
   color: white;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 130%;
   text-align: center;
   background-color: 157ee0;
@@ -610,23 +652,29 @@
 @media screen and (max-width: 700px) {
   .cursor-pointer {
     cursor: pointer;
-    height:10px;
+    height: 10px;
   }
 }
 
-#cir2{
+#cir2 {
   cursor: pointer;
   font-size: 50px;
   color: hsl(204, 100%, 49%);
 }
 
 @media screen and (max-width: 700px) {
-#cir2{
-  cursor: pointer;
-  font-size: 35px;
-  background-color: #ebf5fb;
+  #cir2 {
+    cursor: pointer;
+    font-size: 35px;
+    background-color: #ebf5fb;
+  }
 }
-}
-#cir2:hover{
+#cir2:hover {
   color: hsl(219, 98%, 52%);
+}
+
+@media screen and (max-width: 500px) { 
+  h6 { 
+    font-size: 8px; 
+  } 
 }

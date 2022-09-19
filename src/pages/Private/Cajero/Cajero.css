@@ -21,8 +21,6 @@
 .BOTON01{
   margin-left: 10px;
 }
-.Contenedor-Principal{
-}
 
 .TITULO {
   font-family: 'Quicksand', sans-serif;
@@ -180,11 +178,16 @@
 }
 
 .ErrorTitle01{
+  display: flex;
   background-Color: red;
   padding: 10px;
   border-Radius: 8px;
   color: white;
   margin-Top: 20px;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  letter-spacing: -2px;
 }
 
 /* nueva adquisicion */
@@ -379,3 +382,6 @@ text-align: center;
   }
 }
 
+a {
+  text-decoration: none;
+}

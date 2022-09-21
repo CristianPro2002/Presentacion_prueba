@@ -35,16 +35,16 @@ const CajeroP = () => {
     useModalCajeros();
   const {
     CajeroPactions,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    rest1,
-    rest2,
-    rest3,
-    rest4,
-    rest5,
+    sumCaj1,
+    sumCaj2,
+    sumCaj3,
+    sumCaj4,
+    sumCaj5,
+    restCaj1,
+    restCaj2,
+    restCaj3,
+    restCaj4,
+    restCaj5,
   } = useCajeroP();
 
   const ConsultaFatherM1 = () => {
@@ -74,7 +74,7 @@ const CajeroP = () => {
 
   const ConsultaFatherPrincipal = () => {
     CajeroPactions.DeleteValues();
-    if (CajeroPactions.DeleteValues()) {
+    useEffect(() => {
       CajeroPactions.ConsultaValue1();
       CajeroPactions.ConsultaValue2();
       CajeroPactions.ConsultaValue3();
@@ -85,71 +85,8 @@ const CajeroP = () => {
       CajeroPactions.ConsultaRest3();
       CajeroPactions.ConsultaRest4();
       CajeroPactions.ConsultaRest5();
-    }
+    }, []);
   };
-
-  const initialValue = 0;
-  const sumCaj1 = value1
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const sumCaj2 = value2
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const sumCaj3 = value3
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const sumCaj4 = value4
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const sumCaj5 = value5
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-
-  const restCaj1 = rest1
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const restCaj2 = rest2
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const restCaj3 = rest3
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const restCaj4 = rest4
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
-  const restCaj5 = rest5
-    .map((item) => parseInt(item.Valor))
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
-    );
 
   const ValorC1 = sumCaj1 - restCaj1;
   const ValorC2 = sumCaj2 - restCaj2;
@@ -159,24 +96,6 @@ const CajeroP = () => {
 
   const sumTotal = ValorC1 + ValorC2 + ValorC3 + ValorC4 + ValorC5;
   let Navigate = useNavigate();
-
-  useEffect(() => {
-    ModalesData.ConsultaM1();
-    ModalesData.ConsultaM2();
-    ModalesData.ConsultaM3();
-    ModalesData.ConsultaM4();
-    ModalesData.ConsultaM5();
-    CajeroPactions.ConsultaValue1();
-    CajeroPactions.ConsultaValue2();
-    CajeroPactions.ConsultaValue3();
-    CajeroPactions.ConsultaValue4();
-    CajeroPactions.ConsultaValue5();
-    CajeroPactions.ConsultaRest1();
-    CajeroPactions.ConsultaRest2();
-    CajeroPactions.ConsultaRest3();
-    CajeroPactions.ConsultaRest4();
-    CajeroPactions.ConsultaRest5();
-  }, []);
 
   function separator(numb) {
     var str = numb.toString().split(".");
@@ -210,7 +129,7 @@ const CajeroP = () => {
                   id="administrar"
                   onClick={() => ConsultaFatherM1()}
                 >
-                  Ver registros
+                  Ver movimientos
                 </button>
               </div>
             </div>
@@ -225,7 +144,7 @@ const CajeroP = () => {
                   id="administrar"
                   onClick={() => ConsultaFatherM2()}
                 >
-                  Ver registros
+                  Ver movimientos
                 </button>
               </div>
             </div>
@@ -240,7 +159,7 @@ const CajeroP = () => {
                   id="administrar"
                   onClick={() => ConsultaFatherM3()}
                 >
-                  Ver registros
+                  Ver movimientos
                 </button>
               </div>
             </div>
@@ -255,7 +174,7 @@ const CajeroP = () => {
                   id="administrar"
                   onClick={() => ConsultaFatherM4()}
                 >
-                  Ver registros
+                  Ver movimientos
                 </button>
               </div>
             </div>
@@ -270,7 +189,7 @@ const CajeroP = () => {
                   id="administrar"
                   onClick={() => ConsultaFatherM5()}
                 >
-                  Ver registros
+                  Ver movimientos
                 </button>
               </div>
             </div>
@@ -288,7 +207,7 @@ const CajeroP = () => {
               </button>
             </div>
             <div className="textointerno">
-              <h3 className="textointernoh3">Valor Total:</h3>
+              <h3 className="textointernoh3">Saldo total de oficina:</h3>
               <p className="textointernop">{separator(sumTotal)}</p>
             </div>
           </div>

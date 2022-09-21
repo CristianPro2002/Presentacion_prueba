@@ -861,6 +861,130 @@ if($_POST['METHOD']=='CANCELSOLIJ'){
     exit();
 }
 
+// if($_POST['METHOD']=='DELETETOTAL'){
+//     unset($_POST['METHOD']);
+//     $query="DELETE FROM act_val";
+//     $resultado=mysqli_query($conexion, $query);
+//     if($resultado == 1){
+//         $query = "DELETE FROM act_cli";
+//         $resultado2=mysqli_query($conexion, $query);
+//         if($resultado2 == 1){
+//             $query = "DELETE FROM cuenta_c";
+//             $resultado3=mysqli_query($conexion, $query);
+//             if($resultado3 == 1){
+//                 $query = "DELETE FROM cuenta_j";
+//                 $resultado4=mysqli_query($conexion, $query);
+//                 if($resultado4 == 1){
+//                     $query = "DELETE FROM cuenta_j";
+//                     $resultado4=mysqli_query($conexion, $query);
+//                 }else{
+//                     echo ("error en la cuarta eliminacion");
+//                 }
+//             }else{
+//                 echo ("error en la tercera eliminacion");
+//             }
+//         }else{
+//             echo ("error en la segunda eliminacion");
+//         }
+//     }else{
+//         echo ("error en la primera eliminacion");
+//     }
+//     header("HTTP/1.1 200 OK");
+//     exit();
+// }
+
+if($_POST['METHOD']=='DELETETOTAL'){
+    unset($_POST['METHOD']);
+    $query="DELETE FROM act_val";
+    $resultado=mysqli_query($conexion, $query);
+
+    $query2 = "DELETE FROM act_cli";
+    $resultado2=mysqli_query($conexion, $query2);
+     
+    $query3 = "DELETE FROM cuenta_c";
+    $resultado3=mysqli_query($conexion, $query3);
+          
+    $query4 = "DELETE FROM cuenta_j";
+    $resultado4=mysqli_query($conexion, $query4);
+
+    $query5 = "DELETE FROM est_soli";
+    $resultado5=mysqli_query($conexion, $query5);
+
+    $query6 = "DELETE FROM est_solij";
+    $resultado6=mysqli_query($conexion, $query6);
+
+    $query7 = "DELETE FROM reg_soli";
+    $resultado7=mysqli_query($conexion, $query7);
+
+    $query8 = "DELETE FROM reg_solij";
+    $resultado8=mysqli_query($conexion, $query8);
+
+    $query9 = "DELETE FROM client_co";
+    $resultado9=mysqli_query($conexion, $query9);
+    
+    $query10 = "DELETE FROM entidad";
+    $resultado10=mysqli_query($conexion, $query10);
+
+    $query11 = "DELETE FROM cont_ent";
+    $resultado11=mysqli_query($conexion, $query11);
+
+    $query12 = "DELETE FROM repr_le";
+    $resultado12=mysqli_query($conexion, $query12);
+
+    $query13 = "DELETE FROM solicitante";
+    $resultado13=mysqli_query($conexion, $query13);
+
+    $query14 = "DELETE FROM vendedor";
+    $resultado14=mysqli_query($conexion, $query14);
+
+    //Incremental en 1
+
+    $query15 = "ALTER TABLE act_val AUTO_INCREMENT = 1";
+    $resultado15=mysqli_query($conexion, $query15);
+
+    $query16 = "ALTER TABLE act_cli AUTO_INCREMENT = 1";
+    $resultado16=mysqli_query($conexion, $query16);
+
+    $query17 = "ALTER TABLE cuenta_c AUTO_INCREMENT = 1";
+    $resultado17=mysqli_query($conexion, $query17);
+
+    $query18 = "ALTER TABLE cuenta_j AUTO_INCREMENT = 1";
+    $resultado18=mysqli_query($conexion, $query18);
+
+    $query19 = "ALTER TABLE est_soli AUTO_INCREMENT = 1";
+    $resultado19=mysqli_query($conexion, $query19);
+
+    $query20 = "ALTER TABLE est_solij AUTO_INCREMENT = 1";
+    $resultado20=mysqli_query($conexion, $query20);
+
+    $query21 = "ALTER TABLE reg_soli AUTO_INCREMENT = 1";
+    $resultado21=mysqli_query($conexion, $query21);
+
+    $query22 = "ALTER TABLE reg_solij AUTO_INCREMENT = 1";
+    $resultado22=mysqli_query($conexion, $query22);
+
+    $query23 = "ALTER TABLE client_co AUTO_INCREMENT = 1";
+    $resultado23=mysqli_query($conexion, $query23);
+
+    $query24 = "ALTER TABLE entidad AUTO_INCREMENT = 1";
+    $resultado24=mysqli_query($conexion, $query24);
+
+    $query25 = "ALTER TABLE cont_ent AUTO_INCREMENT = 1";
+    $resultado25=mysqli_query($conexion, $query25);
+
+    $query26 = "ALTER TABLE repr_le AUTO_INCREMENT = 1";
+    $resultado26=mysqli_query($conexion, $query26);
+
+    $query27 = "ALTER TABLE solicitante AUTO_INCREMENT = 1";
+    $resultado27=mysqli_query($conexion, $query27);
+
+    $query28 = "ALTER TABLE vendedor AUTO_INCREMENT = 1";
+    $resultado28=mysqli_query($conexion, $query28);
+          
+    header("HTTP/1.1 200 OK");
+    exit();
+}
+
 header("HTTP/1.1 400 Bad Request");
 
 

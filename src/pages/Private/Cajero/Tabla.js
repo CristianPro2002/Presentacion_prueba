@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Tabla.css";
 import { AiFillPrinter } from "react-icons/ai";
 import DataTable from "react-data-table-component";
@@ -58,14 +58,10 @@ const paginacionOpciones = {
   selectAllRowsItemText: "Todos",
 };
 
-const Tabla = () => {
+const Tabla = ({ numeroCajero, cajero, link }) => {
+  const { TablaActions, data, setData, tablaUsuarios } = useTablaCajero();
+
   const [busqueda, setBusqueda] = useState("");
-  const { TablaActions, data, setData, tablaUsuarios } = useTablaCajero({});
-
-  useEffect(() => {
-    TablaActions.peticionGet();
-  }, []);
-
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
@@ -86,6 +82,10 @@ const Tabla = () => {
 
   let Navigate = useNavigate();
 
+  useEffect(() => {
+    TablaActions.getCuenta(cajero);
+  }, []);
+
   return (
     <div className="table-responsive Background">
       <br></br>
@@ -98,7 +98,7 @@ const Tabla = () => {
       </div>
       <center>
         {" "}
-        <h1 className="TITULO">Registro de Cajero</h1>
+        <h1 className="TITULO">{numeroCajero}</h1>
       </center>
       <br></br>
       <div className="crud">
@@ -122,11 +122,7 @@ const Tabla = () => {
                 />
               </div>
               <div className="col-md-3">
-                <a
-                  className="reporte"
-                  href="http://localhost:8080/documen"
-                  target="_blank"
-                >
+                <a className="reporte" href={link} target="_blank">
                   <AiFillPrinter />
                 </a>
               </div>
@@ -134,13 +130,6 @@ const Tabla = () => {
           }
           subHeaderAlign="right"
           noDataComponent="No se encuentra resultados."
-
-          /* <input type="number"
-         placeholder="Buscar documento" 
-         className="w-25 form-control search"
-         value={search}
-         onChange={(e) => setSearch(e.target.value)}
-         /> */
         />
       </div>
     </div>

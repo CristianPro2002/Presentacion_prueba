@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const useModalCajeros = () => {
   const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
@@ -48,6 +48,14 @@ export const useModalCajeros = () => {
       setDatam5(response.data);
     });
   };
+
+  useEffect(() => {
+    ConsultaM1();
+    ConsultaM2();
+    ConsultaM3();
+    ConsultaM4();
+    ConsultaM5();
+  }, []);
 
   const ModalesData = {
     ConsultaM1,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const useCajeroP = () => {
@@ -102,6 +102,82 @@ export const useCajeroP = () => {
     await axios.post(baseUrl2, f).then((response) => {});
   };
 
+  const initialValue = 0;
+  const sumCaj1 = value1
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const sumCaj2 = value2
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const sumCaj3 = value3
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const sumCaj4 = value4
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const sumCaj5 = value5
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+
+  const restCaj1 = rest1
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const restCaj2 = rest2
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const restCaj3 = rest3
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const restCaj4 = rest4
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+  const restCaj5 = rest5
+    .map((item) => parseInt(item.Valor))
+    .reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    );
+
+  useEffect(() => {
+    ConsultaValue1();
+    ConsultaValue2();
+    ConsultaValue3();
+    ConsultaValue4();
+    ConsultaValue5();
+    ConsultaRest1();
+    ConsultaRest2();
+    ConsultaRest3();
+    ConsultaRest4();
+    ConsultaRest5();
+  }, []);
+
   const CajeroPactions = {
     ConsultaValue1,
     ConsultaValue2,
@@ -118,15 +194,15 @@ export const useCajeroP = () => {
 
   return {
     CajeroPactions,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    rest1,
-    rest2,
-    rest3,
-    rest4,
-    rest5,
+    sumCaj1,
+    sumCaj2,
+    sumCaj3,
+    sumCaj4,
+    sumCaj5,
+    restCaj1,
+    restCaj2,
+    restCaj3,
+    restCaj4,
+    restCaj5,
   };
 };

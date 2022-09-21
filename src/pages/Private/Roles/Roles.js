@@ -13,12 +13,14 @@ import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
 import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
 import useAuthContext from "../../../Components/hooks/useAuthContext";
+import axios from "axios";
 
 const Roles = () => {
   const notify = () => toast("  Selecciona un numero de rol❕");
   const { logout } = useAuthContext();
   let Navigate = useNavigate();
 
+  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const [estadoUser, setEstadoUser] = useState(false);
 
   const validar3 = (e) => {
@@ -73,11 +75,24 @@ const Roles = () => {
     validacion.focus();
   };
 
+  const peticionDeleteTotal = async () => {
+    var f = new FormData();
+    f.append("METHOD", "DELETETOTAL");
+    await axios.post(baseUrl, f).then((response) => {
+      console.log("Eliminados", response.data);
+    });
+  };
+
   return (
     <div className="principal2">
       <div className="fondo" id="dark-mode">
         <div className="fondo2">
-          <div className="f2">
+          <div className="f201">
+            <div className="cont-cerrar02">
+              <button className="btn btn-danger" onClick={()=> peticionDeleteTotal()}>
+                Eliminar todos los registros
+              </button>
+            </div>
             <div className="cont-cerrar01">
               <button
                 className="btn btn-danger"

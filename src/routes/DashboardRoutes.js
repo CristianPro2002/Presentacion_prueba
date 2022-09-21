@@ -45,7 +45,7 @@ import {
   Cajero4,
   Cajero5,
 } from "../views/viewsCajero";
-import Tabla from "../pages/Private/Cajero/Tabla";
+import { TablaView1, TablaView2, TablaView3, TablaView4, TablaView5 } from "../views/viewsTableCajero";
 import Rolasesor from "../pages/Private/Roles/Rasesor/Rolasesor";
 import Rolgerente from "../pages/Private/Roles/Rgerente/Rolgerente";
 import Rolcajero from "../pages/Private/Roles/Rcajero/Rolcajero";
@@ -95,7 +95,11 @@ const DashboardRoutes = () => {
             <Route path="/Cajero3" element={<Cajero3 />} />
             <Route path="/Cajero4" element={<Cajero4 />} />
             <Route path="/Cajero5" element={<Cajero5 />} />
-            <Route path="/Tabla" element={<Tabla />} />
+            <Route path="/Tabla1" element={<TablaView1 />} />
+            <Route path="/Tabla2" element={<TablaView2 />} />
+            <Route path="/Tabla3" element={<TablaView3 />} />
+            <Route path="/Tabla4" element={<TablaView4 />} />
+            <Route path="/Tabla5" element={<TablaView5 />} />
             <Route path="/Rcajerop" element={<Rolcajerop />} />
             <Route path="/Rcajero" element={<Rolcajero />} />
             <Route path="/Rgerente" element={<Rolgerente />} />
@@ -144,7 +148,11 @@ const DashboardRoutes = () => {
             <Route path="/Cajero3" element={<Cajero3 />} />
             <Route path="/Cajero4" element={<Cajero4 />} />
             <Route path="/Cajero5" element={<Cajero5 />} />
-            <Route path="/Tabla" element={<Tabla />} />
+            <Route path="/Tabla1" element={<TablaView1 />} />
+            <Route path="/Tabla2" element={<TablaView2 />} />
+            <Route path="/Tabla3" element={<TablaView3 />} />
+            <Route path="/Tabla4" element={<TablaView4 />} />
+            <Route path="/Tabla5" element={<TablaView5 />} />
             <Route path="/Rcajero" element={<Rolcajero />} />
           </>
         ) : Rol == 5 ? (

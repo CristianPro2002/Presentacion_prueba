@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import imagen from "../../../assets/Imagenes/User-Login.png";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 import { useCajero } from "../../../Components/hooks/useCajero";
 import {
@@ -15,7 +17,7 @@ import {
   McajeroReporte2,
 } from "../../../Components/Modal/Mcajero";
 
-export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
+export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
   let Navigate = useNavigate();
   const notifyCajero = () => toast(" Por favor ingrese un numero de cuenta❕");
   const {
@@ -52,9 +54,11 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
     for (var i = 0; i < getCuentaC.length || i < getCuentaJ.length; i++) {
       if (dataUsuario.No_cuenta == getCuentaC[i].No_cuenta) {
         CajeroActions.peticionPost(Estado);
+        CajeroActions.peticionPostFalse();
       } else if (dataUsuario.No_cuenta == getCuentaJ[i].No_cuenta) {
         Estado = false;
         CajeroActions.peticionPost(Estado);
+        CajeroActions.peticionPostFalse();
       }
     }
   };
@@ -102,6 +106,12 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
       [name]: value,
     }));
   };
+
+  function separator(numb) {
+    var str = numb.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return str.join(".");
+  }
 
   useEffect(() => {
     CajeroActions.peticionGetCuentaC();
@@ -162,6 +172,23 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
             <div className="Container-2">
               <div className="container2">
                 <Container>
+                  <div className="cont-popover">
+                  <OverlayTrigger
+                    trigger="click"
+                    key="top"
+                    placement="top"
+                    overlay={
+                      <Popover id={`popover-positioned-top`}>
+                        <Popover.Header as="h3">{`Cantidad disponible`}</Popover.Header>
+                        <Popover.Body>
+                          <strong><center>$ {separator(Valor)}</center></strong>
+                        </Popover.Body>
+                      </Popover>
+                    }
+                  >
+                    <Button variant="primary">Ver disponible</Button>
+                  </OverlayTrigger>
+                  </div>
                   <Form
                     action="http://localhost:8080/Recibo/Recibo.php"
                     method="post"
@@ -179,14 +206,13 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                         <h1 className="title2">Datos del cliente</h1>
                       </div>
                     </div>
-
                     {!estadoPeticion ? (
                       <>
                         <h3 className="ErrorTitle01">
                           ¡Por favor ingresa un numero de cuenta!
                         </h3>
                         <div>
-                          <Link to="/Tabla">Ver tabla de registro</Link>
+                          <Link to={onclick}>Ver tabla de registro</Link>
                         </div>
                       </>
                     ) : (
@@ -289,7 +315,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
                             </Button>
                           </div>
                           <div>
-                            <Link to="/Tabla">Ver tabla de registro</Link>
+                            <Link to={onclick}>Ver tabla de registro</Link>
                           </div>
                         </div>
                       </>
@@ -398,23 +424,22 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD }) => {
           dataUsuarioReportDate={dataUsuarioReportDate}
         />
 
-<Toaster
-        position="top-right"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{}}
-        toastOptions={{
-          // Define default options
-          className: "",
-          duration: 3000,
-          style: {
-            background: "#FF0000",
-            color: "#ffff",
-          },
-        }}
-      />
-
+        <Toaster
+          position="top-right"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            // Define default options
+            className: "",
+            duration: 3000,
+            style: {
+              background: "#FF0000",
+              color: "#ffff",
+            },
+          }}
+        />
       </div>
     </div>
   );

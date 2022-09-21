@@ -134,6 +134,16 @@ if($_POST['METHOD']=='DELETEVALUES'){
     exit();
 }
 
+if($_POST['METHOD']=='GETCJ1'){
+    unset($_POST['METHOD']);
+    $Cajero=$_POST['Cajero'];
+    $query= "select * from act_cli where No_cajero = '$Cajero'";
+    $resultado=metodoGet($query);
+    echo json_encode($resultado->fetchAll());  
+    header("HTTP/1.1 200 OK");
+    exit();   
+}
+
 header("HTTP/1.1 400 Bad Request");
 
 

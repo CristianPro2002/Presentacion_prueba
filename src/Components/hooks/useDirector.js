@@ -1,17 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { Principal, solicitudReg1, solicitudReg2 } from "../../helpers/url";
 
 export const useDirector = ({
   abrirCerrarModalInsertar,
   abrirCerrarModalEditar,
   abrirCerrarModalEliminar,
 }) => {
-    
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-  const baseUrlUser = "http://localhost:8080/Banca/bd_crud/user.php";
-  const solicitudReg = "http://localhost:8080/Banca/bd_crud/solicitud1.php";
-  const solicitudReg2 = "http://localhost:8080/Banca/bd_crud/solicitud2.php";
 
   const [data2, setData2] = useState([]);
   const [tablaUsuarios, setTablaUsuarios] = useState([]);
@@ -33,7 +29,7 @@ export const useDirector = ({
 
   const peticionGetData = async () => {
     await axios
-      .get(baseUrl)
+      .get(Principal)
       .then((response) => {
         setData2(response.data);
         setTablaUsuarios(response.data);
@@ -44,7 +40,7 @@ export const useDirector = ({
   };
 
   const peticionGet3 = async () => {
-    await axios.get(solicitudReg).then((response) => {
+    await axios.get(solicitudReg1).then((response) => {
       setSolicitud(response.data);
     });
   };
@@ -68,7 +64,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     f.append("Idti_rol", dataUsuario.Idti_rol);
     f.append("METHOD", "POST");
     await axios
-      .post(baseUrl, f)
+      .post(Principal, f)
       .then((response) => {
         setData2(data2.concat(response.data));
         abrirCerrarModalInsertar();
@@ -82,7 +78,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetRoles = async () => {
     var f = new FormData();
     f.append("METHOD", "ROLES");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setDato(response.data);
     });
   };
@@ -95,7 +91,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     f.append("Idti_rol", dataUsuario.Idti_rol);
     f.append("METHOD", "PUT");
     await axios
-      .post(baseUrl, f, { params: { Id_usu: dataUsuario.Id_usu } })
+      .post(Principal, f, { params: { Id_usu: dataUsuario.Id_usu } })
       .then((response) => {
         var dataNueva = data2;
         dataNueva.map((Usuario) => {
@@ -119,7 +115,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     var f = new FormData();
     f.append("METHOD", "DELETE");
     await axios
-      .post(baseUrl, f, { params: { Id_usu: dataUsuario.Id_usu } })
+      .post(Principal, f, { params: { Id_usu: dataUsuario.Id_usu } })
       .then((response) => {
         setData2(
           data2.filter((Usuario) => Usuario.Id_usu !== dataUsuario.Id_usu)
@@ -137,7 +133,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetVDirect = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLD");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValiDi(response.data);
     });
   };
@@ -145,7 +141,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetVAsesor = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLA");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValiAse(response.data);
     });
   };
@@ -153,7 +149,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetVGerente = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLG");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValiGer(response.data);
     });
   };
@@ -161,7 +157,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetVCajero = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLC");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValiCaj(response.data);
     });
   };
@@ -169,7 +165,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   const peticionGetVCajeroP = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLCP");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValiCajP(response.data);
     });
   };

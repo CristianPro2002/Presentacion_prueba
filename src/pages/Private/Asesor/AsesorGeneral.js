@@ -11,13 +11,13 @@ import { useAsesor } from "../../../Components/hooks/useAsesor";
 import {AppContext} from "../../../stateManagement/provider";
 
 const Asesor = ({ onclick, numeroAsesor }) => {
-  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
+  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect ] = useContext(AppContext);
 
-  const notify = () => toast("  Selecciona una opcion❕");
-  const notify2 = () => toast("  Este usuario no existe❕");
+  const notify = () => toast.error("  Selecciona una opcion❕");
+  const notify2 = () => toast.error("  Este usuario no existe❕");
   let Navigate = useNavigate();
 
-  const { AsesorActions, dataUsuario, setDataUsuario, dataSelect, setDataSelect } = useAsesor({notify2});
+  const { AsesorActions, setDataUsuario, dataSelect, setDataSelect } = useAsesor({notify2});
 
   const validar = (e) => {
     var validacion = document.getElementById("Eleccion1");
@@ -224,14 +224,8 @@ const Asesor = ({ onclick, numeroAsesor }) => {
           // Define default options
           className: "",
           duration: 3000,
-          style: {
-            background: "#FF0000",
-            color: "#ffff",
-          },
         }}
       />
-
-      
     </div>
   );
 };

@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { useDirector } from "../../../Components/hooks/useDirector";
+import { imprimirRoles } from "../../../helpers/url";
 
 export const Tabla_director = () => {
   const [busqueda, setBusqueda] = useState("");
@@ -279,7 +280,7 @@ export const Tabla_director = () => {
           <div className="div_report">
             <a
               className="report"
-              href="http://localhost:8080/imprimir_roles"
+              href={imprimirRoles}
               target="_blank"
             >
               <AiFillPrinter />

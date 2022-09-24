@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./Estilos.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Col, Row } from "react-bootstrap";
@@ -6,15 +6,12 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import { useRegFormPn } from "../../../../Components/hooks/useRegFormPn";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import {AppContext} from "../../../../stateManagement/provider";
-
 
 const PersonaNatural = () => {
   let Navigate = useNavigate();
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
 
   const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
 

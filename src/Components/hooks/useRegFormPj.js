@@ -2,11 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { Principal } from "../../helpers/url";
+
 export const useRegFormPj = () => {
   let Navigate = useNavigate();
-
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-
   const [data, setData] = useState([]);
   const notifyJuridica = () => toast.success("El formulario se ha enviado Exitosamente ✔");
   const peticionPost = async (dataForm) => {
@@ -129,7 +128,7 @@ export const useRegFormPj = () => {
     f.append("Firma_vend", dataForm.Firma_vend);
     f.append("METHOD", "FORMJ");
     await axios
-      .post(baseUrl, f)
+      .post(Principal, f)
       .then((response) => {
         setData(data.concat(response.data));
         notifyJuridica();

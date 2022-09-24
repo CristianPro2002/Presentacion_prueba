@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Principal, CajeroBackend } from "../../helpers/url";
+import toast, { Toaster } from "react-hot-toast";
 
 export const useCajeroP = () => {
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-  const baseUrl2 = "http://localhost:8080/Banca/bd_crud/cajero.php";
   const [value1, setValue1] = useState([]);
   const [value2, setValue2] = useState([]);
   const [value3, setValue3] = useState([]);
@@ -16,10 +16,12 @@ export const useCajeroP = () => {
   const [rest4, setRest4] = useState([]);
   const [rest5, setRest5] = useState([]);
 
+  const [ejecute, setEjecute] = useState(false);
+
   const ConsultaValue1 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE1");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValue1(response.data);
     });
   };
@@ -27,7 +29,7 @@ export const useCajeroP = () => {
   const ConsultaValue2 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE2");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValue2(response.data);
     });
   };
@@ -35,7 +37,7 @@ export const useCajeroP = () => {
   const ConsultaValue3 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE3");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValue3(response.data);
     });
   };
@@ -43,7 +45,7 @@ export const useCajeroP = () => {
   const ConsultaValue4 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE4");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValue4(response.data);
     });
   };
@@ -51,7 +53,7 @@ export const useCajeroP = () => {
   const ConsultaValue5 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE5");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setValue5(response.data);
     });
   };
@@ -59,7 +61,7 @@ export const useCajeroP = () => {
   const ConsultaRest1 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUEREST1");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setRest1(response.data);
     });
   };
@@ -67,7 +69,7 @@ export const useCajeroP = () => {
   const ConsultaRest2 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUEREST2");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setRest2(response.data);
     });
   };
@@ -75,7 +77,7 @@ export const useCajeroP = () => {
   const ConsultaRest3 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUEREST3");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setRest3(response.data);
     });
   };
@@ -83,7 +85,7 @@ export const useCajeroP = () => {
   const ConsultaRest4 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUEREST4");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setRest4(response.data);
     });
   };
@@ -91,7 +93,7 @@ export const useCajeroP = () => {
   const ConsultaRest5 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUEREST5");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setRest5(response.data);
     });
   };
@@ -99,7 +101,11 @@ export const useCajeroP = () => {
   const DeleteValues = async () => {
     var f = new FormData();
     f.append("METHOD", "DELETEVALUES");
-    await axios.post(baseUrl2, f).then((response) => {});
+    await axios.post(CajeroBackend, f).then((response) => {
+      if (response.data) {
+        toast.success("Valores eliminados correctamente");
+      }
+    });
   };
 
   const initialValue = 0;
@@ -176,6 +182,19 @@ export const useCajeroP = () => {
     ConsultaRest3();
     ConsultaRest4();
     ConsultaRest5();
+  }, [ejecute]);
+
+  useEffect(() => {
+    ConsultaValue1();
+    ConsultaValue2();
+    ConsultaValue3();
+    ConsultaValue4();
+    ConsultaValue5();
+    ConsultaRest1();
+    ConsultaRest2();
+    ConsultaRest3();
+    ConsultaRest4();
+    ConsultaRest5();
   }, []);
 
   const CajeroPactions = {
@@ -204,5 +223,6 @@ export const useCajeroP = () => {
     restCaj3,
     restCaj4,
     restCaj5,
+    setEjecute,
   };
 };

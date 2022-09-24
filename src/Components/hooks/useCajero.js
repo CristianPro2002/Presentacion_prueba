@@ -1,11 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Principal, CajeroBackend } from "../../helpers/url";
 
 export const useCajero = ({ numeroCajeroBD }) => {
-    
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/cajero.php";
-  const baseUrl2 = "http://localhost:8080/Banca/bd_crud/principal.php";
-
   const [getCuentaC, setGetCuentaC] = useState([]);
   const [getCuentaJ, setGetCuentaJ] = useState([]);
   const [data, setData] = useState([]);
@@ -32,16 +29,16 @@ export const useCajero = ({ numeroCajeroBD }) => {
   });
   const [dataUsuarioReport, setDataUsuarioReport] = useState({
     No_cuenta: "",
-  })
+  });
   const [dataUsuarioReportDate, setDataUsuarioReportDate] = useState({
     Min_date: "",
     Max_date: "",
-  })
+  });
 
   const peticionGetCuentaC = async () => {
     var f = new FormData();
     f.append("METHOD", "GETCUENTAC");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(CajeroBackend, f).then((response) => {
       setGetCuentaC(response.data);
     });
   };
@@ -49,13 +46,12 @@ export const useCajero = ({ numeroCajeroBD }) => {
   const peticionGetCuentaJ = async () => {
     var f = new FormData();
     f.append("METHOD", "GETCUENTAJ");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(CajeroBackend, f).then((response) => {
       setGetCuentaJ(response.data);
     });
   };
 
   const peticionPost = async (Estado) => {
-
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
@@ -65,13 +61,12 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("No_cuenta", dataUsuario.No_cuenta);
     f.append("Estado", Estado);
     f.append("METHOD", "POSTGET");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(CajeroBackend, f).then((response) => {
       setData(data.concat(response.data));
     });
   };
 
   const peticionPostFalse = async () => {
-
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
@@ -80,7 +75,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("Cajero", dataUsuario.Cajero);
     f.append("No_cuenta", dataUsuario.No_cuenta);
     f.append("METHOD", "POSTGETFALSE");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(CajeroBackend, f).then((response) => {
       console.log(response.data, "Realizado");
     });
   };
@@ -89,11 +84,11 @@ export const useCajero = ({ numeroCajeroBD }) => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuario.No_cuenta);
     f.append("METHOD", "CONSULTACAJERO");
-    await axios.post(baseUrl2, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setConsulta(response.data);
       if (response.data == []) {
         setEstadoPeticion(false);
-      }else {
+      } else {
         setEstadoPeticion(true);
         setDataUsuario({
           Id_act: String(response.data.Nit),
@@ -109,12 +104,12 @@ export const useCajero = ({ numeroCajeroBD }) => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuario.No_cuenta);
     f.append("METHOD", "CONSULTACAJERO2");
-    await axios.post(baseUrl2, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setConsulta2(response.data);
       if (response.data == []) {
         setEstadoPeticion(false);
         peticionGetCajero();
-      }else{
+      } else {
         setEstadoPeticion(true);
         setDataUsuario({
           Id_act: String(response.data.No_ide),
@@ -127,7 +122,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
   };
 
   const peticionGet = async () => {
-    await axios.get(baseUrl).then((response) => {
+    await axios.get(CajeroBackend).then((response) => {
       setData(response.data);
     });
   };
@@ -136,47 +131,59 @@ export const useCajero = ({ numeroCajeroBD }) => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuarioReport.No_cuenta);
     f.append("METHOD", "REPORTCUENTA");
-    await axios.post(baseUrl2, f).then((response) => {
-      setReportCuenta(response.data);
-      setNoCuenta(dataUsuarioReport.No_cuenta);
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+    await axios
+      .post(Principal, f)
+      .then((response) => {
+        setReportCuenta(response.data);
+        setNoCuenta(dataUsuarioReport.No_cuenta);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const peticionGetValueCuenta = async () => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuarioReport.No_cuenta);
     f.append("METHOD", "REPORTVALUEPCUENTA");
-    await axios.post(baseUrl2, f).then((response) => {
-      setReportValueC(response.data);  
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+    await axios
+      .post(Principal, f)
+      .then((response) => {
+        setReportValueC(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const peticionGetValueNCuenta = async () => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuarioReport.No_cuenta);
     f.append("METHOD", "REPORTVALUENCUENTA");
-    await axios.post(baseUrl2, f).then((response) => {
-      setReportValueR(response.data);   
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+    await axios
+      .post(Principal, f)
+      .then((response) => {
+        setReportValueR(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const peticionGetReportDate = async () => {
     var f = new FormData();
     f.append("Min_date", dataUsuarioReportDate.Min_date);
     f.append("Max_date", dataUsuarioReportDate.Max_date);
     f.append("METHOD", "REPORTCUENTADATE");
-    await axios.post(baseUrl2, f).then((response) => {
-      setReportCuentaDate(response.data);
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+    await axios
+      .post(Principal, f)
+      .then((response) => {
+        setReportCuentaDate(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const CajeroActions = {
     peticionGetCuentaC,

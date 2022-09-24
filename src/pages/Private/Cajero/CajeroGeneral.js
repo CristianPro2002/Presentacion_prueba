@@ -10,12 +10,12 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
-
 import { useCajero } from "../../../Components/hooks/useCajero";
 import {
   McajeroReporte,
   McajeroReporte2,
 } from "../../../Components/Modal/Mcajero";
+import { reciboBackend } from "../../../helpers/url";
 
 export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
   let Navigate = useNavigate();
@@ -190,7 +190,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
                   </OverlayTrigger>
                   </div>
                   <Form
-                    action="http://localhost:8080/Recibo/Recibo.php"
+                    action={reciboBackend}
                     method="post"
                   >
                     <div className="Contenedores2">

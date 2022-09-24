@@ -1,27 +1,18 @@
-import React, { useState, useContext, useEffect } from "react";
-import Button from "react-bootstrap/Button";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
 import "./Roles.css";
-import Cajeroimg from "../../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
 import useAuthContext from "../../../Components/hooks/useAuthContext";
 import axios from "axios";
+import { Principal } from "../../../helpers/url";
 
 const Roles = () => {
-  const notify = () => toast("  Selecciona un numero de rol❕");
+  const notify = () => toast.error("  Selecciona un numero de rol❕");
   const { logout } = useAuthContext();
   let Navigate = useNavigate();
-
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-  const [estadoUser, setEstadoUser] = useState(false);
 
   const validar3 = (e) => {
     var validacion = document.getElementById("Asesorv");
@@ -78,8 +69,8 @@ const Roles = () => {
   const peticionDeleteTotal = async () => {
     var f = new FormData();
     f.append("METHOD", "DELETETOTAL");
-    await axios.post(baseUrl, f).then((response) => {
-      console.log("Eliminados", response.data);
+    await axios.post(Principal, f).then((response) => {
+      toast.success("Los registros fueron eliminados satisfactoriamente")
     });
   };
 
@@ -93,7 +84,7 @@ const Roles = () => {
                 Eliminar todos los registros
               </button>
             </div>
-            <div className="cont-cerrar01">
+            <div className="cont-cerrar03">
               <button
                 className="btn btn-danger"
                 onClick={() => cerrarSesion()}
@@ -333,11 +324,7 @@ const Roles = () => {
         toastOptions={{
           // Define default options
           className: "",
-          duration: 3000,
-          style: {
-            background: "#FF0000",
-            color: "#ffff",
-          },
+          duration: 3000
         }}
       />
     </div>

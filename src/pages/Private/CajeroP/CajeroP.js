@@ -14,6 +14,7 @@ import {
 } from "../../../Components/Modal/McajeroP";
 import { useModalCajeros } from "../../../Components/hooks/useModalCajeros";
 import { useCajeroP } from "../../../Components/hooks/useCajeroP";
+import toast, { Toaster } from "react-hot-toast";
 
 const CajeroP = () => {
   const [mostrar, setMostrar] = useState(false);
@@ -45,6 +46,7 @@ const CajeroP = () => {
     restCaj3,
     restCaj4,
     restCaj5,
+    setEjecute,
   } = useCajeroP();
 
   const ConsultaFatherM1 = () => {
@@ -74,18 +76,7 @@ const CajeroP = () => {
 
   const ConsultaFatherPrincipal = () => {
     CajeroPactions.DeleteValues();
-    useEffect(() => {
-      CajeroPactions.ConsultaValue1();
-      CajeroPactions.ConsultaValue2();
-      CajeroPactions.ConsultaValue3();
-      CajeroPactions.ConsultaValue4();
-      CajeroPactions.ConsultaValue5();
-      CajeroPactions.ConsultaRest1();
-      CajeroPactions.ConsultaRest2();
-      CajeroPactions.ConsultaRest3();
-      CajeroPactions.ConsultaRest4();
-      CajeroPactions.ConsultaRest5();
-    }, []);
+    setEjecute(true);
   };
 
   const ValorC1 = sumCaj1 - restCaj1;
@@ -234,6 +225,7 @@ const CajeroP = () => {
         mostrarCinco={mostrarCinco}
         datam5={datam5}
       />
+      <Toaster position="top-right"/>
     </div>
   );
 };

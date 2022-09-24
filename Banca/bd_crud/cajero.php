@@ -127,8 +127,8 @@ if($_POST['METHOD']=='PUT'){
 
 if($_POST['METHOD']=='DELETEVALUES'){
     unset($_POST['METHOD']);
-    $query="DELETE FROM act_val";
-    $resultado=metodoDelete($query);
+    $query="TRUNCATE TABLE act_val";
+    $resultado=mysqli_query($conexion, $query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
     exit();

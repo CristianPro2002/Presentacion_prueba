@@ -276,26 +276,26 @@ const Msolicitud = ({
                 <Table striped borderless hover>
                   <thead>
                     <tr>
-                      <th>Numero de documento</th>
-                      <th>Primer Nombre</th>
-                      <th>Segundo Nombre</th>
-                      <th>Primer Apellido</th>
-                      <th>Segundo Apellido</th>
-                      <th>Ciudad</th>
-                      <th>Barrio</th>
-                      <th>Ingresos Mensuales</th>
+                      <th>Nit</th>
+                      <th>Nombre/razon social</th>
+                      <th>Nombre corto</th>
+                      <th>Fecha de constitucion</th>
+                      <th>Ciudad constitucion</th>
+                      <th>Ingresos Operacionales</th>
+                      <th>Ventas anuales</th>
+                      <th>Numero de empleados</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr key={detalle2.Nit}>
                       <td>{detalle2.Nit}</td>
                       <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
-                      <td>{detalle2.Nom_ra}</td>
+                      <td>{detalle2.Nom_cor}</td>
+                      <td>{detalle2.Fe_cons}</td>
+                      <td>{detalle2.Ciu_cons}</td>
+                      <td>{detalle2.Ing_op}</td>
+                      <td>{detalle2.vent_an}</td>
+                      <td>{detalle2.No_emp}</td>
                     </tr>
                   </tbody>
                 </Table>

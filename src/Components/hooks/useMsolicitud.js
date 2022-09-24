@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Principal } from "../../helpers/url";
 
 export const useMsolicitud = ({
   setSolicitud,
@@ -10,7 +11,6 @@ export const useMsolicitud = ({
   abrir,
   abrirpj,
 }) => {
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
   const [detalle, setDetalle] = useState([]);
   const [detalle2, setDetalle2] = useState([]);
   const [Identi, setIdenti] = useState([]);
@@ -25,7 +25,7 @@ export const useMsolicitud = ({
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLI");
     await axios
-      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
+      .post(Principal, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
       .then((response) => {
         setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
         cerrar2();
@@ -48,7 +48,7 @@ export const useMsolicitud = ({
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLIJ");
     await axios
-      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
+      .post(Principal, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
       .then((response) => {
         setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
         cerrar2();
@@ -70,7 +70,7 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("No_ide", No_ide);
     f.append("METHOD", "CONSULTAID3");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setDetalle(response.data);
       setIdenti(Id_reg);
       abrir();
@@ -83,7 +83,7 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("Nit", Nit);
     f.append("METHOD", "CONSULTAIPJ");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setDetalle2(response.data);
       setIdenti(Id_regj);
       abrirpj();
@@ -96,7 +96,7 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("METHOD", "DELETESOLI");
     await axios
-      .post(baseUrl, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
+      .post(Principal, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
       .then((response) => {
         setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
         document
@@ -117,7 +117,7 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("METHOD", "DELETESOLIJ");
     await axios
-      .post(baseUrl, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
+      .post(Principal, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
       .then((response) => {
         setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
         document

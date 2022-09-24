@@ -2,16 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-
+import { Principal } from "../../helpers/url";
 
 export const useRegFormPn = () => {
   let Navigate = useNavigate();
 
-  const baseUrl = "http://localhost:8080/Banca/bd_crud/principal.php";
-
   const [data, setData] = useState([]);
   const notifyNatural = () => toast.success("El formulario se ha enviado Exitosamente ✔");
-
 
   const peticionPost = async (dataForm) => {
     var f = new FormData();
@@ -101,7 +98,7 @@ export const useRegFormPn = () => {
     f.append("Obser", dataForm.Obser);
     f.append("Firma_vend", dataForm.Firma_vend);
     f.append("METHOD", "FORMN");
-    await axios.post(baseUrl, f).then((response) => {
+    await axios.post(Principal, f).then((response) => {
       setData(data.concat(response.data));
       notifyNatural()
       Navigate(-1);

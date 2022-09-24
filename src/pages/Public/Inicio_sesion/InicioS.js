@@ -23,7 +23,7 @@ const App = () => {
   const [formularioValido, cambiarFormularioValido] = useState(null);
   const [data2, setData2] = useContext(AppContext);
   const [dataUser, setDataUser] = useState([]);
-  const {URL_LOGIN, LoginActions} = useLogin();
+  const {LoginBackend, LoginActions} = useLogin();
   const {login} = useAuthContext();
 
   let Navigate = useNavigate();
@@ -47,7 +47,7 @@ const App = () => {
       Contra: refContraseña.current.value,
     };
 
-    const respuestaJson = await LoginActions.enviarData(URL_LOGIN, datos);
+    const respuestaJson = await LoginActions.enviarData(LoginBackend, datos);
     console.log("respuesta desde el evento", respuestaJson);
     const Rol = respuestaJson.Idti_rol;
     const Usuario = respuestaJson.Usuario;

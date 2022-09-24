@@ -1,8 +1,7 @@
 import React from "react";
+import { LoginBackend } from "../../helpers/url";
 
 export const useLogin = () => {
-  const URL_LOGIN = "http://localhost:8080/banca/bd_sesion/login.php";
-
   const enviarData = async (url, datos) => {
     const resp = await fetch(url, {
       method: "POST",
@@ -21,6 +20,6 @@ export const useLogin = () => {
 
   return {
     LoginActions,
-    URL_LOGIN,
+    LoginBackend,
   };
 };

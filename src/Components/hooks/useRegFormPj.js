@@ -1,14 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Principal } from "../../helpers/url";
 
 export const useRegFormPj = () => {
   let Navigate = useNavigate();
   const [data, setData] = useState([]);
-  const notifyJuridica = () => toast.success("El formulario se ha enviado Exitosamente ✔");
-  const peticionPost = async (dataForm) => {
+
+  const notifyJuridica = () =>
+    toast.success("El formulario se ha enviado Exitosamente ✔");
+
+  const peticionPost = async (dataForm, EstadoCuentas) => {
     var f = new FormData();
     f.append("Fe_dil", dataForm.Fe_dil);
     f.append("Idti_sol", dataForm.Idti_sol);
@@ -126,6 +129,7 @@ export const useRegFormPj = () => {
     f.append("Oficina", dataForm.Oficina);
     f.append("Obser", dataForm.Obser);
     f.append("Firma_vend", dataForm.Firma_vend);
+    f.append("estadoCuenta", EstadoCuentas);
     f.append("METHOD", "FORMJ");
     await axios
       .post(Principal, f)

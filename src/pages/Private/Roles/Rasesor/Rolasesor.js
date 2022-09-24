@@ -4,22 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
 import "./Rolasesor.css";
-import Cajeroimg from "../../../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
 import useAuthContext from "../../../../Components/hooks/useAuthContext";
 
-const Rolasesor = ({ setisLoggedIn }) => {
+const Rolasesor = () => {
   const notify = () =>
     toast("  Sin permisos para acceder a esta funcionalidad❕");
   const notify2 = () => toast("  Selecciona un numero de rol❕");
   let Navigate = useNavigate();
   const { logout } = useAuthContext();
 
+  /* eslint-disable */
   const Vasesor = (e) => {
     var validacion = document.getElementById("Asesorv");
     if (validacion.value == 1 || validacion.value == "") {
@@ -40,6 +35,8 @@ const Rolasesor = ({ setisLoggedIn }) => {
     } else notify2();
     validacion.focus();
   };
+
+  /* eslint-enable */
 
   const Vcajero = (e) => {
     notify();

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./CajeroP.css";
 import img111 from "../../../assets/Imagenes/pngwing.com.webp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import cajeroimgp from "../../../assets/Imagenes/cajero-4.webp";
 import {
   Mcajero1,
   Mcajero2,
@@ -14,24 +13,10 @@ import {
 } from "../../../Components/Modal/McajeroP";
 import { useModalCajeros } from "../../../Components/hooks/useModalCajeros";
 import { useCajeroP } from "../../../Components/hooks/useCajeroP";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { SpinnerLoadingDos } from "../../../Components/spinners";
 
 const CajeroP = () => {
-  const [mostrar, setMostrar] = useState(false);
-  const handleShow = () => setMostrar(!mostrar);
-
-  const [mostrarDos, setMostrarDos] = useState(false);
-  const handleShowDos = () => setMostrarDos(!mostrarDos);
-
-  const [mostrarTres, setMostrarTres] = useState(false);
-  const handleShowTres = () => setMostrarTres(!mostrarTres);
-
-  const [mostrarCuatro, setMostrarCuatro] = useState(false);
-  const handleShowCuatro = () => setMostrarCuatro(!mostrarCuatro);
-
-  const [mostrarCinco, setMostrarCinco] = useState(false);
-  const handleShowCinco = () => setMostrarCinco(!mostrarCinco);
-
   const { ModalesData, datam1, datam2, datam3, datam4, datam5 } =
     useModalCajeros();
   const {
@@ -47,31 +32,37 @@ const CajeroP = () => {
     restCaj4,
     restCaj5,
     setEjecute,
+    mostrar,
+    mostrarDos,
+    mostrarTres,
+    mostrarCuatro,
+    mostrarCinco,
+    loading,
   } = useCajeroP();
 
   const ConsultaFatherM1 = () => {
     ModalesData.ConsultaM1();
-    handleShow();
+    CajeroPactions.handleShow();
   };
 
   const ConsultaFatherM2 = () => {
     ModalesData.ConsultaM2();
-    handleShowDos();
+    CajeroPactions.handleShowDos();
   };
 
   const ConsultaFatherM3 = () => {
     ModalesData.ConsultaM3();
-    handleShowTres();
+    CajeroPactions.handleShowTres();
   };
 
   const ConsultaFatherM4 = () => {
     ModalesData.ConsultaM4();
-    handleShowCuatro();
+    CajeroPactions.handleShowCuatro();
   };
 
   const ConsultaFatherM5 = () => {
     ModalesData.ConsultaM5();
-    handleShowCinco();
+    CajeroPactions.handleShowCinco();
   };
 
   const ConsultaFatherPrincipal = () => {
@@ -113,7 +104,11 @@ const CajeroP = () => {
               <h2>Cajero #1</h2>
               <img src={img111} alt="" className="Imagenes111" />
               <h2 className="SaldoActual">Saldo Actual</h2>
-              <p className="letricas">{separator(ValorC1)}</p>
+              {loading ? (
+                <p className="letricas">{separator(ValorC1)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -128,7 +123,11 @@ const CajeroP = () => {
               <h2>Cajero #2</h2>
               <img src={img111} alt="" className="Imagenes111" />
               <h2 className="SaldoActual">Saldo Actual</h2>
-              <p className="letricas">{separator(ValorC2)}</p>
+              {loading ? (
+                <p className="letricas">{separator(ValorC2)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -143,7 +142,11 @@ const CajeroP = () => {
               <h2>Cajero #3</h2>
               <img src={img111} alt="" className="Imagenes111" />
               <h2 className="SaldoActual">Saldo Actual</h2>
-              <p className="letricas">{separator(ValorC3)}</p>
+              {loading ? (
+                <p className="letricas">{separator(ValorC3)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -158,7 +161,11 @@ const CajeroP = () => {
               <h2>Cajero #4</h2>
               <img src={img111} alt="" className="Imagenes111" />
               <h2 className="SaldoActual">Saldo Actual</h2>
-              <p className="letricas">{separator(ValorC4)}</p>
+              {loading ? (
+                <p className="letricas">{separator(ValorC4)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -173,7 +180,11 @@ const CajeroP = () => {
               <h2>Cajero #5</h2>
               <img src={img111} alt="" className="Imagenes111" />
               <h2 className="SaldoActual">Saldo Actual</h2>
-              <p className="letricas">{separator(ValorC5)}</p>
+              {loading ? (
+                <p className="letricas">{separator(ValorC5)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
               <div className="cadministrar">
                 <button
                   className="administrar5"
@@ -199,33 +210,41 @@ const CajeroP = () => {
             </div>
             <div className="textointerno">
               <h3 className="textointernoh3">Saldo total de oficina:</h3>
-              <p className="textointernop">{separator(sumTotal)}</p>
+              {loading ? (
+                <p className="textointernop">{separator(sumTotal)}</p>
+              ) : (
+                <SpinnerLoadingDos />
+              )}
             </div>
           </div>
         </div>
       </div>
-      <Mcajero1 handleShow={handleShow} mostrar={mostrar} datam1={datam1} />
+      <Mcajero1
+        handleShow={CajeroPactions.handleShow}
+        mostrar={mostrar}
+        datam1={datam1}
+      />
       <Mcajero2
-        handleShowDos={handleShowDos}
+        handleShowDos={CajeroPactions.handleShowDos}
         mostrarDos={mostrarDos}
         datam2={datam2}
       />
       <Mcajero3
-        handleShowTres={handleShowTres}
+        handleShowTres={CajeroPactions.handleShowTres}
         mostrarTres={mostrarTres}
         datam3={datam3}
       />
       <Mcajero4
-        handleShowCuatro={handleShowCuatro}
+        handleShowCuatro={CajeroPactions.handleShowCuatro}
         mostrarCuatro={mostrarCuatro}
         datam4={datam4}
       />
       <Mcajero5
-        handleShowCinco={handleShowCinco}
+        handleShowCinco={CajeroPactions.handleShowCinco}
         mostrarCinco={mostrarCinco}
         datam5={datam5}
       />
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" />
     </div>
   );
 };

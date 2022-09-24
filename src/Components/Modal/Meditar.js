@@ -1,10 +1,17 @@
-import React from 'react'
+import React from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
-const Meditar = ({dataUsuario, handleChange, modalEditar, dato, peticionPut, abrirCerrarModalEditar}) => {
+const Meditar = ({
+  dataUsuario,
+  handleChange,
+  modalEditar,
+  dato,
+  peticionPut,
+  abrirCerrarModalEditar,
+}) => {
   return (
     <div>
-        <Modal isOpen={modalEditar}>
+      <Modal isOpen={modalEditar}>
         <ModalHeader>Editar Contacto</ModalHeader>
         <ModalBody>
           <div className="form-group">
@@ -42,13 +49,9 @@ const Meditar = ({dataUsuario, handleChange, modalEditar, dato, peticionPut, abr
               name="Idti_rol"
               onChange={handleChange}
             >
-              <option>
-                {dataUsuario && dataUsuario.Nom_rol}
-              </option>
+              <option>{dataUsuario && dataUsuario.Nom_rol}</option>
               {dato.map((Usuario) => (
-                <option value={Usuario.Idti_rol}>
-                  {Usuario.Nom_rol}
-                </option>
+                <option value={Usuario.Idti_rol}>{Usuario.Nom_rol}</option>
               ))}
             </select>
           </div>
@@ -67,7 +70,7 @@ const Meditar = ({dataUsuario, handleChange, modalEditar, dato, peticionPut, abr
         </ModalFooter>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default Meditar
+export default Meditar;

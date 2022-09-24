@@ -1,18 +1,26 @@
 import Button from "react-bootstrap/Button";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import "./EstilosJ.css";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { useRegFormPj } from "../../../../Components/hooks/useRegFormPj";
-import {AppContext} from "../../../../stateManagement/provider";
-
+import { AppContext } from "../../../../stateManagement/provider";
 
 const PersonaJuridica = () => {
-
-  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect] = useContext(AppContext);
-
+  /* eslint-disable */
+  const [
+    data,
+    setData,
+    dataCuenta,
+    setDataCuenta,
+    dataEstados,
+    setDataEstados,
+    select,
+    setSelect,
+  ] = useContext(AppContext);
+  /* eslint-enable */
   let Navigate = useNavigate();
 
   var min = 100000;
@@ -21,6 +29,7 @@ const PersonaJuridica = () => {
   //console.log("el valor random es:"+ random)
   const { ActionsFormPj } = useRegFormPj();
 
+  /* eslint-disable */
   const formik = useFormik({
     initialValues: {
       Fe_dil: "",
@@ -307,10 +316,17 @@ const PersonaJuridica = () => {
       Firma_vend: Yup.string().required("La firma del vendedor es obligatoria"),
     }),
     onSubmit: (data) => {
-      ActionsFormPj.peticionPost(data);
+      let EstadoCuentas = false;
+      if (formik.values.Idti_sol == 2) {
+        EstadoCuentas = true;
+        ActionsFormPj.peticionPost(data, EstadoCuentas);
+      } else {
+        EstadoCuentas = false;
+        ActionsFormPj.peticionPost(data, EstadoCuentas);
+      }
     },
   });
-
+/* eslint-enable */
   return (
     <div className="FONDO">
       <div>
@@ -406,7 +422,9 @@ const PersonaJuridica = () => {
 
           <div className="col-md-6" id="Container-1">
             <Col>
+              {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
+              {/* eslint-enable */}
               <div className="label-13">
                 <label className="label-14">
                   <input
@@ -663,7 +681,9 @@ const PersonaJuridica = () => {
 
           <div className="col-md-5" id="Container-1">
             <Col>
+              {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
+              {/* eslint-enable */}
               <label className="label-2">
                 N° de documento
                 <input
@@ -1249,7 +1269,9 @@ const PersonaJuridica = () => {
           </div>
           <div className="col-md-4" id="Container-1">
             <Col>
+              {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
+              {/* eslint-enable */}
               <label className="label">
                 Código CIIU{" "}
                 <input
@@ -1464,7 +1486,9 @@ const PersonaJuridica = () => {
           </div>
           <div className="col-md-6" id="Container-1">
             <Col>
+              {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
+              {/* eslint-enable */}
               <label className="label-2">
                 {" "}
                 Ingresos no operacionales mensuales$
@@ -1642,7 +1666,9 @@ const PersonaJuridica = () => {
 
           <div className="col-md-5" id="Container-1">
             <Col>
+              {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
+              {/* eslint-enable */}
               <label className="label">Clase de contribuyente</label>
               <label className="label">
                 <input

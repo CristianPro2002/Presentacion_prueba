@@ -4,16 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Form from "react-bootstrap/Form";
 import "./Rolcajero.css";
-import Cajeroimg from "../../../../assets/Imagenes_R/cajero.webp";
-import Directorimg from "../../../../assets/Imagenes_R/director.webp";
-import Gerenteimg from "../../../../assets/Imagenes_R/gerente.webp";
-import Asesorimg from "../../../../assets/Imagenes_R/asesor.webp";
-import Cajeropimg from "../../../../assets/Imagenes_R/CajeroP.webp";
-import Usuariecito from "../../../../assets/Imagenes_R/usuario.webp";
 import toast, { Toaster } from "react-hot-toast";
 import useAuthContext from "../../../../Components/hooks/useAuthContext";
 
-const Rolcajero = ({ setisLoggedIn }) => {
+const Rolcajero = () => {
   const notify = () =>
     toast("  Sin permisos para acceder a esta funcionalidad❕");
   const notify2 = () => toast("  Selecciona un numero de rol❕");
@@ -35,6 +29,7 @@ const Rolcajero = ({ setisLoggedIn }) => {
     notify();
   };
 
+  /* eslint-disable */
   const Vcajero = (e) => {
     var validacion = document.getElementById("cajerov");
     if (validacion.value == 1 || validacion.value == "") {
@@ -55,6 +50,8 @@ const Rolcajero = ({ setisLoggedIn }) => {
     } else notify2();
     validacion.focus();
   };
+  
+  /* eslint-enable */
 
   const cerrarSesion = (e) => {
     logout();

@@ -1,12 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import error from "../assets/ErrorImage/error.webp";
-import { useNavigate } from "react-router-dom";
 import "./Errores.css";
 class Error extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tieneError: false, mensajeError: "" };   
+    this.state = { tieneError: false, mensajeError: "" };
   }
 
   static getDerivedStateFromError(error) {
@@ -20,30 +19,28 @@ class Error extends React.Component {
     console.log("Component did catch:", error.message);
   }
 
-  render() { 
+  render() {
     if (this.state.tieneError) {
-      
       // "UI de emergencia"
       return (
         <div class="contenedorError">
-        <div class="containerCenter">
+          <div class="containerCenter">
             <div>
-            <h1 class="centarttitle">Ha ocurrido un error 😥:</h1>
-        </div>
-            <div >
-            <img class="imagenerror" src={error}  alt=""></img>
+              <h1 class="centarttitle">Ha ocurrido un error 😥:</h1>
+            </div>
+            <div>
+              <img class="imagenerror" src={error} alt=""></img>
             </div>
             <div class="centrar_parrafo">
-                <p> {this.state.mensajeError} </p>
+              <p> {this.state.mensajeError} </p>
             </div>
             <div class="centrar_boton">
-                    <Button variant="danger" className="" onClick={null}
-                        class="">
-                        Recargar la página {""}
-                    </Button>
-                </div>
-      </div>
-    </div>
+              <Button variant="danger" className="" onClick={null} class="">
+                Recargar la página {""}
+              </Button>
+            </div>
+          </div>
+        </div>
       );
     }
 

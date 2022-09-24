@@ -1,23 +1,32 @@
-import React, {useEffect, useContext} from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Asesor.css";
-import personaj from "../../../assets/Imagenes/personaj.png";
-import personan from "../../../assets/Imagenes/personan.jpg";
 import Form from "react-bootstrap/Form";
 import toast, { Toaster } from "react-hot-toast";
 import { useAsesor } from "../../../Components/hooks/useAsesor";
-import {AppContext} from "../../../stateManagement/provider";
+import { AppContext } from "../../../stateManagement/provider";
 
 const Asesor = ({ onclick, numeroAsesor }) => {
-  const [data, setData, dataCuenta, setDataCuenta, dataEstados, setDataEstados, select, setSelect ] = useContext(AppContext);
+  /* eslint-disable */
+  const [
+    data,
+    setData,
+    dataCuenta,
+    setDataCuenta,
+    dataEstados,
+    setDataEstados,
+    select,
+    setSelect,
+  ] = useContext(AppContext);
 
   const notify = () => toast.error("  Selecciona una opcion❕");
   const notify2 = () => toast.error("  Este usuario no existe❕");
   let Navigate = useNavigate();
 
-  const { AsesorActions, setDataUsuario, dataSelect, setDataSelect } = useAsesor({notify2});
+  const { AsesorActions, setDataUsuario, dataSelect, setDataSelect } =
+    useAsesor({ notify2 });
 
   const validar = (e) => {
     var validacion = document.getElementById("Eleccion1");
@@ -43,6 +52,8 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     validacion.focus();
   };
 
+  /* eslint-enable */
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataUsuario((prevState) => ({
@@ -67,23 +78,23 @@ const Asesor = ({ onclick, numeroAsesor }) => {
     AsesorActions.peticionGet();
     AsesorActions.peticionGetCuenta();
     AsesorActions.peticionEstadosCuentasPj();
-  }
+  };
 
   const consultaUserId = () => {
     AsesorActions.peticionGet2();
     AsesorActions.peticionGetCuenta2();
     AsesorActions.peticionEstadosCuentasPn();
-  }
+  };
 
   const peticionSelect1 = () => {
     setSelect(dataSelect.Tip_prod);
-    validar()
-  }
+    validar();
+  };
 
   const peticionSelect2 = () => {
     setSelect(dataSelect.Tip_prod);
-    validar2()
-  }
+    validar2();
+  };
 
   return (
     <div className="principal">
@@ -148,7 +159,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                         </div>
                         <div className="bj">
                           <button
-                            onClick={()=> peticionSelect1()}
+                            onClick={() => peticionSelect1()}
                             name="validar"
                             className="pj"
                           >
@@ -198,7 +209,7 @@ const Asesor = ({ onclick, numeroAsesor }) => {
                         </div>
                         <div className="bn">
                           <button
-                            onClick={()=> peticionSelect2()}
+                            onClick={() => peticionSelect2()}
                             name="vaidar2"
                             className="pn"
                           >

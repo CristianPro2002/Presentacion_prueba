@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Table from "react-bootstrap/Table";
 import "./Consulta.css";
 import { AppContext } from "../../../../stateManagement/provider";
 import { usePageConsultas2 } from "../../../../Components/hooks/usePageConsultas";
@@ -9,15 +8,16 @@ import { McuentasPN } from "../../../../Components/Modal/Mcuentas";
 
 const Consulta = () => {
   let Navigate = useNavigate();
+  /* eslint-disable */
   const [
     data,
     setData,
     dataCuenta,
     setDataCuenta,
     dataEstados,
-    setDataEstados
+    setDataEstados,
   ] = useContext(AppContext);
-
+  /* eslint-enable */
   const { consultasActions2, currentPage, items } = usePageConsultas2(data);
   const { CuentaActions, dataExtraCuenta } = useConsultaCuentaPj();
   const [mostrarCuenta, setMostrarCuenta] = useState(false);
@@ -27,7 +27,6 @@ const Consulta = () => {
     CuentaActions.peticionGetCuenta(No_cuenta);
     handleShow();
   };
-
 
   return (
     <div className="fondobg">

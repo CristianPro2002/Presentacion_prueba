@@ -10,15 +10,9 @@ const Minsertar = ({
   icon,
   type,
   dato,
-  peticionPost,
   abrirCerrarModalInsertar,
   peticionPostFather,
 }) => {
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  
   return (
     <div>
       <Modal isOpen={modalInsertar}>

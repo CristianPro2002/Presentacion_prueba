@@ -1,14 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { Principal, solicitudReg1, solicitudReg2 } from "../../helpers/url";
 
-export const useDirector = ({
-  abrirCerrarModalInsertar,
-  abrirCerrarModalEditar,
-  abrirCerrarModalEliminar,
-}) => {
-
+export const useDirector = () => {
   const [data2, setData2] = useState([]);
   const [tablaUsuarios, setTablaUsuarios] = useState([]);
   const [solicitud, setSolicitud] = useState([]);
@@ -20,6 +15,11 @@ export const useDirector = ({
   const [valiCaj, setValiCaj] = useState([]);
   const [valiCajP, setValiCajP] = useState([]);
   const [refreshData, setRefreshData] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
+  const [modalInsertar, setModalInsetar] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
+  const [modalEliminar, setModalEliminar] = useState(false);
   const [dataUsuario, setDataUsuario] = useState({
     Id_usu: "",
     Usuario: "",
@@ -32,6 +32,7 @@ export const useDirector = ({
       .get(Principal)
       .then((response) => {
         setData2(response.data);
+        setLoading(true);
         setTablaUsuarios(response.data);
       })
       .catch((error) => {
@@ -50,12 +51,18 @@ export const useDirector = ({
       setSolicitud2(response.data);
     });
   };
-/* notificaciones */
-const notify1 = () => toast("  no puede haber mas de un rol tipo director ❕");
-const notify2 = () => toast("  no puede haber mas de 5 roles tipo Asesor ❕");
-const notify3 = () => toast("  no puede haber mas de un  rol tipo Gerente ❕");
-const notify4 = () => toast("  no puede haber mas de 5 roles tipo Cajero ❕");
-const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principal ❕");
+  /* notificaciones */
+  const notify1 = () =>
+    toast.error("  no puede haber mas de un rol tipo director ❕");
+  const notify2 = () =>
+    toast.error("  no puede haber mas de 5 roles tipo Asesor ❕");
+  const notify3 = () =>
+    toast.error("  no puede haber mas de un  rol tipo Gerente ❕");
+  const notify4 = () =>
+    toast.error("  no puede haber mas de 5 roles tipo Cajero ❕");
+  const notify5 = () =>
+    toast.error("  no puede haber mas de un rol tipo Cajero Principal ❕");
+
   const peticionPost = async () => {
     var f = new FormData();
     f.append("Id_usu", dataUsuario.Id_usu);
@@ -83,6 +90,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     });
   };
 
+  /* eslint-disable */
   const peticionPut = async () => {
     var f = new FormData();
     f.append("Id_usu", dataUsuario.Id_usu);
@@ -111,6 +119,8 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
       });
   };
 
+  /* eslint-enable */
+
   const peticionDelete = async () => {
     var f = new FormData();
     f.append("METHOD", "DELETE");
@@ -128,7 +138,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
   };
 
   /*------------------------------------*/
-        //peticion validar num roles
+  //peticion validar num roles
 
   const peticionGetVDirect = async () => {
     var f = new FormData();
@@ -137,7 +147,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
       setValiDi(response.data);
     });
   };
-  
+
   const peticionGetVAsesor = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVAROLA");
@@ -170,22 +180,195 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     });
   };
 
+  /* eslint-disable */
   const contarNDirector = () => {
     setRefreshData(true);
-    if(valiDi.length >= 1 && dataUsuario.Idti_rol == 1){
-      notify1("hay mas de un rol director")
-    } else if(valiAse.length >= 5 && dataUsuario.Idti_rol == 2){
-      notify2("hay mas de un rol asesor")
-    } else if(valiGer.length >= 1 && dataUsuario.Idti_rol == 3){
-      notify3("hay mas de un rol gerente")
-    } else if(valiCaj.length >= 5 && dataUsuario.Idti_rol == 4){
-      notify4("hay mas de un rol cajero")
-    }else if(valiCajP.length >= 1 && dataUsuario.Idti_rol == 5){
-      notify5("hay mas de un rol cajero principal")
-    }else{  
+    if (valiDi.length >= 1 && dataUsuario.Idti_rol == 1) {
+      notify1("hay mas de un rol director");
+    } else if (valiAse.length >= 5 && dataUsuario.Idti_rol == 2) {
+      notify2("hay mas de un rol asesor");
+    } else if (valiGer.length >= 1 && dataUsuario.Idti_rol == 3) {
+      notify3("hay mas de un rol gerente");
+    } else if (valiCaj.length >= 5 && dataUsuario.Idti_rol == 4) {
+      notify4("hay mas de un rol cajero");
+    } else if (valiCajP.length >= 1 && dataUsuario.Idti_rol == 5) {
+      notify5("hay mas de un rol cajero principal");
+    } else {
       peticionPost();
     }
-  }
+  };
+
+  const contarUpdate = () => {
+    setRefreshData(true);
+    if (valiDi.length >= 1 && dataUsuario.Idti_rol == 1) {
+      notify1("hay mas de un rol director");
+    } else if (valiAse.length >= 5 && dataUsuario.Idti_rol == 2) {
+      notify2("hay mas de un rol asesor");
+    } else if (valiGer.length >= 1 && dataUsuario.Idti_rol == 3) {
+      notify3("hay mas de un rol gerente");
+    } else if (valiCaj.length >= 5 && dataUsuario.Idti_rol == 4) {
+      notify4("hay mas de un rol cajero");
+    } else if (valiCajP.length >= 1 && dataUsuario.Idti_rol == 5) {
+      notify5("hay mas de un rol cajero principal");
+    } else {
+      peticionPut();
+    }
+  };
+
+  const abrirCerrarModalInsertar = () => {
+    setModalInsetar(!modalInsertar);
+    setRefreshData(!refreshData);
+  };
+
+  const abrirCerrarModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const abrirCerrarModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const seleccionarUsuario = (usuario, caso) => {
+    setDataUsuario(usuario);
+
+    caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
+  };
+
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
+      if (
+        elemento.Usuario.toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        elemento.Id_usu.toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        elemento.Nom_rol.toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setData2(resultadosBusqueda);
+  };
+
+  /* eslint-enable */
+
+  const abrirp = (e) => {
+    timeSoli();
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility:visible; top:50%;");
+    document
+      .getElementById("background__blur")
+      .setAttribute("style", "visibility:visible");
+    document.getElementById("father01").setAttribute("style", "display:none;");
+  };
+
+  const cerrarp = (e) => {
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility: hidden;");
+    document
+      .getElementById("background__blur")
+      .setAttribute("style", "display: none;");
+    document
+      .getElementById("father01")
+      .setAttribute("style", "visibility:visible");
+  };
+
+  const abrir = (e) => {
+    document
+      .getElementById("ventana_modal")
+      .setAttribute("style", "visibility:visible; top:50%;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "display:none;");
+  };
+
+  const abrirpj = (e) => {
+    document
+      .getElementById("ventana_modal3")
+      .setAttribute("style", "visibility:visible; top:50%;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "display:none;");
+  };
+
+  const cerrar = (e) => {
+    document
+      .getElementById("ventana_modal")
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility:visible; top:50%;");
+  };
+
+  const cerrarpj = (e) => {
+    document
+      .getElementById("ventana_modal3")
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modalp")
+      .setAttribute("style", "visibility:visible; top:50%;");
+  };
+
+  const abrir2 = (e) => {
+    document
+      .getElementById("ventana_modal2")
+      .setAttribute("style", "visibility:visible; top:50%;");
+  };
+
+  const abrir3 = (e) => {
+    document
+      .getElementById("ventana_modal4")
+      .setAttribute("style", "visibility:visible; top:50%;");
+  };
+
+  const cerrar2 = (e) => {
+    document
+      .getElementById("ventana_modal2")
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modal4")
+      .setAttribute("style", "display:none;");
+  };
+
+  const cerrarT = (e) => {
+    document
+      .getElementById("ventana_modal")
+      .setAttribute("style", "display:none;");
+    document
+      .getElementById("ventana_modal2")
+      .setAttribute("style", "display:none;");
+  };
+
+  const timeSoli = () => {
+    setInterval(DirectorActions.peticionGet3, 5000);
+    setInterval(DirectorActions.peticionGet4, 5000);
+  };
+
+  useEffect(() => {
+    peticionGetVAsesor();
+    peticionGetVDirect();
+    peticionGetVGerente();
+    peticionGetVCajero();
+    peticionGetVCajeroP();
+    peticionGetData();
+  }, [refreshData]);
+
+  useEffect(() => {
+    peticionGetRoles();
+    peticionGetData();
+    peticionGet3();
+    peticionGet4();
+    peticionGetVAsesor();
+    peticionGetVDirect();
+    peticionGetVGerente();
+    peticionGetVCajero();
+    peticionGetVCajeroP();
+  }, []);
 
   const DirectorActions = {
     peticionGetData,
@@ -198,6 +381,7 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     peticionGetVAsesor,
     peticionGetVDirect,
     contarNDirector,
+    contarUpdate,
     peticionGetVGerente,
     peticionGetVCajero,
     peticionGetVCajeroP,
@@ -205,7 +389,22 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     notify2,
     notify3,
     notify4,
-    notify5
+    notify5,
+    abrirCerrarModalInsertar,
+    abrirCerrarModalEditar,
+    abrirCerrarModalEliminar,
+    seleccionarUsuario,
+    filtrar,
+    abrirp,
+    cerrarp,
+    abrir,
+    abrirpj,
+    cerrar,
+    cerrarpj,
+    abrir2,
+    abrir3,
+    cerrar2,
+    cerrarT,
   };
 
   return {
@@ -224,5 +423,11 @@ const notify5 = () => toast("  no puede haber mas de un rol tipo Cajero Principa
     DirectorActions,
     refreshData,
     setRefreshData,
+    loading,
+    setBusqueda,
+    busqueda,
+    modalInsertar,
+    modalEditar,
+    modalEliminar,
   };
 };

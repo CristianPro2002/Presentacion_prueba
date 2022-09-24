@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import {
   Document,
@@ -8,7 +8,6 @@ import {
   PDFViewer,
   StyleSheet,
   Image,
-  Font,
 } from "@react-pdf/renderer";
 import Logo from "../../assets/Logo/logo.png";
 import Button from "react-bootstrap/Button";
@@ -107,8 +106,8 @@ export const McajeroReporte = ({
       width: "20%",
       fontWeight: "bold",
       textAlign: "center",
-      color: "#19C764"
-    }
+      color: "#19C764",
+    },
   });
   return (
     <>
@@ -149,12 +148,12 @@ export const McajeroReporte = ({
                       <Text style={styles.text_value}>
                         Cantidad disponible:{" "}
                       </Text>
-                      <Text style={styles.value_cuenta}>${separator(sumTotalCuent)}</Text>
+                      <Text style={styles.value_cuenta}>
+                        ${separator(sumTotalCuent)}
+                      </Text>
                     </View>
                     <View style={styles.content_value}>
-                      <Text style={styles.text_prom}>
-                        Promedio:
-                      </Text>
+                      <Text style={styles.text_prom}>Promedio:</Text>
                       <Text style={styles.value_prom}>${separator(prom)}</Text>
                     </View>
                   </View>

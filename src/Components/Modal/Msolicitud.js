@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useMsolicitud } from "../hooks/useMsolicitud";
 import { usePagePrimSoli, usePageSecSoli } from "../hooks/usePageSoli";
+import { Toaster } from "react-hot-toast";
 
 const Msolicitud = ({
   abrir,
   cerrar,
   abrir2,
   cerrar2,
-  cerrarT,
   cerrarp,
-  abrirp,
   solicitud,
   setSolicitud,
   peticionGet3,
-  peticionGet4,
   solicitud2,
   setSolicitud2,
   abrirpj,
@@ -37,10 +33,11 @@ const Msolicitud = ({
   const { ActionsPagePrim } = usePagePrimSoli(solicitud2);
   const { ActionsPageSec } = usePageSecSoli(solicitud);
 
+  /* eslint-disable */
   useEffect(() => {
     peticionGet3();
   }, []);
-
+  /* eslint-enable */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEstado((prevState) => ({
@@ -77,41 +74,50 @@ const Msolicitud = ({
                       <h2 className="title__modal">Persona Juridica</h2>
 
                       <div>
-                        {ActionsPagePrim.filterData().map((Data) => (
-                          <>
-                            <div className="card" id="cardsoli">
-                              <div className="card-body">
-                                <div className="row">
-                                  <div className="cont-data01">
-                                    <label>No de solicitud</label>
-                                    <p>{Data.Id_regj}</p>
-                                  </div>
-                                  <div className="cont-data01">
-                                    <label>Nombre</label>
-                                    <p>{Data.Nom_ra}</p>
-                                  </div>
-                                  <div className="cont-data01">
-                                    <label>Identificacion</label>
-                                    <p>{Data.Nit}</p>
-                                  </div>
-                                  <div className="cont-data01" id="cont-data01">
-                                    <button
-                                      onClick={() =>
-                                        MsolicitudActions.Detalleid2(
-                                          Data.Id_ent,
-                                          Data.Id_regj
-                                        )
-                                      }
-                                      className="btn btn-danger"
+                        {solicitud2.length > 0 ? (
+                          ActionsPagePrim.filterData().map((Data) => (
+                            <>
+                              <div className="card" id="cardsoli">
+                                <div className="card-body">
+                                  <div className="row">
+                                    <div className="cont-data01">
+                                      <label>No de solicitud</label>
+                                      <p>{Data.Id_regj}</p>
+                                    </div>
+                                    <div className="cont-data01">
+                                      <label>Nombre</label>
+                                      <p>{Data.Nom_ra}</p>
+                                    </div>
+                                    <div className="cont-data01">
+                                      <label>Identificacion</label>
+                                      <p>{Data.Nit}</p>
+                                    </div>
+                                    <div
+                                      className="cont-data01"
+                                      id="cont-data01"
                                     >
-                                      Detalle
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          MsolicitudActions.Detalleid2(
+                                            Data.Id_ent,
+                                            Data.Id_regj
+                                          )
+                                        }
+                                        className="btn btn-danger"
+                                      >
+                                        Detalle
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </>
-                        ))}
+                            </>
+                          ))
+                        ) : (
+                          <h5 style={{ color: "red" }}>
+                            <strong>No hay solicitudes...</strong>
+                          </h5>
+                        )}
                       </div>
                       <div>
                         <div className="content_actionsPage01">
@@ -130,41 +136,50 @@ const Msolicitud = ({
                     <div className="body__modal">
                       <h2 className="title__modal">Persona Natural</h2>
                       <div>
-                        {ActionsPageSec.filterData().map((Data) => (
-                          <>
-                            <div className="card" id="cardsoli">
-                              <div className="card-body">
-                                <div className="row">
-                                  <div className="cont-data01">
-                                    <label>No de solicitud</label>
-                                    <p>{Data.Id_reg}</p>
-                                  </div>
-                                  <div className="cont-data01">
-                                    <label>Nombre</label>
-                                    <p>{Data.Pri_nom}</p>
-                                  </div>
-                                  <div className="cont-data01">
-                                    <label>Identificacion</label>
-                                    <p>{Data.No_ide}</p>
-                                  </div>
-                                  <div className="cont-data01" id="cont-data01">
-                                    <button
-                                      onClick={() =>
-                                        MsolicitudActions.Detalleid(
-                                          Data.Id_client,
-                                          Data.Id_reg
-                                        )
-                                      }
-                                      className="btn btn-danger"
+                        {solicitud.length > 0 ? (
+                          ActionsPageSec.filterData().map((Data) => (
+                            <>
+                              <div className="card" id="cardsoli">
+                                <div className="card-body">
+                                  <div className="row">
+                                    <div className="cont-data01">
+                                      <label>No de solicitud</label>
+                                      <p>{Data.Id_reg}</p>
+                                    </div>
+                                    <div className="cont-data01">
+                                      <label>Nombre</label>
+                                      <p>{Data.Pri_nom}</p>
+                                    </div>
+                                    <div className="cont-data01">
+                                      <label>Identificacion</label>
+                                      <p>{Data.No_ide}</p>
+                                    </div>
+                                    <div
+                                      className="cont-data01"
+                                      id="cont-data01"
                                     >
-                                      Detalle
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          MsolicitudActions.Detalleid(
+                                            Data.Id_client,
+                                            Data.Id_reg
+                                          )
+                                        }
+                                        className="btn btn-danger"
+                                      >
+                                        Detalle
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          </>
-                        ))}
+                            </>
+                          ))
+                        ) : (
+                          <h5 style={{ color: "red" }}>
+                            <strong>No hay solicitudes...</strong>
+                          </h5>
+                        )}
                       </div>
                       <div>
                         <div className="content_actionsPage01">
@@ -409,6 +424,7 @@ const Msolicitud = ({
             </div>
           </div>
         </div>
+        <Toaster position="top-right" />
       </div>
     </>
   );

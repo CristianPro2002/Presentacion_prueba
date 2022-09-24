@@ -1,9 +1,7 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import React, { useContext } from "react";
-import Index from "../Components/Index";
+import { Routes, Route } from "react-router-dom";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Roles from "../pages/Private/Roles/Roles";
-import Director from "../pages/Private/Director/Director";
 import Gerente from "../pages/Private/Gerente/Gerente";
 import {
   Asesor,
@@ -33,7 +31,6 @@ import {
   AsesorD4,
   AsesorD5,
 } from "../views/viewsAsesor";
-import { Funcionamiento_form } from "../pages/Private/Director/Funcionamiento_form";
 import { Tabla_director } from "../pages/Private/Director/Tabla_director";
 import Consulta from "../pages/Private/Asesor/Consulta/Consulta";
 import Consulta2 from "../pages/Private/Asesor/Consulta/Consulta2";
@@ -45,16 +42,21 @@ import {
   Cajero4,
   Cajero5,
 } from "../views/viewsCajero";
-import { TablaView1, TablaView2, TablaView3, TablaView4, TablaView5 } from "../views/viewsTableCajero";
+import {
+  TablaView1,
+  TablaView2,
+  TablaView3,
+  TablaView4,
+  TablaView5,
+} from "../views/viewsTableCajero";
 import Rolasesor from "../pages/Private/Roles/Rasesor/Rolasesor";
 import Rolgerente from "../pages/Private/Roles/Rgerente/Rolgerente";
 import Rolcajero from "../pages/Private/Roles/Rcajero/Rolcajero";
 import Rolcajerop from "../pages/Private/Roles/Rcajerop/Rolcajerop";
-import { AppContext } from "../stateManagement/provider";
 import { RolRoutes } from "./RolRoutes";
 const DashboardRoutes = () => {
-  const [data2, setData2] = useContext(AppContext);
   const Rol = localStorage.getItem("Rol");
+  /* eslint-disable */
   return (
     <>
       <Routes>
@@ -62,15 +64,6 @@ const DashboardRoutes = () => {
           <>
             <Route path="/Asesor" element={<Asesor />} />
             <Route path="/Gerente" element={<Gerente />} />
-            <Route
-              path="/Director"
-              element={
-                <>
-                  <Director />
-                  <Funcionamiento_form />
-                </>
-              }
-            />
             <Route path="/Roles" element={<Roles />} />
             <Route path="/PersonaJuridica" element={<PersonaJuridica />} />
             <Route path="/PersonaNatural" element={<PersonaNatural />} />

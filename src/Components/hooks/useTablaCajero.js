@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { CajeroBackend } from "../../helpers/url";
 
 export const useTablaCajero = () => {
@@ -8,11 +8,11 @@ export const useTablaCajero = () => {
 
   const getCuenta = async (Cajero) => {
     var f = new FormData();
-    f.append("Cajero", Cajero)
+    f.append("Cajero", Cajero);
     f.append("METHOD", "GETCJ1");
     await axios.post(CajeroBackend, f).then((response) => {
       setData(response.data);
-      setTablaUsuarios(response.data)
+      setTablaUsuarios(response.data);
     });
   };
 

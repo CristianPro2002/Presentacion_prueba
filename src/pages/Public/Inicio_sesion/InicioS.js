@@ -10,10 +10,7 @@ import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import Input from "./ComponentesInicio/Input";
 import "./InicioS.css";
 import logo from "../../../assets/Logo/logo.webp";
-import { useNavigate } from "react-router-dom";
-import DashboardRoutes from "../../../routes/DashboardRoutes";
 import { AppContext } from "../../../stateManagement/provider";
-import { User } from "../../Private/Roles/Roles";
 import { useLogin } from "../../../Components/hooks/useLogin";
 import useAuthContext from "../../../Components/hooks/useAuthContext";
 
@@ -21,12 +18,10 @@ const App = () => {
   const [usuario, cambiarUsuario] = useState({ campo: "", valido: null });
   const [password, cambiarPassword] = useState({ campo: "", valido: null });
   const [formularioValido, cambiarFormularioValido] = useState(null);
+  /* eslint-disable */
   const [data2, setData2] = useContext(AppContext);
-  const [dataUser, setDataUser] = useState([]);
-  const {LoginBackend, LoginActions} = useLogin();
-  const {login} = useAuthContext();
-
-  let Navigate = useNavigate();
+  const { LoginBackend, LoginActions } = useLogin();
+  const { login } = useAuthContext();
 
   const expresiones = {
     usuario: /^ADMIN$/, // Letras, numeros, guion y guion_bajo
@@ -36,7 +31,7 @@ const App = () => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
-  
+
   const refUsuario = useRef(null);
 
   const refContraseña = useRef(null);
@@ -52,7 +47,7 @@ const App = () => {
     const Rol = respuestaJson.Idti_rol;
     const Usuario = respuestaJson.Usuario;
     const conectado = respuestaJson.conectado;
-   
+
     if ((conectado === true) & (Rol == "1")) {
       cambiarFormularioValido(true);
       cambiarUsuario({ campo: "", valido: "" });
@@ -108,7 +103,6 @@ const App = () => {
 
   return (
     <div className="Fondo">
-    
       <div className="Fondo2">
         <main className="main">
           <div className="cont">
@@ -160,7 +154,9 @@ const App = () => {
                   </Boton>
                 </ContenedorBotonCentrado>
               </Formulario>
-              <p className="Copy01"><b>CAJK</b></p>
+              <p className="Copy01">
+                <b>CAJK</b>
+              </p>
             </div>
           </div>
         </main>

@@ -8,6 +8,7 @@ import { useConsultaCuentaPn } from "../../../../Components/hooks/useConsultasCu
 import { McuentasPJ } from "../../../../Components/Modal/Mcuentas";
 
 const Consulta2 = () => {
+  /* eslint-disable */
   const [
     data,
     setData,
@@ -16,6 +17,7 @@ const Consulta2 = () => {
     dataEstados,
     setDataEstados,
   ] = useContext(AppContext);
+  /* eslint-enable */
   let Navigate = useNavigate();
   const { consultasActions, currentPage, items } = usePageConsultas(data);
   const { CuentaActions, dataExtraCuenta } = useConsultaCuentaPn();

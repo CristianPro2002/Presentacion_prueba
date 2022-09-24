@@ -14,6 +14,7 @@ const Roles = () => {
   const { logout } = useAuthContext();
   let Navigate = useNavigate();
 
+/* eslint-disable */
   const validar3 = (e) => {
     var validacion = document.getElementById("Asesorv");
     if (validacion.value == 1 || validacion.value == "") {
@@ -43,7 +44,7 @@ const Roles = () => {
 
   const Usuario = localStorage.getItem("User");
   const Rol = localStorage.getItem("Rol");
-  console.log(Rol)
+  console.log(Rol);
 
   const validar4 = (e) => {
     var validacion = document.getElementById("cajerov");
@@ -66,11 +67,13 @@ const Roles = () => {
     validacion.focus();
   };
 
+  /* eslint-enable */
+
   const peticionDeleteTotal = async () => {
     var f = new FormData();
     f.append("METHOD", "DELETETOTAL");
     await axios.post(Principal, f).then((response) => {
-      toast.success("Los registros fueron eliminados satisfactoriamente")
+      toast.success("Los registros fueron eliminados satisfactoriamente");
     });
   };
 
@@ -80,7 +83,10 @@ const Roles = () => {
         <div className="fondo2">
           <div className="f201">
             <div className="cont-cerrar02">
-              <button className="btn btn-danger" onClick={()=> peticionDeleteTotal()}>
+              <button
+                className="btn btn-danger"
+                onClick={() => peticionDeleteTotal()}
+              >
                 Eliminar todos los registros
               </button>
             </div>
@@ -324,7 +330,7 @@ const Roles = () => {
         toastOptions={{
           // Define default options
           className: "",
-          duration: 3000
+          duration: 3000,
         }}
       />
     </div>

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { AiFillPrinter } from "react-icons/ai";
-import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   faEye,
@@ -21,19 +20,29 @@ import { useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import { useDirector } from "../../../Components/hooks/useDirector";
 import { imprimirRoles } from "../../../helpers/url";
+import {SpinnerLoading} from "../../../Components/spinners";
+import "./ESTILOS_FORMD/estile_form_d.css";
 
 export const Tabla_director = () => {
-  const [busqueda, setBusqueda] = useState("");
-  const [modalInsertar, setModalInsetar] = useState(false);
-  const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);
+  const {
+    data2,
+    solicitud,
+    setSolicitud,
+    solicitud2,
+    setSolicitud2,
+    dato,
+    dataUsuario,
+    setDataUsuario,
+    DirectorActions,
+    setBusqueda,
+    busqueda,
+    modalInsertar,
+    modalEditar,
+    modalEliminar,
+    loading,
+  } = useDirector();
 
   let Navigate = useNavigate();
-
-  const abrirCerrarModalInsertar = () => {
-    setModalInsetar(!modalInsertar);
-    setRefreshData(!refreshData);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,40 +54,7 @@ export const Tabla_director = () => {
 
   const handleChange2 = (e) => {
     setBusqueda(e.target.value);
-    filtrar(e.target.value);
-  };
-
-  const filtrar = (terminoBusqueda) => {
-    var resultadosBusqueda = tablaUsuarios.filter((elemento) => {
-      if (
-        elemento.Usuario.toString()
-          .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase()) ||
-        elemento.Id_usu.toString()
-          .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase()) ||
-        elemento.Nom_rol.toString()
-          .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase())
-      ) {
-        return elemento;
-      }
-    });
-    setData2(resultadosBusqueda);
-  };
-
-  const seleccionarUsuario = (usuario, caso) => {
-    setDataUsuario(usuario);
-
-    caso === "Editar" ? abrirCerrarModalEditar() : abrirCerrarModalEliminar();
-  };
-
-  const abrirCerrarModalEditar = () => {
-    setModalEditar(!modalEditar);
-  };
-
-  const abrirCerrarModalEliminar = () => {
-    setModalEliminar(!modalEliminar);
+    DirectorActions.filtrar(e.target.value);
   };
 
   const [type, setType] = useState("password");
@@ -94,148 +70,7 @@ export const Tabla_director = () => {
     }
   };
 
-  const abrirp = (e) => {
-    timeSoli();
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "visibility:visible; top:50%;");
-    document
-      .getElementById("background__blur")
-      .setAttribute("style", "visibility:visible");
-    document.getElementById("father01").setAttribute("style", "display:none;");
-  };
-
-  const cerrarp = (e) => {
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "visibility: hidden;");
-    document
-      .getElementById("background__blur")
-      .setAttribute("style", "display: none;");
-    document
-      .getElementById("father01")
-      .setAttribute("style", "visibility:visible");
-  };
-
-  const abrir = (e) => {
-    document
-      .getElementById("ventana_modal")
-      .setAttribute("style", "visibility:visible; top:50%;");
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "display:none;");
-  };
-
-  const abrirpj = (e) => {
-    document
-      .getElementById("ventana_modal3")
-      .setAttribute("style", "visibility:visible; top:50%;");
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "display:none;");
-  };
-
-  const cerrar = (e) => {
-    document
-      .getElementById("ventana_modal")
-      .setAttribute("style", "display:none;");
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "visibility:visible; top:50%;");
-  };
-
-  const cerrarpj = (e) => {
-    document
-      .getElementById("ventana_modal3")
-      .setAttribute("style", "display:none;");
-    document
-      .getElementById("ventana_modalp")
-      .setAttribute("style", "visibility:visible; top:50%;");
-  };
-
-  const abrir2 = (e) => {
-    document
-      .getElementById("ventana_modal2")
-      .setAttribute("style", "visibility:visible; top:50%;");
-  };
-
-  const abrir3 = (e) => {
-    document
-      .getElementById("ventana_modal4")
-      .setAttribute("style", "visibility:visible; top:50%;");
-  };
-
-  const cerrar2 = (e) => {
-    document
-      .getElementById("ventana_modal2")
-      .setAttribute("style", "display:none;");
-    document
-      .getElementById("ventana_modal4")
-      .setAttribute("style", "display:none;");
-  };
-
-  const cerrarT = (e) => {
-    document
-      .getElementById("ventana_modal")
-      .setAttribute("style", "display:none;");
-    document
-      .getElementById("ventana_modal2")
-      .setAttribute("style", "display:none;");
-  };
-
-  const fatherSolid = () => {
-    DirectorActions.peticionGet3();
-    DirectorActions.peticionGet4();
-    abrirp();
-  };
-
-  const {
-    data2,
-    setData2,
-    tablaUsuarios,
-    solicitud,
-    setSolicitud,
-    solicitud2,
-    setSolicitud2,
-    dato,
-    dataUsuario,
-    setDataUsuario,
-    DirectorActions,
-    refreshData,
-    setRefreshData,
-  } = useDirector({
-    abrirCerrarModalInsertar,
-    abrirCerrarModalEditar,
-    abrirCerrarModalEliminar,
-  });
-
   const Num = solicitud.length + solicitud2.length;
-
-  const timeSoli = () => {
-    setInterval(DirectorActions.peticionGet3, 5000);
-    setInterval(DirectorActions.peticionGet4, 5000);
-  };
-
-  useEffect(() => {
-    DirectorActions.peticionGetVAsesor();
-    DirectorActions.peticionGetVDirect();
-    DirectorActions.peticionGetVGerente();
-    DirectorActions.peticionGetVCajero();
-    DirectorActions.peticionGetVCajeroP();
-    DirectorActions.peticionGetData();
-  }, [refreshData]);
-
-  useEffect(() => {
-    DirectorActions.peticionGetRoles();
-    DirectorActions.peticionGetData();
-    DirectorActions.peticionGet3();
-    DirectorActions.peticionGet4();
-    DirectorActions.peticionGetVAsesor();
-    DirectorActions.peticionGetVDirect();
-    DirectorActions.peticionGetVGerente();
-    DirectorActions.peticionGetVCajero();
-    DirectorActions.peticionGetVCajeroP();
-  }, []);
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -268,24 +103,22 @@ export const Tabla_director = () => {
           <div className="contabrir">
             <button
               className="btn btn-danger"
-              onClick={abrirp}
+              onClick={DirectorActions.abrirp}
               style={{ height: "60%", margin: "5px" }}
             >
               Solicitudes <Badge bg="dark">{Num}</Badge>
             </button>
           </div>
         </div>
+        {/* eslint-disable */}
         <h1 className="titureg">Registros de cuentas de usuario</h1>
         <div className="containerInput">
           <div className="div_report">
-            <a
-              className="report"
-              href={imprimirRoles}
-              target="_blank"
-            >
+            <a className="report" href={imprimirRoles} target="_blank">
               <AiFillPrinter />
             </a>
           </div>
+          {/* eslint-enable */}
           <div className="input_buscadorsito">
             <input
               id="input_buscador"
@@ -305,7 +138,7 @@ export const Tabla_director = () => {
           <button
             id="btnagre"
             className="btn btn-primary"
-            onClick={() => abrirCerrarModalInsertar()}
+            onClick={() => DirectorActions.abrirCerrarModalInsertar()}
           >
             Agregar contacto
           </button>
@@ -320,43 +153,68 @@ export const Tabla_director = () => {
               responsive="sm"
               className="Table-user01"
             >
-              <thead>
-                <tr>
-                  <th className="ocultarid">Id</th>
-                  <th>Nombre del usuario</th>
-                  <th>Contraseña </th>
-                  <th>Tipo de rol </th>
-                  <th>Funcionalidades</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(filterData()).map(([key, value]) => (
-                  <tr key={value.Id_usu}>
-                    <td className="ocultarid">{value.Id_usu}</td>
-                    <td>{value.Usuario}</td>
-                    <td>{value.Contra}</td>
-                    <td>{value.Nom_rol}</td>
-                    <td>
-                      <button
-                        id="boton_verde_tabla"
-                        className="btn btn-primary"
-                        onClick={() => seleccionarUsuario(value, "Editar")}
-                      >
-                        <FontAwesomeIcon icon={faPen} />
-                      </button>
-                      &nbsp;
-                      <button
-                        id="boton_danger_rojo"
-                        className="btn btn-danger"
-                        onClick={() => seleccionarUsuario(value, "Eliminar")}
-                      >
-                        <FontAwesomeIcon icon={faTrash} />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
+              {loading ? (
+                <>
+                  <thead>
+                    <tr>
+                      <th className="ocultarid">Id</th>
+                      <th>Nombre del usuario</th>
+                      <th>Contraseña </th>
+                      <th>Tipo de rol </th>
+                      <th>Funcionalidades</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(filterData()).map(([key, value]) => (
+                      <tr key={value.Id_usu}>
+                        <td className="ocultarid">{value.Id_usu}</td>
+                        <td>{value.Usuario}</td>
+                        <td>{value.Contra}</td>
+                        <td>{value.Nom_rol}</td>
+                        <td>
+                          <button
+                            id="boton_verde_tabla"
+                            className="btn btn-primary"
+                            onClick={() =>
+                              DirectorActions.seleccionarUsuario(
+                                value,
+                                "Editar"
+                              )
+                            }
+                          >
+                            <FontAwesomeIcon icon={faPen} />
+                          </button>
+                          &nbsp;
+                          <button
+                            id="boton_danger_rojo"
+                            className="btn btn-danger"
+                            onClick={() =>
+                              DirectorActions.seleccionarUsuario(
+                                value,
+                                "Eliminar"
+                              )
+                            }
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </>
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <SpinnerLoading />
+                </div>
+              )}
             </Table>
+
             <div>
               <div className="content_actionsPage01">
                 <button onClick={() => prevPage()}>Atras</button>
@@ -383,22 +241,22 @@ export const Tabla_director = () => {
         }}
       />
       <ModalSolicitud
-        abrir={abrir}
-        cerrar={cerrar}
-        abrir2={abrir2}
-        cerrar2={cerrar2}
-        cerrarT={cerrarT}
-        abrirp={abrirp}
-        cerrarp={cerrarp}
+        abrir={DirectorActions.abrir}
+        cerrar={DirectorActions.cerrar}
+        abrir2={DirectorActions.abrir2}
+        cerrar2={DirectorActions.cerrar2}
+        cerrarT={DirectorActions.cerrarT}
+        abrirp={DirectorActions.abrirp}
+        cerrarp={DirectorActions.cerrarp}
         solicitud={solicitud}
         setSolicitud={setSolicitud}
         peticionGet3={DirectorActions.peticionGet3}
         peticionGet4={DirectorActions.peticionGet4}
         solicitud2={solicitud2}
         setSolicitud2={setSolicitud2}
-        abrirpj={abrirpj}
-        cerrarpj={cerrarpj}
-        abrir3={abrir3}
+        abrirpj={DirectorActions.abrirpj}
+        cerrarpj={DirectorActions.cerrarpj}
+        abrir3={DirectorActions.abrir3}
       />
       <ModalInsertar
         handleChange={handleChange}
@@ -406,8 +264,7 @@ export const Tabla_director = () => {
         icon={icon}
         type={type}
         dato={dato}
-        peticionPost={DirectorActions.peticionPost}
-        abrirCerrarModalInsertar={abrirCerrarModalInsertar}
+        abrirCerrarModalInsertar={DirectorActions.abrirCerrarModalInsertar}
         modalInsertar={modalInsertar}
         peticionPostFather={DirectorActions.contarNDirector}
       />
@@ -416,15 +273,15 @@ export const Tabla_director = () => {
         handleChange={handleChange}
         modalEditar={modalEditar}
         dato={dato}
-        peticionPut={DirectorActions.peticionPut}
-        abrirCerrarModalEditar={abrirCerrarModalEditar}
+        peticionPut={DirectorActions.contarUpdate}
+        abrirCerrarModalEditar={DirectorActions.abrirCerrarModalEditar}
       />
 
       <ModalEliminar
         modalEliminar={modalEliminar}
         dataUsuario={dataUsuario}
         peticionDelete={DirectorActions.peticionDelete}
-        abrirCerrarModalEliminar={abrirCerrarModalEliminar}
+        abrirCerrarModalEliminar={DirectorActions.abrirCerrarModalEliminar}
       />
     </>
   );

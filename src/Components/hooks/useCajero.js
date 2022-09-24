@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Principal, CajeroBackend } from "../../helpers/url";
 
 export const useCajero = ({ numeroCajeroBD }) => {
@@ -80,6 +80,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     });
   };
 
+  /* eslint-disable */
   const peticionGetCajero = async () => {
     var f = new FormData();
     f.append("No_cuenta", dataUsuario.No_cuenta);
@@ -120,6 +121,8 @@ export const useCajero = ({ numeroCajeroBD }) => {
       }
     });
   };
+
+  /* eslint-enable */
 
   const peticionGet = async () => {
     await axios.get(CajeroBackend).then((response) => {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Principal, CajeroBackend } from "../../helpers/url";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export const useCajeroP = () => {
   const [value1, setValue1] = useState([]);
@@ -16,13 +16,30 @@ export const useCajeroP = () => {
   const [rest4, setRest4] = useState([]);
   const [rest5, setRest5] = useState([]);
 
+  const [mostrar, setMostrar] = useState(false);
+  const handleShow = () => setMostrar(!mostrar);
+
+  const [mostrarDos, setMostrarDos] = useState(false);
+  const handleShowDos = () => setMostrarDos(!mostrarDos);
+
+  const [mostrarTres, setMostrarTres] = useState(false);
+  const handleShowTres = () => setMostrarTres(!mostrarTres);
+
+  const [mostrarCuatro, setMostrarCuatro] = useState(false);
+  const handleShowCuatro = () => setMostrarCuatro(!mostrarCuatro);
+
+  const [mostrarCinco, setMostrarCinco] = useState(false);
+  const handleShowCinco = () => setMostrarCinco(!mostrarCinco);
+
   const [ejecute, setEjecute] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const ConsultaValue1 = async () => {
     var f = new FormData();
     f.append("METHOD", "CONSULTAVALUE1");
     await axios.post(Principal, f).then((response) => {
       setValue1(response.data);
+      setLoading(true);
     });
   };
 
@@ -31,6 +48,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUE2");
     await axios.post(Principal, f).then((response) => {
       setValue2(response.data);
+      setLoading(true);
     });
   };
 
@@ -39,6 +57,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUE3");
     await axios.post(Principal, f).then((response) => {
       setValue3(response.data);
+      setLoading(true);
     });
   };
 
@@ -47,6 +66,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUE4");
     await axios.post(Principal, f).then((response) => {
       setValue4(response.data);
+      setLoading(true);
     });
   };
 
@@ -55,6 +75,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUE5");
     await axios.post(Principal, f).then((response) => {
       setValue5(response.data);
+      setLoading(true);
     });
   };
 
@@ -63,6 +84,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUEREST1");
     await axios.post(Principal, f).then((response) => {
       setRest1(response.data);
+      setLoading(true);
     });
   };
 
@@ -71,6 +93,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUEREST2");
     await axios.post(Principal, f).then((response) => {
       setRest2(response.data);
+      setLoading(true);
     });
   };
 
@@ -79,6 +102,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUEREST3");
     await axios.post(Principal, f).then((response) => {
       setRest3(response.data);
+      setLoading(true);
     });
   };
 
@@ -87,6 +111,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUEREST4");
     await axios.post(Principal, f).then((response) => {
       setRest4(response.data);
+      setLoading(true);
     });
   };
 
@@ -95,6 +120,7 @@ export const useCajeroP = () => {
     f.append("METHOD", "CONSULTAVALUEREST5");
     await axios.post(Principal, f).then((response) => {
       setRest5(response.data);
+      setLoading(true);
     });
   };
 
@@ -209,6 +235,11 @@ export const useCajeroP = () => {
     ConsultaRest4,
     ConsultaRest5,
     DeleteValues,
+    handleShow,
+    handleShowDos,
+    handleShowTres,
+    handleShowCuatro,
+    handleShowCinco,
   };
 
   return {
@@ -224,5 +255,11 @@ export const useCajeroP = () => {
     restCaj4,
     restCaj5,
     setEjecute,
+    mostrar,
+    mostrarDos,
+    mostrarTres,
+    mostrarCuatro,
+    mostrarCinco,
+    loading,
   };
 };

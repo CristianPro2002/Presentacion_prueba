@@ -1,14 +1,18 @@
-import React from 'react'
-import { Modal, ModalBody, ModalFooter} from "reactstrap";
+import React from "react";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
 
-const Modales = ({modalEliminar, dataUsuario,peticionDelete, abrirCerrarModalEliminar}) => {
+const Modales = ({
+  modalEliminar,
+  dataUsuario,
+  peticionDelete,
+  abrirCerrarModalEliminar,
+}) => {
   return (
-
     <div>
-         <Modal isOpen={modalEliminar}>
+      <Modal isOpen={modalEliminar}>
         <ModalBody>
-          ¿Estás seguro que deseas eliminar el Usuario <b>
-          {dataUsuario && dataUsuario.Usuario}</b>?
+          ¿Estás seguro que deseas eliminar el Usuario{" "}
+          <b>{dataUsuario && dataUsuario.Usuario}</b>?
         </ModalBody>
         <ModalFooter>
           <button className="btn btn-danger" onClick={() => peticionDelete()}>
@@ -23,7 +27,7 @@ const Modales = ({modalEliminar, dataUsuario,peticionDelete, abrirCerrarModalEli
         </ModalFooter>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default Modales
+export default Modales;

@@ -4,9 +4,8 @@ import { useNavigate, Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Container, Form } from "react-bootstrap";
 import "./Cajero.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import imagen from "../../../assets/Imagenes/User-Login.png";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
@@ -23,18 +22,10 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
   const {
     CajeroActions,
     getCuentaC,
-    setGetCuentaC,
     getCuentaJ,
-    setGetCuentaJ,
     data,
-    setData,
-    consulta,
-    setConsulta,
-    consulta2,
-    setConsulta2,
     dataUsuario,
     setDataUsuario,
-    dataUsuarioReport,
     setDataUsuarioReport,
     reportCuenta,
     NoCuenta,
@@ -47,6 +38,8 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
     reportValueR,
     estadoPeticion,
   } = useCajero({ numeroCajeroBD });
+
+  /* eslint-disable */
 
   const peticionPostFather = () => {
     let Estado = true;
@@ -122,6 +115,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
     CajeroActions.peticionGet();
   }, [data]);
 
+  /* eslint-enable */
   return (
     <div className="Principal-div01">
       <div className="Fondito">
@@ -173,26 +167,25 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
               <div className="container2">
                 <Container>
                   <div className="cont-popover">
-                  <OverlayTrigger
-                    trigger="click"
-                    key="top"
-                    placement="top"
-                    overlay={
-                      <Popover id={`popover-positioned-top`}>
-                        <Popover.Header as="h3">{`Cantidad disponible`}</Popover.Header>
-                        <Popover.Body>
-                          <strong><center>$ {separator(Valor)}</center></strong>
-                        </Popover.Body>
-                      </Popover>
-                    }
-                  >
-                    <Button variant="primary">Ver disponible</Button>
-                  </OverlayTrigger>
+                    <OverlayTrigger
+                      trigger="click"
+                      key="top"
+                      placement="top"
+                      overlay={
+                        <Popover id={`popover-positioned-top`}>
+                          <Popover.Header as="h3">{`Cantidad disponible`}</Popover.Header>
+                          <Popover.Body>
+                            <strong>
+                              <center>$ {separator(Valor)}</center>
+                            </strong>
+                          </Popover.Body>
+                        </Popover>
+                      }
+                    >
+                      <Button variant="primary">Ver disponible</Button>
+                    </OverlayTrigger>
                   </div>
-                  <Form
-                    action={reciboBackend}
-                    method="post"
-                  >
+                  <Form action={reciboBackend} method="post">
                     <div className="Contenedores2">
                       <div className="Contenedor-logo-second">
                         <img

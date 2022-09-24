@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Tabla.css";
 import { AiFillPrinter } from "react-icons/ai";
 import DataTable from "react-data-table-component";
@@ -61,6 +60,8 @@ const paginacionOpciones = {
 const Tabla = ({ numeroCajero, cajero, link }) => {
   const { TablaActions, data, setData, tablaUsuarios } = useTablaCajero();
 
+  /* eslint-disable */
+
   const [busqueda, setBusqueda] = useState("");
   const handleChange = (e) => {
     setBusqueda(e.target.value);
@@ -85,6 +86,8 @@ const Tabla = ({ numeroCajero, cajero, link }) => {
   useEffect(() => {
     TablaActions.getCuenta(cajero);
   }, []);
+
+  /* eslint-enable */
 
   return (
     <div className="table-responsive Background">
@@ -121,11 +124,13 @@ const Tabla = ({ numeroCajero, cajero, link }) => {
                   onChange={handleChange}
                 />
               </div>
+              {/* eslint-disable */}
               <div className="col-md-3">
                 <a className="reporte" href={link} target="_blank">
                   <AiFillPrinter />
                 </a>
               </div>
+              {/* eslint-enable */}
             </div>
           }
           subHeaderAlign="right"

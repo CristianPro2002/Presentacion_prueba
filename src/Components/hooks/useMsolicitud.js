@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Principal } from "../../helpers/url";
-
+import toast from "react-hot-toast";
 export const useMsolicitud = ({
   setSolicitud,
   solicitud,
@@ -25,9 +25,11 @@ export const useMsolicitud = ({
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLI");
     await axios
-      .post(Principal, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
+      .post(Principal, f, {
+        params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli },
+      })
       .then((response) => {
-        setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
+        setSolicitud(solicitud.filter((Usuario) => Usuario.Id_reg !== Identi));
         cerrar2();
         document
           .getElementById("ventana_modal")
@@ -35,6 +37,8 @@ export const useMsolicitud = ({
         document
           .getElementById("ventana_modalp")
           .setAttribute("style", "visibility:visible; top:50%;");
+
+        toast.success("Solicitud cancelada con exito");
       })
       .catch((error) => {
         console.log(error);
@@ -48,9 +52,13 @@ export const useMsolicitud = ({
     f.append("Des_soli", estado.Des_soli);
     f.append("METHOD", "CANCELSOLIJ");
     await axios
-      .post(Principal, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
+      .post(Principal, f, {
+        params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij },
+      })
       .then((response) => {
-        setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
+        setSolicitud2(
+          solicitud2.filter((Usuario) => Usuario.Id_regj !== Identi)
+        );
         cerrar2();
         document
           .getElementById("ventana_modal3")
@@ -58,6 +66,8 @@ export const useMsolicitud = ({
         document
           .getElementById("ventana_modalp")
           .setAttribute("style", "visibility:visible; top:50%;");
+
+        toast.success("Solicitud cancelada con exito");
       })
       .catch((error) => {
         console.log(error);
@@ -96,15 +106,19 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("METHOD", "DELETESOLI");
     await axios
-      .post(Principal, f, { params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli } })
+      .post(Principal, f, {
+        params: { No_ide: No_ide, Id_reg: Identi, Id_soli: Id_soli },
+      })
       .then((response) => {
-        setSolicitud(solicitud.filter((Usuario) => Usuario.No_ide !== No_ide));
+        setSolicitud(solicitud.filter((Usuario) => Usuario.Id_reg !== Identi));
         document
           .getElementById("ventana_modal")
           .setAttribute("style", "visibility: hidden;");
         document
           .getElementById("ventana_modalp")
           .setAttribute("style", "visibility:visible; top:50%;");
+
+        toast.success("Solicitud aprobada con exito");
       })
       .catch((error) => {
         console.log(error);
@@ -117,15 +131,20 @@ export const useMsolicitud = ({
     var f = new FormData();
     f.append("METHOD", "DELETESOLIJ");
     await axios
-      .post(Principal, f, { params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij } })
+      .post(Principal, f, {
+        params: { Nit: Nit, Id_regj: Identi, Id_solij: Id_solij },
+      })
       .then((response) => {
-        setSolicitud2(solicitud2.filter((Usuario) => Usuario.Nit !== Nit));
+        setSolicitud2(
+          solicitud2.filter((Usuario) => Usuario.Id_regj !== Identi)
+        );
         document
           .getElementById("ventana_modal3")
           .setAttribute("style", "visibility: hidden;");
         document
           .getElementById("ventana_modalp")
           .setAttribute("style", "visibility:visible; top:50%;");
+        toast.success("Solicitud aprobada con exito");
       })
       .catch((error) => {
         console.log(error);

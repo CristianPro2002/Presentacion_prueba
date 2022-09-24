@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Principal } from "../../helpers/url";
 
 export const useModalCajeros = () => {

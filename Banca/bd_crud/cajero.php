@@ -73,11 +73,17 @@ if($_POST['METHOD']=='POSTGETFALSE'){
     $Cajero=$_POST['Cajero'];
     $No_cuenta=$_POST['No_cuenta'];
     $Estado = $_POST['Estado'];
-
-    $query = "insert into act_val(Id_act_val,Id_client,ti_product,Valor,No_cajero) values (NULL,'$Id_act','$Tip_pro','$Valor_act','$Cajero')";
-    $queryAutoIncrement="select MAX(Id_act_val) as Id_act_val from frameworks";
-    $resultado=metodoPost($query, $queryAutoIncrement);
-    echo json_encode($resultado);
+    if($Estado == 'true'){
+        $query = "insert into act_val(Id_act_val,Id_client,Fe_act,ti_product,Valor,No_cajero,No_cuec,No_cuej) values (NULL,'$Id_act','$Fecha_act','$Tip_pro','$Valor_act','$Cajero','$No_cuenta',NULL)";
+        $queryAutoIncrement="select MAX(Id_act_val) as Id_act_val from frameworks";
+        $resultado=metodoPost($query, $queryAutoIncrement);
+        echo json_encode($resultado);
+    }else{
+        $query = "insert into act_val(Id_act_val,Id_client,Fe_act,ti_product,Valor,No_cajero,No_cuec,No_cuej) values (NULL,'$Id_act','$Fecha_act','$Tip_pro','$Valor_act','$Cajero',NULL,'$No_cuenta')";
+        $queryAutoIncrement="select MAX(Id_act_val) as Id_act_val from frameworks";
+        $resultado=metodoPost($query, $queryAutoIncrement);
+        echo json_encode($resultado);
+    }
     header("HTTP/1.1 200 OK");
     exit();
 }

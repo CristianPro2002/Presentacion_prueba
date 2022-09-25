@@ -46,12 +46,13 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
     console.log(getCuentaC);
     for (var i = 0; i < getCuentaC.length || i < getCuentaJ.length; i++) {
       if (dataUsuario.No_cuenta == getCuentaC[i].No_cuenta) {
+        Estado = true;
         CajeroActions.peticionPost(Estado);
-        CajeroActions.peticionPostFalse();
+        CajeroActions.peticionPostFalse(Estado);
       } else if (dataUsuario.No_cuenta == getCuentaJ[i].No_cuenta) {
         Estado = false;
         CajeroActions.peticionPost(Estado);
-        CajeroActions.peticionPostFalse();
+        CajeroActions.peticionPostFalse(Estado);
       }
     }
   };

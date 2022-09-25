@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-09-2022 a las 16:10:29
+-- Tiempo de generación: 25-09-2022 a las 00:08:43
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -38,6 +38,16 @@ CREATE TABLE `act_cli` (
   `No_cuej` int DEFAULT NULL COMMENT 'Numero de cuenta de la entidad'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Actividad de cliente';
 
+--
+-- Volcado de datos para la tabla `act_cli`
+--
+
+INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_cajero`, `No_cuec`, `No_cuej`) VALUES
+(71, 1192719887, '2022-09-24 18:50:00', 'Apertura de Cuenta', '100000', 'Cajero1', 600522, NULL),
+(72, 1192719887, '2022-09-30 18:50:00', 'Consignación', '500000', 'Cajero2', 600522, NULL),
+(73, 3152787667, '2022-09-24 19:02:00', 'Apertura de Cuenta', '99999', 'Cajero4', NULL, 123456),
+(74, 3152787667, '2022-09-17 19:05:00', 'Consignación', '500000', 'Cajero1', NULL, 123456);
+
 -- --------------------------------------------------------
 
 --
@@ -47,9 +57,12 @@ CREATE TABLE `act_cli` (
 CREATE TABLE `act_val` (
   `Id_act_val` int NOT NULL,
   `Id_client` double DEFAULT NULL COMMENT 'Identificacion  del ciente',
+  `Fe_act` date DEFAULT NULL COMMENT 'Fecha en la que se realizo la actividad',
   `ti_product` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de producto',
   `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor por cajero',
-  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `No_cuec` int DEFAULT NULL COMMENT 'Numero de cuenta de persona natural',
+  `No_cuej` int DEFAULT NULL COMMENT 'Numero de cuenta de persona juridica'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='(F) Actividad de cliente solo los valores y tipo de producto';
 
 -- --------------------------------------------------------
@@ -1291,13 +1304,13 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=71;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `act_val`
 --
 ALTER TABLE `act_val`
-  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`

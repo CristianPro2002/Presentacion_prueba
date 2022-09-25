@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-09-2022 a las 01:55:09
+-- Tiempo de generación: 25-09-2022 a las 00:26:39
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.30
 
@@ -57,7 +57,14 @@ INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_c
 (65, 1192719887, '2022-09-09 22:54:00', 'Consignación', '30000', 'Cajero4', 562725, NULL),
 (66, 11111111, '2022-09-09 22:55:00', 'Consignación', '10000', 'Cajero4', NULL, 551389),
 (67, 435345, '2022-09-09 22:56:00', 'Apertura de Cuenta', '100000', 'Cajero4', NULL, 722416),
-(68, 566, '2022-09-10 21:42:00', 'Apertura de Cuenta', '100000', 'Cajero2', 791778, NULL);
+(68, 566, '2022-09-10 21:42:00', 'Apertura de Cuenta', '100000', 'Cajero2', 791778, NULL),
+(69, 11111111, '2022-09-23 18:34:00', 'Consignación', '499999', 'Cajero2', NULL, 551389),
+(70, 11111111, '2022-09-30 18:36:00', 'Consignación', '200000', 'Cajero2', NULL, 551389),
+(71, 11111111, '2022-09-23 18:38:00', 'Consignación', '5000000', 'Cajero2', NULL, 551389),
+(72, 435436, '2022-09-23 18:39:00', 'Consignación', '500000', 'Cajero2', 137627, NULL),
+(73, 11111111, '2022-09-23 18:41:00', 'Consignación', '500000', 'Cajero2', NULL, 551389),
+(74, 435436, '2022-09-23 18:42:00', 'Consignación', '20000000', 'Cajero2', 137627, NULL),
+(75, 11111111, '2022-09-16 19:25:00', 'Consignación', '500000', 'Cajero2', NULL, 551389);
 
 -- --------------------------------------------------------
 
@@ -68,26 +75,13 @@ INSERT INTO `act_cli` (`Idact_cli`, `Id_act`, `Fe_act`, `ti_pro`, `Valor`, `No_c
 CREATE TABLE `act_val` (
   `Id_act_val` int NOT NULL,
   `Id_client` double DEFAULT NULL COMMENT 'Identificacion  del ciente',
+  `Fe_act` date DEFAULT NULL COMMENT 'Fecha de actividad',
   `ti_product` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'tipo de producto',
   `Valor` decimal(10,0) DEFAULT NULL COMMENT 'Valor por cajero',
-  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `No_cajero` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `No_cuec` int DEFAULT NULL COMMENT 'Numero de cuenta de persona natural',
+  `No_cuej` int DEFAULT NULL COMMENT 'Numero de cuenta de persona juridica'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='(F) Actividad de cliente solo los valores y tipo de producto';
-
---
--- Volcado de datos para la tabla `act_val`
---
-
-INSERT INTO `act_val` (`Id_act_val`, `Id_client`, `ti_product`, `Valor`, `No_cajero`) VALUES
-(11, 435436, 'Consignación', '400000', 'Cajero2'),
-(12, 11111111, 'Retiro', '150000', 'Cajero2'),
-(13, 435436, 'Apertura de Cuenta', '100000', 'Cajero1'),
-(14, 435436, 'Consignación', '200000', 'Cajero3'),
-(15, 11111111, 'Consignación', '200000', 'Cajero5'),
-(16, 11111111, 'Apertura de Cuenta', '100000', 'Cajero2'),
-(17, 1192719887, 'Apertura de Cuenta', '9998', 'Cajero3'),
-(18, 1192719887, 'Apertura de Cuenta', '100000', 'Cajero3'),
-(19, 1192719887, 'Apertura de Cuenta', '99998', 'Cajero2'),
-(20, 1192719887, 'Apertura de Cuenta', '100000', 'Cajero2');
 
 -- --------------------------------------------------------
 
@@ -1405,13 +1399,13 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `act_cli`
 --
 ALTER TABLE `act_cli`
-  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=69;
+  MODIFY `Idact_cli` int NOT NULL AUTO_INCREMENT COMMENT 'Identificacion de actividad de cliente', AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `act_val`
 --
 ALTER TABLE `act_val`
-  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id_act_val` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `client_co`

@@ -44,7 +44,6 @@ const Roles = () => {
 
   const Usuario = localStorage.getItem("User");
   const Rol = localStorage.getItem("Rol");
-  console.log(Rol);
 
   const validar4 = (e) => {
     var validacion = document.getElementById("cajerov");

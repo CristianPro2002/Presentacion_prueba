@@ -66,7 +66,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     });
   };
 
-  const peticionPostFalse = async () => {
+  const peticionPostFalse = async (Estado) => {
     var f = new FormData();
     f.append("Id_act", dataUsuario.Id_act);
     f.append("Fecha_act", dataUsuario.Fecha_act);
@@ -74,6 +74,7 @@ export const useCajero = ({ numeroCajeroBD }) => {
     f.append("Valor_act", dataUsuario.Valor_act);
     f.append("Cajero", dataUsuario.Cajero);
     f.append("No_cuenta", dataUsuario.No_cuenta);
+    f.append("Estado", Estado);
     f.append("METHOD", "POSTGETFALSE");
     await axios.post(CajeroBackend, f).then((response) => {
       console.log(response.data, "Realizado");

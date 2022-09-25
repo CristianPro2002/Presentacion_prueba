@@ -38,7 +38,7 @@ export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
                         <b>Id</b>
                       </label>
                     </div>
-                    {data.Id_act}
+                    {data.Id_client}
                   </div>
                   <div className="content-info">
                     <div>
@@ -54,7 +54,7 @@ export const Mcajero1 = ({ handleShow, mostrar, datam1 }) => {
                         <b>Producto</b>
                       </label>
                     </div>
-                    {data.ti_pro}
+                    {data.ti_product}
                   </div>
                   <div className="content-info">
                     <div>
@@ -149,7 +149,7 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
                         <b>Id</b>
                       </label>
                     </div>
-                    {data.Id_act}
+                    {data.Id_client}
                   </div>
                   <div className="content-info">
                     <div>
@@ -165,7 +165,7 @@ export const Mcajero2 = ({ handleShowDos, mostrarDos, datam2 }) => {
                         <b>Producto</b>
                       </label>
                     </div>
-                    {data.ti_pro}
+                    {data.ti_product}
                   </div>
                   <div className="content-info">
                     <div>
@@ -258,7 +258,7 @@ export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
                         <b>Id</b>
                       </label>
                     </div>
-                    {data.Id_act}
+                    {data.Id_client}
                   </div>
                   <div className="content-info">
                     <div>
@@ -274,7 +274,7 @@ export const Mcajero3 = ({ handleShowTres, mostrarTres, datam3 }) => {
                         <b>Producto</b>
                       </label>
                     </div>
-                    {data.ti_pro}
+                    {data.ti_product}
                   </div>
                   <div className="content-info">
                     <div>
@@ -367,7 +367,7 @@ export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
                         <b>Id</b>
                       </label>
                     </div>
-                    {data.Id_act}
+                    {data.Id_client}
                   </div>
                   <div className="content-info">
                     <div>
@@ -383,7 +383,7 @@ export const Mcajero4 = ({ handleShowCuatro, mostrarCuatro, datam4 }) => {
                         <b>Producto</b>
                       </label>
                     </div>
-                    {data.ti_pro}
+                    {data.ti_product}
                   </div>
                   <div className="content-info">
                     <div>
@@ -476,7 +476,7 @@ export const Mcajero5 = ({ handleShowCinco, mostrarCinco, datam5 }) => {
                         <b>Id</b>
                       </label>
                     </div>
-                    {data.Id_act}
+                    {data.Id_client}
                   </div>
                   <div className="content-info">
                     <div>
@@ -492,7 +492,7 @@ export const Mcajero5 = ({ handleShowCinco, mostrarCinco, datam5 }) => {
                         <b>Producto</b>
                       </label>
                     </div>
-                    {data.ti_pro}
+                    {data.ti_product}
                   </div>
                   <div className="content-info">
                     <div>

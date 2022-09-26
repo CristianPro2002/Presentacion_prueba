@@ -197,6 +197,23 @@ export const useCajeroP = () => {
       initialValue
     );
 
+  const timeFunctions = () => {
+    setInterval(getFunctions, 10000);
+  };
+
+  const getFunctions = () => {
+    ConsultaValue1();
+    ConsultaValue2();
+    ConsultaValue3();
+    ConsultaValue4();
+    ConsultaValue5();
+    ConsultaRest1();
+    ConsultaRest2();
+    ConsultaRest3();
+    ConsultaRest4();
+    ConsultaRest5();
+  };
+
   useEffect(() => {
     ConsultaValue1();
     ConsultaValue2();
@@ -210,6 +227,7 @@ export const useCajeroP = () => {
     ConsultaRest5();
   }, [ejecute]);
 
+  /* eslint-disable */
   useEffect(() => {
     ConsultaValue1();
     ConsultaValue2();
@@ -221,7 +239,9 @@ export const useCajeroP = () => {
     ConsultaRest3();
     ConsultaRest4();
     ConsultaRest5();
+    timeFunctions();
   }, []);
+  /* eslint-enable */
 
   const CajeroPactions = {
     ConsultaValue1,

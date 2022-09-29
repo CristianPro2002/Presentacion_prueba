@@ -370,7 +370,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4 mb-1" id="Container-1">
+          <div className="col-md-4 borCont mb-1" id="Container-1">
             <Col>
               <h5 className="Titulo">Fecha diligenciamiento </h5>
 
@@ -547,7 +547,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Barrio
@@ -563,7 +563,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Ciudad/Municipio
@@ -579,7 +579,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Departamento
@@ -779,7 +779,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Barrio
@@ -795,7 +795,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Ciudad/Municipio
@@ -811,7 +811,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Departamento
@@ -827,7 +827,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 País
@@ -1104,7 +1104,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Barrio
@@ -1120,7 +1120,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Ciudad/Municipio
@@ -1136,7 +1136,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Departamento
@@ -1152,7 +1152,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-9">
                 País
@@ -1267,7 +1267,7 @@ const PersonaJuridica = () => {
               <h6 style={{ color: "red" }}>{formik.errors.Idti_na}</h6>
             </Col>
           </div>
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               {/* eslint-disable */}
               <h5 className="Titulo-3"></h5>
@@ -2212,7 +2212,7 @@ const PersonaJuridica = () => {
               <h6 style={{ color: "red" }}>{formik.errors.Mo_pro}</h6>
             </Col>
           </div>
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Moneda
@@ -2228,7 +2228,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 Ciudad
@@ -2244,7 +2244,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4" id="Container-1">
+          <div className="col-md-4 borCont" id="Container-1">
             <Col>
               <label className="label-2">
                 país
@@ -2331,7 +2331,7 @@ const PersonaJuridica = () => {
               </label>
             </Col>
           </div>
-          <div className="col-md-4 mb-2" id="Container-1">
+          <div className="col-md-4 borCont mb-2" id="Container-1">
             <Col>
               <label className="label-2">
                 Moneda
@@ -2347,7 +2347,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4 mb-2" id="Container-1">
+          <div className="col-md-4 borCont mb-2" id="Container-1">
             <Col>
               <label className="label-2">
                 Ciudad
@@ -2363,7 +2363,7 @@ const PersonaJuridica = () => {
             </Col>
           </div>
 
-          <div className="col-md-4 mb-2" id="Container-1">
+          <div className="col-md-4 borCont mb-2" id="Container-1">
             <Col>
               <label className="label-2">
                 país
@@ -2850,7 +2850,7 @@ const PersonaJuridica = () => {
             </h5>
           </div>
 
-          <div className="col-md-4" id="Container-7">
+          <div className="col-md-4 borCont" id="Container-7">
             <label className="Texto-5">
               Código vendedor
               <input
@@ -2863,7 +2863,7 @@ const PersonaJuridica = () => {
             </label>
             <h6 style={{ color: "red" }}>{formik.errors.Cod_vend}</h6>
           </div>
-          <div className="col-md-4" id="Container-7">
+          <div className="col-md-4 borCont" id="Container-7">
             <label className="Texto-5">
               Nombre
               <input
@@ -2876,7 +2876,7 @@ const PersonaJuridica = () => {
             </label>
             <h6 style={{ color: "red" }}>{formik.errors.Nom_vend}</h6>
           </div>
-          <div className="col-md-4" id="Container-7">
+          <div className="col-md-4 borCont" id="Container-7">
             <label className="Texto-5">
               Oficina
               <input

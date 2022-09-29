@@ -82,6 +82,7 @@ const Minsertar = ({
             Crear
           </button>
           <button
+            id="btn-red"
             className="btn btn-danger"
             onClick={() => abrirCerrarModalInsertar()}
           >

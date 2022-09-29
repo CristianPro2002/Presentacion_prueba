@@ -39,6 +39,18 @@ export const McajeroReporte = ({
   const sumTotalCuent = sumValueC - restValueC;
   const prom = sumTotalCuent / (reportValueC.length + reportValueR.length);
 
+  console.log(prom)
+  var promedioP = 0;
+  function promedio() {
+    if(prom > 0){
+      return promedioP = prom;
+    }else{
+      return promedioP = 0;
+    }
+  }
+
+  promedio()
+
   function separator(numb) {
     var str = numb.toString().split(".");
     str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -108,11 +120,34 @@ export const McajeroReporte = ({
       textAlign: "center",
       color: "#19C764",
     },
+
+    boton: {
+      textAlign: "left",
+    },
+
+    header: {
+      display: "flex",
+      justifyContent: "flex-end",
+      width: "100%",
+    },
+
+    Modal: {
+      overflow: "hidden",
+    },
   });
   return (
     <>
-      <Modal isOpen={mostrarReporte} size="xl">
-        <ModalHeader closeButton>Reporte de Cuenta</ModalHeader>
+      <Modal isOpen={mostrarReporte} size="xl" style={styles.Modal}>
+        <ModalHeader closeButton style={styles.header}>
+          <Button
+            id="btn-red"
+            style={styles.boton}
+            variant="danger"
+            onClick={() => handleShowReporte()}
+          >
+            Cerrar{" "}
+          </Button>
+        </ModalHeader>
         <ModalBody>
           {reportCuenta.length >= 1 ? (
             <PDFViewer style={styles.pdfViewers}>
@@ -154,7 +189,7 @@ export const McajeroReporte = ({
                     </View>
                     <View style={styles.content_value}>
                       <Text style={styles.text_prom}>Promedio:</Text>
-                      <Text style={styles.value_prom}>${separator(prom)}</Text>
+                      <Text style={styles.value_prom}>${separator(promedioP)}</Text>
                     </View>
                   </View>
                 </Page>
@@ -177,11 +212,6 @@ export const McajeroReporte = ({
             </>
           )}
         </ModalBody>
-        <ModalFooter>
-          <Button variant="danger" onClick={() => handleShowReporte()}>
-            Cerrar
-          </Button>
-        </ModalFooter>
       </Modal>
     </>
   );
@@ -253,12 +283,32 @@ export const McajeroReporte2 = ({
       width: "50%",
       textAlign: "center",
     },
+
+    header: {
+      display: "flex",
+      justifyContent: "flex-end",
+      width: "100%",
+    },
+
+    boton: {
+      textAlign: "left",
+    },
+  
   });
 
   return (
     <>
       <Modal isOpen={mostrarReporteDate} size="xl">
-        <ModalHeader closeButton>Reporte de acciones de cuenta</ModalHeader>
+        <ModalHeader closeButton  style={styles.header}>
+          <Button
+            style={styles.boton}
+            id="btn-red"
+            variant="danger"
+            onClick={() => handleShowReporteDate()}
+          >
+            Cerrar
+          </Button>
+        </ModalHeader>
         <ModalBody>
           {reportCuentaDate.length >= 1 && reportCuentaDate.length <= 300 ? (
             <PDFViewer style={styles.pdfViewers}>
@@ -337,11 +387,6 @@ export const McajeroReporte2 = ({
             </>
           )}
         </ModalBody>
-        <ModalFooter>
-          <Button variant="danger" onClick={() => handleShowReporteDate()}>
-            Cerrar
-          </Button>
-        </ModalFooter>
       </Modal>
     </>
   );

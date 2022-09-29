@@ -258,7 +258,7 @@ const PersonaNatural = () => {
       <div className="hijo">
         <form className="Form" onSubmit={formik.handleSubmit}>
           <div className="row red-red">
-            <div className="col-md-4">
+            <div className="col-md-4 borCont">
               <Col className="">
                 <h5 className="titulitos">Tipo de solicitud</h5>
                 <label className="labelu">
@@ -290,7 +290,7 @@ const PersonaNatural = () => {
               </Col>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-4 borCont">
               <Col className="">
                 <h5 className="titulitos">Tipo de solicitante</h5>
                 <label className="labelu">
@@ -308,7 +308,7 @@ const PersonaNatural = () => {
               </Col>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-4 borCont">
               <Col className="">
                 <h5 className="titulitos">Fecha de diligenciamiento</h5>
                 <label className="labelu">
@@ -1911,7 +1911,7 @@ const PersonaNatural = () => {
               Para uso exclusivo de las Entidades del Grupo Empresarial
             </h5>
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 borCont">
                 <label className="textico">
                   Código vendedor
                   <input
@@ -1924,7 +1924,7 @@ const PersonaNatural = () => {
                   <h6 style={{ color: "red" }}>{formik.errors.Cod_vend}</h6>
                 </label>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 borCont">
                 <label className="textico">
                   Nombre
                   <input
@@ -1937,7 +1937,7 @@ const PersonaNatural = () => {
                   <h6 style={{ color: "red" }}>{formik.errors.Nom_vend}</h6>
                 </label>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 borCont">
                 <label className="textico">
                   Oficina
                   <input

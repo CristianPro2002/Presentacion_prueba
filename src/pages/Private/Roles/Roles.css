@@ -1,10 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+.col-md-4 {
+  border: none !important;
+}
+
+.principal2 {
+  background: linear-gradient(to bottom right, #722bae, #4b2cb2, #3036c6);
+  height: 100vh;
+}
+
 .modoO {
   float: right;
   border-style: none;
 }
 .button01 {
+  width: 130px;
   border: none;
   background-color: transparent;
 }
@@ -35,12 +46,25 @@
   display: none;
 }
 
-.row {
-  text-align: center;
+.btn-style {
+  background: #f15a26;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+}
 
-  display: flex;
+.btn-style:hover {
+  background: #dd3c14;
+  color: white;
+}
 
-  justify-content: center;
+@media screen and (max-width: 500px) {
+  .btn-style {
+    font-size: 10px;
+    padding: 3px;
+  }
 }
 
 .ImagenF {
@@ -50,10 +74,13 @@
 .ImagenF2 {
   filter: hue-rotate(209deg) brightness(200%);
   cursor: pointer;
+  position: relative;
+  top: 38px;
 }
 
 .TituloR {
-  padding: 3%;
+  padding: 0px !important;
+  margin-bottom: 30px;
   font-family: "Quicksand", sans-serif;
   text-align: center;
   color: rgb(255, 255, 255);
@@ -89,9 +116,11 @@
 }
 
 .cont1-asesor01 {
+  overflow-y: hidden;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../../../assets/Imagenes_R/asesor_financierio.webp");
   background-size: cover;
+  background-position-y: bottom;
   height: 150px;
   border-radius: 10px 10px 0px 0px;
   color: white;
@@ -108,6 +137,7 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("../../../assets/Imagenes_R/ImgDirector.webp");
   background-size: cover;
+  background-position-y: bottom;
   height: 150px;
   border-radius: 10px 10px 0px 0px;
   color: white;
@@ -121,6 +151,7 @@
   bottom: 0;
   padding-left: 10px;
   font-family: "Bree Serif", serif;
+  filter: blur(-0px);
 }
 
 .cont2-direct01 {
@@ -182,7 +213,7 @@
   background-attachment: fixed;
 }
 
-.cont-cerrar03{
+.cont-cerrar03 {
   display: flex;
   justify-content: flex-end;
   padding-left: 10px;
@@ -190,7 +221,7 @@
   width: 50%;
 }
 
-.cont-cerrar01{
+.cont-cerrar01 {
   display: flex;
   justify-content: flex-end;
   padding-right: 10px;
@@ -198,7 +229,7 @@
   width: 100%;
 }
 
-.cont-cerrar02{
+.cont-cerrar02 {
   display: flex;
   justify-content: flex-start;
   padding-right: 10px;
@@ -206,17 +237,21 @@
   width: 50%;
 }
 
-.f201{
+.f201 {
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-#btn-cerrar01{
+#btn-cerrar01 {
+}
 
+#Flcajerop01 {
+  height: 288px;
 }
 
 .fondo {
+  background-size: cover;
   background: linear-gradient(to bottom right, #722bae, #4b2cb2, #3036c6);
 }
 
@@ -258,23 +293,24 @@
 .principal2 {
 }
 .colsito1 {
-  width: 40%;
+  display: block;
+  width: 100% !important;
   height: 100%;
 }
 .colsito2 {
-  width: 40%;
+  width: 100% !important;
   height: 100%;
 }
 .colsito3 {
-  width: 40%;
+  width: 100% !important;
   height: 100%;
 }
 .colsito4 {
-  width: 40%;
+  width: 100% !important;
   height: 100%;
 }
 .colsito5 {
-  width: 80%;
+  width: 100% !important;
   height: 100%;
 }
 .ImagenI {
@@ -302,10 +338,8 @@
     width: 50%;
     height: 50%;
   }
-
   .ImagenF {
-    width: 30%;
-    height: 30%;
+    font-size: 10px;
   }
 }
 
@@ -313,6 +347,7 @@
   font-family: "Quicksand", sans-serif;
   color: rgb(255, 255, 255);
   font-weight: bold;
+  margin: 16px;
 }
 
 #colsito {

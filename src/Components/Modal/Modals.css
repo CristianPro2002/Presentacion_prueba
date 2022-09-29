@@ -12,3 +12,14 @@
     text-align: center;
     flex-direction: column;
 }
+
+
+
+#btn-red{
+    background: #f15a26;
+}
+
+#btn-red:hover {
+    background: #dd3c14;
+  }
+  

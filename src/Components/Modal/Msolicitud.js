@@ -103,7 +103,7 @@ const Msolicitud = ({
                                             Data.Id_regj
                                           )
                                         }
-                                        className="btn btn-danger"
+                                        className="btn-style"
                                       >
                                         Detalle
                                       </button>
@@ -165,7 +165,7 @@ const Msolicitud = ({
                                             Data.Id_reg
                                           )
                                         }
-                                        className="btn btn-danger"
+                                        className="btn-style"
                                       >
                                         Detalle
                                       </button>
@@ -259,7 +259,7 @@ const Msolicitud = ({
                 </button>
                 <button
                   id="boton_modal_rojo"
-                  className="btn btn-danger"
+                  className="btn-style"
                   onClick={abrir2}
                 >
                   Cancelar
@@ -329,7 +329,7 @@ const Msolicitud = ({
                 </button>
                 <button
                   id="boton_modal_rojo"
-                  className="btn btn-danger"
+                  className="btn-style"
                   onClick={abrir3}
                 >
                   Cancelar
@@ -372,7 +372,7 @@ const Msolicitud = ({
                 </button>
                 <button
                   id="boton_Modal_2_1"
-                  className="btn btn-danger"
+                  className="btn-style"
                   onClick={cerrar2}
                 >
                   Cancelar
@@ -415,7 +415,7 @@ const Msolicitud = ({
                 </button>
                 <button
                   id="boton_Modal_2_1"
-                  className="btn btn-danger"
+                  className="btn-style"
                   onClick={cerrar2}
                 >
                   Cancelar

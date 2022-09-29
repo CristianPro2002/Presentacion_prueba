@@ -3,7 +3,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 body{
   font-family: 'Quicksand', sans-serif;
+  
 }
+.Father {
+  background-image: linear-gradient(
+    to right top,
+    #03a1e5,
+    #008ae1,
+    #1471d9,
+    #4355c9,
+    #6231b1
+  );
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.father01{
+  background-image: linear-gradient(
+    to right top,
+    #03a1e5,
+    #008ae1,
+    #1471d9,
+    #4355c9,
+    #6231b1
+  );
+
+  height: 100vh;
+}
+
+#boton_modal_verde {
+  border: none;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+#boton_danger_rojo {
+  background: #f15a26;
+} 
+
+#boton_danger_rojo:hover {
+  background: #dd3c14;
+}
+
 .contenedor_padre_director{
   /*Contenedor principal del Formulario_Director*/
   display: flex;
@@ -22,7 +63,7 @@ body{
 
 #cir{
   padding: 10px;
-  color: #00aeff;
+  color: #ffffff;
   transition: all 0.5s;
 }
 
@@ -36,13 +77,22 @@ body{
 }
 
 #btnagre{
-  margin: 10px;
-  height: 50px;
-  width: 60%;
+  border: none;
+  margin: 15px;
+  padding: 10px;
+  width: 30%;
+  font-weight: bold;
+}
+#btnagre:hover {
+  background: #57c3ee;
+  color: white;
 }
 
 
+
+
 .conttable{
+  margin-bottom: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -50,6 +100,7 @@ body{
 }
 
 .cont-desc01{
+  background: white;
   width: 90%;
   padding: 0px 40px 0px 40px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -63,7 +114,7 @@ body{
 .titureg{
   font-family: 'Quicksand', sans-serif;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: bold;
 }
 
@@ -125,6 +176,7 @@ body{
 
 .Nombre_Usuario  input{
   padding-left: 10px;
+  margin-left: 4%;
   outline-color: rgb(27, 85, 85);
   height: 40px;
  margin-left: 4%;
@@ -314,7 +366,7 @@ justify-content: end;
 .header__modal{
   height: 40px;
   padding: 10px;
-  background-color: #0D6EFD;
+  background-color: #58c2ec;
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -345,7 +397,8 @@ justify-content: end;
 }
 
 #boton_Modal_2_0{
-  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
   margin-right: 10px;
 }
 #boton_Modal_2_1{
@@ -411,7 +464,7 @@ justify-content: end;
 .header__modal2{
   height: 40px;
   padding: 10px;
-  background-color: #0D6EFD;
+  background-color: #58c2ec;
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -470,7 +523,7 @@ justify-content: end;
 .header__modal3{
   height: 40px;
   padding: 10px;
-  background-color: #0D6EFD;
+  background-color: #58c2ec;
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -533,6 +586,7 @@ justify-content: end;
 
 /* barra buscadora */
 .containerInput{
+  padding: 0 !important;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
@@ -545,10 +599,10 @@ justify-content: end;
 .report{
   margin-left: 10px;
   font-size: 35px;
-  color: #000000;
+  color: #ffffff;
 }
 .report:hover{
-  color: #0D6EFD;
+  color: #000000;
 }
 #input_buscador{
  border-right: none;
@@ -556,6 +610,7 @@ justify-content: end;
  outline: none;
  border: 2px solid rgba(0, 0, 0, 0.23)
 }
+
 
 #icono_buscar{
   margin-left: 5px ;

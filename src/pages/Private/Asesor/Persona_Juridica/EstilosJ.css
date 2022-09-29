@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 .contenedor-flex {
   display: flex;
   flex-wrap: wrap;
@@ -498,7 +497,7 @@
 
 .Col-5 {
   display: grid;
-  border-color: #000000;
+  border-color: #000000 I;
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
@@ -514,6 +513,11 @@
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
+}
+
+.borCont {
+border: 1px solid black !important;
+border-radius: 4px;
 }
 
 #Container-2 {
@@ -550,7 +554,6 @@
   border-radius: 4px;
   border-style: solid;
 }
-
 
 .Div {
   text-align: left;
@@ -673,8 +676,8 @@
   color: hsl(219, 98%, 52%);
 }
 
-@media screen and (max-width: 500px) { 
-  h6 { 
-    font-size: 8px; 
-  } 
+@media screen and (max-width: 500px) {
+  h6 {
+    font-size: 8px;
+  }
 }

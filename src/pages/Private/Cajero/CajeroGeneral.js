@@ -183,7 +183,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
                         </Popover>
                       }
                     >
-                      <Button variant="primary">Ver disponible</Button>
+                      <Button className="ingreso" variant="primary">Ver disponible</Button>
                     </OverlayTrigger>
                   </div>
                   <Form action={reciboBackend} method="post">
@@ -325,7 +325,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
           <div className="initial_container">
             <div className="father_container_title">
               <h2 className="title_reports">
-                reportes de los usuarios banca4.0
+                Reportes de los usuarios banca4.0
               </h2>
             </div>
             <div className="dad_container">
@@ -346,6 +346,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
                     <div className="child_container_form1_button">
                       <Button
                         id="button_form"
+                        className="ingreso"
                         type="button"
                         onClick={() => peticionReport()}
                       >
@@ -389,6 +390,7 @@ export const Cajero = ({ numeroCajero, numeroCajeroBD, onclick, Valor }) => {
                       <div className="cont-btn-consult">
                         <Button
                           id="button2_form3"
+                          className="ingreso"
                           type="button"
                           onClick={() => peticionReportDate()}
                         >

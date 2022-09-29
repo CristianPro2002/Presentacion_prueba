@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -8,13 +8,16 @@ import toast, { Toaster } from "react-hot-toast";
 import useAuthContext from "../../../Components/hooks/useAuthContext";
 import axios from "axios";
 import { Principal } from "../../../helpers/url";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
 
 const Roles = () => {
+  const [mostrar, setMostrar] = useState(false);
+  const handleShow = () => setMostrar(!mostrar);
   const notify = () => toast.error("  Selecciona un numero de rol❕");
   const { logout } = useAuthContext();
   let Navigate = useNavigate();
 
-/* eslint-disable */
+  /* eslint-disable */
   const validar3 = (e) => {
     var validacion = document.getElementById("Asesorv");
     if (validacion.value == 1 || validacion.value == "") {
@@ -76,6 +79,11 @@ const Roles = () => {
     });
   };
 
+  const deleteTotal = () => {
+    peticionDeleteTotal();
+    handleShow();
+  }
+
   return (
     <div className="principal2">
       <div className="fondo" id="dark-mode">
@@ -83,15 +91,15 @@ const Roles = () => {
           <div className="f201">
             <div className="cont-cerrar02">
               <button
-                className="btn btn-danger"
-                onClick={() => peticionDeleteTotal()}
+                className="btn-style"
+                onClick={() => handleShow()}
               >
                 Eliminar todos los registros
               </button>
             </div>
             <div className="cont-cerrar03">
               <button
-                className="btn btn-danger"
+                className="btn-style"
                 onClick={() => cerrarSesion()}
                 id="btn-cerrar01"
               >
@@ -103,216 +111,230 @@ const Roles = () => {
             <div className="row" id="rows">
               <h3 className="regis">Registrado con: {Usuario} </h3>
               <h1 className="TituloR">Escoge tu rol</h1>
-              <div className="colsito1" id="colsito">
-                <div className="Fl" id="Fldirector01">
-                  <div className="cont1-direct01">
-                    <h2 className="Title-general-Rol">Director</h2>
-                  </div>
-                  <div className="cont2-direct01">
-                    <ul className="list-unstyled">
-                      <div className="Formu">
-                        <li>
-                          <input
-                            type="text"
-                            className="form-control"
-                            value="Director Operativo"
-                            id="inputsdisables"
-                            readonly
-                            disabled
-                          ></input>
-                        </li>
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="colsito1" id="colsito">
+                    <div className="Fl" id="Fldirector01">
+                      <div className="cont1-direct01">
+                        <h2 className="Title-general-Rol">Director</h2>
                       </div>
-                      <br />
-                      <li>
-                        <button
-                          onClick={() => Navigate("/Tabla_director")}
-                          value="validar"
-                          className="button01"
-                        >
-                          <img
-                            className="ImagenF"
-                            alt=""
-                            src="http://cenfma.com/img/flecha.png"
-                            width="50"
-                            height="50"
-                          />
-                        </button>
-                      </li>
-                    </ul>
+                      <div className="cont2-direct01">
+                        <ul className="list-unstyled">
+                          <div className="Formu">
+                            <li>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value="Director Operativo"
+                                id="inputsdisables"
+                                readonly
+                                disabled
+                              ></input>
+                            </li>
+                          </div>
+                          <br />
+                          <li>
+                            <button
+                              onClick={() => Navigate("/Tabla_director")}
+                              value="validar"
+                              className="button01"
+                            >
+                              <img
+                                className="ImagenF"
+                                alt=""
+                                src="http://cenfma.com/img/flecha.png"
+                                width="50"
+                                height="50"
+                              />
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              {/* column2 */}
-              <div className="colsito2" id="colsito">
-                <div className="Fl" id="Flgerente01">
-                  <div className="cont1-gerent01">
-                    <h2 className="Title-general-Rol">Gerente</h2>
-                  </div>
-                  <div className="cont2-gerent01">
-                    <ul className="list-unstyled">
-                      <div className="Formu">
-                        <li>
-                          <li>
-                            <input
-                              type="text"
-                              className="form-control"
-                              value="Gerente"
-                              id="inputsdisables"
-                              readonly
-                              disabled
-                            ></input>
-                          </li>
-                        </li>
+                {/* column2 */}
+                <div className="col-md-4">
+                  <div className="colsito2" id="colsito">
+                    <div className="Fl" id="Flgerente01">
+                      <div className="cont1-gerent01">
+                        <h2 className="Title-general-Rol">Gerente</h2>
                       </div>
-                      <br />
-                      <li>
-                        <button
-                          onClick={() => Navigate("/Gerente")}
-                          value="validar2"
-                          className="button01"
-                        >
-                          <img
-                            className="ImagenF"
-                            alt=""
-                            src="http://cenfma.com/img/flecha.png"
-                            width="50"
-                            height="50"
-                          />
-                        </button>
-                      </li>
-                    </ul>
+                      <div className="cont2-gerent01">
+                        <ul className="list-unstyled">
+                          <div className="Formu">
+                            <li>
+                              <li>
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  value="Gerente"
+                                  id="inputsdisables"
+                                  readonly
+                                  disabled
+                                ></input>
+                              </li>
+                            </li>
+                          </div>
+                          <br />
+                          <li>
+                            <button
+                              onClick={() => Navigate("/Gerente")}
+                              value="validar2"
+                              className="button01"
+                            >
+                              <img
+                                className="ImagenF"
+                                alt=""
+                                src="http://cenfma.com/img/flecha.png"
+                                width="50"
+                                height="50"
+                              />
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               {/* column3 */}
-              <div className="colsito3" id="colsito">
-                <div className="Fl" id="Flasesor01">
-                  <div className="cont1-asesor01">
-                    <h2 className="Title-general-Rol">Asesor</h2>
-                  </div>
-                  <div className="cont2-asesor01">
-                    <ul className="list-unstyled">
-                      <div className="Formu">
-                        <li>
-                          <Form.Select
-                            aria-label="Default select example"
-                            id="Asesorv"
-                            name="Asesorv"
-                          >
-                            <option value="0" className="Lform">
-                              Selecciona el # de rol
-                            </option>
-                            <option value="1">Asesor #1</option>
-                            <option value="2">Asesor #2</option>
-                            <option value="3">Asesor #3</option>
-                            <option value="4">Asesor #4</option>
-                            <option value="5">Asesor #5</option>
-                          </Form.Select>
-                        </li>
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="colsito3" id="colsito">
+                    <div className="Fl" id="Flasesor01">
+                      <div className="cont1-asesor01">
+                        <h2 className="Title-general-Rol">Asesor</h2>
                       </div>
-                      <br />
-                      <li>
-                        <button
-                          onClick={validar3}
-                          value="validar3"
-                          className="button01"
-                        >
-                          <img
-                            className="ImagenF"
-                            alt=""
-                            src="http://cenfma.com/img/flecha.png"
-                            width="50"
-                            height="50"
-                          />
-                        </button>
-                      </li>
-                    </ul>
+                      <div className="cont2-asesor01">
+                        <ul className="list-unstyled">
+                          <div className="Formu">
+                            <li>
+                              <Form.Select
+                                aria-label="Default select example"
+                                id="Asesorv"
+                                name="Asesorv"
+                              >
+                                <option value="0" className="Lform">
+                                  Selecciona el rol
+                                </option>
+                                <option value="1">Asesor 1</option>
+                                <option value="2">Asesor 2</option>
+                                <option value="3">Asesor 3</option>
+                                <option value="4">Asesor 4</option>
+                                <option value="5">Asesor 5</option>
+                              </Form.Select>
+                            </li>
+                          </div>
+                          <br />
+                          <li>
+                            <button
+                              onClick={validar3}
+                              value="validar3"
+                              className="button01"
+                            >
+                              <img
+                                className="ImagenF"
+                                alt=""
+                                src="http://cenfma.com/img/flecha.png"
+                                width="50"
+                                height="50"
+                              />
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="colsito4" id="colsito">
-                <div className="Fl" id="Flcajero01">
-                  <div className="cont1-cajero01">
-                    <h2 className="Title-general-Rol">Cajero</h2>
-                  </div>
-                  <div className="cont2-cajero01">
-                    <ul className="list-unstyled">
-                      <div className="Formu">
-                        <li>
-                          <Form.Select
-                            aria-label="Default select example"
-                            id="cajerov"
-                            name="cajerov"
-                          >
-                            <option value="0" className="Lform">
-                              Selecciona el # de rol
-                            </option>
-                            <option value="1">Cajero #1</option>
-                            <option value="2">Cajero #2</option>
-                            <option value="3">Cajero #3</option>
-                            <option value="4">Cajero #4</option>
-                            <option value="5">Cajero #5</option>
-                          </Form.Select>
-                        </li>
+                <div className="col-md-4">
+                  <div className="colsito4" id="colsito">
+                    <div className="Fl" id="Flcajero01">
+                      <div className="cont1-cajero01">
+                        <h2 className="Title-general-Rol">Cajero</h2>
                       </div>
-                      <br />
-                      <li>
-                        <button
-                          onClick={validar4}
-                          value="validar4"
-                          className="button01"
-                        >
-                          <img
-                            className="ImagenF"
-                            alt=""
-                            src="http://cenfma.com/img/flecha.png"
-                            width="50"
-                            height="50"
-                          />
-                        </button>
-                      </li>
-                    </ul>
+                      <div className="cont2-cajero01">
+                        <ul className="list-unstyled">
+                          <div className="Formu">
+                            <li>
+                              <Form.Select
+                                aria-label="Default select example"
+                                id="cajerov"
+                                name="cajerov"
+                              >
+                                <option value="0" className="Lform">
+                                  Selecciona el rol
+                                </option>
+                                <option value="1">Cajero 1</option>
+                                <option value="2">Cajero 2</option>
+                                <option value="3">Cajero 3</option>
+                                <option value="4">Cajero 4</option>
+                                <option value="5">Cajero 5</option>
+                              </Form.Select>
+                            </li>
+                          </div>
+                          <br />
+                          <li>
+                            <button
+                              onClick={validar4}
+                              value="validar4"
+                              className="button01"
+                            >
+                              <img
+                                className="ImagenF"
+                                alt=""
+                                src="http://cenfma.com/img/flecha.png"
+                                width="50"
+                                height="50"
+                              />
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="colsito5" id="colsito">
-                <div className="Fl" id="Flcajerop01">
-                  <div className="cont1-cajerop01">
-                    <h2 className="Title-general-Rol">Cajero Principal</h2>
-                  </div>
-                  <div className="cont2-cajerop01">
-                    <ul className="list-unstyled">
-                      <div className="Formu">
-                        <li>
-                          <input
-                            type="text"
-                            className="form-control"
-                            value="Cajero Principal"
-                            id="inputsdisables"
-                            readonly
-                            disabled
-                          ></input>
-                        </li>
+                <div className="col-md-4">
+                  <div className="colsito5" id="colsito">
+                    <div className="Fl" id="Flcajerop01">
+                      <div className="cont1-cajerop01">
+                        <h2 className="Title-general-Rol">Cajero Principal</h2>
                       </div>
-                      <br />
-                      <li>
-                        <button
-                          onClick={() => Navigate("/CajeroP")}
-                          value="validar5"
-                          className="button01"
-                        >
-                          <img
-                            className="ImagenF2"
-                            alt=""
-                            src="http://cenfma.com/img/flecha.png"
-                            width="50"
-                            height="50"
-                          />
-                        </button>
-                      </li>
-                    </ul>
+                      <div className="cont2-cajerop01">
+                        <ul className="list-unstyled">
+                          <div className="Formu">
+                            <li>
+                              <input
+                                type="text"
+                                className="form-control"
+                                value="Cajero Principal"
+                                id="inputsdisables"
+                                readonly
+                                disabled
+                              ></input>
+                            </li>
+                          </div>
+                          <br />
+                          <li>
+                            <button
+                              onClick={() => Navigate("/CajeroP")}
+                              value="validar5"
+                              className="button01"
+                            >
+                              <img
+                                className="ImagenF2"
+                                alt=""
+                                src="http://cenfma.com/img/flecha.png"
+                                width="50"
+                                height="50"
+                              />
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -332,6 +354,26 @@ const Roles = () => {
           duration: 3000,
         }}
       />
+
+      <Modal isOpen={mostrar}>
+        <ModalBody>
+          ¿Estás seguro que deseas eliminar todos los registros?
+        </ModalBody>
+        <ModalFooter>
+          <button
+            className="btn btn-danger"
+            onClick={() => deleteTotal()}
+          >
+            Sí
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => handleShow()}
+          >
+            No
+          </button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

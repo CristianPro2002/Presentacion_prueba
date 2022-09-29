@@ -12,8 +12,15 @@
   text-align: center;
 }
 .Background {
-  background: linear-gradient(to right top, #00eeffde, blue);
   height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #03a1e5,
+    #008ae1,
+    #1471d9,
+    #4355c9,
+    #6231b1
+  );
 }
 
 .salirB {

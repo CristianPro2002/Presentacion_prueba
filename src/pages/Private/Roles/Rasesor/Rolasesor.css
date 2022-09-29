@@ -1,196 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-.modoO{
-    float: right;
-    border-style: none;
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+.modoO {
+  float: right;
+  border-style: none;
 }
 
-.button01{
-    border: none;
+.button01 {
+  border: none;
 }
 
-.modoO:hover{
-    background: black;
-    border-style: none;
+.modoO:hover {
+  background: black;
+  border-style: none;
 }
 
-.contmodoo{
-    width: 50%;
-    float: right;
+.contmodoo {
+  width: 50%;
+  float: right;
 }
 
-#inputsdisables{
-    text-align: center;
-    display: none;
+#inputsdisables {
+  text-align: center;
+  display: none;
 }
 
 .row {
-    text-align: center;
-   
-    display: flex;
-    
-    justify-content: center;
-   
+  text-align: center;
+
+  display: flex;
+
+  justify-content: center;
 }
 
 .ImagenF {
-    filter: hue-rotate(209deg) brightness(200%);
-    cursor: pointer;
+  filter: hue-rotate(209deg) brightness(200%);
+  cursor: pointer;
 }
 .ImagenF2 {
-    filter: hue-rotate(209deg) brightness(200%);
-    cursor: pointer;
+  filter: hue-rotate(209deg) brightness(200%);
+  cursor: pointer;
 }
 
-
 .TituloR {
-    padding: 3%;
-    font-family: 'Quicksand', sans-serif;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+  padding: 3%;
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 
 .Croles {
-    position: relative; 
+  position: relative;
 }
 
 .Formu {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
 .Lform {
-    text-align: center;
+  text-align: center;
 }
 
-#EspecialAsesor{
-    background: #ffffff ;
-    transition: all 1s;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    padding: 10px;
+#EspecialAsesor {
+  background: #ffffff;
+  transition: all 1s;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 #EspecialAsesor:hover {
-    transition: all 1s;
-    transform: translateY(-5px);
+  transition: all 1s;
+  transform: translateY(-5px);
 }
 
-
-
-.fondo2{
-	font-family: 'Quicksand', sans-serif;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
+.fondo2 {
+  font-family: "Quicksand", sans-serif;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.f2{
-  padding-left: 10px;  
+.f2 {
+  padding-left: 10px;
 }
 
-#cajerova{
-    background-color:#645a5a ;
-    border: none;
+#cajerova {
+  background-color: #645a5a;
+  border: none;
 }
-.fondo{
-    background: linear-gradient(to bottom right, #722BAE,  #4B2CB2, #3036C6);
-    
-}
-
-#input-dark-mode{
-    -webkit-appearance: none;
-    width: 100px;
-    height: 50px;
-    position: relative;
-    background: white;
-    background-size: cover;
-    border-radius: 50px;
-    float: right;
+.fondo {
+  background: linear-gradient(to bottom right, #722bae, #4b2cb2, #3036c6);
 }
 
-#input-dark-mode::before{
-    content: " ";
-    background-color: aqua;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    left: 0;
+#input-dark-mode {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 50px;
+  position: relative;
+  background: white;
+  background-size: cover;
+  border-radius: 50px;
+  float: right;
 }
 
-#input-dark-mode:checked{
-    background: black;
+#input-dark-mode::before {
+  content: " ";
+  background-color: aqua;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-#input-dark-mode:checked::before{
-    transform: translate(100%);
-    background-color: blue;
+#input-dark-mode:checked {
+  background: black;
+}
+
+#input-dark-mode:checked::before {
+  transform: translate(100%);
+  background-color: blue;
 }
 
 .darkmode {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
-.principal2{
-    
-
+.principal2 {
 }
-.colsito1{
-    width: 40%;
-    height: 100%;
+.colsito1 {
+  width: 40%;
+  height: 100%;
 }
-.colsito2{
-    width: 40%;
-    height: 100%;
+.colsito2 {
+  width: 40%;
+  height: 100%;
 }
-.colsito3{
-    width: 40%;
-    height: 100%;
-    
+.colsito3 {
+  width: 40%;
+  height: 100%;
 }
-.colsito4{
-    width: 40%;
-    height: 100%;
+.colsito4 {
+  width: 40%;
+  height: 100%;
 }
-.colsito5{
-    width: 80%;
-    height: 100%;
+.colsito5 {
+  width: 80%;
+  height: 100%;
 }
 .ImagenI {
-    width: 20%;
-    height: 20%;
+  width: 20%;
+  height: 20%;
+}
+
+@media screen and (max-width: 700px) {
+  .fondo2 {
+    height: auto;
+  }
+  .ImagenI {
+    width: 50%;
+    height: 50%;
+  }
+
+  .ImagenF {
+    width: 30%;
+    height: 30%;
+  }
+}
+
+.regis {
+  font-family: "Quicksand", sans-serif;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+#colsito {
+  padding-bottom: 10px;
 }
 
 
-@media screen and (max-width: 700px){
-    .fondo2{
-        height: auto;
-    }
-    .ImagenI {
-        width: 50%;
-        height: 50%;
-    }
-
-    
-
-    .ImagenF {
-        width: 30%;
-        height: 30%;
-    }
+#comuncss {
+height: 100%;
 }
 
-.regis{
-    font-family: 'Quicksand', sans-serif;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+.ImagenN {
+    position: relative;
+    top: 38px;
 }
-
-#colsito{
-    
-    padding-bottom: 10px;
-}
-

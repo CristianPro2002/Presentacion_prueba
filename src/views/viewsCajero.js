@@ -36,7 +36,7 @@ export const Cajero1 = (props) => {
   return (
     <div>
       <CajeroGeneral
-        numeroCajero="Cajero #1"
+        numeroCajero="Cajero 1"
         numeroCajeroBD="Cajero1"
         onclick="/Tabla1"
         Valor={ValorC1}
@@ -50,7 +50,7 @@ export const Cajero2 = (props) => {
   return (
     <div>
       <CajeroGeneral
-        numeroCajero="Cajero #2"
+        numeroCajero="Cajero 2"
         numeroCajeroBD="Cajero2"
         onclick="/Tabla2"
         Valor={ValorC2}
@@ -64,7 +64,7 @@ export const Cajero3 = (props) => {
   return (
     <div>
       <CajeroGeneral
-        numeroCajero="Cajero #3"
+        numeroCajero="Cajero 3"
         numeroCajeroBD="Cajero3"
         onclick="/Tabla3"
         Valor={ValorC3}
@@ -78,7 +78,7 @@ export const Cajero4 = (props) => {
   return (
     <div>
       <CajeroGeneral
-        numeroCajero="Cajero #4"
+        numeroCajero="Cajero 4"
         numeroCajeroBD="Cajero4"
         onclick="/Tabla4"
         Valor={ValorC4}
@@ -92,7 +92,7 @@ export const Cajero5 = (props) => {
   return (
     <div>
       <CajeroGeneral
-        numeroCajero="Cajero #5"
+        numeroCajero="Cajero 5"
         numeroCajeroBD="Cajero5"
         onclick="/Tabla5"
         Valor={ValorC5}
